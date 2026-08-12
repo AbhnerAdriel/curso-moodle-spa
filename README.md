@@ -7,7 +7,7 @@ Projeto front-end em HTML, CSS e JavaScript puro, sem dependências externas de 
 - `index.html` — shell único da SPA.
 - `styles.css` — identidade visual, responsividade, estados e motion.
 - `app.js` — renderização da Home, roteamento por hash e carrossel acessível.
-- `assets/course-hero.jpg` — imagem editorial extraída da referência visual.
+- `assets/banner-curso-tutores.png` — banner responsivo do curso para tutores.
 
 ## Como executar localmente
 
@@ -20,6 +20,7 @@ O projeto foi estruturado para funcionar como conteúdo web independente. Os lin
 ## Ajustes principais em relação à referência
 
 - O texto "IMAGEM DE FUNDO" foi removido.
-- A imagem do topo foi ampliada horizontalmente e continua integrada à moldura ciano com o quadrado rosa.
+- A imagem do topo ocupa todo o hero como `background-image`, com recorte responsivo e gradientes de contraste.
+- A transição para os indicadores do curso usa uma onda vetorial, e o botão do guia tem formato arredondado.
 - O carrossel de módulos é manual (sem autoplay), responsivo e navegável por teclado.
 - O layout inclui `skip-link`, foco visível, `aria-live` e `prefers-reduced-motion`.

@@ -28,20 +28,20 @@
       <main id="conteudo-principal" class="course-shell" tabindex="-1">
         <section class="course-hero" aria-labelledby="course-title">
           <div class="hero-copy" data-reveal>
+            <img class="hero-crest" src="assets/brasao-ufpe.png" alt="Brasão da UFPE" width="305" height="381" />
             <p class="eyebrow">Curso</p>
-            <h1 class="course-title" id="course-title">Título do Curso</h1>
+            <h1 class="course-title" id="course-title">Introdução ao AVA da UFPE para Tutores</h1>
             <a class="guide-link" href="#/guia" data-spa-link>
               <span>Guia do Curso</span>
               ${icon('arrowUpRight')}
             </a>
           </div>
 
-          <figure class="hero-media" data-reveal>
-            <div class="hero-media__inner">
-              <img src="assets/course-hero.jpg" alt="Composição arquitetônica em preto e branco, com planos de concreto e luz diagonal." />
-            </div>
-            <span class="hero-media__cyan-mark" aria-hidden="true"></span>
-          </figure>
+          <div class="hero-wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 160" preserveAspectRatio="none" focusable="false">
+              <path d="M0 48C155 4 286 105 515 103C756 101 878 30 1087 14C1243 2 1356 22 1440 38V160H0Z" />
+            </svg>
+          </div>
         </section>
 
         <section class="course-metrics" aria-label="Informações do curso">
