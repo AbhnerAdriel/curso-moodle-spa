@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#FFFFFF" />
+  <meta name="description" content="Curso Introdução ao AVA da UFPE para Tutores" />
   <title>Home do Curso</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="module.css" />
 </head>
 <body>
   <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo principal</a>
-  <div id="app" aria-live="polite"></div>
+  <div id="app"></div>
+  <p class="sr-only" id="route-announcer" aria-live="polite" aria-atomic="true"></p>
+  <noscript>
+    <main class="noscript-message" id="conteudo-principal">
+      <h1>JavaScript necessário</h1>
+      <p>Ative o JavaScript do navegador para acessar o conteúdo do curso.</p>
+    </main>
+  </noscript>
+  <script src="data/course-content.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>
