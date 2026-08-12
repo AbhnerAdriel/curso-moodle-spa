@@ -143,60 +143,219 @@
     return 3;
   }
 
+  let destroyCarousel = () => {};
+
   function initCarousel() {
     const carousel = document.querySelector('[data-carousel]');
-    if (!carousel) return;
+    if (!carousel) return () => {};
 
     const track = carousel.querySelector('[data-track]');
+    const viewport = carousel.querySelector('.carousel-viewport');
     const cards = [...track.children];
     const prev = carousel.querySelector('[data-prev]');
     const next = carousel.querySelector('[data-next]');
     const status = carousel.querySelector('[data-status]');
-    const dotsWrap = document.querySelector('[data-dots]');
+    const dotsWrap = carousel.closest('.modules-section').querySelector('[data-dots]');
+    const controller = new AbortController();
+    const { signal } = controller;
     let index = 0;
+    let dragState = null;
+    let resizeTimer;
+    let snapFrame;
+    let suppressClick = false;
+    let suppressClickTimer;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
     const maxIndex = () => Math.max(0, cards.length - visibleCards());
+
+    const cardStep = () => {
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return cards[0].getBoundingClientRect().width + gap;
+    };
+
+    const setTrackPosition = (x) => {
+      track.style.transform = `translate3d(${x}px,0,0)`;
+    };
+
+    const currentTrackPosition = () => {
+      const transform = getComputedStyle(track).transform;
+      if (!transform || transform === 'none') return 0;
+      try {
+        return new DOMMatrixReadOnly(transform).m41;
+      } catch {
+        return -index * cardStep();
+      }
+    };
 
     const renderDots = () => {
       const total = maxIndex() + 1;
       dotsWrap.innerHTML = Array.from({ length: total }, (_, i) =>
         `<button class="carousel-dot" type="button" aria-label="Ir para posição ${i + 1}" data-dot="${i}" aria-current="${i === index ? 'true' : 'false'}"></button>`
       ).join('');
-      dotsWrap.querySelectorAll('[data-dot]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          index = Number(btn.dataset.dot);
-          update();
-        });
-      });
     };
 
     const update = () => {
-      index = Math.min(index, maxIndex());
-      const firstCard = cards[0];
-      const gap = parseFloat(getComputedStyle(track).gap) || 0;
-      const step = firstCard.getBoundingClientRect().width + gap;
-      track.style.transform = `translate3d(${-index * step}px,0,0)`;
+      index = clamp(index, 0, maxIndex());
+      setTrackPosition(-index * cardStep());
       prev.disabled = index === 0;
       next.disabled = index >= maxIndex();
       status.textContent = `Exibindo módulos ${index + 1} a ${Math.min(cards.length, index + visibleCards())} de ${cards.length}.`;
       dotsWrap.querySelectorAll('[data-dot]').forEach((dot, i) => dot.setAttribute('aria-current', i === index ? 'true' : 'false'));
     };
 
-    prev.addEventListener('click', () => { index = Math.max(0, index - 1); update(); });
-    next.addEventListener('click', () => { index = Math.min(maxIndex(), index + 1); update(); });
+    const clearClickSuppression = () => {
+      suppressClick = false;
+      clearTimeout(suppressClickTimer);
+    };
+
+    const suppressNextPointerClick = () => {
+      suppressClick = true;
+      clearTimeout(suppressClickTimer);
+      suppressClickTimer = setTimeout(clearClickSuppression, 500);
+    };
+
+    const positionWithEdgeResistance = (x, step = cardStep()) => {
+      const min = -maxIndex() * step;
+      if (x > 0) return x * .18;
+      if (x < min) return min + (x - min) * .18;
+      return x;
+    };
+
+    const finishDrag = (event, cancelled = false) => {
+      if (!dragState || (event.pointerId != null && event.pointerId !== dragState.pointerId)) return;
+
+      const state = dragState;
+      dragState = null;
+
+      if (viewport.hasPointerCapture?.(state.pointerId)) {
+        viewport.releasePointerCapture(state.pointerId);
+      }
+
+      viewport.classList.remove('is-dragging');
+      if (!state.isDragging) return;
+
+      if (!cancelled) {
+        const endX = Number.isFinite(event.clientX) ? event.clientX : state.lastX;
+        const deltaX = endX - state.startX;
+        const { step } = state;
+        const currentX = positionWithEdgeResistance(state.baseX + deltaX, step);
+        const elapsed = Math.max(event.timeStamp - state.startTime, 1);
+        const velocityX = Math.abs(deltaX / elapsed);
+        const moveThreshold = Math.min(72, step * .2);
+        let targetIndex = Math.round(-currentX / step);
+
+        if (targetIndex === state.startIndex && (Math.abs(deltaX) >= moveThreshold || (Math.abs(deltaX) >= 12 && velocityX >= .45))) {
+          targetIndex += deltaX < 0 ? 1 : -1;
+        }
+
+        index = clamp(targetIndex, 0, maxIndex());
+        suppressNextPointerClick();
+      }
+
+      cancelAnimationFrame(snapFrame);
+      snapFrame = requestAnimationFrame(() => {
+        snapFrame = null;
+        update();
+      });
+    };
+
+    prev.addEventListener('click', () => { index = Math.max(0, index - 1); update(); }, { signal });
+    next.addEventListener('click', () => { index = Math.min(maxIndex(), index + 1); update(); }, { signal });
+    dotsWrap.addEventListener('click', (event) => {
+      const dot = event.target.closest('[data-dot]');
+      if (!dot) return;
+      index = Number(dot.dataset.dot);
+      update();
+    }, { signal });
+
     carousel.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
       if (event.key === 'ArrowLeft') prev.click();
       if (event.key === 'ArrowRight') next.click();
-    });
+    }, { signal });
 
-    let resizeTimer;
+    viewport.addEventListener('pointerdown', (event) => {
+      if (!event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0) || maxIndex() === 0) return;
+
+      clearClickSuppression();
+      const step = cardStep();
+      const baseX = currentTrackPosition();
+      dragState = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        startTime: event.timeStamp,
+        lastX: event.clientX,
+        baseX,
+        step,
+        startIndex: clamp(Math.round(-baseX / step), 0, maxIndex()),
+        isDragging: false
+      };
+    }, { signal });
+
+    viewport.addEventListener('pointermove', (event) => {
+      if (!dragState || event.pointerId !== dragState.pointerId) return;
+
+      const deltaX = event.clientX - dragState.startX;
+      const deltaY = event.clientY - dragState.startY;
+
+      if (!dragState.isDragging) {
+        if (Math.abs(deltaX) < 8 && Math.abs(deltaY) < 8) return;
+        if (Math.abs(deltaY) >= Math.abs(deltaX)) {
+          dragState = null;
+          return;
+        }
+
+        dragState.isDragging = true;
+        viewport.classList.add('is-dragging');
+        setTrackPosition(dragState.baseX);
+        viewport.setPointerCapture?.(event.pointerId);
+      }
+
+      if (event.cancelable) event.preventDefault();
+      dragState.lastX = event.clientX;
+      setTrackPosition(positionWithEdgeResistance(dragState.baseX + deltaX, dragState.step));
+    }, { signal });
+
+    viewport.addEventListener('pointerup', (event) => finishDrag(event), { signal });
+    viewport.addEventListener('pointercancel', (event) => finishDrag(event, true), { signal });
+    viewport.addEventListener('lostpointercapture', (event) => {
+      if (event.target === viewport) finishDrag(event, true);
+    }, { signal });
+    viewport.addEventListener('dragstart', (event) => event.preventDefault(), { signal });
+    viewport.addEventListener('click', (event) => {
+      if (!suppressClick || event.detail === 0) return;
+      event.preventDefault();
+      event.stopPropagation();
+      clearClickSuppression();
+    }, { capture: true, signal });
+
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
+      if (dragState) finishDrag({ pointerId: dragState.pointerId }, true);
       resizeTimer = setTimeout(() => { renderDots(); update(); }, 100);
-    });
+    }, { signal });
+    window.addEventListener('blur', () => {
+      if (dragState) finishDrag({ pointerId: dragState.pointerId }, true);
+    }, { signal });
 
     renderDots();
     update();
+
+    return () => {
+      const activePointerId = dragState?.pointerId;
+      dragState = null;
+      if (activePointerId != null && viewport.hasPointerCapture?.(activePointerId)) {
+        viewport.releasePointerCapture(activePointerId);
+      }
+      viewport.classList.remove('is-dragging');
+      clearTimeout(resizeTimer);
+      clearTimeout(suppressClickTimer);
+      cancelAnimationFrame(snapFrame);
+      controller.abort();
+    };
   }
 
   function initReveal() {
@@ -219,8 +378,9 @@
   function render() {
     const route = window.location.hash || '#/';
     const app = document.getElementById('app');
+    destroyCarousel();
     app.innerHTML = (route === '#/' || route === '' || route === '#/home') ? homeTemplate() : auxiliaryTemplate(route);
-    initCarousel();
+    destroyCarousel = initCarousel();
     initReveal();
     requestAnimationFrame(() => document.getElementById('conteudo-principal')?.focus({ preventScroll: true }));
   }

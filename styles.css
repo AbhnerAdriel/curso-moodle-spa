@@ -400,7 +400,18 @@ img { max-width: 100%; display: block; }
 .carousel-btn:disabled { opacity: .4; cursor: not-allowed; }
 .carousel-btn svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; }
 
-.carousel-viewport { overflow: hidden; }
+.carousel-viewport {
+  margin-block: -.5rem;
+  padding-block: .5rem;
+  overflow: hidden;
+  cursor: default;
+  touch-action: pan-y pinch-zoom;
+}
+.carousel-viewport.is-dragging {
+  cursor: ew-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
 .carousel-track {
   display: flex;
   gap: 36px;
@@ -408,6 +419,7 @@ img { max-width: 100%; display: block; }
   transition: transform var(--duration-medium) var(--ease-standard);
   will-change: transform;
 }
+.carousel-viewport.is-dragging .carousel-track { transition: none; }
 .module-card {
   position: relative;
   flex: 0 0 calc((100% - 72px) / 3);
@@ -418,6 +430,8 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 8px 24px rgba(31,31,31,.07);
   text-decoration: none;
   color: var(--ink);
+  cursor: pointer;
+  -webkit-user-drag: none;
   transition: transform var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
 }
 .module-card::before {
@@ -429,7 +443,9 @@ img { max-width: 100%; display: block; }
   height: 80px;
   background: var(--pink);
 }
-.module-card:hover { transform: translateY(-2px); border-color: var(--neutral-300); }
+.module-card:hover { z-index: 1; transform: translateY(-2px); border-color: var(--neutral-300); }
+.carousel-viewport.is-dragging .module-card { cursor: ew-resize; }
+.carousel-viewport.is-dragging .module-card:hover { transform: none; }
 .module-index {
   margin: 0 0 .55rem;
   color: var(--neutral-200);
