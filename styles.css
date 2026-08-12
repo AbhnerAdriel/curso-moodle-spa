@@ -85,7 +85,7 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   color: var(--white);
   background-color: #101010;
-  background-image: url("assets/banner-curso-tutores.png");
+  background-image: url("assets/banner-curso-tutores.webp");
   background-position: 64% center;
   background-repeat: no-repeat;
   background-size: cover;
