@@ -75,6 +75,48 @@
                 ]
               }
             ]
+          },
+          {
+            id: '02',
+            label: 'Situação-problema',
+            unit: 'Situação-problema',
+            title: 'Expandir o acesso e preservar a qualidade',
+            blocks: [
+              {
+                type: 'scenario',
+                paragraphs: [
+                  'Uma licenciatura ofertada pela UAB/UFPE atende estudantes de diferentes municípios. Alguns residem longe do polo, conciliam os estudos com o trabalho e dependem do ambiente virtual para acompanhar as atividades.',
+                  'Nos últimos meses, a equipe identificou estudantes que acessam os materiais, mas participam pouco das atividades; dificuldades para acompanhar estudantes com baixa frequência; dúvidas sobre o papel do polo nas atividades presenciais; necessidade de melhorar a comunicação entre estudantes e equipe do curso; e incertezas sobre as mudanças trazidas pelo novo marco regulatório.',
+                  'Durante uma reunião, um integrante da equipe afirma: "O Decreto nº 9.057/2017 ainda é a principal norma da EaD. Podemos continuar organizando o curso exatamente como fazíamos antes." Outro integrante responde: "Esse decreto foi revogado. Precisamos compreender as mudanças introduzidas pelo Decreto nº 12.456/2025 e analisar como elas afetam a organização dos cursos."'
+                ]
+              },
+              {
+                type: 'stickyStack',
+                heading: 'Para refletir',
+                items: [
+                  {
+                    id: 'afirmacoes',
+                    text: 'Qual das duas afirmações está correta?'
+                  },
+                  {
+                    id: 'regulacao',
+                    text: 'Por que o crescimento da EaD exigiu novas formas de regulação?'
+                  },
+                  {
+                    id: 'acesso-qualidade',
+                    text: 'Como é possível ampliar o acesso sem diminuir a qualidade acadêmica?'
+                  },
+                  {
+                    id: 'uab-polos-equipes',
+                    text: 'Que papel a UAB, os polos e as equipes dos cursos exercem nesse processo?'
+                  },
+                  {
+                    id: 'tutor-legislacao',
+                    text: 'Por que o tutor precisa conhecer a trajetória e a situação atual da legislação?'
+                  }
+                ]
+              }
+            ]
           }
         ]
       },

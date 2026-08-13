@@ -246,10 +246,61 @@
     `;
   }
 
+  function renderScenarioBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `scenario-${moduleId}-${pageId}-${blockIndex}`;
+    return `
+      <section class="lesson-scenario" aria-labelledby="${headingId}">
+        <h3 class="sr-only" id="${headingId}">Contexto da situação-problema</h3>
+        <div class="lesson-container lesson-scenario__layout">
+          <div class="lesson-scenario__marker" aria-hidden="true" data-reveal>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="lesson-scenario__prose" data-reveal>
+            ${block.paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderStickyStackBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `reflection-${moduleId}-${pageId}-${blockIndex}`;
+    return `
+      <section class="lesson-reflection" aria-labelledby="${headingId}">
+        <header class="lesson-container lesson-reflection__heading" data-reveal>
+          <p class="lesson-reflection__count" aria-hidden="true">${padId(block.items.length)}</p>
+          <div>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <span class="lesson-accent-line" aria-hidden="true"></span>
+          </div>
+        </header>
+        <ol class="lesson-container lesson-reflection__stack" data-sticky-stack aria-label="Questões para reflexão">
+          ${block.items.map((item, index) => `
+            <li
+              class="lesson-reflection__item"
+              id="${escapeHTML(item.id)}-${moduleId}-${pageId}-${blockIndex}"
+              data-stack-card
+              style="--stack-index: ${index}; --stack-offset: ${index * 14}px;">
+              <article class="lesson-reflection__card">
+                <p class="lesson-reflection__index" aria-hidden="true">${padId(index + 1)}</p>
+                <h4>${escapeHTML(item.text)}</h4>
+                <span class="lesson-reflection__edge" aria-hidden="true"></span>
+              </article>
+            </li>
+          `).join('')}
+        </ol>
+      </section>
+    `;
+  }
+
   function renderContentBlock(block, moduleId, pageId, blockIndex = 0) {
     if (block.type === 'video') return renderVideoBlock(block);
     if (block.type === 'narrative') return renderNarrativeBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'accordionGroup') return renderAccordionGroup(block, moduleId, pageId, blockIndex);
+    if (block.type === 'scenario') return renderScenarioBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'stickyStack') return renderStickyStackBlock(block, moduleId, pageId, blockIndex);
     return '';
   }
 
@@ -345,10 +396,12 @@
             </div>
           </div>
 
-          <article class="lesson-article" aria-labelledby="lesson-title">
-            <div class="lesson-container lesson-media-wrap">
-              ${leadBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
-            </div>
+          <article class="lesson-article" aria-labelledby="lesson-title" data-page-content-start tabindex="-1">
+            ${leadBlocks.length ? `
+              <div class="lesson-container lesson-media-wrap">
+                ${leadBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
+              </div>
+            ` : ''}
 
             <header class="lesson-container lesson-heading" data-reveal>
               <div class="lesson-heading__index" aria-hidden="true">${escapeHTML(page.id)}</div>
@@ -423,6 +476,7 @@
   let destroyCarousel = () => {};
   let destroyReveal = () => {};
   let destroyAccordions = () => {};
+  let destroyStickyStacks = () => {};
 
   function initCarousel() {
     const carousel = document.querySelector('[data-carousel]');
@@ -637,6 +691,15 @@
     };
   }
 
+  function showVisibleRevealsImmediately(items = [...document.querySelectorAll('[data-reveal]')]) {
+    items.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        element.classList.add('is-visible', 'is-reveal-immediate');
+      }
+    });
+  }
+
   function initReveal() {
     const items = [...document.querySelectorAll('[data-reveal]')];
     if (!items.length) return () => {};
@@ -645,6 +708,7 @@
       items.forEach((element) => element.classList.add('is-visible'));
       return () => {};
     }
+
     const observer = new IntersectionObserver((entries, io) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
@@ -652,7 +716,9 @@
         io.unobserve(entry.target);
       });
     }, { threshold: 0.16 });
-    items.forEach((element) => observer.observe(element));
+    items
+      .filter((element) => !element.classList.contains('is-reveal-immediate'))
+      .forEach((element) => observer.observe(element));
     return () => observer.disconnect();
   }
 
@@ -669,6 +735,52 @@
     return () => controller.abort();
   }
 
+  function initStickyStacks() {
+    const stacks = [...document.querySelectorAll('[data-sticky-stack]')];
+    if (!stacks.length) return () => {};
+
+    const controller = new AbortController();
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frame = null;
+
+    const update = () => {
+      frame = null;
+      const enhanced = window.innerWidth >= 768 && !motionQuery.matches;
+      stacks.forEach((stack) => {
+        const cards = [...stack.querySelectorAll('[data-stack-card]')];
+        stack.classList.toggle('is-enhanced', enhanced);
+        cards.forEach((card, index) => {
+          if (!enhanced) {
+            card.classList.remove('is-entered', 'is-covered');
+            return;
+          }
+
+          const rect = card.getBoundingClientRect();
+          const stickyTop = Number.parseFloat(getComputedStyle(card).top) || 0;
+          const nextCard = cards[index + 1];
+          const nextTop = nextCard?.getBoundingClientRect().top;
+          card.classList.toggle('is-entered', rect.top < window.innerHeight * .86 && rect.bottom > 0);
+          card.classList.toggle('is-covered', Boolean(nextCard && nextTop <= stickyTop + 30));
+        });
+      });
+    };
+
+    const scheduleUpdate = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true, signal: controller.signal });
+    window.addEventListener('resize', scheduleUpdate, { signal: controller.signal });
+    motionQuery.addEventListener?.('change', scheduleUpdate, { signal: controller.signal });
+    scheduleUpdate();
+
+    return () => {
+      controller.abort();
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }
+
   function setModuleBanner() {
     const hero = document.querySelector('[data-module-hero]');
     if (!hero) return;
@@ -683,19 +795,25 @@
     document.documentElement.dataset.view = routeName;
   }
 
+  if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+
   let hasRendered = false;
+  let routePositionFrame = null;
   function render() {
     const route = parseRoute(window.location.hash);
     const app = document.getElementById('app');
     const announcer = document.getElementById('route-announcer');
+    const isRouteChange = hasRendered;
     let template;
     let pageTitle;
     let announcement;
     let themeColor = '#FFFFFF';
+    let modulePageIndex = null;
 
     destroyCarousel();
     destroyReveal();
     destroyAccordions();
+    destroyStickyStacks();
 
     if (route.name === 'home') {
       template = homeTemplate();
@@ -720,6 +838,7 @@
           announcement = `Página não encontrada no Módulo ${module.id}.`;
         } else {
           const page = module.pages[pageIndex];
+          modulePageIndex = pageIndex;
           template = modulePageTemplate(module, page, pageIndex);
           pageTitle = `${page.title} | Módulo ${module.id}`;
           announcement = `Módulo ${module.id}, página ${page.id} de ${padId(module.pages.length)} carregada.`;
@@ -737,21 +856,53 @@
       announcement = 'Conteúdo não encontrado.';
     }
 
+    if (routePositionFrame !== null) cancelAnimationFrame(routePositionFrame);
     app.innerHTML = template;
     setPageMeta(pageTitle, themeColor, route.name);
     setModuleBanner();
+
+    const isModulePage = modulePageIndex !== null;
+    const shouldPositionRoute = isModulePage || isRouteChange;
+    const landingTarget = isModulePage && modulePageIndex > 0
+      ? document.querySelector('[data-page-content-start]')
+      : null;
+    const getLandingTop = () => landingTarget
+      ? Math.max(0, landingTarget.getBoundingClientRect().top + window.scrollY)
+      : 0;
+    const positionRoute = () => {
+      window.scrollTo({ top: getLandingTop(), left: 0, behavior: 'auto' });
+      if (isModulePage) showVisibleRevealsImmediately();
+    };
+    if (shouldPositionRoute) {
+      document.documentElement.classList.add('is-route-positioning');
+      positionRoute();
+    }
+
     destroyCarousel = initCarousel();
     destroyReveal = initReveal();
     destroyAccordions = initAccordions();
+    destroyStickyStacks = initStickyStacks();
 
-    requestAnimationFrame(() => {
-      if (hasRendered) {
-        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-        document.getElementById('conteudo-principal')?.focus({ preventScroll: true });
+    routePositionFrame = requestAnimationFrame(() => {
+      if (shouldPositionRoute) positionRoute();
+      if (isRouteChange) {
+        const focusTarget = isModulePage && modulePageIndex > 0
+          ? landingTarget
+          : document.getElementById('conteudo-principal');
+        focusTarget?.focus({ preventScroll: true });
         if (announcer) announcer.textContent = announcement;
       }
-      hasRendered = true;
+      if (!shouldPositionRoute) {
+        routePositionFrame = null;
+        return;
+      }
+      routePositionFrame = requestAnimationFrame(() => {
+        positionRoute();
+        document.documentElement.classList.remove('is-route-positioning');
+        routePositionFrame = null;
+      });
     });
+    hasRendered = true;
   }
 
   document.querySelector('.skip-link')?.addEventListener('click', (event) => {

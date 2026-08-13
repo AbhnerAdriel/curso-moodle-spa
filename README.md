@@ -28,6 +28,7 @@ A SPA usa rotas hash, compatíveis com hospedagem estática e sem configuração
 ```text
 #/                              Home
 #/modulo/01/pagina/01           Página 01 do Módulo 01
+#/modulo/01/pagina/02           Página 02 do Módulo 01
 #/guia                          Guia do curso
 #/avisos                        Avisos
 #/biblioteca                    Biblioteca
@@ -35,17 +36,21 @@ A SPA usa rotas hash, compatíveis com hospedagem estática e sem configuração
 
 Os cards dos módulos abrem a rota correspondente em uma nova aba, com `noopener` e indicação acessível. Rotas antigas no formato `#/modulo/1` continuam abrindo a primeira página do módulo.
 
+Ao navegar dentro de um módulo, a primeira página abre no topo do banner; as páginas seguintes começam diretamente no início do conteúdo, após a barra de progresso, sem rolagem animada entre as posições.
+
 ## Adicionar conteúdo
 
 Todo o conteúdo é orientado a dados em `data/course-content.js`. Para publicar uma página nova:
 
 1. localize o módulo no array `modules`;
 2. adicione um objeto ao array `pages`, com `id`, `label`, `unit`, `title` e `blocks`;
-3. use os blocos já suportados: `video`, `narrative` e `accordionGroup`; para mídia antes do título da página, acrescente `slot: 'lead'` ao bloco;
+3. use os blocos já suportados: `video`, `narrative`, `scenario`, `stickyStack` e `accordionGroup`; para mídia antes do título da página, acrescente `slot: 'lead'` ao bloco;
 4. mantenha os IDs numéricos com dois dígitos (`01`, `02`, `03`...).
 
 A paginação, os links anterior/próxima, o total de páginas, o progresso e os estados de limite são gerados automaticamente a partir desse array.
 Somente módulos com `status: 'published'` exibem suas páginas; módulos em `draft` permanecem protegidos pela tela de preparação, inclusive em acesso direto.
+
+O bloco `stickyStack` cria uma pilha progressiva de conteúdos durante a rolagem. Em telas pequenas, impressão ou quando o usuário prefere movimento reduzido, os itens voltam automaticamente ao fluxo linear de leitura.
 
 ### Configurar o vídeo do Eduplay
 
