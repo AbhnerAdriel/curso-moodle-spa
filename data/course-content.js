@@ -126,6 +126,114 @@
                 ]
               }
             ]
+          },
+          {
+            id: '03',
+            label: 'Conceitos e características',
+            unit: 'Unidade 01',
+            title: 'Educação a Distância: conceitos e características',
+            blocks: [
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar:',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
+                volumes: [
+                  {
+                    id: 'volume-1',
+                    title: 'Volume 1',
+                    entries: [
+                      {
+                        pages: '4',
+                        content: 'Apresentação e contextualização histórica da EaD.'
+                      },
+                      {
+                        pages: '5–6',
+                        content: 'Conceituação da EaD e elementos que caracterizam a modalidade.'
+                      },
+                      {
+                        pages: '7–8',
+                        content: 'Contribuições de Moore e Chaves: diálogo, estrutura, autonomia e mediação.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'conceptIntro',
+                heading: 'Educação a Distância',
+                paragraphs: [
+                  'A Educação a Distância não se resume ao uso da internet nem à ausência de uma sala de aula física. Trata-se de uma forma própria de organizar os processos de ensino e aprendizagem, capaz de promover a aprendizagem quando professores e estudantes estão separados no espaço e, em muitos casos, também no tempo.',
+                  'A modalidade combina tecnologias de informação e comunicação, flexibilidade de tempos e espaços, autonomia do estudante, planejamento, acompanhamento e mediação pedagógica. Nenhum desses elementos, isoladamente, define a EaD. O que a caracteriza é a articulação entre eles dentro de uma proposta pedagógica organizada.',
+                  'Moore destaca três dimensões: diálogo, estrutura e autonomia. Quanto maior a distância transacional entre estudantes e professores, maior é a necessidade de planejamento, comunicação e acompanhamento. Chaves, por sua vez, chama atenção para a função das tecnologias como meios de comunicação pedagógica, e não como finalidade do processo educativo.'
+                ]
+              },
+              {
+                type: 'horizontalAccordion',
+                heading: 'O que caracteriza a Educação a Distância?',
+                instruction: 'Selecione cada elemento para conhecer seu papel na organização da modalidade.',
+                activeItem: 'separacao-espacial',
+                items: [
+                  {
+                    id: 'separacao-espacial',
+                    icon: 'spatial',
+                    title: 'Separação espacial',
+                    description: 'Na EaD, estudantes e professores podem estar em locais diferentes durante grande parte do processo formativo. Essa distância física não significa ausência de interação: a aprendizagem é organizada para promover comunicação, orientação e participação ao longo do percurso.'
+                  },
+                  {
+                    id: 'uso-tecnologias',
+                    icon: 'technology',
+                    title: 'Uso de tecnologias',
+                    description: 'Ambientes virtuais de aprendizagem, videoconferências, fóruns, vídeos, materiais digitais e outras tecnologias apoiam a comunicação, o acesso aos conteúdos e a realização das atividades. A tecnologia funciona como meio para aproximar pessoas, conteúdos e experiências de aprendizagem.'
+                  },
+                  {
+                    id: 'flexibilidade',
+                    icon: 'flexibility',
+                    title: 'Flexibilidade',
+                    description: 'A EaD amplia as possibilidades de organização dos tempos e espaços de estudo. Dependendo da proposta do curso, o estudante pode acessar conteúdos e realizar determinadas atividades em diferentes horários e locais, respeitando os prazos e as atividades previstas.'
+                  },
+                  {
+                    id: 'autonomia-estudante',
+                    icon: 'autonomy',
+                    title: 'Autonomia do estudante',
+                    description: 'O estudante assume papel ativo na organização de sua aprendizagem. Planejar os estudos, acompanhar os prazos, acessar os materiais, participar das atividades e identificar dificuldades fazem parte desse processo. Autonomia, entretanto, não significa estudar sozinho.'
+                  },
+                  {
+                    id: 'mediacao-pedagogica',
+                    icon: 'mediation',
+                    title: 'Mediação pedagógica',
+                    description: 'Professores, tutores e demais profissionais atuam na orientação e na interação com os estudantes. A mediação ajuda a contextualizar conteúdos, esclarecer dúvidas, estimular a participação e estabelecer conexões entre os conhecimentos estudados e as experiências dos participantes.'
+                  },
+                  {
+                    id: 'acompanhamento-aprendizagem',
+                    icon: 'tracking',
+                    title: 'Acompanhamento da aprendizagem',
+                    description: 'A EaD envolve acompanhamento sistemático da participação e do desempenho dos estudantes. Acessos ao ambiente virtual, realização de atividades, participação em fóruns, avaliações e outras evidências podem apoiar a identificação de dificuldades e orientar intervenções pedagógicas.'
+                  },
+                  {
+                    id: 'momentos-presenciais',
+                    icon: 'presence',
+                    title: 'Momentos presenciais',
+                    description: 'A Educação a Distância pode incluir atividades presenciais previstas na organização do curso e na legislação aplicável. Esses momentos podem ocorrer na instituição ou nos polos de apoio e favorecem experiências acadêmicas que exigem interação presencial, infraestrutura específica ou acompanhamento direto.'
+                  }
+                ]
+              },
+              {
+                type: 'video',
+                layout: 'section',
+                title: 'Educação a Distância: conceitos e características',
+                description: 'Aprofundamento em vídeo',
+                provider: 'Eduplay',
+                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464645'
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'A Educação a Distância consiste em transferir para a internet as mesmas práticas utilizadas em uma sala de aula presencial.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'A EaD demanda reorganização da comunicação, da interação, do acompanhamento, da avaliação e das responsabilidades dos profissionais envolvidos.'
+              }
+            ]
           }
         ]
       },

@@ -33,6 +33,22 @@
     return icons[name] || '';
   };
 
+  const lessonIcon = (name) => {
+    const open = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">';
+    const icons = {
+      book: `${open}<path d="M5 10.5c7-1.8 13 .2 19 5.2v24c-6-5-12-7-19-5.2Z"/><path d="M43 10.5c-7-1.8-13 .2-19 5.2v24c6-5 12-7 19-5.2Z"/><path d="M10 17c3.3-.4 6.3.6 9 2.8M10 23c3.3-.4 6.3.6 9 2.8M38 17c-3.3-.4-6.3.6-9 2.8M38 23c-3.3-.4-6.3.6-9 2.8"/></svg>`,
+      activity: `${open}<path d="m27 3-15 24h10l-2 18 16-26H26l1-16Z"/></svg>`,
+      spatial: `${open}<path d="M17 15a7 7 0 1 0-14 0c0 6 7 13 7 13s7-7 7-13Z"/><circle cx="10" cy="15" r="2"/><path d="M45 31a7 7 0 1 0-14 0c0 6 7 13 7 13s7-7 7-13Z"/><circle cx="38" cy="31" r="2"/><path d="M16 30c4 5 8 6 14 3" stroke-dasharray="3 4"/></svg>`,
+      technology: `${open}<rect x="5" y="7" width="38" height="27"/><path d="M17 42h14M21 34l-2 8M27 34l2 8M12 14h24M12 20h12"/></svg>`,
+      flexibility: `${open}<path d="M7 24h10c11 0 8-14 18-14h6M35 5l6 5-6 5M7 24h10c11 0 8 14 18 14h6M35 33l6 5-6 5"/></svg>`,
+      autonomy: `${open}<circle cx="24" cy="24" r="19"/><path d="m30 15-4 12-12 6 5-12 11-6Z"/><circle cx="23" cy="24" r="2"/></svg>`,
+      mediation: `${open}<path d="M4 8h27v21H15l-8 7v-7H4Z"/><path d="M20 20h24v18h-7v6l-7-6H20v-9M10 15h15M10 21h9"/></svg>`,
+      tracking: `${open}<path d="M6 40V8M6 40h36"/><path d="m11 33 8-9 7 5 12-15M33 14h5v5"/><circle cx="19" cy="24" r="2"/><circle cx="26" cy="29" r="2"/></svg>`,
+      presence: `${open}<circle cx="18" cy="15" r="6"/><circle cx="34" cy="18" r="5"/><path d="M6 41v-5c0-7 5-12 12-12s12 5 12 12v5M29 27c1.5-.7 3.2-1 5-1 6 0 10 4 10 10v5H30"/></svg>`
+    };
+    return icons[name] || icons.book;
+  };
+
   function homeTemplate() {
     return `
       <main id="conteudo-principal" class="course-shell" tabindex="-1">
@@ -315,12 +331,200 @@
     `;
   }
 
+  function renderEbookReadingBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `ebook-${moduleId}-${pageId}-${blockIndex}`;
+    const volumes = Array.isArray(block.volumes) ? block.volumes : [];
+    return `
+      <section class="lesson-ebook" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-ebook__intro" data-reveal>
+            <span class="lesson-ebook__icon" aria-hidden="true">${lessonIcon('book')}</span>
+            <div>
+              <p class="lesson-eyebrow">Leitura orientada</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              <p>${escapeHTML(block.introduction)}</p>
+            </div>
+          </header>
+
+          <div class="lesson-ebook__volumes" data-reveal>
+            ${volumes.map((volume, volumeIndex) => {
+              const contentId = `${volume.id}-${moduleId}-${pageId}-${blockIndex}-content`;
+              const entries = Array.isArray(volume.entries) ? volume.entries : [];
+              const itemLabel = entries.length === 1 ? 'trecho selecionado' : 'trechos selecionados';
+              return `
+                <details class="lesson-accordion__item lesson-ebook__volume">
+                  <summary aria-expanded="false" aria-controls="${contentId}">
+                    <span class="lesson-accordion__index">${padId(volumeIndex + 1)}</span>
+                    <span class="lesson-ebook__volume-heading">
+                      <span class="lesson-accordion__title">${escapeHTML(volume.title)}</span>
+                      <span class="lesson-ebook__volume-meta">${padId(entries.length)} ${itemLabel}</span>
+                    </span>
+                    <span class="lesson-accordion__toggle" aria-hidden="true"></span>
+                  </summary>
+                  <div class="lesson-accordion__content lesson-ebook__content" id="${contentId}">
+                    <table class="lesson-ebook__table">
+                      <caption class="sr-only">Páginas e conteúdos indicados em ${escapeHTML(volume.title)}</caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Páginas</th>
+                          <th scope="col">Conteúdo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${entries.map((entry) => `
+                          <tr>
+                            <th scope="row">${escapeHTML(entry.pages)}</th>
+                            <td>${escapeHTML(entry.content)}</td>
+                          </tr>
+                        `).join('')}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderConceptIntroBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `concept-${moduleId}-${pageId}-${blockIndex}`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    return `
+      <section class="lesson-concept" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-concept__layout">
+          <header class="lesson-concept__heading" data-reveal>
+            <p class="lesson-eyebrow">Conceito em foco</p>
+            <p class="lesson-concept__mark" aria-hidden="true">EaD</p>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <span class="lesson-accent-line" aria-hidden="true"></span>
+          </header>
+          <div class="lesson-concept__prose" data-reveal>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderHorizontalAccordionBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `characteristics-${moduleId}-${pageId}-${blockIndex}`;
+    const instructionId = `${headingId}-instruction`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    const activeId = items.some((item) => item.id === block.activeItem) ? block.activeItem : items[0]?.id;
+    return `
+      <section class="lesson-characteristics" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-characteristics__heading" data-reveal>
+            <p class="lesson-eyebrow">Elementos da modalidade</p>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <p id="${instructionId}">${escapeHTML(block.instruction)}</p>
+            <span class="lesson-accent-line" aria-hidden="true"></span>
+          </header>
+
+          <div class="lesson-horizontal-accordion" data-horizontal-accordion aria-describedby="${instructionId}" data-reveal>
+            ${items.map((item, index) => {
+              const isActive = item.id === activeId;
+              const controlId = `${item.id}-${moduleId}-${pageId}-${blockIndex}-control`;
+              const panelId = `${item.id}-${moduleId}-${pageId}-${blockIndex}-panel`;
+              return `
+                <article class="lesson-horizontal-accordion__item${isActive ? ' is-active' : ''}" data-horizontal-item>
+                  <button
+                    class="lesson-horizontal-accordion__trigger"
+                    id="${controlId}"
+                    type="button"
+                    data-topic-title="${escapeHTML(item.title)}"
+                    aria-label="${isActive ? 'Tópico aberto' : 'Exibir tópico'} ${index + 1}: ${escapeHTML(item.title)}"
+                    aria-expanded="${isActive ? 'true' : 'false'}"
+                    aria-controls="${panelId}">
+                    <span class="lesson-horizontal-accordion__icon" aria-hidden="true">${lessonIcon(item.icon)}</span>
+                    <span class="lesson-horizontal-accordion__trigger-title" aria-hidden="true">${escapeHTML(item.title)}</span>
+                    <span class="lesson-horizontal-accordion__number" aria-hidden="true">${padId(index + 1)}</span>
+                  </button>
+                  <div
+                    class="lesson-horizontal-accordion__panel"
+                    id="${panelId}"
+                    role="region"
+                    aria-labelledby="${controlId}"
+                    aria-hidden="${isActive ? 'false' : 'true'}">
+                    <p class="lesson-horizontal-accordion__panel-index">Tópico ${padId(index + 1)}</p>
+                    <h4>${escapeHTML(item.title)}</h4>
+                    <p>${escapeHTML(item.description)}</p>
+                  </div>
+                </article>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderTrueFalseBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `activity-${moduleId}-${pageId}-${blockIndex}`;
+    const feedbackId = `${headingId}-feedback`;
+    const inputName = `${headingId}-answer`;
+    return `
+      <section class="lesson-quick-check" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <article class="lesson-quick-check__panel" data-reveal>
+            <header class="lesson-quick-check__heading">
+              <span class="lesson-quick-check__icon" aria-hidden="true">${lessonIcon('activity')}</span>
+              <div>
+                <p class="lesson-eyebrow">Verifique sua compreensão</p>
+                <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              </div>
+            </header>
+
+            <form class="lesson-quick-check__form" data-true-false data-correct-answer="${String(Boolean(block.correctAnswer))}">
+              <fieldset aria-describedby="${feedbackId}">
+                <legend>
+                  <span class="lesson-quick-check__legend-label">Questão</span>
+                  <span class="lesson-quick-check__question">${escapeHTML(block.question)}</span>
+                </legend>
+                <div class="lesson-quick-check__options">
+                  <label class="lesson-quick-check__option">
+                    <input class="lesson-quick-check__input" type="radio" name="${inputName}" value="true" />
+                    <span><span aria-hidden="true">V</span>Verdadeiro</span>
+                  </label>
+                  <label class="lesson-quick-check__option">
+                    <input class="lesson-quick-check__input" type="radio" name="${inputName}" value="false" />
+                    <span><span aria-hidden="true">F</span>Falso</span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="lesson-quick-check__feedback" id="${feedbackId}" role="status" aria-live="polite" aria-atomic="true" hidden>
+                <p class="lesson-quick-check__result">
+                  <strong data-feedback-result></strong>
+                  <span>Resposta correta: ${escapeHTML(block.correctAnswerLabel)}.</span>
+                </p>
+                <p><strong class="lesson-quick-check__feedback-label">Feedback:</strong> ${escapeHTML(block.explanation)}</p>
+              </div>
+            </form>
+          </article>
+        </div>
+      </section>
+    `;
+  }
+
   function renderContentBlock(block, moduleId, pageId, blockIndex = 0) {
-    if (block.type === 'video') return renderVideoBlock(block);
+    if (block.type === 'video') {
+      const media = renderVideoBlock(block);
+      if (block.layout === 'section') {
+        return `<div class="lesson-video-section"><div class="lesson-container">${media}</div></div>`;
+      }
+      return media;
+    }
     if (block.type === 'narrative') return renderNarrativeBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'accordionGroup') return renderAccordionGroup(block, moduleId, pageId, blockIndex);
     if (block.type === 'scenario') return renderScenarioBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'stickyStack') return renderStickyStackBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'ebookReading') return renderEbookReadingBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'conceptIntro') return renderConceptIntroBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'horizontalAccordion') return renderHorizontalAccordionBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'trueFalse') return renderTrueFalseBlock(block, moduleId, pageId, blockIndex);
     return '';
   }
 
@@ -497,6 +701,8 @@
   let destroyReveal = () => {};
   let destroyAccordions = () => {};
   let destroyStickyStacks = () => {};
+  let destroyHorizontalAccordions = () => {};
+  let destroyTrueFalseActivities = () => {};
 
   function initCarousel() {
     const carousel = document.querySelector('[data-carousel]');
@@ -755,6 +961,91 @@
     return () => controller.abort();
   }
 
+  function initHorizontalAccordions() {
+    const accordions = [...document.querySelectorAll('[data-horizontal-accordion]')];
+    if (!accordions.length) return () => {};
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    accordions.forEach((accordion) => {
+      const items = [...accordion.querySelectorAll('[data-horizontal-item]')];
+      const triggers = items.map((item) => item.querySelector('.lesson-horizontal-accordion__trigger'));
+
+      const activate = (targetIndex) => {
+        items.forEach((item, index) => {
+          const isActive = index === targetIndex;
+          const trigger = triggers[index];
+          const panel = item.querySelector('.lesson-horizontal-accordion__panel');
+          item.classList.toggle('is-active', isActive);
+          trigger?.setAttribute('aria-expanded', String(isActive));
+          if (trigger) {
+            const action = isActive ? 'Tópico aberto' : 'Exibir tópico';
+            trigger.setAttribute('aria-label', `${action} ${index + 1}: ${trigger.dataset.topicTitle}`);
+          }
+          panel?.setAttribute('aria-hidden', String(!isActive));
+        });
+      };
+
+      triggers.forEach((trigger, index) => {
+        if (!trigger) return;
+        trigger.addEventListener('click', () => activate(index), { signal });
+        trigger.addEventListener('keydown', (event) => {
+          const keyMoves = {
+            ArrowRight: 1,
+            ArrowDown: 1,
+            ArrowLeft: -1,
+            ArrowUp: -1
+          };
+          let targetIndex;
+          if (event.key in keyMoves) targetIndex = (index + keyMoves[event.key] + triggers.length) % triggers.length;
+          if (event.key === 'Home') targetIndex = 0;
+          if (event.key === 'End') targetIndex = triggers.length - 1;
+          if (targetIndex === undefined) return;
+          event.preventDefault();
+          triggers[targetIndex]?.focus();
+        }, { signal });
+      });
+
+      const initialIndex = Math.max(0, triggers.findIndex((trigger) => trigger?.getAttribute('aria-expanded') === 'true'));
+      activate(initialIndex);
+    });
+
+    return () => controller.abort();
+  }
+
+  function initTrueFalseActivities() {
+    const forms = [...document.querySelectorAll('[data-true-false]')];
+    if (!forms.length) return () => {};
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    forms.forEach((form) => {
+      const inputs = [...form.querySelectorAll('.lesson-quick-check__input')];
+      const feedback = form.querySelector('.lesson-quick-check__feedback');
+      const result = form.querySelector('[data-feedback-result]');
+
+      const showFeedback = (selectedInput) => {
+        const isCorrect = selectedInput.value === form.dataset.correctAnswer;
+        form.dataset.state = isCorrect ? 'correct' : 'incorrect';
+        inputs.forEach((input) => {
+          const option = input.closest('.lesson-quick-check__option');
+          option?.classList.toggle('is-selected', input.checked);
+          option?.classList.toggle('is-correct', input.checked && isCorrect);
+          option?.classList.toggle('is-incorrect', input.checked && !isCorrect);
+        });
+        if (result) result.textContent = isCorrect ? 'Você acertou.' : 'Você errou.';
+        if (feedback) feedback.hidden = false;
+      };
+
+      inputs.forEach((input) => {
+        input.addEventListener('change', () => showFeedback(input), { signal });
+      });
+      form.addEventListener('submit', (event) => event.preventDefault(), { signal });
+    });
+
+    return () => controller.abort();
+  }
+
   function initStickyStacks() {
     const stacks = [...document.querySelectorAll('[data-sticky-stack]')];
     if (!stacks.length) return () => {};
@@ -834,6 +1125,8 @@
     destroyReveal();
     destroyAccordions();
     destroyStickyStacks();
+    destroyHorizontalAccordions();
+    destroyTrueFalseActivities();
 
     if (route.name === 'home') {
       template = homeTemplate();
@@ -902,6 +1195,8 @@
     destroyReveal = initReveal();
     destroyAccordions = initAccordions();
     destroyStickyStacks = initStickyStacks();
+    destroyHorizontalAccordions = initHorizontalAccordions();
+    destroyTrueFalseActivities = initTrueFalseActivities();
 
     routePositionFrame = requestAnimationFrame(() => {
       if (shouldPositionRoute) positionRoute();

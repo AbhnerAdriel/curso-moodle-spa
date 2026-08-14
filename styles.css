@@ -7,6 +7,7 @@
   --pink-700: #c2003e;
   --cyan: #00b3d3;
   --cyan-700: #0088a0;
+  --focus: #006b7d;
   --neutral-100: #f1f2f3;
   --neutral-200: #e3e4e6;
   --neutral-300: #d2d3d5;
@@ -84,7 +85,7 @@ img { max-width: 100%; display: block; }
 .skip-link:focus { transform: translateY(0); }
 
 :focus-visible {
-  outline: 3px solid #006b7d;
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
   box-shadow: 0 0 0 7px var(--white);
 }

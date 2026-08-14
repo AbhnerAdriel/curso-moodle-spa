@@ -29,6 +29,7 @@ A SPA usa rotas hash, compatíveis com hospedagem estática e sem configuração
 #/                              Home
 #/modulo/01/pagina/01           Página 01 do Módulo 01
 #/modulo/01/pagina/02           Página 02 do Módulo 01
+#/modulo/01/pagina/03           Página 03 do Módulo 01
 #/guia                          Guia do curso
 #/avisos                        Avisos
 #/biblioteca                    Biblioteca
@@ -44,7 +45,7 @@ Todo o conteúdo é orientado a dados em `data/course-content.js`. Para publicar
 
 1. localize o módulo no array `modules`;
 2. adicione um objeto ao array `pages`, com `id`, `label`, `unit`, `title` e `blocks`;
-3. use os blocos já suportados: `video`, `narrative`, `scenario`, `stickyStack` e `accordionGroup`; para mídia antes do título da página, acrescente `slot: 'lead'` ao bloco;
+3. use os blocos já suportados: `video`, `narrative`, `scenario`, `stickyStack`, `accordionGroup`, `ebookReading`, `conceptIntro`, `horizontalAccordion` e `trueFalse`; para mídia antes do título da página, acrescente `slot: 'lead'` ao bloco, ou use `layout: 'section'` para apresentá-la no fluxo do conteúdo;
 4. mantenha os IDs numéricos com dois dígitos (`01`, `02`, `03`...).
 
 A paginação, os links anterior/próxima, o total de páginas, o progresso e os estados de limite são gerados automaticamente a partir desse array.
