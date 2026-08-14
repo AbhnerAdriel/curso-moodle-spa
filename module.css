@@ -147,8 +147,6 @@ html[data-view="module"] body {
   outline: 0;
 }
 
-.lesson-article { outline: 0; }
-
 .module-toolbar {
   padding: clamp(1.4rem, 3vw, 2.5rem) 0 clamp(2.4rem, 5vw, 4rem);
   display: flex;

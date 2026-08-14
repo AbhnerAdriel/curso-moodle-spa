@@ -1,4 +1,4 @@
-# Curso UFPE — SPA para Moodle
+# Novo Marco Regulatório da EaD: legislação e aplicação na educação superior — SPA para Moodle
 
 Projeto front-end em HTML, CSS e JavaScript puro, sem dependências de runtime ou etapa de build.
 
@@ -36,7 +36,7 @@ A SPA usa rotas hash, compatíveis com hospedagem estática e sem configuração
 
 Os cards dos módulos abrem a rota correspondente em uma nova aba, com `noopener` e indicação acessível. Rotas antigas no formato `#/modulo/1` continuam abrindo a primeira página do módulo.
 
-Ao navegar dentro de um módulo, a primeira página abre no topo do banner; as páginas seguintes começam diretamente no início do conteúdo, após a barra de progresso, sem rolagem animada entre as posições.
+Ao navegar dentro de um módulo, a primeira página abre no topo do banner; as páginas seguintes começam na barra de localização e progresso do módulo, mantendo toda a `module-toolbar` visível e sem rolagem animada entre as posições.
 
 ## Adicionar conteúdo
 
@@ -51,6 +51,19 @@ A paginação, os links anterior/próxima, o total de páginas, o progresso e os
 Somente módulos com `status: 'published'` exibem suas páginas; módulos em `draft` permanecem protegidos pela tela de preparação, inclusive em acesso direto.
 
 O bloco `stickyStack` cria uma pilha progressiva de conteúdos durante a rolagem. Em telas pequenas, impressão ou quando o usuário prefere movimento reduzido, os itens voltam automaticamente ao fluxo linear de leitura.
+
+### Configurar o vídeo de apresentação do curso
+
+Na propriedade `course.presentationVideo`, preencha `embedUrl` com a URL HTTPS de incorporação fornecida pelo Eduplay:
+
+```js
+presentationVideo: {
+  type: 'video',
+  embedUrl: 'https://url-de-incorporacao-do-eduplay'
+}
+```
+
+Enquanto `embedUrl` estiver vazio, a Home apresenta o pôster e informa que o conteúdo audiovisual está em preparação.
 
 ### Configurar o vídeo do Eduplay
 

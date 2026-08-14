@@ -9,8 +9,17 @@
 
   window.COURSE_CONTENT = deepFreeze({
     course: {
-      title: 'Introdução ao AVA da UFPE para Tutores',
-      shortTitle: 'Introdução ao AVA da UFPE'
+      title: 'Novo Marco Regulatório da EaD: legislação e aplicação na educação superior',
+      shortTitle: 'Novo Marco Regulatório da EaD',
+      presentationVideo: {
+        type: 'video',
+        title: 'Vídeo de apresentação',
+        description: 'Novo Marco Regulatório da EaD: legislação e aplicação na educação superior',
+        provider: 'Eduplay',
+        embedUrl: 'https://eduplay.rnp.br/app/video/embed/465268',
+        poster: 'assets/mulher-negra-olhando-para-com.webp',
+        posterAlt: 'Mulher participando de uma formação on-line em um notebook'
+      }
     },
     modules: [
       {
@@ -33,7 +42,7 @@
                 title: 'Vídeo de abertura',
                 description: 'Panorama da Educação a Distância',
                 provider: 'Eduplay',
-                embedUrl: '',
+                embedUrl: 'https://eduplay.rnp.br/app/video/embed/465269',
                 poster: 'assets/mulher-negra-olhando-para-com.webp',
                 posterAlt: 'Mulher estudando em um ambiente virtual de aprendizagem'
               },

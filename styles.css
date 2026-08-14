@@ -127,7 +127,7 @@ img { max-width: 100%; display: block; }
 .hero-copy {
   position: relative;
   z-index: 2;
-  width: min(100%, 760px);
+  width: min(100%, 1000px);
   padding-left: clamp(1.25rem, 2.5vw, 2rem);
   border-left: 3px solid var(--cyan);
   filter: drop-shadow(0 10px 28px rgba(0, 0, 0, .35));
@@ -154,13 +154,14 @@ img { max-width: 100%; display: block; }
 }
 
 .course-title {
+  max-width: 29ch;
   margin: 0;
-  /* max-width: 13ch; */
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 3.8vw, 4.1rem);
+  font-size: clamp(2.85rem, 3.15vw, 3.6rem);
   font-weight: 900;
-  line-height: .88;
+  line-height: .92;
   letter-spacing: -.035em;
+  text-wrap: balance;
   text-shadow: 0 4px 22px rgba(0, 0, 0, .78);
   text-transform: uppercase;
 }
@@ -274,6 +275,58 @@ img { max-width: 100%; display: block; }
   font-weight: 800;
   letter-spacing: .13em;
   text-transform: uppercase;
+}
+
+/* COURSE PRESENTATION */
+.course-presentation {
+  padding: clamp(4.5rem, 8vw, 8rem) 0;
+  background: var(--off-white);
+}
+
+.course-presentation__layout {
+  width: min(calc(100% - 2rem), 1200px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.course-presentation__header {
+  min-width: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ink);
+}
+
+.course-presentation__eyebrow {
+  margin: 0 0 1rem;
+  color: var(--pink-600);
+  font-size: .75rem;
+  font-weight: 900;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.course-presentation__header h2 {
+  max-width: none;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.35rem, 3.4vw, 3.25rem);
+  font-weight: 900;
+  letter-spacing: -.025em;
+  line-height: .95;
+  text-wrap: balance;
+  text-transform: uppercase;
+}
+
+.course-presentation__header > p:last-child {
+  max-width: 30ch;
+  margin: 1.5rem 0 0;
+  color: var(--neutral-600);
+}
+
+.course-presentation__media {
+  min-width: 0;
 }
 
 /* SHORTCUTS */
@@ -568,7 +621,13 @@ html.reveal-ready [data-reveal].is-reveal-immediate {
     padding-inline: 2.5rem;
     background-position: 72% center;
   }
-  .course-title { font-size: clamp(3.25rem, 6.8vw, 4.8rem); }
+  .course-title {
+    max-width: 22ch;
+    font-size: clamp(2.65rem, 4.4vw, 3rem);
+  }
+  .course-presentation__layout { grid-template-columns: 1fr; gap: 3rem; }
+  .course-presentation__header { max-width: 680px; }
+  .course-presentation__header h2 { max-width: 14ch; }
   .module-card { flex-basis: calc((100% - 36px) / 2); }
 }
 
@@ -586,7 +645,10 @@ html.reveal-ready [data-reveal].is-reveal-immediate {
       linear-gradient(180deg, rgba(0, 0, 0, .2) 0%, rgba(0, 0, 0, .12) 52%, rgba(0, 0, 0, .68) 100%);
   }
   .hero-copy { padding-left: 1rem; }
-  .course-title { max-width: 13ch; font-size: clamp(2.5rem, 9vw, 4rem); }
+  .course-title { max-width: 15ch; font-size: clamp(2.35rem, 8vw, 3.2rem); }
+  .course-presentation { padding-block: 4.5rem; }
+  .course-presentation__layout { width: min(calc(100% - 2rem), 680px); gap: 2.5rem; }
+  .course-presentation__header h2 { font-size: clamp(2.3rem, 9vw, 3.25rem); }
   .guide-link { width: 100%; max-width: 330px; }
   .metrics-grid { grid-template-columns: 1fr 1fr; }
   .metric + .metric { border-left: 1px solid rgba(0,179,211,.55); }
@@ -612,8 +674,15 @@ html.reveal-ready [data-reveal].is-reveal-immediate {
     padding-inline: 1.1rem;
     background-position: 82% center;
   }
-  .course-title { font-size: clamp(2.35rem, 10.5vw, 2.75rem); }
+  .course-title { font-size: clamp(2.2rem, 9.5vw, 2.55rem); }
   .guide-link { min-height: 56px; padding-inline: 1.1rem; }
+}
+
+@media (max-width: 360px) {
+  .course-title {
+    max-width: none;
+    font-size: 2rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

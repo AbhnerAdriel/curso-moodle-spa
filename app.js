@@ -3,7 +3,7 @@
 
   const courseData = window.COURSE_CONTENT || { course: {}, modules: [] };
   const modules = Array.isArray(courseData.modules) ? courseData.modules : [];
-  const courseTitle = courseData.course?.title || 'Curso UFPE';
+  const courseTitle = courseData.course?.title || 'Novo Marco Regulatório da EaD: legislação e aplicação na educação superior';
 
   const escapeHTML = (value = '') => String(value)
     .replaceAll('&', '&amp;')
@@ -79,6 +79,8 @@
           </div>
         </section>
 
+        ${renderCourseVideoSection(courseData.course?.presentationVideo)}
+
         <section class="course-shortcuts" aria-label="Acessos rápidos">
           <div class="shortcuts-grid" data-reveal>
             <a class="shortcut" href="#/avisos">
@@ -127,6 +129,24 @@
           <div class="carousel-dots" data-dots aria-label="Paginação dos módulos"></div>
         </section>
       </main>
+    `;
+  }
+
+  function renderCourseVideoSection(video) {
+    if (!video) return '';
+    return `
+      <section class="course-presentation" aria-labelledby="course-presentation-title">
+        <div class="course-presentation__layout">
+          <header class="course-presentation__header" data-reveal>
+            <p class="course-presentation__eyebrow">Comece por aqui</p>
+            <h2 id="course-presentation-title">Conheça o curso</h2>
+            <p>Assista ao vídeo de apresentação antes de iniciar os módulos.</p>
+          </header>
+          <div class="course-presentation__media">
+            ${renderVideoBlock(video)}
+          </div>
+        </div>
+      </section>
     `;
   }
 
@@ -396,7 +416,7 @@
             </div>
           </div>
 
-          <article class="lesson-article" aria-labelledby="lesson-title" data-page-content-start tabindex="-1">
+          <article class="lesson-article" aria-labelledby="lesson-title">
             ${leadBlocks.length ? `
               <div class="lesson-container lesson-media-wrap">
                 ${leadBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
@@ -864,7 +884,7 @@
     const isModulePage = modulePageIndex !== null;
     const shouldPositionRoute = isModulePage || isRouteChange;
     const landingTarget = isModulePage && modulePageIndex > 0
-      ? document.querySelector('[data-page-content-start]')
+      ? document.getElementById('conteudo-principal')
       : null;
     const getLandingTop = () => landingTarget
       ? Math.max(0, landingTarget.getBoundingClientRect().top + window.scrollY)
@@ -886,10 +906,7 @@
     routePositionFrame = requestAnimationFrame(() => {
       if (shouldPositionRoute) positionRoute();
       if (isRouteChange) {
-        const focusTarget = isModulePage && modulePageIndex > 0
-          ? landingTarget
-          : document.getElementById('conteudo-principal');
-        focusTarget?.focus({ preventScroll: true });
+        document.getElementById('conteudo-principal')?.focus({ preventScroll: true });
         if (announcer) announcer.textContent = announcement;
       }
       if (!shouldPositionRoute) {
