@@ -234,6 +234,102 @@
                 explanation: 'A EaD demanda reorganização da comunicação, da interação, do acompanhamento, da avaliação e das responsabilidades dos profissionais envolvidos.'
               }
             ]
+          },
+          {
+            id: '04',
+            label: 'Evolução histórica da EaD',
+            unit: 'Unidade 01',
+            title: 'Capítulo 2 - Da correspondência à Universidade Aberta do Brasil',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa.',
+                volumes: [
+                  {
+                    id: 'volume-1',
+                    title: 'Volume 1',
+                    entries: [
+                      {
+                        pages: '9',
+                        content: 'Primeiras experiências brasileiras de ensino por correspondência.'
+                      },
+                      {
+                        pages: '10-11',
+                        content: 'Rádio, televisão educativa, MEB e teleducação.'
+                      },
+                      {
+                        pages: '12-13',
+                        content: 'LDB e reconhecimento jurídico da EaD.'
+                      },
+                      {
+                        pages: '14-15',
+                        content: 'Sistema UAB, rede de cooperação e polos de apoio presencial.'
+                      },
+                      {
+                        pages: '16',
+                        content: 'Democratização do acesso, interiorização e equidade territorial.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'splitNarrative',
+                accessibleHeading: 'Contextualização histórica da Educação a Distância no Brasil',
+                lead: 'As primeiras experiências brasileiras de Educação a Distância remontam ao início do século XX e estavam ligadas, sobretudo, à formação profissional por correspondência. Em um país marcado por desigualdades educacionais e limitações de infraestrutura, os materiais enviados pelo correio permitiram levar oportunidades de formação a pessoas que não tinham acesso à escola formal.',
+                paragraphs: [
+                  'Com a expansão dos meios de comunicação, o rádio e a televisão passaram a ser utilizados em iniciativas educativas. O Movimento de Educação de Base, os telecursos e os programas de educação supletiva mostram que a trajetória da EaD está relacionada tanto à evolução tecnológica quanto à democratização do acesso à educação.',
+                  'Em 1996, o art. 80 da Lei de Diretrizes e Bases reconheceu juridicamente a Educação a Distância e atribuiu ao poder público a responsabilidade de regulamentar a oferta, o credenciamento, a avaliação e a emissão de diplomas.',
+                  'Em 2006, foi instituído o Sistema Universidade Aberta do Brasil. A UAB não é uma universidade autônoma, mas uma rede de cooperação que reúne a União, a CAPES, estados, municípios e instituições públicas de ensino superior. As instituições ofertam os cursos e certificam os estudantes; a CAPES coordena a política e financia bolsas; estados e municípios colaboram com a manutenção dos polos.',
+                  'Os polos funcionam como pontos de conexão entre as universidades públicas e os territórios. Neles ocorrem avaliações presenciais, atividades práticas, orientações acadêmicas e suporte administrativo e tecnológico. Essa organização contribui para interiorizar a educação superior e reduzir barreiras geográficas.'
+                ]
+              },
+              {
+                type: 'verticalTimeline',
+                eyebrow: 'Percurso histórico',
+                heading: 'Linha do tempo da EaD',
+                items: [
+                  {
+                    id: 'correspondencia',
+                    title: 'Correspondência'
+                  },
+                  {
+                    id: 'radio',
+                    title: 'Rádio'
+                  },
+                  {
+                    id: 'televisao-educativa',
+                    title: 'Televisão educativa'
+                  },
+                  {
+                    id: 'ldb',
+                    title: 'LDB'
+                  },
+                  {
+                    id: 'ambientes-virtuais-aprendizagem',
+                    title: 'Ambientes Virtuais de Aprendizagem'
+                  },
+                  {
+                    id: 'uab',
+                    title: 'UAB'
+                  },
+                  {
+                    id: 'novo-marco-regulatorio',
+                    title: 'Novo marco regulatório'
+                  }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'A presença de uma norma na linha do tempo legislativa indica sua vigência atual.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'A presença de uma norma na linha do tempo indica sua importância histórica, e não sua vigência atual. Os decretos revogados devem ser identificados visualmente como "revogado".'
+              }
+            ]
           }
         ]
       },

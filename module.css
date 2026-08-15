@@ -873,11 +873,183 @@ html[data-view="module"] body {
   font-size: 1.65rem;
   font-weight: 850;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .lesson-ebook__table tbody td {
   color: var(--neutral-700);
   line-height: 1.6;
+}
+
+/* Página 04 — narrativa histórica em leitura editorial */
+.lesson-split-narrative {
+  padding: var(--section-space) 0;
+  background: var(--white);
+}
+
+.lesson-split-narrative__layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(2.5rem, 7vw, 7rem);
+  align-items: start;
+}
+
+.lesson-split-narrative__lead {
+  position: sticky;
+  top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 6px solid var(--ink);
+}
+
+.lesson-split-narrative__lead p {
+  max-width: 38ch;
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--fs-lead);
+  font-weight: 600;
+  line-height: 1.58;
+}
+
+.lesson-split-narrative__prose {
+  max-width: 68ch;
+}
+
+.lesson-split-narrative__prose p {
+  margin: 0;
+  padding: 1.75rem 0;
+  color: var(--neutral-700);
+  border-top: 1px solid var(--neutral-200);
+  line-height: 1.68;
+}
+
+.lesson-split-narrative__prose p:last-child {
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+/* Página 04 — linha do tempo vertical */
+.lesson-timeline {
+  padding: var(--section-space) 0;
+  color: var(--white);
+  background: var(--ink);
+}
+
+.lesson-timeline__layout {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: clamp(2.5rem, 7vw, 7rem);
+  align-items: start;
+}
+
+.lesson-timeline__heading {
+  position: sticky;
+  top: 2rem;
+  padding-left: 1.5rem;
+  border-left: 4px solid var(--cyan);
+}
+
+.lesson-timeline__heading .lesson-eyebrow {
+  color: var(--cyan-300);
+}
+
+.lesson-timeline__heading h3 {
+  max-width: 10ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 850;
+  letter-spacing: -.02em;
+  line-height: 1.04;
+  text-wrap: balance;
+  text-transform: uppercase;
+}
+
+.lesson-timeline__list {
+  --timeline-index-width: 72px;
+  --timeline-node-width: 32px;
+  --timeline-node-center: 16px;
+  --timeline-gap: 16px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lesson-timeline__list::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 3.25rem;
+  bottom: 3.25rem;
+  left: calc(var(--timeline-index-width) + var(--timeline-gap) + var(--timeline-node-center) - 2px);
+  width: 4px;
+  background: var(--cyan);
+  transform-origin: top center;
+}
+
+html.reveal-ready .lesson-timeline__list::before {
+  transform: scaleY(0);
+}
+
+html.reveal-ready .lesson-timeline__list.is-visible::before {
+  animation: lesson-timeline-rail-in var(--duration-reveal) var(--ease-enter) 100ms both;
+}
+
+@keyframes lesson-timeline-rail-in {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+.lesson-timeline__item {
+  position: relative;
+  z-index: 1;
+  min-height: 104px;
+  display: grid;
+  grid-template-columns: var(--timeline-index-width) var(--timeline-node-width) minmax(0, 1fr);
+  gap: var(--timeline-gap);
+  align-items: center;
+}
+
+.lesson-timeline__index {
+  color: rgba(255, 255, 255, .28);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 850;
+  letter-spacing: -.035em;
+  line-height: 1;
+}
+
+.lesson-timeline__node {
+  width: 18px;
+  height: 18px;
+  justify-self: center;
+  background: var(--ink);
+  border: 4px solid var(--cyan);
+}
+
+.lesson-timeline__item:first-child .lesson-timeline__node,
+.lesson-timeline__item:last-child .lesson-timeline__node {
+  background: var(--pink);
+  border-color: var(--white);
+}
+
+.lesson-timeline__title {
+  align-self: stretch;
+  margin: 0;
+  padding: 1.6rem 0;
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, .2);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.7vw, 2.35rem);
+  font-weight: 800;
+  letter-spacing: -.015em;
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+.lesson-timeline__item:last-child .lesson-timeline__title {
+  border-bottom: 1px solid rgba(255, 255, 255, .2);
 }
 
 /* Página 03 — conceito editorial */
@@ -1538,6 +1710,8 @@ html[data-view="module"] body {
 
   .lesson-ebook__intro,
   .lesson-concept__layout,
+  .lesson-split-narrative__layout,
+  .lesson-timeline__layout,
   .lesson-quick-check__panel {
     grid-template-columns: 1fr;
   }
@@ -1545,9 +1719,21 @@ html[data-view="module"] body {
   .lesson-ebook__intro { gap: 3rem; }
   .lesson-ebook__volumes { width: 100%; }
   .lesson-concept__layout,
+  .lesson-split-narrative__layout,
   .lesson-quick-check__panel { gap: 3.25rem; }
   .lesson-concept__heading { max-width: 560px; }
   .lesson-concept__heading h3 { max-width: none; }
+  .lesson-split-narrative__lead {
+    position: static;
+    max-width: 620px;
+  }
+  .lesson-split-narrative__lead p { max-width: 46ch; }
+  .lesson-timeline__layout { gap: 3.5rem; }
+  .lesson-timeline__heading {
+    position: static;
+    max-width: 560px;
+  }
+  .lesson-timeline__heading h3 { max-width: none; }
 
   .lesson-horizontal-accordion {
     min-height: 0;
@@ -1701,15 +1887,38 @@ html[data-view="module"] body {
     font-size: clamp(2.05rem, 8.7vw, 3.4rem);
     overflow-wrap: anywhere;
   }
+  .lesson-heading--compact h2 { font-size: clamp(1.8rem, 8vw, 3.4rem); }
 
   .lesson-ebook__icon { width: 84px; }
   .lesson-ebook__icon::before { inset: 8px -8px -8px 8px; }
-  .lesson-ebook__table thead th:first-child { width: 76px; }
+  .lesson-ebook__table thead th:first-child { width: 88px; }
   .lesson-ebook__table th,
   .lesson-ebook__table td { padding: 1rem .45rem; }
   .lesson-ebook__table tbody th { font-size: 1.35rem; }
   .lesson-concept__heading { padding-left: 1rem; }
   .lesson-concept__mark { font-size: 5rem; }
+  .lesson-timeline__heading { padding-left: 1rem; }
+  .lesson-timeline__list {
+    --timeline-index-width: 44px;
+    --timeline-node-width: 24px;
+    --timeline-node-center: 12px;
+    --timeline-gap: 10px;
+  }
+  .lesson-timeline__list::before {
+    top: 2.8rem;
+    bottom: 2.8rem;
+  }
+  .lesson-timeline__item { min-height: 90px; }
+  .lesson-timeline__index { font-size: 1.55rem; }
+  .lesson-timeline__node {
+    width: 15px;
+    height: 15px;
+    border-width: 3px;
+  }
+  .lesson-timeline__title {
+    padding-block: 1.35rem;
+    font-size: clamp(1.3rem, 6.7vw, 1.9rem);
+  }
   .lesson-horizontal-accordion__trigger {
     grid-template-columns: 40px minmax(0, 1fr) 34px;
     gap: .75rem;
@@ -1735,6 +1944,11 @@ html[data-view="module"] body {
 @media (prefers-reduced-motion: reduce) {
   .module-progress__track span,
   .lesson-accordion__content { animation: none; }
+
+  .lesson-timeline__list::before {
+    animation: none !important;
+    transform: scaleY(1) !important;
+  }
 
   .lesson-horizontal-accordion__item,
   .lesson-horizontal-accordion__trigger,
@@ -1774,9 +1988,37 @@ html[data-view="module"] body {
 
   .lesson-ebook,
   .lesson-concept,
+  .lesson-split-narrative,
+  .lesson-timeline,
   .lesson-characteristics,
   .lesson-video-section,
   .lesson-quick-check { padding-block: 2.5rem; }
+
+  .lesson-split-narrative__lead,
+  .lesson-timeline__heading { position: static; }
+
+  .lesson-timeline {
+    color: var(--ink);
+    background: var(--white) !important;
+  }
+
+  .lesson-timeline__heading .lesson-eyebrow { color: var(--cyan-700); }
+  .lesson-timeline__index { color: var(--neutral-500); }
+  .lesson-timeline__list::before {
+    animation: none !important;
+    transform: scaleY(1) !important;
+  }
+  .lesson-timeline__item { break-inside: avoid; }
+  .lesson-timeline__node { background: var(--white); }
+  .lesson-timeline__item:first-child .lesson-timeline__node,
+  .lesson-timeline__item:last-child .lesson-timeline__node {
+    background: var(--pink);
+    border-color: var(--ink);
+  }
+  .lesson-timeline__title {
+    color: var(--ink);
+    border-color: var(--neutral-300);
+  }
 
   .lesson-horizontal-accordion {
     min-height: 0;

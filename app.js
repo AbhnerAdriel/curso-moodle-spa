@@ -409,6 +409,50 @@
     `;
   }
 
+  function renderSplitNarrativeBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `split-narrative-${moduleId}-${pageId}-${blockIndex}`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    return `
+      <section class="lesson-split-narrative" aria-labelledby="${headingId}">
+        <h3 class="sr-only" id="${headingId}">${escapeHTML(block.accessibleHeading || 'Conteúdo de aprofundamento')}</h3>
+        <div class="lesson-container lesson-split-narrative__layout">
+          <div class="lesson-split-narrative__lead" data-reveal>
+            <p>${escapeHTML(block.lead)}</p>
+            <span class="lesson-accent-line" aria-hidden="true"></span>
+          </div>
+          <div class="lesson-split-narrative__prose" data-reveal>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderVerticalTimelineBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `timeline-${moduleId}-${pageId}-${blockIndex}`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    return `
+      <section class="lesson-timeline" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-timeline__layout">
+          <header class="lesson-timeline__heading" data-reveal>
+            <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Linha do tempo')}</p>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <span class="lesson-accent-line" aria-hidden="true"></span>
+          </header>
+          <ol class="lesson-timeline__list" data-reveal>
+            ${items.map((item, index) => `
+              <li class="lesson-timeline__item" id="${escapeHTML(item.id)}-${moduleId}-${pageId}-${blockIndex}">
+                <span class="lesson-timeline__index" aria-hidden="true">${padId(index + 1)}</span>
+                <span class="lesson-timeline__node" aria-hidden="true"></span>
+                <p class="lesson-timeline__title">${escapeHTML(item.title)}</p>
+              </li>
+            `).join('')}
+          </ol>
+        </div>
+      </section>
+    `;
+  }
+
   function renderHorizontalAccordionBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `characteristics-${moduleId}-${pageId}-${blockIndex}`;
     const instructionId = `${headingId}-instruction`;
@@ -479,7 +523,7 @@
             </header>
 
             <form class="lesson-quick-check__form" data-true-false data-correct-answer="${String(Boolean(block.correctAnswer))}">
-              <fieldset aria-describedby="${feedbackId}">
+              <fieldset>
                 <legend>
                   <span class="lesson-quick-check__legend-label">Questão</span>
                   <span class="lesson-quick-check__question">${escapeHTML(block.question)}</span>
@@ -523,6 +567,8 @@
     if (block.type === 'stickyStack') return renderStickyStackBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'ebookReading') return renderEbookReadingBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'conceptIntro') return renderConceptIntroBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'splitNarrative') return renderSplitNarrativeBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'verticalTimeline') return renderVerticalTimelineBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'horizontalAccordion') return renderHorizontalAccordionBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'trueFalse') return renderTrueFalseBlock(block, moduleId, pageId, blockIndex);
     return '';
@@ -627,7 +673,7 @@
               </div>
             ` : ''}
 
-            <header class="lesson-container lesson-heading" data-reveal>
+            <header class="lesson-container lesson-heading${page.headingSize === 'compact' ? ' lesson-heading--compact' : ''}" data-reveal>
               <div class="lesson-heading__index" aria-hidden="true">${escapeHTML(page.id)}</div>
               <div class="lesson-heading__copy">
                 <p class="lesson-unit">${escapeHTML(page.unit)}</p>
