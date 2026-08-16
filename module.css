@@ -1540,6 +1540,7 @@ html.reveal-ready .lesson-timeline__list.is-visible::before {
 }
 
 .lesson-pagination__direction {
+  width: 132px;
   min-width: 44px;
   min-height: 48px;
   display: inline-flex;
@@ -1555,7 +1556,11 @@ html.reveal-ready .lesson-timeline__list.is-visible::before {
 }
 
 .lesson-pagination__direction--previous { grid-area: previous; }
-.lesson-pagination__direction--next { grid-area: next; justify-self: end; }
+.lesson-pagination__direction--next {
+  grid-area: next;
+  justify-self: end;
+  justify-content: flex-end;
+}
 .lesson-pagination__direction svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; }
 .lesson-pagination__direction:not(.is-disabled):hover { color: var(--pink-300); transform: translateX(-4px); }
 .lesson-pagination__direction--next:not(.is-disabled):hover { transform: translateX(4px); }
