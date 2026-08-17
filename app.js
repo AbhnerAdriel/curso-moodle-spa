@@ -44,7 +44,8 @@
       autonomy: `${open}<circle cx="24" cy="24" r="19"/><path d="m30 15-4 12-12 6 5-12 11-6Z"/><circle cx="23" cy="24" r="2"/></svg>`,
       mediation: `${open}<path d="M4 8h27v21H15l-8 7v-7H4Z"/><path d="M20 20h24v18h-7v6l-7-6H20v-9M10 15h15M10 21h9"/></svg>`,
       tracking: `${open}<path d="M6 40V8M6 40h36"/><path d="m11 33 8-9 7 5 12-15M33 14h5v5"/><circle cx="19" cy="24" r="2"/><circle cx="26" cy="29" r="2"/></svg>`,
-      presence: `${open}<circle cx="18" cy="15" r="6"/><circle cx="34" cy="18" r="5"/><path d="M6 41v-5c0-7 5-12 12-12s12 5 12 12v5M29 27c1.5-.7 3.2-1 5-1 6 0 10 4 10 10v5H30"/></svg>`
+      presence: `${open}<circle cx="18" cy="15" r="6"/><circle cx="34" cy="18" r="5"/><path d="M6 41v-5c0-7 5-12 12-12s12 5 12 12v5M29 27c1.5-.7 3.2-1 5-1 6 0 10 4 10 10v5H30"/></svg>`,
+      questions: `${open}<rect x="5" y="5" width="38" height="38"/><path d="M16 18c0-5.5 3.4-9 8.7-9 5 0 8.5 3.2 8.5 7.7 0 6.5-8.2 7.2-8.2 13.1"/><path d="M25 38h.01"/></svg>`
     };
     return icons[name] || icons.book;
   };
@@ -234,7 +235,7 @@
   function renderNarrativeBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `presentation-${moduleId}-${pageId}-${blockIndex}`;
     return `
-      <section class="lesson-narrative" aria-labelledby="${headingId}">
+      <section class="lesson-narrative${block.surface === 'white' ? ' lesson-narrative--white' : ''}" aria-labelledby="${headingId}">
         <div class="lesson-container lesson-narrative__grid">
           <header class="lesson-narrative__heading" data-reveal>
             <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
@@ -692,6 +693,131 @@
     `;
   }
 
+  function renderCaseStudyBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `case-study-${moduleId}-${pageId}-${blockIndex}`;
+    const captionId = `${headingId}-caption`;
+    const detailsId = `${headingId}-details`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const accessibleDetails = Array.isArray(block.accessibleDetails) ? block.accessibleDetails : [];
+    return `
+      <section class="lesson-case-study" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <figure class="lesson-case-study__figure" data-reveal aria-describedby="${captionId} ${detailsId}">
+            <div class="lesson-case-study__media">
+              <img
+                src="${escapeHTML(block.image)}"
+                alt="${escapeHTML(block.imageAlt)}"
+                width="${escapeHTML(block.imageWidth)}"
+                height="${escapeHTML(block.imageHeight)}"
+                loading="lazy"
+                decoding="async" />
+            </div>
+            <figcaption id="${captionId}">${escapeHTML(block.caption)}</figcaption>
+            <div class="sr-only" id="${detailsId}">
+              <ul>${accessibleDetails.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
+            </div>
+          </figure>
+
+          <div class="lesson-case-study__layout">
+            <header class="lesson-case-study__heading" data-reveal>
+              <p class="lesson-eyebrow">Análise de cenário</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              <span class="lesson-accent-line" aria-hidden="true"></span>
+            </header>
+            <div class="lesson-case-study__prose" data-reveal>
+              ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderQuestionPromptsBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `question-prompts-${moduleId}-${pageId}-${blockIndex}`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    return `
+      <section class="lesson-question-prompts" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-question-prompts__layout">
+          <header class="lesson-question-prompts__heading" data-reveal>
+            <span class="lesson-question-prompts__icon" aria-hidden="true">${lessonIcon('questions')}</span>
+            <p class="lesson-eyebrow">Antes de prosseguir</p>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <p>${escapeHTML(block.introduction)}</p>
+          </header>
+          <ol class="lesson-question-prompts__list" data-reveal>
+            ${items.map((item, index) => `
+              <li>
+                <span aria-hidden="true">${padId(index + 1)}</span>
+                <p>${escapeHTML(item)}</p>
+              </li>
+            `).join('')}
+          </ol>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderChapterDividerBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `chapter-divider-${moduleId}-${pageId}-${blockIndex}`;
+    return `
+      <section class="lesson-chapter-divider" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-chapter-divider__layout" data-reveal>
+          <p class="lesson-chapter-divider__number" aria-hidden="true">${escapeHTML(block.number || '01')}</p>
+          <div>
+            <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Capítulo')}</p>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <span class="lesson-accent-line" aria-hidden="true"></span>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderActivityComparisonBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `activity-comparison-${moduleId}-${pageId}-${blockIndex}`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    return `
+      <section class="lesson-activity-comparison" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-activity-comparison__heading" data-reveal>
+            <div>
+              <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Comparativo')}</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            </div>
+            <p>${escapeHTML(block.introduction)}</p>
+          </header>
+
+          <ol class="lesson-activity-comparison__list" data-reveal>
+            ${items.map((item, index) => `
+              <li class="lesson-activity-comparison__item" id="${escapeHTML(item.id)}-${moduleId}-${pageId}-${blockIndex}">
+                <p class="lesson-activity-comparison__index" aria-hidden="true">${padId(index + 1)}</p>
+                <div class="lesson-activity-comparison__name">
+                  <h4>${escapeHTML(item.title)}</h4>
+                  <p>${escapeHTML(item.legalBasis)}</p>
+                </div>
+                <dl class="lesson-activity-comparison__conditions">
+                  <div>
+                    <dt>Espaço</dt>
+                    <dd>${escapeHTML(item.space)}</dd>
+                  </div>
+                  <div>
+                    <dt>Tempo</dt>
+                    <dd>${escapeHTML(item.time)}</dd>
+                  </div>
+                </dl>
+                <div class="lesson-activity-comparison__example">
+                  <p class="lesson-activity-comparison__label">Exemplo</p>
+                  <p>${escapeHTML(item.example)}</p>
+                </div>
+              </li>
+            `).join('')}
+          </ol>
+        </div>
+      </section>
+    `;
+  }
+
   function renderContentBlock(block, moduleId, pageId, blockIndex = 0) {
     if (block.type === 'video') {
       const media = renderVideoBlock(block);
@@ -714,6 +840,10 @@
     if (block.type === 'regulationComparison') return renderRegulationComparisonBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'multipleChoice') return renderMultipleChoiceBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'summary') return renderSummaryBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'caseStudy') return renderCaseStudyBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'questionPrompts') return renderQuestionPromptsBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'chapterDivider') return renderChapterDividerBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'activityComparison') return renderActivityComparisonBlock(block, moduleId, pageId, blockIndex);
     return '';
   }
 

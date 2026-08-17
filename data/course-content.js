@@ -486,6 +486,177 @@
                 ]
               }
             ]
+          },
+          {
+            id: '06',
+            label: 'Conceitos fundamentais da nova legislação',
+            unit: 'Unidade 02',
+            title: 'Conceitos Fundamentais da Nova Legislação da Educação a Distância',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'video',
+                slot: 'lead',
+                title: 'Vídeo de abertura',
+                description: 'Conceitos fundamentais da nova legislação da Educação a Distância',
+                provider: 'Eduplay',
+                embedUrl: '',
+                poster: 'assets/mulher-negra-olhando-para-com.webp',
+                posterAlt: 'Participante acompanhando uma formação on-line em um notebook'
+              },
+              {
+                type: 'narrative',
+                heading: 'Apresentação',
+                paragraphs: [
+                  'Depois de conhecer a trajetória histórica da Educação a Distância no Brasil e de compreender por que o Decreto nº 9.057/2017 foi revogado e substituído pelo Decreto nº 12.456/2025 como marco regulatório vigente, este eixo desloca o olhar da história para a norma que está em vigor hoje e que organiza, no dia a dia, o trabalho de tutores, mediadores pedagógicos e professores nos cursos da UAB/UFPE.',
+                  'O art. 3º do Decreto nº 12.456/2025 reúne um conjunto de definições que funcionam como o vocabulário comum de todo o novo marco regulatório. Sem compreender o que caracteriza uma atividade presencial, uma atividade síncrona, uma atividade síncrona mediada e uma atividade assíncrona, torna-se difícil interpretar corretamente os percentuais de presencialidade, os projetos pedagógicos dos cursos e as próprias atribuições da equipe. O mesmo vale para os papéis profissionais: o Decreto distingue com clareza as atribuições do tutor das atribuições do mediador pedagógico, e essa distinção tem consequências diretas sobre o que cada integrante da equipe pode e deve fazer.',
+                  'Este eixo também apresenta o conceito de Polo de Educação a Distância (Polo EaD), a unidade descentralizada por meio da qual a instituição de educação superior aproxima sua oferta dos territórios. Compreender o que é o Polo EaD, mesmo antes de aprofundar sua infraestrutura e seus percentuais de uso, ajuda o tutor a situar seu próprio trabalho dentro da estrutura da UAB/UFPE.',
+                  'Ao final deste eixo, o participante será capaz de reconhecer, em situações concretas de tutoria, qual tipo de atividade está em curso e qual profissional é responsável por conduzi-la — competência que serve de base para os eixos e módulos seguintes.'
+                ]
+              },
+              {
+                type: 'accordionGroup',
+                label: 'Objetivos da unidade',
+                items: [
+                  {
+                    id: 'objetivo-geral-unidade-02',
+                    title: 'Objetivo geral',
+                    paragraphs: [
+                      'Compreender as definições estabelecidas pelo art. 3º do Decreto nº 12.456/2025 relativas aos tipos de atividade pedagógica (presencial, síncrona, síncrona mediada e assíncrona) e aos papéis profissionais de tutor e mediador pedagógico, bem como o conceito de Polo EaD, de modo a reconhecê-los na prática cotidiana da tutoria na UAB/UFPE.'
+                    ]
+                  },
+                  {
+                    id: 'objetivos-aprendizagem-unidade-02',
+                    title: 'Objetivos de aprendizagem',
+                    paragraphs: [
+                      'Ao concluir este eixo, espera-se que o participante consiga:'
+                    ],
+                    list: [
+                      'distinguir atividade presencial, atividade síncrona, atividade síncrona mediada e atividade assíncrona conforme o art. 3º do Decreto nº 12.456/2025;',
+                      'reconhecer o limite de até 70 estudantes por docente ou mediador e a exigência de controle de frequência que caracterizam a atividade síncrona mediada;',
+                      'diferenciar as atribuições administrativas do tutor das atribuições de mediação pedagógica exercidas pelo mediador pedagógico;',
+                      'caracterizar o Polo EaD como unidade descentralizada da instituição de educação superior;',
+                      'identificar, em situações práticas de tutoria, qual tipo de atividade e qual papel profissional está envolvido;',
+                      'relacionar essas definições à organização institucional e à qualidade da oferta de EaD na UAB/UFPE.'
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: '07',
+            label: 'Situação-problema e formatos de atividade',
+            unit: 'Unidade 02',
+            title: 'Situação-problema',
+            blocks: [
+              {
+                type: 'caseStudy',
+                heading: 'Quem faz o quê? Reconhecendo atividades e papéis no dia a dia da tutoria',
+                image: 'assets/infografico-pagina07.png',
+                imageWidth: 1672,
+                imageHeight: 941,
+                imageAlt: 'Infográfico que compara uma organização inadequada de 150 estudantes em um único ambiente com uma organização adequada em três grupos menores e apresenta os papéis do tutor, do mediador pedagógico e do Polo EaD.',
+                caption: 'Organização pedagógica de 150 estudantes: comparação entre um modelo sobrecarregado e uma distribuição em grupos menores.',
+                accessibleDetails: [
+                  'Na organização inadequada, 150 estudantes participam de um único ambiente, com baixa interação e acompanhamento limitado.',
+                  'Na organização adequada, os estudantes são distribuídos em três grupos menores, favorecendo participação e monitoramento.',
+                  'O tutor acompanha a turma, orienta estudantes e monitora indicadores.',
+                  'O mediador pedagógico apoia o processo de aprendizagem e fortalece o engajamento.',
+                  'O Polo EaD oferece suporte, infraestrutura e articulação local.'
+                ],
+                paragraphs: [
+                  'Uma licenciatura ofertada pela UAB/UFPE organiza, toda semana, um encontro ao vivo por videoconferência reunindo cerca de 150 estudantes de várias turmas ao mesmo tempo. A coordenação do curso pediu à equipe que classificasse esse encontro no plano pedagógico e definisse quem seria responsável por registrar a frequência e conduzir as discussões.',
+                  'Durante uma reunião de equipe, um integrante afirma: “Como fazemos esse encontro ao vivo, ele já conta como atividade síncrona mediada. E qualquer pessoa da equipe, inclusive os tutores, pode registrar a frequência e conduzir a mediação pedagógica, afinal tutor e mediador pedagógico exercem funções equivalentes.” Outro integrante responde: “Isso não está correto. A atividade síncrona mediada reúne grupos de até 70 estudantes por docente ou mediador, com controle de frequência. Um encontro com 150 estudantes ao mesmo tempo é uma atividade síncrona, mas não se enquadra como síncrona mediada nesse formato. Além disso, o Decreto distingue as atribuições administrativas do tutor da mediação pedagógica, que cabe ao professor regente ou ao mediador pedagógico com formação compatível.”'
+                ]
+              },
+              {
+                type: 'questionPrompts',
+                heading: 'Perguntas disparadoras',
+                introduction: 'Use as questões a seguir para analisar o caso antes de avançar para os conceitos do novo marco regulatório.',
+                items: [
+                  'Qual é a diferença entre atividade síncrona e atividade síncrona mediada?',
+                  'Por que o limite de até 70 estudantes por docente ou mediador é relevante para a organização da atividade?',
+                  'Quais atribuições cabem ao tutor e quais cabem ao mediador pedagógico?',
+                  'Que papel o Polo EaD poderia exercer nesse cenário?',
+                  'Que riscos surgem, para a qualidade do curso, quando essas definições não são respeitadas na prática?'
+                ]
+              },
+              {
+                type: 'chapterDivider',
+                eyebrow: 'Capítulo 1',
+                number: '01',
+                heading: 'Os formatos de atividade pedagógica no novo marco regulatório'
+              },
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
+                volumes: [
+                  {
+                    id: 'volume-2',
+                    title: 'Volume 2',
+                    entries: [
+                      {
+                        pages: '12–14',
+                        content: 'Cap. 8 — o novo marco regulatório: definições do art. 3º relativas à atividade presencial, síncrona e assíncrona.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'narrative',
+                surface: 'white',
+                heading: 'Definições que estruturam a oferta',
+                paragraphs: [
+                  'O art. 3º do Decreto nº 12.456/2025 define, em seus incisos, os principais conceitos que estruturam a oferta de Educação a Distância nos cursos de graduação. Antes de tratar de percentuais e de formatos de curso, é preciso compreender o que caracteriza cada tipo de atividade pedagógica, pois é essa distinção que sustenta toda a organização curricular e a atuação da equipe.',
+                  'A atividade presencial (inciso II) é aquela realizada no mesmo espaço e ao mesmo tempo: professores e estudantes compartilham fisicamente o mesmo ambiente, seja na sede da instituição, em campus fora de sede ou no Polo EaD.',
+                  'A atividade síncrona (inciso III) ocorre por áudio e/ou vídeo, com professores e estudantes em lugares diversos, mas em tempo coincidente. Já a atividade assíncrona (inciso V) ocorre em lugares e tempos diversos, permitindo que o estudante acesse fóruns, videoaulas gravadas e materiais do ambiente virtual de acordo com sua própria disponibilidade.',
+                  'Entre a atividade síncrona simples e a atividade assíncrona existe ainda uma categoria intermediária e especialmente relevante para a tutoria: a atividade síncrona mediada, prevista no inciso IV do art. 3º.'
+                ]
+              },
+              {
+                type: 'activityComparison',
+                eyebrow: 'Infográfico comparativo',
+                heading: 'Espaço, tempo e experiência de aprendizagem',
+                introduction: 'Compare as condições que caracterizam cada tipo de atividade e observe como elas aparecem na prática.',
+                items: [
+                  {
+                    id: 'atividade-presencial',
+                    title: 'Presencial',
+                    legalBasis: 'Art. 3º, inciso II',
+                    space: 'Mesmo espaço',
+                    time: 'Mesmo tempo',
+                    example: 'Aula na sede, em campus fora de sede ou no Polo EaD.'
+                  },
+                  {
+                    id: 'atividade-sincrona',
+                    title: 'Síncrona',
+                    legalBasis: 'Art. 3º, inciso III',
+                    space: 'Lugares diversos',
+                    time: 'Tempo coincidente',
+                    example: 'Videoconferência ao vivo, sem limite de estudantes definido.'
+                  },
+                  {
+                    id: 'atividade-assincrona',
+                    title: 'Assíncrona',
+                    legalBasis: 'Art. 3º, inciso V',
+                    space: 'Lugares diversos',
+                    time: 'Tempos diversos',
+                    example: 'Fórum, videoaula gravada ou material do ambiente virtual.'
+                  }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Uma videoaula gravada, disponibilizada no Moodle para acesso em qualquer horário, é um exemplo de atividade síncrona.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'A videoaula gravada, acessada em lugares e tempos diversos pelo estudante, caracteriza uma atividade assíncrona (art. 3º, V). A atividade síncrona exige tempo coincidente entre professores e estudantes (art. 3º, III).'
+              }
+            ]
           }
         ]
       },
