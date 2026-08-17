@@ -34,6 +34,9 @@ A SPA usa rotas hash, compatíveis com hospedagem estática e sem configuração
 #/modulo/01/pagina/05           Página 05 do Módulo 01
 #/modulo/01/pagina/06           Página 06 do Módulo 01
 #/modulo/01/pagina/07           Página 07 do Módulo 01
+#/modulo/01/pagina/08           Página 08 do Módulo 01
+#/modulo/01/pagina/09           Página 09 do Módulo 01
+#/modulo/01/pagina/10           Página 10 do Módulo 01
 #/guia                          Guia do curso
 #/avisos                        Avisos
 #/biblioteca                    Biblioteca
@@ -49,7 +52,7 @@ Todo o conteúdo é orientado a dados em `data/course-content.js`. Para publicar
 
 1. localize o módulo no array `modules`;
 2. adicione um objeto ao array `pages`, com `id`, `label`, `unit`, `title` e `blocks`;
-3. use os blocos já suportados: `video`, `narrative`, `scenario`, `stickyStack`, `accordionGroup`, `ebookReading`, `conceptIntro`, `splitNarrative`, `verticalTimeline`, `horizontalAccordion`, `regulationContext`, `regulationComparison`, `caseStudy`, `questionPrompts`, `chapterDivider`, `activityComparison`, `trueFalse`, `multipleChoice` e `summary`; para mídia antes do título da página, acrescente `slot: 'lead'` ao bloco, ou use `layout: 'section'` para apresentá-la no fluxo do conteúdo;
+3. use os blocos já suportados: `video`, `narrative`, `scenario`, `stickyStack`, `accordionGroup`, `ebookReading`, `conceptIntro`, `splitNarrative`, `verticalTimeline`, `horizontalAccordion`, `regulationContext`, `regulationComparison`, `caseStudy`, `questionPrompts`, `chapterDivider`, `activityComparison`, `mediatedActivityFocus`, `professionalRoles`, `references`, `trueFalse`, `multipleChoice` e `summary`; para mídia antes do título da página, acrescente `slot: 'lead'` ao bloco, ou use `layout: 'section'` para apresentá-la no fluxo do conteúdo;
 4. mantenha os IDs numéricos com dois dígitos (`01`, `02`, `03`...).
 
 Em títulos excepcionalmente longos, `headingSize: 'compact'` preserva a composição tipográfica em telas pequenas sem reduzir a escala das demais páginas.

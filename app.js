@@ -818,6 +818,175 @@
     `;
   }
 
+  function renderMediatedActivityFocusBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `mediated-activity-${moduleId}-${pageId}-${blockIndex}`;
+    const criteria = Array.isArray(block.criteria) ? block.criteria : [];
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const examples = Array.isArray(block.examples) ? block.examples : [];
+    return `
+      <section class="lesson-mediated-focus" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-mediated-focus__heading" data-reveal>
+            <div class="lesson-mediated-focus__identity">
+              <span class="lesson-mediated-focus__icon" aria-hidden="true">${lessonIcon('mediation')}</span>
+              <div>
+                <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Conceito em foco')}</p>
+                <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              </div>
+            </div>
+            <p>${escapeHTML(block.definition)}</p>
+          </header>
+
+          <ol class="lesson-mediated-focus__criteria" data-reveal aria-label="Condições da atividade síncrona mediada">
+            ${criteria.map((criterion, index) => `
+              <li>
+                <span aria-hidden="true">${padId(index + 1)}</span>
+                <h4>${escapeHTML(criterion.title)}</h4>
+                <p>${escapeHTML(criterion.description)}</p>
+              </li>
+            `).join('')}
+          </ol>
+
+          <div class="lesson-mediated-focus__body">
+            <div class="lesson-mediated-focus__prose" data-reveal>
+              ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            </div>
+            <aside class="lesson-mediated-focus__practice" aria-labelledby="${headingId}-practice" data-reveal>
+              <p class="lesson-eyebrow">Na prática</p>
+              <h4 id="${headingId}-practice">${escapeHTML(block.practiceHeading)}</h4>
+              <p>${escapeHTML(block.practiceIntroduction)}</p>
+              <ul>
+                ${examples.map((example) => `<li>${escapeHTML(example)}</li>`).join('')}
+              </ul>
+              <p class="lesson-mediated-focus__conclusion">${escapeHTML(block.practiceConclusion)}</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderProfessionalRolesBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `professional-roles-${moduleId}-${pageId}-${blockIndex}`;
+    const comparisonId = `${headingId}-comparison`;
+    const poloId = `${headingId}-polo`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const roles = Array.isArray(block.roles) ? block.roles : [];
+    const criteria = Array.isArray(block.criteria) ? block.criteria : [];
+    return `
+      <section class="lesson-professional-roles" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-professional-roles__heading" data-reveal>
+            <div class="lesson-professional-roles__identity">
+              <span class="lesson-professional-roles__icon" aria-hidden="true">${lessonIcon('mediation')}</span>
+              <div>
+                <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Organização da equipe')}</p>
+                <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              </div>
+            </div>
+            <p>${escapeHTML(block.introduction)}</p>
+          </header>
+
+          <div class="lesson-professional-roles__prose" data-reveal>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+
+          <div class="lesson-professional-roles__comparison" aria-labelledby="${comparisonId}" data-reveal>
+            <header class="lesson-professional-roles__comparison-heading">
+              <div>
+                <p class="lesson-eyebrow">Quadro comparativo</p>
+                <h4 id="${comparisonId}">${escapeHTML(block.comparisonHeading)}</h4>
+              </div>
+              <p>${escapeHTML(block.comparisonIntroduction)}</p>
+            </header>
+            <div class="lesson-role-comparison" role="table" aria-label="Comparação entre tutor e mediador pedagógico">
+              <div class="lesson-role-comparison__row lesson-role-comparison__row--header" role="row">
+                <span role="columnheader">Critério</span>
+                ${roles.map((role) => `<strong role="columnheader">${escapeHTML(role.title)}</strong>`).join('')}
+              </div>
+              ${criteria.map((criterion, criterionIndex) => `
+                <div class="lesson-role-comparison__row" role="row">
+                  <h5 role="rowheader"><span aria-hidden="true">${padId(criterionIndex + 1)}</span>${escapeHTML(criterion.label)}</h5>
+                  ${roles.map((role, roleIndex) => `
+                    <div role="cell" data-role-label="${escapeHTML(role.title)}">
+                      <span class="lesson-role-comparison__mobile-label">${escapeHTML(role.title)}</span>
+                      <p>${escapeHTML(criterion.values?.[roleIndex] || '')}</p>
+                    </div>
+                  `).join('')}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <aside class="lesson-professional-roles__polo" aria-labelledby="${poloId}" data-reveal>
+            <div class="lesson-professional-roles__polo-heading">
+              <span class="lesson-professional-roles__polo-icon" aria-hidden="true">${lessonIcon('spatial')}</span>
+              <div>
+                <p class="lesson-eyebrow">Unidade descentralizada</p>
+                <h4 id="${poloId}">${escapeHTML(block.poloHeading)}</h4>
+              </div>
+            </div>
+            <p>${escapeHTML(block.poloText)}</p>
+          </aside>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderReferencesBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `references-${moduleId}-${pageId}-${blockIndex}`;
+    const groups = Array.isArray(block.groups) ? block.groups : [];
+    const referenceCount = groups.reduce((total, group) => total + (Array.isArray(group.items) ? group.items.length : 0), 0);
+    let referenceIndex = 0;
+    const groupsMarkup = groups.map((group, groupIndex) => {
+      const groupId = `${headingId}-${group.id || groupIndex}`;
+      const items = Array.isArray(group.items) ? group.items : [];
+      return `
+        <section class="lesson-reference-group" aria-labelledby="${groupId}" data-reveal>
+          <header class="lesson-reference-group__heading">
+            <span aria-hidden="true">${padId(groupIndex + 1)}</span>
+            <h4 id="${groupId}">${escapeHTML(group.label)}</h4>
+          </header>
+          <ol class="lesson-reference-group__list">
+            ${items.map((item) => {
+              referenceIndex += 1;
+              return `
+                <li>
+                  <span class="lesson-reference-group__index" aria-hidden="true">${padId(referenceIndex)}</span>
+                  <div>
+                    <p class="lesson-reference-group__type">${escapeHTML(item.type)}</p>
+                    <p class="lesson-reference-group__citation">${escapeHTML(item.text)}</p>
+                  </div>
+                </li>
+              `;
+            }).join('')}
+          </ol>
+        </section>
+      `;
+    }).join('');
+
+    return `
+      <section class="lesson-references" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-references__heading" data-reveal>
+            <div>
+              <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Base documental')}</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              <span class="lesson-accent-line" aria-hidden="true"></span>
+            </div>
+            <div class="lesson-references__intro">
+              <p class="lesson-references__count" aria-hidden="true">${padId(referenceCount)}</p>
+              <p>${escapeHTML(block.introduction)}</p>
+            </div>
+          </header>
+          <div class="lesson-references__groups">
+            ${groupsMarkup}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   function renderContentBlock(block, moduleId, pageId, blockIndex = 0) {
     if (block.type === 'video') {
       const media = renderVideoBlock(block);
@@ -844,6 +1013,9 @@
     if (block.type === 'questionPrompts') return renderQuestionPromptsBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'chapterDivider') return renderChapterDividerBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'activityComparison') return renderActivityComparisonBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'mediatedActivityFocus') return renderMediatedActivityFocusBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'professionalRoles') return renderProfessionalRolesBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'references') return renderReferencesBlock(block, moduleId, pageId, blockIndex);
     return '';
   }
 

@@ -657,6 +657,279 @@
                 explanation: 'A videoaula gravada, acessada em lugares e tempos diversos pelo estudante, caracteriza uma atividade assíncrona (art. 3º, V). A atividade síncrona exige tempo coincidente entre professores e estudantes (art. 3º, III).'
               }
             ]
+          },
+          {
+            id: '08',
+            label: 'Atividade síncrona mediada',
+            unit: 'Unidade 02',
+            title: 'Capítulo 2 - A atividade síncrona mediada: limite de estudantes e controle de frequência',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
+                volumes: [
+                  {
+                    id: 'volume-2',
+                    title: 'Volume 2',
+                    entries: [
+                      {
+                        pages: '12–14',
+                        content: 'Cap. 8 — a atividade síncrona mediada (art. 3º, IV): grupo de até 70 estudantes por docente ou mediador, com controle de frequência.'
+                      }
+                    ]
+                  },
+                  {
+                    id: 'guia-orientador-spread-uab-ufpe',
+                    title: 'Guia Orientador SPREAD/UAB-UFPE',
+                    entries: [
+                      {
+                        pages: '—',
+                        content: 'Definição complementar, meios de registro de frequência e exemplos práticos de aplicação.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'mediatedActivityFocus',
+                eyebrow: 'Conceito em foco',
+                heading: 'Três condições simultâneas',
+                definition: 'A atividade síncrona mediada é definida pelo inciso IV do art. 3º do Decreto nº 12.456/2025 como uma atividade realizada em tempo real, com um grupo de até 70 estudantes por docente ou mediador e com controle de frequência obrigatório.',
+                criteria: [
+                  {
+                    title: 'Tempo real',
+                    description: 'Docente ou mediador e estudantes participam em tempo coincidente.'
+                  },
+                  {
+                    title: 'Até 70 estudantes',
+                    description: 'Cada grupo respeita o limite por docente ou mediador responsável.'
+                  },
+                  {
+                    title: 'Frequência controlada',
+                    description: 'A participação de cada estudante precisa ser registrada.'
+                  }
+                ],
+                paragraphs: [
+                  'O limite de até 70 estudantes por docente ou mediador existe para assegurar que a interação em tempo real tenha condições reais de acompanhamento pedagógico. Uma sessão ao vivo com centenas de participantes, sem controle individualizado de frequência, é uma atividade síncrona, mas não pode ser classificada como atividade síncrona mediada.',
+                  'O controle de frequência deve ser realizado por meio de tecnologias digitais de rastreabilidade, identificação do estudante, plataformas de ambiente virtual de aprendizagem integradas ou interação síncrona monitorada.'
+                ],
+                practiceHeading: 'Possibilidades de aplicação',
+                practiceIntroduction: 'O Guia Orientador da UFPE apresenta exemplos práticos:',
+                examples: [
+                  'discussões críticas e seminários colaborativos;',
+                  'resolução de problemas em grupo;',
+                  'mentorias em tempo real;',
+                  'debates sobre práticas em laboratórios virtuais;',
+                  'aplicação de pré-testes e pós-testes.'
+                ],
+                practiceConclusion: 'Segundo o Guia, esse tipo de atividade é conduzido pelo professor regente ou pelo mediador pedagógico.'
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Uma sessão ao vivo com 120 estudantes, conduzida por um único mediador e sem controle individual de frequência, pode ser classificada como atividade síncrona mediada.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O art. 3º, IV, limita a atividade síncrona mediada a grupos de até 70 estudantes por docente ou mediador e exige controle de frequência. Ultrapassar o limite ou não registrar a frequência descaracteriza a atividade como síncrona mediada.'
+              }
+            ]
+          },
+          {
+            id: '09',
+            label: 'Tutor, mediador pedagógico e Polo EaD',
+            unit: 'Unidade 02',
+            title: 'Capítulo 3 - Tutor, mediador pedagógico e Polo EaD',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
+                volumes: [
+                  {
+                    id: 'volume-2',
+                    title: 'Volume 2',
+                    entries: [
+                      {
+                        pages: '12–14',
+                        content: 'Cap. 8 — corpo docente e mediação pedagógica (arts. 17 a 22): coordenador de curso, professor regente, professor conteudista, mediador pedagógico e tutor; definição de Polo EaD (art. 3º, VI).'
+                      },
+                      {
+                        pages: '20–21',
+                        content: 'Cap. 11 — desafios e perspectivas para a tutoria em EaD sob o novo marco regulatório.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'professionalRoles',
+                eyebrow: 'Organização da equipe',
+                heading: 'Papéis distintos, trabalho articulado',
+                introduction: 'O Capítulo III, Seção I, do Decreto nº 12.456/2025 (arts. 17 a 22) organiza o corpo docente e a mediação pedagógica dos cursos de graduação. O corpo docente é composto pelo coordenador de curso, pelo professor regente e pelo professor conteudista (art. 18). Ao lado do corpo docente, o Decreto prevê a figura do mediador pedagógico, que auxilia essa equipe e deve possuir formação acadêmica compatível com a função exercida (art. 19).',
+                paragraphs: [
+                  'O tutor é tratado pelo art. 21: ele pode auxiliar a equipe com atribuições administrativas, expressamente distintas das funções de mediação pedagógica. O Guia Orientador da UFPE caracteriza o tutor, institucionalmente, como o profissional que atua com atribuições pedagógicas e administrativas, sempre sob supervisão docente. Essa leitura situa sua atuação como apoio à equipe, dentro de um trabalho supervisionado, e não como condução autônoma da mediação pedagógica.',
+                  'É o professor regente ou o mediador pedagógico, e não o tutor isoladamente, quem conduz a mediação didático-pedagógica das unidades curriculares, incluindo as atividades síncronas mediadas. Tanto tutores quanto mediadores pedagógicos devem constar no Censo da Educação Superior (art. 22).'
+                ],
+                comparisonHeading: 'Tutor × mediador pedagógico',
+                comparisonIntroduction: 'Compare a natureza das atribuições, a formação exigida e os limites de atuação de cada função.',
+                roles: [
+                  {
+                    id: 'tutor',
+                    title: 'Tutor'
+                  },
+                  {
+                    id: 'mediador-pedagogico',
+                    title: 'Mediador pedagógico'
+                  }
+                ],
+                criteria: [
+                  {
+                    label: 'Natureza das atribuições',
+                    values: [
+                      'Administrativas (art. 21).',
+                      'Auxilia o corpo docente na mediação pedagógica (art. 19).'
+                    ]
+                  },
+                  {
+                    label: 'Formação exigida',
+                    values: [
+                      'Não detalhada no art. 21.',
+                      'Formação acadêmica compatível com a função (art. 19).'
+                    ]
+                  },
+                  {
+                    label: 'Mediação didático-pedagógica',
+                    values: [
+                      'Função distinta; atuação sob supervisão docente.',
+                      'Pode conduzir atividade síncrona mediada junto ao professor regente.'
+                    ]
+                  },
+                  {
+                    label: 'Registro institucional',
+                    values: [
+                      'Deve constar no Censo da Educação Superior (art. 22).',
+                      'Deve constar no Censo da Educação Superior (art. 22).'
+                    ]
+                  }
+                ],
+                poloHeading: 'Polo EaD',
+                poloText: 'O Polo de Educação a Distância é definido pelo art. 3º, inciso VI, como uma unidade descentralizada da instituição de educação superior. É nele que, com frequência, tutores e mediadores atuam junto aos estudantes, e para ele convergem muitas das atividades presenciais e síncronas mediadas realizadas fora da sede.'
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'O tutor, segundo o Decreto nº 12.456/2025, pode assumir as mesmas atribuições do mediador pedagógico, incluindo a condução autônoma da mediação didático-pedagógica das unidades curriculares.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O art. 21 estabelece que o tutor pode auxiliar a equipe com atribuições administrativas, distintas das funções de mediação pedagógica, que cabem ao professor regente e ao mediador pedagógico (art. 19).'
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Aplique o que você estudou',
+                heading: 'Retomada da situação-problema',
+                question: 'Na situação apresentada, qual conduta está de acordo com o Decreto nº 12.456/2025?',
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                options: [
+                  {
+                    id: 'a',
+                    label: 'A',
+                    text: 'Classificar qualquer encontro ao vivo, independentemente do número de estudantes, como atividade síncrona mediada.'
+                  },
+                  {
+                    id: 'b',
+                    label: 'B',
+                    text: 'Atribuir ao tutor a condução autônoma da mediação pedagógica, já que tutor e mediador pedagógico exercem funções equivalentes.'
+                  },
+                  {
+                    id: 'c',
+                    label: 'C',
+                    text: 'Reservar a classificação de atividade síncrona mediada a grupos de até 70 estudantes por docente ou mediador, com controle de frequência, e manter a mediação pedagógica sob responsabilidade do professor regente ou do mediador pedagógico, distinta das atribuições administrativas do tutor.'
+                  },
+                  {
+                    id: 'd',
+                    label: 'D',
+                    text: 'Dispensar o controle de frequência sempre que a atividade ocorrer por videoconferência.'
+                  }
+                ],
+                correctFeedback: 'Correto. O art. 3º, IV, do Decreto nº 12.456/2025 limita a atividade síncrona mediada a até 70 estudantes por docente ou mediador, com controle de frequência obrigatório. O art. 21 distingue as atribuições administrativas do tutor das funções de mediação pedagógica.',
+                incorrectFeedback: 'Revise as Unidades 1, 2 e 3 deste eixo. Nem toda atividade ao vivo é uma atividade síncrona mediada, e o tutor não assume, sozinho, a mediação pedagógica das unidades curriculares.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Fechamento do capítulo',
+                heading: 'Em síntese',
+                items: [
+                  'o art. 3º do Decreto nº 12.456/2025 define os tipos de atividade pedagógica que estruturam a oferta de EaD;',
+                  'a atividade presencial ocorre no mesmo espaço e no mesmo tempo (art. 3º, II);',
+                  'a atividade síncrona ocorre em tempo coincidente, por áudio e/ou vídeo, com professores e estudantes em lugares diversos (art. 3º, III);',
+                  'a atividade síncrona mediada é uma atividade em tempo real, limitada a até 70 estudantes por docente ou mediador, com controle de frequência obrigatório (art. 3º, IV);',
+                  'a atividade assíncrona ocorre em lugares e tempos diversos (art. 3º, V);',
+                  'o tutor pode auxiliar a equipe com atribuições administrativas, distintas das funções de mediação pedagógica (art. 21);',
+                  'o mediador pedagógico auxilia o corpo docente e deve possuir formação acadêmica compatível (art. 19);',
+                  'o Polo EaD é a unidade descentralizada da instituição de educação superior (art. 3º, VI).'
+                ]
+              }
+            ]
+          },
+          {
+            id: '10',
+            label: 'Referências',
+            unit: 'Encerramento',
+            title: 'Referências',
+            blocks: [
+              {
+                type: 'references',
+                eyebrow: 'Base documental',
+                heading: 'Fontes que sustentam este módulo',
+                introduction: 'Reunimos aqui as normas, os materiais institucionais e o guia orientador utilizados na construção dos conteúdos deste módulo.',
+                groups: [
+                  {
+                    id: 'legislacao',
+                    label: 'Legislação',
+                    items: [
+                      {
+                        type: 'Lei',
+                        text: 'BRASIL. Lei nº 9.394, de 20 de dezembro de 1996. Estabelece as diretrizes e bases da educação nacional.'
+                      },
+                      {
+                        type: 'Decreto',
+                        text: 'BRASIL. Decreto nº 5.800, de 8 de junho de 2006. Dispõe sobre o Sistema Universidade Aberta do Brasil — UAB.'
+                      },
+                      {
+                        type: 'Decreto revogado',
+                        text: 'BRASIL. Decreto nº 9.057, de 25 de maio de 2017. Regulamentou o art. 80 da Lei nº 9.394/1996. Norma revogada pelo Decreto nº 12.456/2025.'
+                      },
+                      {
+                        type: 'Decreto vigente',
+                        text: 'BRASIL. Decreto nº 12.456, de 19 de maio de 2025. Dispõe sobre a oferta de educação a distância por instituições de educação superior em cursos de graduação.'
+                      }
+                    ]
+                  },
+                  {
+                    id: 'materiais-institucionais',
+                    label: 'Materiais institucionais',
+                    items: [
+                      {
+                        type: 'Volume 1',
+                        text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Educação a Distância no Brasil: conceituação, trajetória histórica e consolidação da modalidade. Volume 1. Recife: UFPE/SPREAD, 2026.'
+                      },
+                      {
+                        type: 'Volume 2',
+                        text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Regulação da Educação a Distância no Brasil: trajetória normativa, qualidade e o novo marco regulatório. Volume 2. Recife: UFPE/SPREAD, 2026.'
+                      },
+                      {
+                        type: 'Guia orientador',
+                        text: 'BARBOSA, Dayse Patrícia Pereira. Guia Orientador para Adequação dos Cursos de Licenciatura ao Novo Marco Legal da EaD. Recife: UFPE/SPREAD/UAB, 2025.'
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
