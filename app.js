@@ -553,6 +553,145 @@
     `;
   }
 
+  function renderRegulationContextBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `regulation-context-${moduleId}-${pageId}-${blockIndex}`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    return `
+      <section class="lesson-regulation-context" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-regulation-context__layout">
+          <header class="lesson-regulation-context__heading" data-reveal>
+            <p class="lesson-eyebrow">Ponto de transição</p>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <p class="lesson-regulation-context__axis" aria-hidden="true">
+              <span>Expansão</span>
+              <span>Qualidade</span>
+            </p>
+          </header>
+          <div class="lesson-regulation-context__prose" data-reveal>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderRegulationComparisonBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `regulation-comparison-${moduleId}-${pageId}-${blockIndex}`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    return `
+      <section class="lesson-regulation-map" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-regulation-map__heading" data-reveal>
+            <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Infográfico')}</p>
+            <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            <p>Compare a situação de cada marco e sua contribuição para a construção da regulação da EaD.</p>
+          </header>
+          <div class="lesson-regulation-map__labels" aria-hidden="true">
+            <span>Marco histórico</span>
+            <span>Situação atual</span>
+            <span>Contribuição para a trajetória</span>
+          </div>
+          <ol class="lesson-regulation-map__list" data-reveal>
+            ${items.map((item) => `
+              <li class="lesson-regulation-map__item${item.current ? ' is-current' : ''}" id="${escapeHTML(item.id)}-${moduleId}-${pageId}-${blockIndex}">
+                <p class="lesson-regulation-map__year" aria-hidden="true">${escapeHTML(item.year)}</p>
+                <div class="lesson-regulation-map__decree">
+                  <span class="lesson-regulation-map__mobile-label">Marco histórico</span>
+                  <h4>${escapeHTML(item.title)}</h4>
+                </div>
+                <div class="lesson-regulation-map__status">
+                  <span class="lesson-regulation-map__mobile-label">Situação atual</span>
+                  <strong>${escapeHTML(item.status)}</strong>
+                </div>
+                <div class="lesson-regulation-map__contribution">
+                  <span class="lesson-regulation-map__mobile-label">Contribuição para a trajetória</span>
+                  <p>${escapeHTML(item.contribution)}</p>
+                </div>
+              </li>
+            `).join('')}
+          </ol>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderMultipleChoiceBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `multiple-choice-${moduleId}-${pageId}-${blockIndex}`;
+    const feedbackId = `${headingId}-feedback`;
+    const inputName = `${headingId}-answer`;
+    const options = Array.isArray(block.options) ? block.options : [];
+    return `
+      <section class="lesson-quick-check lesson-quick-check--multiple" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <article class="lesson-quick-check__panel" data-reveal>
+            <header class="lesson-quick-check__heading">
+              <span class="lesson-quick-check__icon" aria-hidden="true">${lessonIcon('activity')}</span>
+              <div>
+                <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Aplique o que você estudou')}</p>
+                <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              </div>
+            </header>
+
+            <form
+              class="lesson-quick-check__form"
+              data-multiple-choice
+              data-correct-answer="${escapeHTML(block.correctAnswer)}"
+              data-correct-feedback="${escapeHTML(block.correctFeedback)}"
+              data-incorrect-feedback="${escapeHTML(block.incorrectFeedback)}">
+              <fieldset>
+                <legend>
+                  <span class="lesson-quick-check__legend-label">Questão</span>
+                  <span class="lesson-quick-check__question">${escapeHTML(block.question)}</span>
+                </legend>
+                <div class="lesson-quick-check__options lesson-quick-check__options--multiple">
+                  ${options.map((option) => `
+                    <label class="lesson-quick-check__option">
+                      <input class="lesson-quick-check__input" type="radio" name="${inputName}" value="${escapeHTML(option.id)}" />
+                      <span><span aria-hidden="true">${escapeHTML(option.label)}</span>${escapeHTML(option.text)}</span>
+                    </label>
+                  `).join('')}
+                </div>
+              </fieldset>
+              <div class="lesson-quick-check__feedback" id="${feedbackId}" role="status" aria-live="polite" aria-atomic="true" hidden>
+                <p class="lesson-quick-check__result">
+                  <strong data-feedback-result></strong>
+                  <span>Resposta correta: ${escapeHTML(block.correctAnswerLabel)}.</span>
+                </p>
+                <p><strong class="lesson-quick-check__feedback-label">Feedback:</strong> <span data-feedback-explanation></span></p>
+              </div>
+            </form>
+          </article>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderSummaryBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `summary-${moduleId}-${pageId}-${blockIndex}`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    return `
+      <section class="lesson-summary" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-summary__layout">
+          <header class="lesson-summary__heading" data-reveal>
+            <div>
+              <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Síntese')}</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              <span class="lesson-accent-line" aria-hidden="true"></span>
+            </div>
+          </header>
+          <ol class="lesson-summary__list" data-reveal>
+            ${items.map((item, index) => `
+              <li>
+                <span aria-hidden="true">${padId(index + 1)}</span>
+                <p>${escapeHTML(item)}</p>
+              </li>
+            `).join('')}
+          </ol>
+        </div>
+      </section>
+    `;
+  }
+
   function renderContentBlock(block, moduleId, pageId, blockIndex = 0) {
     if (block.type === 'video') {
       const media = renderVideoBlock(block);
@@ -571,6 +710,10 @@
     if (block.type === 'verticalTimeline') return renderVerticalTimelineBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'horizontalAccordion') return renderHorizontalAccordionBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'trueFalse') return renderTrueFalseBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'regulationContext') return renderRegulationContextBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'regulationComparison') return renderRegulationComparisonBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'multipleChoice') return renderMultipleChoiceBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'summary') return renderSummaryBlock(block, moduleId, pageId, blockIndex);
     return '';
   }
 
@@ -749,6 +892,7 @@
   let destroyStickyStacks = () => {};
   let destroyHorizontalAccordions = () => {};
   let destroyTrueFalseActivities = () => {};
+  let destroyMultipleChoiceActivities = () => {};
 
   function initCarousel() {
     const carousel = document.querySelector('[data-carousel]');
@@ -1092,6 +1236,45 @@
     return () => controller.abort();
   }
 
+  function initMultipleChoiceActivities() {
+    const forms = [...document.querySelectorAll('[data-multiple-choice]')];
+    if (!forms.length) return () => {};
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    forms.forEach((form) => {
+      const inputs = [...form.querySelectorAll('.lesson-quick-check__input')];
+      const feedback = form.querySelector('.lesson-quick-check__feedback');
+      const result = form.querySelector('[data-feedback-result]');
+      const explanation = form.querySelector('[data-feedback-explanation]');
+
+      const showFeedback = (selectedInput) => {
+        const isCorrect = selectedInput.value === form.dataset.correctAnswer;
+        form.dataset.state = isCorrect ? 'correct' : 'incorrect';
+        inputs.forEach((input) => {
+          const option = input.closest('.lesson-quick-check__option');
+          option?.classList.toggle('is-selected', input.checked);
+          option?.classList.toggle('is-correct', input.checked && isCorrect);
+          option?.classList.toggle('is-incorrect', input.checked && !isCorrect);
+        });
+        if (result) result.textContent = isCorrect ? 'Você acertou.' : 'Você errou.';
+        if (explanation) {
+          explanation.textContent = isCorrect
+            ? form.dataset.correctFeedback
+            : form.dataset.incorrectFeedback;
+        }
+        if (feedback) feedback.hidden = false;
+      };
+
+      inputs.forEach((input) => {
+        input.addEventListener('change', () => showFeedback(input), { signal });
+      });
+      form.addEventListener('submit', (event) => event.preventDefault(), { signal });
+    });
+
+    return () => controller.abort();
+  }
+
   function initStickyStacks() {
     const stacks = [...document.querySelectorAll('[data-sticky-stack]')];
     if (!stacks.length) return () => {};
@@ -1173,6 +1356,7 @@
     destroyStickyStacks();
     destroyHorizontalAccordions();
     destroyTrueFalseActivities();
+    destroyMultipleChoiceActivities();
 
     if (route.name === 'home') {
       template = homeTemplate();
@@ -1243,6 +1427,7 @@
     destroyStickyStacks = initStickyStacks();
     destroyHorizontalAccordions = initHorizontalAccordions();
     destroyTrueFalseActivities = initTrueFalseActivities();
+    destroyMultipleChoiceActivities = initMultipleChoiceActivities();
 
     routePositionFrame = requestAnimationFrame(() => {
       if (shouldPositionRoute) positionRoute();

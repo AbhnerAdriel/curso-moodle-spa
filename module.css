@@ -1285,6 +1285,283 @@ html.reveal-ready .lesson-timeline__list.is-visible::before {
   line-height: 1.68;
 }
 
+/* Página 05 — expansão, qualidade e regulação */
+.lesson-regulation-context {
+  padding: var(--section-space) 0;
+  border-top: 1px solid var(--neutral-200);
+  background: var(--white);
+}
+
+.lesson-regulation-context__layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.lesson-regulation-context__heading {
+  position: sticky;
+  top: 2rem;
+  padding-left: 1.5rem;
+  border-left: 5px solid var(--cyan);
+}
+
+.lesson-regulation-context__heading h3 {
+  max-width: 11ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 850;
+  letter-spacing: -.025em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lesson-regulation-context__axis {
+  max-width: 390px;
+  margin: 2.5rem 0 0;
+  padding: 1.1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1rem;
+  border-top: 1px solid var(--neutral-300);
+  border-bottom: 1px solid var(--neutral-300);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  font-weight: 850;
+  letter-spacing: .02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lesson-regulation-context__axis span:first-child { color: var(--pink-600); }
+
+.lesson-regulation-context__axis span + span::before {
+  content: "↔";
+  margin-right: 1rem;
+  color: var(--cyan-700);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.lesson-regulation-context__prose {
+  max-width: 68ch;
+}
+
+.lesson-regulation-context__prose p {
+  margin: 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--neutral-200);
+  color: var(--neutral-700);
+  line-height: 1.78;
+}
+
+.lesson-regulation-context__prose p:first-child {
+  padding-top: 0;
+  border-top: 0;
+  color: var(--ink);
+  font-size: var(--fs-lead);
+}
+
+.lesson-regulation-context__prose p:last-child { padding-bottom: 0; }
+
+.lesson-regulation-map {
+  padding: var(--section-space) 0;
+  background: var(--neutral-50);
+}
+
+.lesson-regulation-map__heading {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 1rem clamp(3rem, 8vw, 8rem);
+  align-items: end;
+}
+
+.lesson-regulation-map__heading .lesson-eyebrow { grid-column: 1 / -1; }
+
+.lesson-regulation-map__heading h3 {
+  max-width: 12ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 850;
+  letter-spacing: -.025em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lesson-regulation-map__heading > p:last-child {
+  max-width: 54ch;
+  margin: 0;
+  color: var(--neutral-600);
+  font-size: var(--fs-lead);
+}
+
+.lesson-regulation-map__labels {
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  padding: 0 1.5rem .85rem 128px;
+  display: grid;
+  grid-template-columns: 2.2fr 1.15fr 3fr;
+  gap: 1.5rem;
+  color: var(--neutral-600);
+  font-size: .72rem;
+  font-weight: 850;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.lesson-regulation-map__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--neutral-300);
+}
+
+.lesson-regulation-map__item {
+  min-height: 142px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 80px minmax(170px, 2.2fr) minmax(120px, 1.15fr) minmax(230px, 3fr);
+  gap: 1.5rem;
+  align-items: center;
+  border-bottom: 1px solid var(--neutral-300);
+}
+
+.lesson-regulation-map__year {
+  margin: 0;
+  color: var(--neutral-400);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 2.5vw, 2.35rem);
+  font-weight: 850;
+  letter-spacing: -.025em;
+  line-height: 1;
+}
+
+.lesson-regulation-map__decree h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1.15;
+}
+
+.lesson-regulation-map__status strong {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  font-size: .75rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.lesson-regulation-map__status strong::before {
+  content: "";
+  width: 24px;
+  height: 3px;
+  flex: 0 0 auto;
+  background: var(--pink);
+}
+
+.lesson-regulation-map__contribution p {
+  max-width: 48ch;
+  margin: 0;
+  color: var(--neutral-700);
+  line-height: 1.6;
+}
+
+.lesson-regulation-map__item.is-current {
+  color: var(--white);
+  background: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.lesson-regulation-map__item.is-current .lesson-regulation-map__year { color: var(--cyan-300); }
+.lesson-regulation-map__item.is-current .lesson-regulation-map__status strong { color: var(--cyan-300); }
+.lesson-regulation-map__item.is-current .lesson-regulation-map__status strong::before { background: var(--cyan); }
+.lesson-regulation-map__item.is-current .lesson-regulation-map__contribution p { color: rgba(255, 255, 255, .82); }
+.lesson-regulation-map__mobile-label { display: none; }
+
+.lesson-quick-check--multiple { background: var(--neutral-50); }
+.lesson-quick-check__options--multiple { grid-template-columns: 1fr; }
+
+.lesson-quick-check__options--multiple .lesson-quick-check__option > span {
+  min-height: 70px;
+  align-items: flex-start;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.lesson-summary {
+  padding: var(--section-space) 0;
+  color: var(--ink);
+  background: var(--neutral-150);
+}
+
+.lesson-summary .lesson-eyebrow { color: var(--cyan-700); }
+.lesson-summary .lesson-accent-line { background: var(--pink); }
+
+.lesson-summary__layout {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.lesson-summary__heading {
+  position: sticky;
+  top: 2rem;
+}
+
+.lesson-summary__heading h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  font-weight: 850;
+  letter-spacing: -.025em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.lesson-summary__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--neutral-300);
+}
+
+.lesson-summary__list li {
+  min-height: 94px;
+  padding: 1.35rem 0;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  border-bottom: 1px solid var(--neutral-300);
+}
+
+.lesson-summary__list li > span {
+  padding-top: .15rem;
+  color: var(--cyan-700);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.lesson-summary__list p {
+  max-width: 60ch;
+  margin: 0;
+  color: var(--neutral-700);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.lesson-summary__list li:last-child p {
+  color: var(--ink);
+  font-weight: 750;
+}
+
 /* Página 03 — vídeo em fluxo */
 .lesson-video-section {
   padding: var(--section-space) 0;
@@ -1717,6 +1994,9 @@ html.reveal-ready .lesson-timeline__list.is-visible::before {
   .lesson-concept__layout,
   .lesson-split-narrative__layout,
   .lesson-timeline__layout,
+  .lesson-regulation-context__layout,
+  .lesson-regulation-map__heading,
+  .lesson-summary__layout,
   .lesson-quick-check__panel {
     grid-template-columns: 1fr;
   }
@@ -1739,6 +2019,52 @@ html.reveal-ready .lesson-timeline__list.is-visible::before {
     max-width: 560px;
   }
   .lesson-timeline__heading h3 { max-width: none; }
+
+  .lesson-regulation-context__layout,
+  .lesson-summary__layout { gap: 3.5rem; }
+
+  .lesson-regulation-context__heading,
+  .lesson-summary__heading {
+    position: static;
+    max-width: 620px;
+  }
+
+  .lesson-regulation-context__heading h3,
+  .lesson-regulation-map__heading h3 { max-width: none; }
+
+  .lesson-regulation-map__heading { align-items: start; }
+  .lesson-regulation-map__heading .lesson-eyebrow { grid-column: auto; }
+  .lesson-regulation-map__labels { display: none; }
+  .lesson-regulation-map__list { margin-top: 3.5rem; }
+
+  .lesson-regulation-map__item {
+    min-height: 0;
+    padding: 1.5rem 1rem;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 1rem 1.25rem;
+    align-items: start;
+  }
+
+  .lesson-regulation-map__year {
+    grid-row: 1 / span 3;
+    padding-top: 1.35rem;
+  }
+
+  .lesson-regulation-map__decree,
+  .lesson-regulation-map__status,
+  .lesson-regulation-map__contribution { grid-column: 2; }
+
+  .lesson-regulation-map__mobile-label {
+    margin-bottom: .35rem;
+    display: block;
+    color: var(--neutral-500);
+    font-size: .65rem;
+    font-weight: 850;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .lesson-regulation-map__item.is-current .lesson-regulation-map__mobile-label { color: var(--cyan-300); }
 
   .lesson-horizontal-accordion {
     min-height: 0;
@@ -1902,6 +2228,12 @@ html.reveal-ready .lesson-timeline__list.is-visible::before {
   .lesson-ebook__table tbody th { font-size: 1.35rem; }
   .lesson-concept__heading { padding-left: 1rem; }
   .lesson-concept__mark { font-size: 5rem; }
+  .lesson-regulation-context__heading { padding-left: 1rem; }
+  .lesson-regulation-context__axis { align-items: flex-start; flex-direction: column; }
+  .lesson-regulation-context__axis span + span::before { content: "↓"; }
+  .lesson-regulation-map__item { grid-template-columns: 52px minmax(0, 1fr); }
+  .lesson-regulation-map__year { font-size: 1.4rem; }
+  .lesson-summary__list li { grid-template-columns: 42px minmax(0, 1fr); gap: .8rem; }
   .lesson-timeline__heading { padding-left: 1rem; }
   .lesson-timeline__list {
     --timeline-index-width: 44px;
@@ -1996,11 +2328,40 @@ html.reveal-ready .lesson-timeline__list.is-visible::before {
   .lesson-split-narrative,
   .lesson-timeline,
   .lesson-characteristics,
+  .lesson-regulation-context,
+  .lesson-regulation-map,
+  .lesson-summary,
   .lesson-video-section,
   .lesson-quick-check { padding-block: 2.5rem; }
 
   .lesson-split-narrative__lead,
-  .lesson-timeline__heading { position: static; }
+  .lesson-timeline__heading,
+  .lesson-regulation-context__heading,
+  .lesson-summary__heading { position: static; }
+
+  .lesson-regulation-map,
+  .lesson-summary {
+    color: var(--ink);
+    background: var(--white) !important;
+  }
+
+  .lesson-regulation-map__item.is-current {
+    color: var(--ink);
+    background: var(--white) !important;
+    border-left: 5px solid var(--pink);
+  }
+
+  .lesson-regulation-map__item.is-current .lesson-regulation-map__year,
+  .lesson-regulation-map__item.is-current .lesson-regulation-map__status strong,
+  .lesson-summary .lesson-eyebrow,
+  .lesson-summary__list li > span { color: var(--cyan-700); }
+
+  .lesson-regulation-map__item.is-current .lesson-regulation-map__contribution p,
+  .lesson-summary__list p,
+  .lesson-summary__list li:last-child p { color: var(--neutral-700); }
+
+  .lesson-summary__list { border-top-color: var(--neutral-300); }
+  .lesson-summary__list li { border-bottom-color: var(--neutral-300); break-inside: avoid; }
 
   .lesson-timeline {
     color: var(--ink);

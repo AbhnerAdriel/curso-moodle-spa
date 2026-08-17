@@ -330,6 +330,162 @@
                 explanation: 'A presença de uma norma na linha do tempo indica sua importância histórica, e não sua vigência atual. Os decretos revogados devem ser identificados visualmente como "revogado".'
               }
             ]
+          },
+          {
+            id: '05',
+            label: 'Expansão, qualidade e regulação',
+            unit: 'Unidade 01',
+            title: 'Capítulo 3 - Expansão, qualidade e necessidade de regulação',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
+                volumes: [
+                  {
+                    id: 'volume-1',
+                    title: 'Volume 1',
+                    entries: [
+                      {
+                        pages: '17–19',
+                        content: 'Expansão das matrículas, dados do Censo e tensão entre expansão e qualidade.'
+                      },
+                      {
+                        pages: '20',
+                        content: 'Síntese da trajetória histórica e transição para a regulação.'
+                      }
+                    ]
+                  },
+                  {
+                    id: 'volume-2',
+                    title: 'Volume 2',
+                    entries: [
+                      {
+                        pages: '4–11',
+                        content: 'Trajetória normativa: LDB, decretos anteriores, qualidade e polos.'
+                      },
+                      {
+                        pages: '12',
+                        content: 'Introdução ao Decreto nº 12.456/2025 e novos conceitos operacionais.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'regulationContext',
+                heading: 'Expansão, qualidade e regulação',
+                paragraphs: [
+                  'A Educação a Distância passou por um forte processo de expansão na educação superior brasileira. Esse crescimento ampliou oportunidades, reduziu barreiras geográficas e permitiu que mais estudantes chegassem à graduação. Ao mesmo tempo, tornou mais visíveis questões relacionadas à qualidade dos cursos, à infraestrutura, à avaliação e ao acompanhamento pedagógico.',
+                  'A regulação da EaD não foi criada de uma só vez. Ela foi sendo construída à medida que novas tecnologias, novos modelos pedagógicos e novos desafios surgiam. O art. 80 da LDB reconheceu a modalidade; os decretos posteriores modificaram as formas de compreender a autoaprendizagem, a mediação, as condições institucionais e a presencialidade.',
+                  'O Decreto nº 9.057/2017 representou uma etapa importante dessa trajetória, com destaque para a qualificação das equipes, as políticas de acesso, o acompanhamento estudantil, a avaliação e a organização institucional. Contudo, essa norma foi revogada pelo Decreto nº 12.456/2025.',
+                  'O novo decreto passou a organizar os cursos de graduação nos formatos presencial, semipresencial e a distância, além de estabelecer novos conceitos, percentuais de presencialidade, requisitos de mediação, avaliação e infraestrutura. Esses conteúdos são aprofundados nos eixos e módulos seguintes.'
+                ]
+              },
+              {
+                type: 'video',
+                layout: 'section',
+                title: 'Como a EaD dominou o ensino superior',
+                description: 'Expansão da Educação a Distância na educação superior brasileira',
+                provider: 'Eduplay',
+                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464647'
+              },
+              {
+                type: 'regulationComparison',
+                eyebrow: 'Infográfico comparativo',
+                heading: 'Da trajetória histórica ao marco vigente',
+                items: [
+                  {
+                    id: 'decreto-2494-1998',
+                    year: '1998',
+                    title: 'Decreto nº 2.494/1998',
+                    status: 'Revogado',
+                    current: false,
+                    contribution: 'Ênfase na autoaprendizagem.'
+                  },
+                  {
+                    id: 'decreto-5622-2005',
+                    year: '2005',
+                    title: 'Decreto nº 5.622/2005',
+                    status: 'Revogado',
+                    current: false,
+                    contribution: 'Ênfase na mediação didático-pedagógica.'
+                  },
+                  {
+                    id: 'decreto-9057-2017',
+                    year: '2017',
+                    title: 'Decreto nº 9.057/2017',
+                    status: 'Revogado',
+                    current: false,
+                    contribution: 'Ênfase nas condições institucionais e no acompanhamento.'
+                  },
+                  {
+                    id: 'decreto-12456-2025',
+                    year: '2025',
+                    title: 'Decreto nº 12.456/2025',
+                    status: 'Vigente',
+                    current: true,
+                    contribution: 'Novos formatos de oferta, presencialidade e mediação pedagógica qualificada.'
+                  }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'O Decreto nº 9.057/2017 permanece vigente e deve ser aplicado em conjunto com o Decreto nº 12.456/2025.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O Decreto nº 9.057/2017 foi expressamente revogado pelo Decreto nº 12.456/2025 e não deve ser utilizado como base normativa vigente para organizar a oferta atual dos cursos de graduação.'
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Aplique o que você estudou',
+                heading: 'Retomada da situação-problema',
+                question: 'Na reunião da equipe, qual afirmação está adequada à legislação vigente?',
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                options: [
+                  {
+                    id: 'a',
+                    label: 'A',
+                    text: 'O Decreto nº 9.057/2017 permanece como norma principal da EaD.'
+                  },
+                  {
+                    id: 'b',
+                    label: 'B',
+                    text: 'O Decreto nº 9.057/2017 foi parcialmente alterado, mas continua vigente.'
+                  },
+                  {
+                    id: 'c',
+                    label: 'C',
+                    text: 'O Decreto nº 9.057/2017 foi revogado pelo Decreto nº 12.456/2025 e deve ser abordado apenas como marco histórico.'
+                  },
+                  {
+                    id: 'd',
+                    label: 'D',
+                    text: 'Os dois decretos devem ser aplicados simultaneamente.'
+                  }
+                ],
+                correctFeedback: 'Correto. O Decreto nº 12.456/2025 revogou expressamente o Decreto nº 9.057/2017. O decreto de 2017 permanece relevante para compreender a evolução da regulação, mas não constitui legislação vigente.',
+                incorrectFeedback: 'Revise a Unidade 3 deste eixo. O Decreto nº 9.057/2017 não permanece em vigor e não deve ser utilizado em conjunto com o Decreto nº 12.456/2025 como base normativa atual.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Fechamento do capítulo',
+                heading: 'Em síntese',
+                items: [
+                  'a EaD possui uma trajetória anterior à internet;',
+                  'diferentes tecnologias foram utilizadas para aproximar estudantes e instituições;',
+                  'a modalidade demanda organização pedagógica, comunicação, acompanhamento e avaliação próprios;',
+                  'o Sistema UAB contribui para a interiorização e a democratização da educação superior pública;',
+                  'a expansão da EaD tornou mais visíveis os desafios relacionados à qualidade;',
+                  'a regulação foi sendo modificada conforme a modalidade se transformava;',
+                  'o Decreto nº 9.057/2017 possui relevância histórica, mas foi revogado;',
+                  'o Decreto nº 12.456/2025 é o marco regulatório vigente para a EaD nos cursos de graduação.'
+                ]
+              }
+            ]
           }
         ]
       },
