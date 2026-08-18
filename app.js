@@ -616,6 +616,99 @@
     `;
   }
 
+  function renderOfferFormatsBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `offer-formats-${moduleId}-${pageId}-${blockIndex}`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    return `
+      <section class="lesson-offer-formats" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-offer-formats__heading" data-reveal>
+            <div>
+              <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Infográfico comparativo')}</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            </div>
+            <p>${escapeHTML(block.introduction)}</p>
+          </header>
+
+          <ol class="lesson-offer-formats__list" data-reveal>
+            ${items.map((item, index) => `
+              <li class="lesson-offer-formats__item" id="${escapeHTML(item.id)}-${moduleId}-${pageId}-${blockIndex}" style="--i: ${index};">
+                <div class="lesson-offer-formats__identity">
+                  <span class="lesson-offer-formats__index" aria-hidden="true">${padId(index + 1)}</span>
+                  <div>
+                    <h4>${escapeHTML(item.title)}</h4>
+                    <p>${escapeHTML(item.legalBasis)}</p>
+                  </div>
+                </div>
+                <div class="lesson-offer-formats__metrics" aria-label="${escapeHTML(item.title)}">
+                  <div class="lesson-offer-formats__metric lesson-offer-formats__metric--primary">
+                    <span>${escapeHTML(item.primaryLabel)}</span>
+                    <strong>${escapeHTML(item.primaryValue)}</strong>
+                    <p>${escapeHTML(item.primaryText)}</p>
+                  </div>
+                  <div class="lesson-offer-formats__metric">
+                    <span>${escapeHTML(item.complementLabel)}</span>
+                    <strong>${escapeHTML(item.complementValue)}</strong>
+                    <p>${escapeHTML(item.complementText)}</p>
+                  </div>
+                </div>
+                <p class="lesson-offer-formats__note">${escapeHTML(item.note)}</p>
+              </li>
+            `).join('')}
+          </ol>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderCourseRestrictionsBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `course-restrictions-${moduleId}-${pageId}-${blockIndex}`;
+    const groups = Array.isArray(block.groups) ? block.groups : [];
+    const transitionItems = Array.isArray(block.transition?.items) ? block.transition.items : [];
+    return `
+      <section class="lesson-course-restrictions" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-course-restrictions__heading" data-reveal>
+            <div class="lesson-course-restrictions__identity">
+              <span class="lesson-course-restrictions__icon" aria-hidden="true">${lessonIcon(block.icon || 'presence')}</span>
+              <div>
+                <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Mapa normativo')}</p>
+                <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+              </div>
+            </div>
+            <p>${escapeHTML(block.introduction)}</p>
+          </header>
+
+          <div class="lesson-course-restrictions__grid" data-reveal>
+            ${groups.map((group, index) => `
+              <article class="lesson-course-restrictions__group${group.emphasis ? ' is-emphasis' : ''}" id="${escapeHTML(group.id)}-${moduleId}-${pageId}-${blockIndex}" style="--i: ${index};">
+                <p class="lesson-course-restrictions__law">${escapeHTML(group.law)}</p>
+                <h4>${escapeHTML(group.title)}</h4>
+                <p>${escapeHTML(group.description)}</p>
+                <ul>
+                  ${(Array.isArray(group.items) ? group.items : []).map((item) => `<li>${escapeHTML(item)}</li>`).join('')}
+                </ul>
+              </article>
+            `).join('')}
+          </div>
+
+          ${block.transition ? `
+            <aside class="lesson-course-restrictions__transition" aria-labelledby="${headingId}-transition" data-reveal>
+              <p class="lesson-course-restrictions__transition-mark" aria-hidden="true">${escapeHTML(block.transition.mark || '2025')}</p>
+              <div class="lesson-course-restrictions__transition-copy">
+                <p class="lesson-eyebrow">${escapeHTML(block.transition.eyebrow || 'Regra de transição')}</p>
+                <h4 id="${headingId}-transition">${escapeHTML(block.transition.heading)}</h4>
+                <ul>
+                  ${transitionItems.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}
+                </ul>
+              </div>
+            </aside>
+          ` : ''}
+        </div>
+      </section>
+    `;
+  }
+
   function renderMultipleChoiceBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `multiple-choice-${moduleId}-${pageId}-${blockIndex}`;
     const feedbackId = `${headingId}-feedback`;
@@ -1007,6 +1100,8 @@
     if (block.type === 'trueFalse') return renderTrueFalseBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'regulationContext') return renderRegulationContextBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'regulationComparison') return renderRegulationComparisonBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'offerFormats') return renderOfferFormatsBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'courseRestrictions') return renderCourseRestrictionsBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'multipleChoice') return renderMultipleChoiceBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'summary') return renderSummaryBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'caseStudy') return renderCaseStudyBlock(block, moduleId, pageId, blockIndex);

@@ -935,10 +935,318 @@
       },
       {
         id: '02',
-        status: 'draft',
-        cardTitle: 'Nome do Módulo 2',
-        title: 'Módulo 02',
-        pages: []
+        status: 'published',
+        cardTitle: 'Regulação da EaD e o Novo Marco Regulatório',
+        title: 'Regulação da EaD e o Novo Marco Regulatório',
+        banner: 'assets/banner-modulo-02.webp',
+        bannerPosition: 'center',
+        pages: [
+          {
+            id: '01',
+            label: 'Introdução',
+            unit: 'Unidade 01',
+            title: 'Apresentação',
+            blocks: [
+              {
+                type: 'video',
+                slot: 'lead',
+                title: 'Vídeo de abertura do Módulo 2',
+                description: 'Regulação da EaD e o Novo Marco Regulatório',
+                provider: 'Eduplay',
+                embedUrl: '',
+                poster: 'assets/mulher-negra-olhando-para-com.webp',
+                posterAlt: 'Participante acompanhando uma formação on-line em um notebook'
+              },
+              {
+                type: 'narrative',
+                heading: 'Do conceito à organização da oferta',
+                paragraphs: [
+                  'No eixo anterior (Módulo 1 deste curso), você conheceu os conceitos fundamentais que estruturam o Decreto nº 12.456/2025 — atividade presencial, atividade síncrona, atividade síncrona mediada e atividade assíncrona — além das noções de tutor, mediador pedagógico e Polo de Educação a Distância. Neste eixo, esses conceitos passam a ser aplicados à organização concreta dos cursos de graduação, a partir dos formatos de oferta previstos na nova legislação.',
+                  'O art. 4º do Decreto nº 12.456/2025 estabelece que os cursos de graduação podem ser ofertados em três formatos: presencial, semipresencial e a distância. Cada formato corresponde a uma combinação específica de atividades presenciais, síncronas, síncronas mediadas e assíncronas, com percentuais mínimos de presencialidade definidos nos arts. 10, 11 e 12.',
+                  'A legislação também reconhece que nem toda área do conhecimento comporta os três formatos da mesma maneira. Cursos como Direito, Medicina, Enfermagem, Odontologia e Psicologia têm exigência de oferta exclusivamente presencial (art. 8º), e é vedada a oferta a distância para a área de saúde em geral, para as licenciaturas e para diversas outras áreas (art. 9º). Essas escolhas normativas se apoiam na especificidade formativa de cada profissão, que demanda prática, supervisão e presença física em graus distintos.',
+                  'Por fim, o eixo aborda a infraestrutura mínima exigida na sede da instituição e no Polo EaD (arts. 27 e 29), condição necessária para que as atividades presenciais e as avaliações previstas em cada formato de oferta possam efetivamente ocorrer.'
+                ]
+              },
+              {
+                type: 'accordionGroup',
+                label: 'Objetivos da unidade',
+                items: [
+                  {
+                    id: 'objetivo-geral-modulo-02-unidade-01',
+                    title: 'Objetivo geral',
+                    paragraphs: [
+                      'Compreender os três formatos de oferta de cursos de graduação previstos no Decreto nº 12.456/2025, os percentuais mínimos de presencialidade exigidos em cada formato, as vedações estabelecidas por área do conhecimento e os requisitos mínimos de infraestrutura da sede e do Polo EaD.'
+                    ]
+                  },
+                  {
+                    id: 'objetivos-aprendizagem-modulo-02-unidade-01',
+                    title: 'Objetivos de aprendizagem',
+                    paragraphs: [
+                      'Ao concluir este eixo, espera-se que o participante consiga:'
+                    ],
+                    list: [
+                      'distinguir os três formatos de oferta previstos no art. 4º do Decreto nº 12.456/2025: presencial, semipresencial e a distância;',
+                      'reconhecer os percentuais mínimos de presencialidade exigidos para cada formato, conforme os arts. 10, 11 e 12;',
+                      'identificar os cursos que devem ser ofertados exclusivamente de forma presencial e aqueles cuja oferta a distância é vedada, conforme os arts. 8º e 9º;',
+                      'relacionar as vedações por área do conhecimento à especificidade formativa de cada curso;',
+                      'reconhecer os requisitos mínimos de infraestrutura da sede e do Polo EaD, conforme os arts. 27 e 29.'
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: '02',
+            label: 'Situação-problema',
+            unit: 'Unidade 01',
+            title: 'Situação-problema',
+            blocks: [
+              {
+                type: 'caseStudy',
+                heading: 'Qual é o formato certo para este curso?',
+                image: 'assets/imagem-pagina02-mod02.webp',
+                imageWidth: 1448,
+                imageHeight: 1086,
+                imageAlt: 'Equipe reunida para discutir os formatos presencial, semipresencial e a distância de um curso de graduação.',
+                caption: 'A revisão do Projeto Pedagógico de Curso exige conciliar formato de oferta, presencialidade e infraestrutura.',
+                paragraphs: [
+                  'A coordenação de curso da UAB/UFPE está revisando o Projeto Pedagógico de Curso (PPC) de uma licenciatura ofertada no formato semipresencial. Durante o levantamento de melhorias, a equipe recebe a sugestão de ampliar a carga horária de atividades a distância, como forma de reduzir os custos de deslocamento dos estudantes até o polo.',
+                  'Na mesma reunião, surgem dúvidas sobre até que ponto a carga horária presencial pode ser reduzida, se o curso poderia migrar para o formato integralmente a distância e quais estruturas o Polo EaD precisa oferecer para sustentar as atividades presenciais já previstas na matriz curricular.',
+                  'Um integrante da equipe afirma: “Se ampliarmos a carga a distância, conseguimos reduzir custos. Talvez até possamos oferecer o curso totalmente a distância, já que isso é só uma questão de organização interna do PPC.” Outro integrante responde: “Isso não é possível. As licenciaturas estão entre os cursos vedados à oferta a distância pelo Decreto nº 12.456/2025. Precisamos verificar os percentuais mínimos de presencialidade do formato semipresencial e os requisitos de infraestrutura do polo antes de propor qualquer mudança.”'
+                ]
+              },
+              {
+                type: 'stickyStack',
+                heading: 'Para refletir',
+                items: [
+                  {
+                    id: 'formatos-oferta',
+                    text: 'Quais são os três formatos de oferta previstos no Decreto nº 12.456/2025?'
+                  },
+                  {
+                    id: 'restricoes-por-area',
+                    text: 'Por que algumas áreas do conhecimento têm restrições específicas quanto à oferta a distância?'
+                  },
+                  {
+                    id: 'percentuais-presencialidade',
+                    text: 'Que percentual mínimo de presencialidade cada formato de oferta exige?'
+                  },
+                  {
+                    id: 'infraestrutura-minima',
+                    text: 'Que estrutura mínima a sede e o Polo EaD devem oferecer para sustentar as atividades presenciais previstas em cada formato?'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: '03',
+            label: 'Formatos de oferta',
+            unit: 'Unidade 01',
+            title: 'Capítulo 1 - Os três formatos de oferta e seus percentuais de presencialidade',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar:',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa.',
+                volumes: [
+                  {
+                    id: 'volume-2',
+                    title: 'Volume 2',
+                    entries: [
+                      {
+                        pages: '12',
+                        content: 'O novo marco regulatório do Decreto nº 12.456/2025: formatos de oferta dos cursos de graduação e percentuais mínimos de presencialidade.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'narrative',
+                heading: 'Oferta não é apenas rótulo',
+                paragraphs: [
+                  'O art. 4º do decreto estabelece três formatos de oferta para os cursos de graduação: presencial, semipresencial e a distância. Cada formato representa uma combinação diferente de atividades presenciais e a distância, e não apenas um rótulo administrativo atribuído ao curso.',
+                  'No formato presencial, o art. 10 exige o mínimo de 70% da carga horária total em atividades presenciais; até 30% da carga horária pode ser cumprida em atividades a distância, síncronas ou assíncronas.',
+                  'No formato semipresencial, o art. 11 exige o mínimo de 30% da carga horária total em atividades presenciais, somado a um mínimo adicional de 20% em atividades presenciais ou síncronas mediadas.',
+                  'No formato a distância, o art. 12 exige o mínimo de 10% da carga horária total em atividades presenciais, somado a um mínimo adicional de 10% em atividades presenciais ou síncronas mediadas. Mesmo no formato a distância, a legislação preserva um núcleo mínimo de presencialidade e de mediação em tempo real.'
+                ]
+              },
+              {
+                type: 'video',
+                layout: 'section',
+                title: 'Os três formatos de oferta e seus percentuais de presencialidade',
+                description: 'Aprofundamento em vídeo',
+                provider: 'Eduplay',
+                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464649'
+              },
+              {
+                type: 'offerFormats',
+                eyebrow: 'Infográfico comparativo',
+                heading: 'Presencialidade por formato',
+                introduction: 'Compare os percentuais mínimos e os componentes complementares que estruturam cada formato de oferta previsto no Decreto nº 12.456/2025.',
+                items: [
+                  {
+                    id: 'formato-presencial',
+                    title: 'Presencial',
+                    legalBasis: 'Art. 10',
+                    primaryLabel: 'Mínimo presencial',
+                    primaryValue: '70%',
+                    primaryText: 'da carga horária total em atividades presenciais.',
+                    complementLabel: 'Carga flexível',
+                    complementValue: 'até 30%',
+                    complementText: 'pode ser cumprida a distância, em atividades síncronas ou assíncronas.',
+                    note: 'A presencialidade é o eixo dominante do formato.'
+                  },
+                  {
+                    id: 'formato-semipresencial',
+                    title: 'Semipresencial',
+                    legalBasis: 'Art. 11',
+                    primaryLabel: 'Mínimo presencial',
+                    primaryValue: '30%',
+                    primaryText: 'da carga horária total em atividades presenciais.',
+                    complementLabel: 'Exigência adicional',
+                    complementValue: '+20%',
+                    complementText: 'em atividades presenciais ou síncronas mediadas.',
+                    note: 'As duas exigências são mínimas e cumulativas.'
+                  },
+                  {
+                    id: 'formato-a-distancia',
+                    title: 'A distância',
+                    legalBasis: 'Art. 12',
+                    primaryLabel: 'Mínimo presencial',
+                    primaryValue: '10%',
+                    primaryText: 'da carga horária total em atividades presenciais.',
+                    complementLabel: 'Exigência adicional',
+                    complementValue: '+10%',
+                    complementText: 'em atividades presenciais ou síncronas mediadas.',
+                    note: 'Mesmo na EaD, há núcleo mínimo de presencialidade e mediação em tempo real.'
+                  }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'O formato semipresencial exige, no mínimo, 30% da carga horária total em atividades presenciais, somados a, no mínimo, mais 20% em atividades presenciais ou síncronas mediadas.',
+                correctAnswer: true,
+                correctAnswerLabel: 'Verdadeiro',
+                explanation: 'Correto. O art. 11 do Decreto nº 12.456/2025 estabelece essas duas exigências mínimas e cumulativas para o formato semipresencial.'
+              }
+            ]
+          },
+          {
+            id: '04',
+            label: 'Vedações por área',
+            unit: 'Unidade 01',
+            title: 'Capítulo 2 - Vedações por área do conhecimento e cursos de oferta exclusivamente presencial',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'ebookReading',
+                heading: 'Conteúdo do e-book a utilizar:',
+                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa.',
+                volumes: [
+                  {
+                    id: 'volume-2',
+                    title: 'Volume 2',
+                    entries: [
+                      {
+                        pages: '13',
+                        content: 'Vedações à oferta a distância por área do conhecimento e cursos de oferta exclusivamente presencial (arts. 8º e 9º).'
+                      }
+                    ]
+                  },
+                  {
+                    id: 'guia-orientador-spread-uab-ufpe',
+                    title: 'Guia Orientador SPREAD/UAB-UFPE',
+                    entries: [
+                      {
+                        pages: '—',
+                        content: 'Lista de áreas com restrições específicas de presencialidade.'
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'narrative',
+                heading: 'Nem todo curso pode escolher qualquer formato',
+                paragraphs: [
+                  'Nem todos os cursos podem ser ofertados livremente nos três formatos. O Decreto nº 12.456/2025 estabelece vedações específicas por área do conhecimento, reconhecendo que a natureza formativa de certas profissões exige presença física, prática supervisionada e acompanhamento direto em graus distintos.',
+                  'O art. 8º determina que os cursos de Direito, Medicina, Enfermagem, Odontologia e Psicologia sejam ofertados exclusivamente no formato presencial, vedada a oferta desses cursos nos formatos semipresencial ou a distância.',
+                  'O Guia Orientador detalha que Medicina deve ser ofertada com 100% de atividades presenciais, enquanto Direito, Enfermagem, Odontologia e Psicologia devem observar o percentual mínimo de 70% presencial.',
+                  'O art. 9º veda a oferta de curso de graduação a distância para a área de saúde em geral, exceto os cursos já tratados no art. 8º; as licenciaturas; e outros cursos que venham a ser definidos em ato do Ministro da Educação.',
+                  'O Guia Orientador detalha essa vedação listando as áreas em que a oferta a distância é totalmente vedada: Ciências Naturais, Matemática, Estatística, Saúde, Engenharia, Produção, Construção, Agricultura, Silvicultura, Pesca e Veterinária, além das licenciaturas.',
+                  'Desde maio de 2025 fica vedada a oferta de licenciaturas 100% a distância: não são permitidas novas matrículas nesse formato, os estudantes já matriculados mantêm o direito de concluir o curso no formato de ingresso, e as instituições devem reorganizar esses cursos para o formato semipresencial, observando o mínimo de 30% de presencialidade.'
+                ]
+              },
+              {
+                type: 'courseRestrictions',
+                eyebrow: 'Mapa normativo',
+                heading: 'Restrições de oferta',
+                introduction: 'Alguns cursos e áreas têm limites próprios porque a formação exige presença física, prática supervisionada e acompanhamento direto. O mapa abaixo organiza as vedações centrais dos arts. 8º e 9º e a regra de transição para licenciaturas.',
+                groups: [
+                  {
+                    id: 'oferta-exclusivamente-presencial',
+                    law: 'Art. 8º',
+                    title: 'Oferta exclusivamente presencial',
+                    description: 'Cursos que não podem ser ofertados nos formatos semipresencial ou a distância.',
+                    items: [
+                      'Medicina: 100% de atividades presenciais, conforme detalhamento do Guia Orientador.',
+                      'Direito: mínimo de 70% de atividades presenciais.',
+                      'Enfermagem: mínimo de 70% de atividades presenciais.',
+                      'Odontologia: mínimo de 70% de atividades presenciais.',
+                      'Psicologia: mínimo de 70% de atividades presenciais.'
+                    ],
+                    emphasis: true
+                  },
+                  {
+                    id: 'oferta-a-distancia-vedada',
+                    law: 'Art. 9º',
+                    title: 'Oferta a distância vedada',
+                    description: 'Áreas e cursos que não podem ser organizados como graduação a distância.',
+                    items: [
+                      'Área de saúde em geral, exceto os cursos já tratados no art. 8º.',
+                      'Licenciaturas.',
+                      'Ciências Naturais, Matemática e Estatística.',
+                      'Engenharia, Produção e Construção.',
+                      'Agricultura, Silvicultura, Pesca e Veterinária.',
+                      'Outros cursos definidos em ato do Ministro da Educação.'
+                    ]
+                  }
+                ],
+                transition: {
+                  mark: '2025',
+                  eyebrow: 'Licenciaturas',
+                  heading: 'Regra de transição',
+                  items: [
+                    'Não são permitidas novas matrículas em licenciaturas 100% a distância.',
+                    'Estudantes já matriculados mantêm o direito de concluir no formato de ingresso.',
+                    'As instituições devem reorganizar esses cursos para o formato semipresencial, com mínimo de 30% de presencialidade.'
+                  ]
+                }
+              },
+              {
+                type: 'video',
+                layout: 'section',
+                title: 'Vedações por área do conhecimento',
+                description: 'Aprofundamento em vídeo',
+                provider: 'Eduplay',
+                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464648'
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'É permitido oferecer um curso de Enfermagem no formato a distância, desde que a instituição garanta acompanhamento pedagógico adequado.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O art. 8º do Decreto nº 12.456/2025 determina que o curso de Enfermagem seja ofertado exclusivamente no formato presencial, com o percentual mínimo de 70% de atividades presenciais.'
+              }
+            ]
+          }
+        ]
       },
       {
         id: '03',
