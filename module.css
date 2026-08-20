@@ -107,11 +107,16 @@ html[data-view="module"] body {
   padding: .55rem .2rem;
 }
 
-.module-sidebar__toggle-icon,
-.module-mobile-menu-open svg {
+.module-sidebar__toggle-icon {
   width: 22px;
   height: 22px;
   flex: 0 0 auto;
+}
+
+.module-mobile-menu-open svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
 }
 
 .module-sidebar__home svg {
@@ -128,13 +133,22 @@ html[data-view="module"] body {
 
 .module-sidebar__toggle svg,
 .module-mobile-menu-open svg {
-  width: 100%;
-  height: 100%;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: square;
   stroke-linejoin: miter;
+}
+
+.module-sidebar__toggle svg {
+  width: 100%;
+  height: 100%;
+}
+
+.module-mobile-menu-open svg {
+  width: 18px;
+  height: 18px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .82));
 }
 
 .module-sidebar__home svg {
@@ -263,11 +277,16 @@ html[data-view="module"] body {
 }
 
 .module-sidebar a:focus-visible,
-.module-sidebar button:focus-visible,
-.module-mobile-menu-open:focus-visible {
+.module-sidebar button:focus-visible {
   outline: 3px solid var(--cyan);
   outline-offset: -3px;
   box-shadow: inset 0 0 0 2px var(--neutral-950);
+}
+
+.module-mobile-menu-open:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 2px;
+  box-shadow: none;
 }
 
 .module-mobile-menu-open,
@@ -3386,18 +3405,28 @@ html.reveal-ready .lesson-course-restrictions__grid.is-visible .lesson-course-re
     z-index: 42;
     top: .75rem;
     left: .75rem;
-    padding: .62rem .78rem;
-    border-left: 3px solid var(--cyan);
+    width: 44px;
+    height: 44px;
+    padding: .65rem;
+    border-left: 2px solid var(--cyan);
     display: inline-flex;
+    justify-content: center;
     color: var(--white);
-    background: rgba(20, 20, 20, .94);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+    background: rgba(20, 20, 20, .72);
+    box-shadow: none;
   }
 
   .module-mobile-menu-open span {
-    font-size: .78rem;
-    letter-spacing: .05em;
-    text-transform: uppercase;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
   }
 
   .module-sidebar {

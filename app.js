@@ -1154,9 +1154,9 @@
     }).join('');
 
     return `
-      <button class="module-mobile-menu-open" type="button" aria-controls="module-sidebar-panel" aria-expanded="false" data-sidebar-open>
+      <button class="module-mobile-menu-open" type="button" aria-label="Abrir menu do módulo" title="Abrir menu do módulo" aria-controls="module-sidebar-panel" aria-expanded="false" data-sidebar-open>
         ${icon('menu')}
-        <span>Menu do m&oacute;dulo</span>
+        <span class="sr-only">Menu do m&oacute;dulo</span>
       </button>
       <aside class="module-sidebar" id="module-sidebar-panel" aria-label="Navega&ccedil;&atilde;o do m&oacute;dulo" data-module-sidebar>
         <div class="module-sidebar__header">
