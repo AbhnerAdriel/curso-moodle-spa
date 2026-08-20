@@ -6,7 +6,7 @@ Projeto front-end em HTML, CSS e JavaScript puro, sem dependências de runtime o
 
 - `index.html` — shell único e acessível da SPA.
 - `styles.css` — identidade visual e componentes da Home.
-- `module.css` — banner, conteúdo educacional, accordions e paginação dos módulos.
+- `module.css` — banner, conteudo educacional, accordions e navegacao lateral dos modulos.
 - `app.js` — templates, roteamento por hash, estados de rota e interações.
 - `data/course-content.js` — registro central dos módulos, páginas e blocos de conteúdo.
 - `assets/` — imagens otimizadas usadas pela Home e pelos módulos.
@@ -61,7 +61,7 @@ Todo o conteúdo é orientado a dados em `data/course-content.js`. Para publicar
 
 Em títulos excepcionalmente longos, `headingSize: 'compact'` preserva a composição tipográfica em telas pequenas sem reduzir a escala das demais páginas.
 
-A paginação, os links anterior/próxima, o total de páginas, o progresso e os estados de limite são gerados automaticamente a partir desse array.
+A navegacao lateral, o item ativo, o total de paginas e o progresso sao gerados automaticamente a partir desse array.
 Somente módulos com `status: 'published'` exibem suas páginas; módulos em `draft` permanecem protegidos pela tela de preparação, inclusive em acesso direto.
 
 O bloco `stickyStack` cria uma pilha progressiva de conteúdos durante a rolagem. Em telas pequenas, impressão ou quando o usuário prefere movimento reduzido, os itens voltam automaticamente ao fluxo linear de leitura.
@@ -103,7 +103,7 @@ Publique todos os arquivos preservando a estrutura de diretórios. Se a SPA for 
 - links de módulos com aviso de nova aba;
 - carrossel por teclado e cards fora da área visível removidos da ordem de tabulação;
 - accordions nativos com estado expandido sincronizado;
-- paginação com `aria-current`, anterior/próxima e estados indisponíveis;
+- navegacao lateral do modulo com `aria-current`, controle recolhivel e drawer mobile;
 - barra de progresso com atributos ARIA;
 - animações desativadas com `prefers-reduced-motion`;
 - layout responsivo para desktop, tablet e mobile.

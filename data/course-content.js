@@ -104,10 +104,6 @@
                 heading: 'Para refletir',
                 items: [
                   {
-                    id: 'afirmacoes',
-                    text: 'Qual das duas afirmações está correta?'
-                  },
-                  {
                     id: 'regulacao',
                     text: 'Por que o crescimento da EaD exigiu novas formas de regulação?'
                   },

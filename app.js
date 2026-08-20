@@ -15,6 +15,23 @@
   const padId = (value) => String(value).padStart(2, '0');
   const moduleRoute = (moduleId, pageId = '01') => `#/modulo/${padId(moduleId)}/pagina/${padId(pageId)}`;
   const moduleHref = (moduleId, pageId = '01') => `./index.html${moduleRoute(moduleId, pageId)}`;
+  const moduleSidebarStorageKey = 'novo-marco-ead.module-sidebar-collapsed';
+
+  function readModuleSidebarPreference() {
+    try {
+      return window.localStorage?.getItem(moduleSidebarStorageKey) === 'true';
+    } catch {
+      return false;
+    }
+  }
+
+  function writeModuleSidebarPreference(collapsed) {
+    try {
+      window.localStorage?.setItem(moduleSidebarStorageKey, String(collapsed));
+    } catch {
+      // Preference persistence is optional; the control remains fully functional.
+    }
+  }
 
   const icon = (name) => {
     const icons = {
@@ -28,7 +45,8 @@
       arrowLeft: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7M8 12h11"/></svg>`,
       arrowRight: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7M5 12h11"/></svg>`,
       play: `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m18 12 20 12-20 12Z"/></svg>`,
-      home: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 11 8-7 8 7v9h-6v-6h-4v6H4Z"/></svg>`
+      home: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 11 8-7 8 7v9h-6v-6h-4v6H4Z"/></svg>`,
+      menu: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`
     };
     return icons[name] || '';
   };
@@ -1114,55 +1132,58 @@
     return '';
   }
 
-  function paginationSequence(total, current) {
-    if (total <= 7) return Array.from({ length: total }, (_, index) => index);
-    const indexes = [...new Set([0, 1, current - 1, current, current + 1, total - 2, total - 1])]
-      .filter((index) => index >= 0 && index < total)
-      .sort((a, b) => a - b);
-    const sequence = [];
-    indexes.forEach((index, position) => {
-      if (position && index - indexes[position - 1] > 1) sequence.push('ellipsis');
-      sequence.push(index);
-    });
-    return sequence;
-  }
-
-  function renderPagination(module, currentIndex) {
-    const total = module.pages.length;
-    const currentPage = module.pages[currentIndex];
-    const previousPage = module.pages[currentIndex - 1];
-    const nextPage = module.pages[currentIndex + 1];
-    const numberItems = paginationSequence(total, currentIndex).map((item, index) => {
-      if (item === 'ellipsis') return `<span class="lesson-pagination__ellipsis" aria-hidden="true" data-key="ellipsis-${index}">…</span>`;
-      const page = module.pages[item];
-      if (item === currentIndex) {
-        return `<span class="lesson-pagination__number is-current" aria-current="page"><span class="sr-only">Página atual: </span>${escapeHTML(page.id)}</span>`;
-      }
-      return `<a class="lesson-pagination__number" href="${moduleRoute(module.id, page.id)}" aria-label="Ir para a página ${escapeHTML(page.id)}: ${escapeHTML(page.label)}">${escapeHTML(page.id)}</a>`;
+  function renderModuleSidebar(module, currentIndex) {
+    const collapsed = readModuleSidebarPreference();
+    const navigationItems = module.pages.map((item, index) => {
+      const title = item.navTitle || item.title || item.label || `Pagina ${item.id}`;
+      const isCurrent = index === currentIndex;
+      return `
+        <li class="module-sidebar__item">
+          <a
+            class="module-sidebar__link${isCurrent ? ' is-active' : ''}"
+            href="${moduleRoute(module.id, item.id)}"
+            ${isCurrent ? 'aria-current="page"' : ''}
+            aria-label="P&aacute;gina ${escapeHTML(item.id)}: ${escapeHTML(title)}"
+            data-sidebar-link
+          >
+            <span class="module-sidebar__number" aria-hidden="true">${escapeHTML(item.id)}</span>
+            <span class="module-sidebar__title">${escapeHTML(title)}</span>
+          </a>
+        </li>
+      `;
     }).join('');
 
-    const previousControl = previousPage
-      ? `<a class="lesson-pagination__direction lesson-pagination__direction--previous" href="${moduleRoute(module.id, previousPage.id)}" rel="prev">${icon('arrowLeft')}<span>Anterior</span></a>`
-      : `<span class="lesson-pagination__direction lesson-pagination__direction--previous is-disabled" aria-disabled="true">${icon('arrowLeft')}<span>Anterior</span></span>`;
-    const nextControl = nextPage
-      ? `<a class="lesson-pagination__direction lesson-pagination__direction--next" href="${moduleRoute(module.id, nextPage.id)}" rel="next"><span>Próxima</span>${icon('arrowRight')}</a>`
-      : `<span class="lesson-pagination__direction lesson-pagination__direction--next is-disabled" aria-disabled="true"><span>Próxima</span>${icon('arrowRight')}</span>`;
-
     return `
-      <nav class="lesson-pagination" aria-label="Paginação do Módulo ${escapeHTML(module.id)}">
-        <div class="lesson-container lesson-pagination__meta">
-          <div>
-            <p class="lesson-eyebrow">Navegação do módulo</p>
-            <p class="lesson-pagination__current">Página ${escapeHTML(currentPage.id)} de ${padId(total)}</p>
-          </div>
-          <a class="lesson-pagination__home" href="#/">${icon('home')}<span>Home do curso</span></a>
+      <button class="module-mobile-menu-open" type="button" aria-controls="module-sidebar-panel" aria-expanded="false" data-sidebar-open>
+        ${icon('menu')}
+        <span>Menu do m&oacute;dulo</span>
+      </button>
+      <aside class="module-sidebar" id="module-sidebar-panel" aria-label="Navega&ccedil;&atilde;o do m&oacute;dulo" data-module-sidebar>
+        <div class="module-sidebar__header">
+          <button
+            class="module-sidebar__toggle"
+            type="button"
+            aria-controls="module-sidebar-nav"
+            aria-expanded="${collapsed ? 'false' : 'true'}"
+            data-sidebar-toggle
+          >
+            <span class="module-sidebar__toggle-icon" aria-hidden="true">${icon('arrowLeft')}</span>
+            <span class="module-sidebar__toggle-text" data-sidebar-toggle-text>${collapsed ? 'Abrir menu' : 'Recolher menu'}</span>
+          </button>
         </div>
-        <div class="lesson-container lesson-pagination__controls">
-          ${previousControl}
-          <div class="lesson-pagination__numbers" role="group" aria-label="Páginas do módulo">${numberItems}</div>
-          ${nextControl}
+        <nav class="module-sidebar__nav" id="module-sidebar-nav" aria-label="T&oacute;picos do m&oacute;dulo" data-sidebar-collapsible>
+          <ol class="module-sidebar__list">
+            ${navigationItems}
+          </ol>
+        </nav>
+        <div class="module-sidebar__footer" data-sidebar-collapsible>
+          <a class="module-sidebar__home" href="#/" data-sidebar-home>
+            ${icon('home')}
+            <span>Home do curso</span>
+          </a>
         </div>
-      </nav>
+      </aside>
+      <button class="module-sidebar__scrim" type="button" aria-label="Fechar menu do m&oacute;dulo" data-sidebar-close></button>
     `;
   }
 
@@ -1173,60 +1194,61 @@
     const leadBlocks = indexedBlocks.filter(({ block }) => block.slot === 'lead');
     const contentBlocks = indexedBlocks.filter(({ block }) => block.slot !== 'lead');
     return `
-      <div class="module-view">
-        <header class="module-hero" data-module-hero data-banner="${escapeHTML(module.banner || '')}" data-banner-position="${escapeHTML(module.bannerPosition || 'center')}">
-          <div class="module-hero__content" data-reveal>
-            <p class="module-hero__eyebrow">Módulo ${escapeHTML(module.id)}</p>
-            <h1>${escapeHTML(module.title)}</h1>
-            <span class="module-hero__line" aria-hidden="true"></span>
-          </div>
-          <svg class="module-hero__curve" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-            <path d="M0 0 Q500 100 1000 0 V100 H0 Z" />
-          </svg>
-        </header>
-
-        <main id="conteudo-principal" class="module-main" tabindex="-1">
-          <div class="lesson-container module-toolbar">
-            <nav class="module-breadcrumb" aria-label="Você está em">
-              <ol>
-                <li><a href="#/">Home</a></li>
-                <li><span>Módulo ${escapeHTML(module.id)}</span></li>
-                <li aria-current="page"><span>Página ${escapeHTML(page.id)}</span></li>
-              </ol>
-            </nav>
-            <div class="module-progress">
-              <div class="module-progress__labels">
-                <span>Progresso do módulo</span>
-                <strong>${progress}%</strong>
-              </div>
-              <div class="module-progress__track" role="progressbar" aria-label="Progresso no Módulo ${escapeHTML(module.id)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}">
-                <span style="--lesson-progress: ${progress}%"></span>
-              </div>
-              <p>Página ${escapeHTML(page.id)} de ${padId(totalPages)}</p>
+      <div class="module-view${readModuleSidebarPreference() ? ' is-sidebar-collapsed' : ''}" data-module-view>
+        ${renderModuleSidebar(module, currentIndex)}
+        <div class="module-content">
+          <header class="module-hero" data-module-hero data-banner="${escapeHTML(module.banner || '')}" data-banner-position="${escapeHTML(module.bannerPosition || 'center')}">
+            <div class="module-hero__content" data-reveal>
+              <p class="module-hero__eyebrow">Módulo ${escapeHTML(module.id)}</p>
+              <h1>${escapeHTML(module.title)}</h1>
+              <span class="module-hero__line" aria-hidden="true"></span>
             </div>
-          </div>
+            <svg class="module-hero__curve" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <path d="M0 0 Q500 100 1000 0 V100 H0 Z" />
+            </svg>
+          </header>
 
-          <article class="lesson-article" aria-labelledby="lesson-title">
-            ${leadBlocks.length ? `
-              <div class="lesson-container lesson-media-wrap">
-                ${leadBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
+          <main id="conteudo-principal" class="module-main" tabindex="-1">
+            <div class="lesson-container module-toolbar">
+              <nav class="module-breadcrumb" aria-label="Você está em">
+                <ol>
+                  <li><a href="#/">Home</a></li>
+                  <li><span>Módulo ${escapeHTML(module.id)}</span></li>
+                  <li aria-current="page"><span>Página ${escapeHTML(page.id)}</span></li>
+                </ol>
+              </nav>
+              <div class="module-progress">
+                <div class="module-progress__labels">
+                  <span>Progresso do módulo</span>
+                  <strong>${progress}%</strong>
+                </div>
+                <div class="module-progress__track" role="progressbar" aria-label="Progresso no Módulo ${escapeHTML(module.id)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}">
+                  <span style="--lesson-progress: ${progress}%"></span>
+                </div>
+                <p>Página ${escapeHTML(page.id)} de ${padId(totalPages)}</p>
               </div>
-            ` : ''}
+            </div>
 
-            <header class="lesson-container lesson-heading${page.headingSize === 'compact' ? ' lesson-heading--compact' : ''}" data-reveal>
-              <div class="lesson-heading__index" aria-hidden="true">${escapeHTML(page.id)}</div>
-              <div class="lesson-heading__copy">
-                <p class="lesson-unit">${escapeHTML(page.unit)}</p>
-                <h2 id="lesson-title">${escapeHTML(page.title)}</h2>
-                <span class="lesson-accent-line" aria-hidden="true"></span>
-              </div>
-            </header>
+            <article class="lesson-article" aria-labelledby="lesson-title">
+              ${leadBlocks.length ? `
+                <div class="lesson-container lesson-media-wrap">
+                  ${leadBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
+                </div>
+              ` : ''}
 
-            ${contentBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
-          </article>
+              <header class="lesson-container lesson-heading${page.headingSize === 'compact' ? ' lesson-heading--compact' : ''}" data-reveal>
+                <div class="lesson-heading__index" aria-hidden="true">${escapeHTML(page.id)}</div>
+                <div class="lesson-heading__copy">
+                  <p class="lesson-unit">${escapeHTML(page.unit)}</p>
+                  <h2 id="lesson-title">${escapeHTML(page.title)}</h2>
+                  <span class="lesson-accent-line" aria-hidden="true"></span>
+                </div>
+              </header>
 
-          ${renderPagination(module, currentIndex)}
-        </main>
+              ${contentBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
+            </article>
+          </main>
+        </div>
       </div>
     `;
   }
@@ -1290,6 +1312,7 @@
   let destroyHorizontalAccordions = () => {};
   let destroyTrueFalseActivities = () => {};
   let destroyMultipleChoiceActivities = () => {};
+  let destroyModuleSidebar = () => {};
 
   function initCarousel() {
     const carousel = document.querySelector('[data-carousel]');
@@ -1718,6 +1741,157 @@
     };
   }
 
+  function initModuleSidebar() {
+    const view = document.querySelector('[data-module-view]');
+    const sidebar = view?.querySelector('[data-module-sidebar]');
+    if (!view || !sidebar) return () => {};
+
+    const openButton = view.querySelector('[data-sidebar-open]');
+    const toggleButton = sidebar.querySelector('[data-sidebar-toggle]');
+    const toggleText = sidebar.querySelector('[data-sidebar-toggle-text]');
+    const closeButton = view.querySelector('[data-sidebar-close]');
+    const collapsibleRegions = [...sidebar.querySelectorAll('[data-sidebar-collapsible]')];
+    const mobileQuery = window.matchMedia('(max-width: 767px)');
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    const focusablesInside = (container) => [...container.querySelectorAll(focusableSelector)]
+      .filter((element) => !element.hidden && element.getAttribute('aria-hidden') !== 'true');
+
+    const setTabDisabled = (element, disabled) => {
+      if (disabled) {
+        if (!Object.prototype.hasOwnProperty.call(element.dataset, 'sidebarPrevTabindex')) {
+          element.dataset.sidebarPrevTabindex = element.getAttribute('tabindex') ?? 'none';
+        }
+        element.setAttribute('tabindex', '-1');
+        return;
+      }
+
+      const previous = element.dataset.sidebarPrevTabindex;
+      if (previous === undefined) return;
+      if (previous === 'none') element.removeAttribute('tabindex');
+      else element.setAttribute('tabindex', previous);
+      delete element.dataset.sidebarPrevTabindex;
+    };
+
+    const setRegionsHidden = (hidden) => {
+      collapsibleRegions.forEach((region) => region.setAttribute('aria-hidden', String(hidden)));
+      collapsibleRegions.flatMap(focusablesInside).forEach((element) => setTabDisabled(element, hidden));
+    };
+
+    const setSidebarInert = (inert) => {
+      sidebar.setAttribute('aria-hidden', String(inert));
+      if ('inert' in sidebar) sidebar.inert = inert;
+      focusablesInside(sidebar).forEach((element) => setTabDisabled(element, inert));
+    };
+
+    const setCollapsed = (collapsed, persist = true) => {
+      view.classList.toggle('is-sidebar-collapsed', collapsed);
+      toggleButton?.setAttribute('aria-expanded', String(!collapsed));
+      toggleButton?.setAttribute('aria-label', collapsed ? 'Abrir menu lateral do modulo' : 'Recolher menu lateral do modulo');
+      if (toggleText) toggleText.textContent = collapsed ? 'Abrir menu' : 'Recolher menu';
+      setRegionsHidden(collapsed);
+      if (persist) writeModuleSidebarPreference(collapsed);
+    };
+
+    const isMobileOpen = () => view.classList.contains('is-sidebar-mobile-open');
+
+    const syncMobileState = () => {
+      const open = isMobileOpen();
+      sidebar.setAttribute('aria-hidden', String(!open));
+      if ('inert' in sidebar) sidebar.inert = !open;
+      openButton?.setAttribute('aria-expanded', String(open));
+      toggleButton?.setAttribute('aria-expanded', String(open));
+      toggleButton?.setAttribute('aria-label', 'Fechar menu do modulo');
+      if (toggleText) toggleText.textContent = 'Fechar menu';
+      focusablesInside(sidebar).forEach((element) => setTabDisabled(element, !open));
+      document.documentElement.classList.toggle('is-module-nav-modal-open', open);
+    };
+
+    const syncLayoutMode = () => {
+      if (mobileQuery.matches) {
+        view.classList.remove('is-sidebar-collapsed');
+        syncMobileState();
+        return;
+      }
+
+      view.classList.remove('is-sidebar-mobile-open');
+      document.documentElement.classList.remove('is-module-nav-modal-open');
+      setSidebarInert(false);
+      setCollapsed(readModuleSidebarPreference(), false);
+      openButton?.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMobile = () => {
+      view.classList.add('is-sidebar-mobile-open');
+      syncMobileState();
+      requestAnimationFrame(() => toggleButton?.focus({ preventScroll: true }));
+    };
+
+    const closeMobile = (restoreFocus = false) => {
+      view.classList.remove('is-sidebar-mobile-open');
+      syncMobileState();
+      if (restoreFocus) openButton?.focus({ preventScroll: true });
+    };
+
+    toggleButton?.addEventListener('click', () => {
+      if (mobileQuery.matches) {
+        closeMobile(true);
+        return;
+      }
+      setCollapsed(!view.classList.contains('is-sidebar-collapsed'));
+    }, { signal });
+
+    openButton?.addEventListener('click', openMobile, { signal });
+    closeButton?.addEventListener('click', () => closeMobile(true), { signal });
+
+    sidebar.querySelectorAll('a[href]').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (mobileQuery.matches) closeMobile(false);
+      }, { signal });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!mobileQuery.matches || !isMobileOpen()) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMobile(true);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+
+      const drawerFocusables = focusablesInside(sidebar);
+      if (!drawerFocusables.length) return;
+      const first = drawerFocusables[0];
+      const last = drawerFocusables[drawerFocusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }, { signal });
+
+    mobileQuery.addEventListener?.('change', syncLayoutMode, { signal });
+    syncLayoutMode();
+
+    return () => {
+      controller.abort();
+      document.documentElement.classList.remove('is-module-nav-modal-open');
+      if ('inert' in sidebar) sidebar.inert = false;
+    };
+  }
+
   function setModuleBanner() {
     const hero = document.querySelector('[data-module-hero]');
     if (!hero) return;
@@ -1754,6 +1928,7 @@
     destroyHorizontalAccordions();
     destroyTrueFalseActivities();
     destroyMultipleChoiceActivities();
+    destroyModuleSidebar();
 
     if (route.name === 'home') {
       template = homeTemplate();
@@ -1825,6 +2000,7 @@
     destroyHorizontalAccordions = initHorizontalAccordions();
     destroyTrueFalseActivities = initTrueFalseActivities();
     destroyMultipleChoiceActivities = initMultipleChoiceActivities();
+    destroyModuleSidebar = initModuleSidebar();
 
     routePositionFrame = requestAnimationFrame(() => {
       if (shouldPositionRoute) positionRoute();
