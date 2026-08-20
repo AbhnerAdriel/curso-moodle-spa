@@ -1187,6 +1187,46 @@
     `;
   }
 
+  function renderMobilePageNavigation(module, currentIndex) {
+    const previousPage = module.pages[currentIndex - 1];
+    const nextPage = module.pages[currentIndex + 1];
+    const renderControl = (page, direction) => {
+      const isNext = direction === 'next';
+      const label = isNext ? 'Avan&ccedil;ar' : 'Retornar';
+      const iconName = isNext ? 'arrowRight' : 'arrowLeft';
+      const ariaLabel = isNext ? 'Ir para a pr&oacute;xima p&aacute;gina' : 'Retornar para a p&aacute;gina anterior';
+      const className = `module-mobile-pagination__control${isNext ? ' module-mobile-pagination__control--next' : ''}`;
+
+      if (!page) {
+        return `
+          <button class="${className} is-disabled" type="button" disabled aria-disabled="true">
+            ${icon(iconName)}
+            <span>${label}</span>
+          </button>
+        `;
+      }
+
+      return `
+        <a
+          class="${className}"
+          href="${moduleRoute(module.id, page.id)}"
+          rel="${isNext ? 'next' : 'prev'}"
+          aria-label="${ariaLabel}: ${escapeHTML(page.title)}"
+        >
+          ${icon(iconName)}
+          <span>${label}</span>
+        </a>
+      `;
+    };
+
+    return `
+      <nav class="module-mobile-pagination" aria-label="Navega&ccedil;&atilde;o entre p&aacute;ginas do m&oacute;dulo">
+        ${renderControl(previousPage, 'previous')}
+        ${renderControl(nextPage, 'next')}
+      </nav>
+    `;
+  }
+
   function modulePageTemplate(module, page, currentIndex) {
     const totalPages = module.pages.length;
     const progress = Math.round(((currentIndex + 1) / totalPages) * 100);
@@ -1246,6 +1286,7 @@
               </header>
 
               ${contentBlocks.map(({ block, index }) => renderContentBlock(block, module.id, page.id, index)).join('')}
+              ${renderMobilePageNavigation(module, currentIndex)}
             </article>
           </main>
         </div>
