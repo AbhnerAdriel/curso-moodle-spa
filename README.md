@@ -5,8 +5,8 @@ Projeto front-end em HTML, CSS e JavaScript puro, sem dependências de runtime o
 ## Estrutura
 
 - `index.html` — shell único e acessível da SPA.
-- `styles.css` — identidade visual e componentes da Home.
-- `module.css` — banner, conteudo educacional, accordions e navegacao lateral dos modulos.
+- `assets/css/styles.css` — identidade visual e componentes da Home.
+- `assets/css/module.css` — banner, conteudo educacional, accordions e navegacao lateral dos modulos.
 - `app.js` — templates, roteamento por hash, estados de rota e interações.
 - `data/course-content.js` — registro central dos módulos, páginas e blocos de conteúdo.
 - `assets/` — imagens otimizadas usadas pela Home e pelos módulos.
