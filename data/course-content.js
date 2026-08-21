@@ -57,6 +57,15 @@
                 ]
               },
               {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                icon: 'book',
+                statements: [
+                  'O Decreto nº 12.456/2025 é o marco regulatório vigente da EaD nos cursos de graduação.',
+                  'O Decreto nº 9.057/2017 foi revogado e deve ser tratado apenas como marco histórico.'
+                ]
+              },
+              {
                 type: 'accordionGroup',
                 label: 'Objetivos da unidade',
                 items: [
@@ -92,6 +101,11 @@
             title: 'Expandir o acesso e preservar a qualidade',
             blocks: [
               {
+                type: 'contentImage',
+                src: 'assets/imagem-pagina02-mod01.webp',
+                alt: 'Ilustração de estudantes, polo e equipe conectados pelas práticas da Educação a Distância.'
+              },
+              {
                 type: 'scenario',
                 paragraphs: [
                   'Uma licenciatura ofertada pela UAB/UFPE atende estudantes de diferentes municípios. Alguns residem longe do polo, conciliam os estudos com o trabalho e dependem do ambiente virtual para acompanhar as atividades.',
@@ -100,8 +114,17 @@
                 ]
               },
               {
+                type: 'attentionNotice',
+                label: 'Atenção',
+                icon: 'attention',
+                paragraphs: [
+                  '"O Decreto nº 9.057/2017 ainda é a norma vigente" é um equívoco comum. Ele foi revogado pelo Decreto nº 12.456/2025, que é hoje o marco regulatório da EaD na graduação.'
+                ]
+              },
+              {
                 type: 'stickyStack',
                 heading: 'Para refletir',
+                showCount: false,
                 items: [
                   {
                     id: 'regulacao',
@@ -130,31 +153,6 @@
             title: 'Educação a Distância: conceitos e características',
             blocks: [
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar:',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
-                volumes: [
-                  {
-                    id: 'volume-1',
-                    title: 'Volume 1',
-                    entries: [
-                      {
-                        pages: '4',
-                        content: 'Apresentação e contextualização histórica da EaD.'
-                      },
-                      {
-                        pages: '5–6',
-                        content: 'Conceituação da EaD e elementos que caracterizam a modalidade.'
-                      },
-                      {
-                        pages: '7–8',
-                        content: 'Contribuições de Moore e Chaves: diálogo, estrutura, autonomia e mediação.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'conceptIntro',
                 heading: 'Educação a Distância',
                 paragraphs: [
@@ -162,6 +160,25 @@
                   'A modalidade combina tecnologias de informação e comunicação, flexibilidade de tempos e espaços, autonomia do estudante, planejamento, acompanhamento e mediação pedagógica. Nenhum desses elementos, isoladamente, define a EaD. O que a caracteriza é a articulação entre eles dentro de uma proposta pedagógica organizada.',
                   'Moore destaca três dimensões: diálogo, estrutura e autonomia. Quanto maior a distância transacional entre estudantes e professores, maior é a necessidade de planejamento, comunicação e acompanhamento. Chaves, por sua vez, chama atenção para a função das tecnologias como meios de comunicação pedagógica, e não como finalidade do processo educativo.'
                 ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'concept',
+                label: 'Conceito-chave',
+                icon: 'autonomy',
+                paragraphs: [
+                  'Diálogo, estrutura e autonomia (Moore) e tecnologia como meio, não como finalidade (Chaves) - conceitos-base para compreender a EaD como forma própria de organizar o ensino e a aprendizagem.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'ebook',
+                label: 'Por dentro do e-book',
+                icon: 'book',
+                paragraphs: [
+                  'Segundo Moore, "a educação a distância não é simplesmente uma separação geográfica entre estudantes e professores, mas, sobretudo, um conceito pedagógico" (MOORE, 1993, p. 22, tradução nossa). A tecnologia, sozinha, não produz aprendizagem: ela cria as condições para que os processos educativos aconteçam - o elemento central continua sendo a organização pedagógica e a mediação feita pelas pessoas envolvidas.'
+                ],
+                source: 'UFPE/SPREAD. Volume 1 - Educação a Distância no Cenário Brasileiro, cap. 2, p. 7.'
               },
               {
                 type: 'horizontalAccordion',
@@ -214,12 +231,13 @@
                 ]
               },
               {
-                type: 'video',
-                layout: 'section',
-                title: 'Educação a Distância: conceitos e características',
-                description: 'Aprofundamento em vídeo',
-                provider: 'Eduplay',
-                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464645'
+                type: 'knowledgeNote',
+                variant: 'practice',
+                label: 'Na prática',
+                icon: 'presence',
+                paragraphs: [
+                  'Os momentos presenciais previstos na organização do curso e na legislação costumam acontecer na instituição ou nos polos de apoio, e exigem interação presencial, infraestrutura específica ou acompanhamento direto.'
+                ]
               },
               {
                 type: 'trueFalse',
@@ -239,39 +257,6 @@
             headingSize: 'compact',
             blocks: [
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa.',
-                volumes: [
-                  {
-                    id: 'volume-1',
-                    title: 'Volume 1',
-                    entries: [
-                      {
-                        pages: '9',
-                        content: 'Primeiras experiências brasileiras de ensino por correspondência.'
-                      },
-                      {
-                        pages: '10-11',
-                        content: 'Rádio, televisão educativa, MEB e teleducação.'
-                      },
-                      {
-                        pages: '12-13',
-                        content: 'LDB e reconhecimento jurídico da EaD.'
-                      },
-                      {
-                        pages: '14-15',
-                        content: 'Sistema UAB, rede de cooperação e polos de apoio presencial.'
-                      },
-                      {
-                        pages: '16',
-                        content: 'Democratização do acesso, interiorização e equidade territorial.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'splitNarrative',
                 accessibleHeading: 'Contextualização histórica da Educação a Distância no Brasil',
                 lead: 'As primeiras experiências brasileiras de Educação a Distância remontam ao início do século XX e estavam ligadas, sobretudo, à formação profissional por correspondência. Em um país marcado por desigualdades educacionais e limitações de infraestrutura, os materiais enviados pelo correio permitiram levar oportunidades de formação a pessoas que não tinham acesso à escola formal.',
@@ -280,6 +265,65 @@
                   'Em 1996, o art. 80 da Lei de Diretrizes e Bases reconheceu juridicamente a Educação a Distância e atribuiu ao poder público a responsabilidade de regulamentar a oferta, o credenciamento, a avaliação e a emissão de diplomas.',
                   'Em 2006, foi instituído o Sistema Universidade Aberta do Brasil. A UAB não é uma universidade autônoma, mas uma rede de cooperação que reúne a União, a CAPES, estados, municípios e instituições públicas de ensino superior. As instituições ofertam os cursos e certificam os estudantes; a CAPES coordena a política e financia bolsas; estados e municípios colaboram com a manutenção dos polos.',
                   'Os polos funcionam como pontos de conexão entre as universidades públicas e os territórios. Neles ocorrem avaliações presenciais, atividades práticas, orientações acadêmicas e suporte administrativo e tecnológico. Essa organização contribui para interiorizar a educação superior e reduzir barreiras geográficas.'
+                ],
+                inlineNotes: [
+                  {
+                    afterParagraph: 0,
+                    variant: 'ebook',
+                    label: 'Por dentro do e-book',
+                    icon: 'book',
+                    paragraphs: [
+                      'Na década de 1930, o rádio passou a ser usado como instrumento educacional, com destaque para a Rádio Sociedade do Rio de Janeiro, depois incorporada ao Ministério da Educação. Nas décadas seguintes, surgiram o Instituto Radiotécnico Monitor e o Instituto Universal Brasileiro (anos 1940) e o Movimento de Educação de Base - MEB (1959), voltado a jovens e adultos de regiões rurais e periferias urbanas. Já na década de 1970, os telecursos e a teleducação levaram à criação do Sistema Nacional de Teleducação, em 1976.'
+                    ],
+                    source: 'UFPE/SPREAD. Volume 1, cap. 4, p. 10.'
+                  },
+                  {
+                    type: 'regulatoryNotice',
+                    afterParagraph: 1,
+                    label: 'Olho na norma',
+                    icon: 'book',
+                    statements: [
+                      'Art. 80 da LDB (Lei nº 9.394/1996): reconhecimento jurídico da EaD e atribuição ao poder público da responsabilidade de regulamentar oferta, credenciamento, avaliação e emissão de diplomas.'
+                    ]
+                  },
+                  {
+                    afterParagraph: 1,
+                    variant: 'ebook',
+                    label: 'Por dentro do e-book',
+                    icon: 'book',
+                    paragraphs: [
+                      '"O Poder Público incentivará o desenvolvimento e a veiculação de programas de ensino a distância, em todos os níveis e modalidades de ensino, e de educação continuada" (BRASIL, 1996, art. 80, caput). Os parágrafos do artigo já traziam regras específicas: credenciamento das instituições ofertantes (§1º), regulamentação de exames e diplomas (§2º) e controle pelos respectivos sistemas de ensino (§3º). No mesmo período, em 1995, nasce a Associação Brasileira de Educação a Distância (ABED) - antes mesmo da própria LDB.'
+                    ],
+                    source: 'UFPE/SPREAD. Volume 1, cap. 5, p. 12.'
+                  },
+                  {
+                    type: 'regulatoryNotice',
+                    afterParagraph: 2,
+                    label: 'Olho na norma',
+                    icon: 'book',
+                    statements: [
+                      'Decreto nº 5.800/2006: institui o Sistema Universidade Aberta do Brasil (UAB), rede de cooperação entre União, CAPES, estados, municípios e instituições públicas de ensino superior.'
+                    ]
+                  },
+                  {
+                    afterParagraph: 2,
+                    variant: 'ebook',
+                    label: 'Por dentro do e-book',
+                    icon: 'book',
+                    paragraphs: [
+                      'Segundo dados da CAPES (2024), o Sistema UAB reúne, hoje, cerca de 150 Instituições Públicas de Ensino Superior, aproximadamente 1.000 polos de apoio presencial espalhados pelo país, 919 cursos ativos e cerca de 126,6 mil estudantes matriculados - uma das maiores iniciativas de educação superior a distância desenvolvidas por universidades públicas em todo o mundo.'
+                    ],
+                    source: 'UFPE/SPREAD. Volume 1, cap. 6, p. 14.'
+                  },
+                  {
+                    type: 'comparisonPrompt',
+                    afterParagraph: 3,
+                    label: 'Compare',
+                    icon: 'flexibility',
+                    paragraphs: [
+                      'Compare as diferentes fases da trajetória da EaD, cada uma marcada por uma tecnologia ou norma predominante: correspondência, rádio, TV educativa, LDB (1996), ambientes virtuais de aprendizagem, UAB (2006) e o novo marco regulatório (Decreto nº 12.456/2025).'
+                    ]
+                  }
                 ]
               },
               {
@@ -335,57 +379,54 @@
             headingSize: 'compact',
             blocks: [
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
-                volumes: [
-                  {
-                    id: 'volume-1',
-                    title: 'Volume 1',
-                    entries: [
-                      {
-                        pages: '17–19',
-                        content: 'Expansão das matrículas, dados do Censo e tensão entre expansão e qualidade.'
-                      },
-                      {
-                        pages: '20',
-                        content: 'Síntese da trajetória histórica e transição para a regulação.'
-                      }
-                    ]
-                  },
-                  {
-                    id: 'volume-2',
-                    title: 'Volume 2',
-                    entries: [
-                      {
-                        pages: '4–11',
-                        content: 'Trajetória normativa: LDB, decretos anteriores, qualidade e polos.'
-                      },
-                      {
-                        pages: '12',
-                        content: 'Introdução ao Decreto nº 12.456/2025 e novos conceitos operacionais.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'regulationContext',
                 heading: 'Expansão, qualidade e regulação',
+                showHeading: false,
                 paragraphs: [
                   'A Educação a Distância passou por um forte processo de expansão na educação superior brasileira. Esse crescimento ampliou oportunidades, reduziu barreiras geográficas e permitiu que mais estudantes chegassem à graduação. Ao mesmo tempo, tornou mais visíveis questões relacionadas à qualidade dos cursos, à infraestrutura, à avaliação e ao acompanhamento pedagógico.',
                   'A regulação da EaD não foi criada de uma só vez. Ela foi sendo construída à medida que novas tecnologias, novos modelos pedagógicos e novos desafios surgiam. O art. 80 da LDB reconheceu a modalidade; os decretos posteriores modificaram as formas de compreender a autoaprendizagem, a mediação, as condições institucionais e a presencialidade.',
                   'O Decreto nº 9.057/2017 representou uma etapa importante dessa trajetória, com destaque para a qualificação das equipes, as políticas de acesso, o acompanhamento estudantil, a avaliação e a organização institucional. Contudo, essa norma foi revogada pelo Decreto nº 12.456/2025.',
                   'O novo decreto passou a organizar os cursos de graduação nos formatos presencial, semipresencial e a distância, além de estabelecer novos conceitos, percentuais de presencialidade, requisitos de mediação, avaliação e infraestrutura. Esses conteúdos são aprofundados nos eixos e módulos seguintes.'
+                ],
+                inlineNotes: [
+                  {
+                    type: 'dataFocus',
+                    afterParagraph: 0,
+                    label: 'Dados em foco',
+                    icon: 'tracking',
+                    paragraphs: [
+                      'Consulte no Volume 1 (p. 17-19) os dados do Censo da Educação Superior sobre a expansão das matrículas em EaD e a tensão entre expansão e qualidade acadêmica.'
+                    ]
+                  },
+                  {
+                    afterParagraph: 0,
+                    variant: 'ebook',
+                    label: 'Por dentro do e-book',
+                    icon: 'book',
+                    paragraphs: [
+                      'Entre 2014 e 2024, as matrículas de graduação em EaD saltaram de 1,27 milhão para 4,91 milhões — um crescimento acumulado de 286,7% em uma década. Em 2024, pela primeira vez na história do país, a EaD superou a presencial, respondendo por 50,7% de todas as matrículas da educação superior brasileira. Desse total, 95,9% das matrículas em EaD estavam vinculadas à rede privada.'
+                    ],
+                    source: 'UFPE/SPREAD. Volume 1, cap. 8, p. 17-18 (dados do Censo da Educação Superior 2024).'
+                  },
+                  {
+                    type: 'regulatoryNotice',
+                    afterParagraph: 2,
+                    label: 'Olho na norma',
+                    icon: 'book',
+                    statements: [
+                      'Decretos nº 2.494/1998, 5.622/2005 e 9.057/2017 — todos revogados. Decreto nº 12.456/2025 — marco regulatório vigente para a EaD nos cursos de graduação.'
+                    ]
+                  },
+                  {
+                    type: 'comparisonPrompt',
+                    afterParagraph: 3,
+                    label: 'Compare',
+                    icon: 'flexibility',
+                    paragraphs: [
+                      'Compare, no infográfico a seguir, os decretos revogados (2.494/1998, 5.622/2005, 9.057/2017) com o Decreto nº 12.456/2025, atualmente vigente.'
+                    ]
+                  }
                 ]
-              },
-              {
-                type: 'video',
-                layout: 'section',
-                title: 'Como a EaD dominou o ensino superior',
-                description: 'Expansão da Educação a Distância na educação superior brasileira',
-                provider: 'Eduplay',
-                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464647'
               },
               {
                 type: 'regulationComparison',
@@ -468,6 +509,13 @@
               },
               {
                 type: 'summary',
+                summaryNote: {
+                  label: 'Em resumo',
+                  icon: 'layers',
+                  paragraphs: [
+                    'A Unidade 1 mostrou que a EaD tem uma trajetória histórica anterior à internet, que o Sistema UAB é central para a democratização do acesso, e que o Decreto nº 9.057/2017 foi revogado pelo Decreto nº 12.456/2025 - hoje o marco regulatório vigente.'
+                  ]
+                },
                 eyebrow: 'Fechamento do capítulo',
                 heading: 'Em síntese',
                 items: [
@@ -508,6 +556,26 @@
                   'O art. 3º do Decreto nº 12.456/2025 reúne um conjunto de definições que funcionam como o vocabulário comum de todo o novo marco regulatório. Sem compreender o que caracteriza uma atividade presencial, uma atividade síncrona, uma atividade síncrona mediada e uma atividade assíncrona, torna-se difícil interpretar corretamente os percentuais de presencialidade, os projetos pedagógicos dos cursos e as próprias atribuições da equipe. O mesmo vale para os papéis profissionais: o Decreto distingue com clareza as atribuições do tutor das atribuições do mediador pedagógico, e essa distinção tem consequências diretas sobre o que cada integrante da equipe pode e deve fazer.',
                   'Este eixo também apresenta o conceito de Polo de Educação a Distância (Polo EaD), a unidade descentralizada por meio da qual a instituição de educação superior aproxima sua oferta dos territórios. Compreender o que é o Polo EaD, mesmo antes de aprofundar sua infraestrutura e seus percentuais de uso, ajuda o tutor a situar seu próprio trabalho dentro da estrutura da UAB/UFPE.',
                   'Ao final deste eixo, o participante será capaz de reconhecer, em situações concretas de tutoria, qual tipo de atividade está em curso e qual profissional é responsável por conduzi-la — competência que serve de base para os eixos e módulos seguintes.'
+                ],
+                inlineNotes: [
+                  {
+                    afterParagraph: 1,
+                    variant: 'concept',
+                    label: 'Conceito-chave',
+                    icon: 'book',
+                    paragraphs: [
+                      'Art. 3º do Decreto nº 12.456/2025: vocabulário comum do novo marco — atividade presencial, síncrona, síncrona mediada e assíncrona, além das atribuições de tutor e mediador pedagógico.'
+                    ]
+                  },
+                  {
+                    afterParagraph: 2,
+                    variant: 'tutoring',
+                    label: 'Conexão com a tutoria',
+                    icon: 'mediation',
+                    paragraphs: [
+                      'Compreender o Polo EaD ajuda o tutor a situar seu próprio trabalho dentro da estrutura da UAB/UFPE.'
+                    ]
+                  }
                 ]
               },
               {
@@ -585,23 +653,6 @@
                 heading: 'Os formatos de atividade pedagógica no novo marco regulatório'
               },
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
-                volumes: [
-                  {
-                    id: 'volume-2',
-                    title: 'Volume 2',
-                    entries: [
-                      {
-                        pages: '12–14',
-                        content: 'Cap. 8 — o novo marco regulatório: definições do art. 3º relativas à atividade presencial, síncrona e assíncrona.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'narrative',
                 surface: 'white',
                 heading: 'Definições que estruturam a oferta',
@@ -610,6 +661,26 @@
                   'A atividade presencial (inciso II) é aquela realizada no mesmo espaço e ao mesmo tempo: professores e estudantes compartilham fisicamente o mesmo ambiente, seja na sede da instituição, em campus fora de sede ou no Polo EaD.',
                   'A atividade síncrona (inciso III) ocorre por áudio e/ou vídeo, com professores e estudantes em lugares diversos, mas em tempo coincidente. Já a atividade assíncrona (inciso V) ocorre em lugares e tempos diversos, permitindo que o estudante acesse fóruns, videoaulas gravadas e materiais do ambiente virtual de acordo com sua própria disponibilidade.',
                   'Entre a atividade síncrona simples e a atividade assíncrona existe ainda uma categoria intermediária e especialmente relevante para a tutoria: a atividade síncrona mediada, prevista no inciso IV do art. 3º.'
+                ],
+                inlineNotes: [
+                  {
+                    type: 'regulatoryNotice',
+                    afterParagraph: 0,
+                    label: 'Olho na norma',
+                    icon: 'book',
+                    statements: [
+                      'Art. 3º, incisos II, III e V do Decreto nº 12.456/2025: definem, respectivamente, atividade presencial, síncrona e assíncrona.'
+                    ]
+                  },
+                  {
+                    afterParagraph: 3,
+                    variant: 'tutoring',
+                    label: 'Conexão com a tutoria',
+                    icon: 'mediation',
+                    paragraphs: [
+                      'Distinguir corretamente cada tipo de atividade é o que permite ao tutor situar sua atuação dentro dos limites definidos pelo Decreto nº 12.456/2025.'
+                    ]
+                  }
                 ]
               },
               {
@@ -662,33 +733,6 @@
             headingSize: 'compact',
             blocks: [
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
-                volumes: [
-                  {
-                    id: 'volume-2',
-                    title: 'Volume 2',
-                    entries: [
-                      {
-                        pages: '12–14',
-                        content: 'Cap. 8 — a atividade síncrona mediada (art. 3º, IV): grupo de até 70 estudantes por docente ou mediador, com controle de frequência.'
-                      }
-                    ]
-                  },
-                  {
-                    id: 'guia-orientador-spread-uab-ufpe',
-                    title: 'Guia Orientador SPREAD/UAB-UFPE',
-                    entries: [
-                      {
-                        pages: '—',
-                        content: 'Definição complementar, meios de registro de frequência e exemplos práticos de aplicação.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'mediatedActivityFocus',
                 eyebrow: 'Conceito em foco',
                 heading: 'Três condições simultâneas',
@@ -707,9 +751,28 @@
                     description: 'A participação de cada estudante precisa ser registrada.'
                   }
                 ],
+                conceptNote: {
+                  variant: 'concept',
+                  label: 'Conceito-chave',
+                  icon: 'activity',
+                  paragraphs: [
+                    'Atividade síncrona mediada (art. 3º, IV): tempo real + grupo de até 70 estudantes por docente ou mediador + controle de frequência obrigatório — os três elementos precisam estar presentes simultaneamente.'
+                  ]
+                },
                 paragraphs: [
                   'O limite de até 70 estudantes por docente ou mediador existe para assegurar que a interação em tempo real tenha condições reais de acompanhamento pedagógico. Uma sessão ao vivo com centenas de participantes, sem controle individualizado de frequência, é uma atividade síncrona, mas não pode ser classificada como atividade síncrona mediada.',
                   'O controle de frequência deve ser realizado por meio de tecnologias digitais de rastreabilidade, identificação do estudante, plataformas de ambiente virtual de aprendizagem integradas ou interação síncrona monitorada.'
+                ],
+                inlineNotes: [
+                  {
+                    type: 'dataFocus',
+                    afterParagraph: 0,
+                    label: 'Dados em foco',
+                    icon: 'tracking',
+                    paragraphs: [
+                      'Limite: até 70 estudantes por docente ou mediador — elemento obrigatório, junto ao tempo real e ao controle de frequência, para caracterizar a atividade síncrona mediada (art. 3º, IV).'
+                    ]
+                  }
                 ],
                 practiceHeading: 'Possibilidades de aplicação',
                 practiceIntroduction: 'O Guia Orientador da UFPE apresenta exemplos práticos:',
@@ -720,7 +783,15 @@
                   'debates sobre práticas em laboratórios virtuais;',
                   'aplicação de pré-testes e pós-testes.'
                 ],
-                practiceConclusion: 'Segundo o Guia, esse tipo de atividade é conduzido pelo professor regente ou pelo mediador pedagógico.'
+                practiceConclusion: 'Segundo o Guia, esse tipo de atividade é conduzido pelo professor regente ou pelo mediador pedagógico.',
+                practiceNote: {
+                  variant: 'practice',
+                  label: 'Na prática',
+                  icon: 'presence',
+                  paragraphs: [
+                    'O Guia Orientador da UFPE (BARBOSA, 2025) traz exemplos práticos de atividade síncrona mediada: discussões críticas, seminários colaborativos, resolução de problemas em grupo, mentorias em tempo real, debates em laboratórios virtuais e pré/pós-testes.'
+                  ]
+                }
               },
               {
                 type: 'trueFalse',
@@ -740,35 +811,57 @@
             headingSize: 'compact',
             blocks: [
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa. Clique em cada volume para visualizar as páginas e os temas correspondentes.',
-                volumes: [
-                  {
-                    id: 'volume-2',
-                    title: 'Volume 2',
-                    entries: [
-                      {
-                        pages: '12–14',
-                        content: 'Cap. 8 — corpo docente e mediação pedagógica (arts. 17 a 22): coordenador de curso, professor regente, professor conteudista, mediador pedagógico e tutor; definição de Polo EaD (art. 3º, VI).'
-                      },
-                      {
-                        pages: '20–21',
-                        content: 'Cap. 11 — desafios e perspectivas para a tutoria em EaD sob o novo marco regulatório.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'professionalRoles',
                 eyebrow: 'Organização da equipe',
                 heading: 'Papéis distintos, trabalho articulado',
+                conceptNote: {
+                  variant: 'concept',
+                  label: 'Conceito-chave',
+                  icon: 'mediation',
+                  paragraphs: [
+                    'Este capítulo esclarece qual profissional é responsável por cada atividade — coordenador, professor regente, professor conteudista, mediador pedagógico e tutor — segundo os arts. 17 a 22 do Decreto nº 12.456/2025.'
+                  ]
+                },
                 introduction: 'O Capítulo III, Seção I, do Decreto nº 12.456/2025 (arts. 17 a 22) organiza o corpo docente e a mediação pedagógica dos cursos de graduação. O corpo docente é composto pelo coordenador de curso, pelo professor regente e pelo professor conteudista (art. 18). Ao lado do corpo docente, o Decreto prevê a figura do mediador pedagógico, que auxilia essa equipe e deve possuir formação acadêmica compatível com a função exercida (art. 19).',
+                regulatoryNotice: {
+                  label: 'Olho na norma',
+                  icon: 'book',
+                  statements: [
+                    'Art. 18: corpo docente (coordenador de curso, professor regente e professor conteudista).',
+                    'Art. 19: mediador pedagógico, com formação acadêmica compatível com a função.'
+                  ]
+                },
                 paragraphs: [
                   'O tutor é tratado pelo art. 21: ele pode auxiliar a equipe com atribuições administrativas, expressamente distintas das funções de mediação pedagógica. O Guia Orientador da UFPE caracteriza o tutor, institucionalmente, como o profissional que atua com atribuições pedagógicas e administrativas, sempre sob supervisão docente. Essa leitura situa sua atuação como apoio à equipe, dentro de um trabalho supervisionado, e não como condução autônoma da mediação pedagógica.',
                   'É o professor regente ou o mediador pedagógico, e não o tutor isoladamente, quem conduz a mediação didático-pedagógica das unidades curriculares, incluindo as atividades síncronas mediadas. Tanto tutores quanto mediadores pedagógicos devem constar no Censo da Educação Superior (art. 22).'
                 ],
+                inlineNotes: [
+                  {
+                    type: 'regulatoryNotice',
+                    afterParagraph: 0,
+                    label: 'Olho na norma',
+                    icon: 'book',
+                    statements: [
+                      'Art. 21: o tutor pode auxiliar a equipe com atribuições administrativas. O Guia Orientador da UFPE caracteriza o tutor como o profissional que atua com atribuições pedagógicas e administrativas, sempre sob supervisão docente — em conformidade com o Decreto.'
+                    ]
+                  },
+                  {
+                    afterParagraph: 0,
+                    variant: 'tutoring',
+                    label: 'Conexão com a tutoria',
+                    icon: 'mediation',
+                    paragraphs: [
+                      'É justamente a distinção entre atribuições administrativas (tutor) e mediação pedagógica (professor regente/mediador pedagógico) que define, na prática, até onde vai a atuação do tutor em cada atividade do curso.'
+                    ]
+                  }
+                ],
+                comparisonPrompt: {
+                  label: 'Compare',
+                  icon: 'flexibility',
+                  paragraphs: [
+                    'O quadro a seguir compara diretamente as atribuições de tutor e mediador pedagógico quanto à natureza das atribuições, formação exigida, mediação didático-pedagógica e registro institucional.'
+                  ]
+                },
                 comparisonHeading: 'Tutor × mediador pedagógico',
                 comparisonIntroduction: 'Compare a natureza das atribuições, a formação exigida e os limites de atuação de cada função.',
                 roles: [
@@ -812,7 +905,15 @@
                   }
                 ],
                 poloHeading: 'Polo EaD',
-                poloText: 'O Polo de Educação a Distância é definido pelo art. 3º, inciso VI, como uma unidade descentralizada da instituição de educação superior. É nele que, com frequência, tutores e mediadores atuam junto aos estudantes, e para ele convergem muitas das atividades presenciais e síncronas mediadas realizadas fora da sede.'
+                poloText: 'O Polo de Educação a Distância é definido pelo art. 3º, inciso VI, como uma unidade descentralizada da instituição de educação superior. É nele que, com frequência, tutores e mediadores atuam junto aos estudantes, e para ele convergem muitas das atividades presenciais e síncronas mediadas realizadas fora da sede.',
+                poloNote: {
+                  variant: 'concept',
+                  label: 'Conceito-chave',
+                  icon: 'spatial',
+                  paragraphs: [
+                    'Polo EaD (art. 3º, VI): unidade descentralizada da instituição de educação superior, onde convergem atividades presenciais e síncronas mediadas realizadas fora da sede.'
+                  ]
+                }
               },
               {
                 type: 'trueFalse',
@@ -856,6 +957,13 @@
               },
               {
                 type: 'summary',
+                summaryNote: {
+                  label: 'Em resumo',
+                  icon: 'layers',
+                  paragraphs: [
+                    'A Unidade 2 esclareceu o vocabulário do art. 3º do Decreto nº 12.456/2025 (atividade presencial, síncrona, síncrona mediada e assíncrona) e distinguiu as atribuições do tutor das do mediador pedagógico, além de apresentar o conceito de Polo EaD.'
+                  ]
+                },
                 eyebrow: 'Fechamento do capítulo',
                 heading: 'Em síntese',
                 items: [
@@ -879,6 +987,7 @@
             blocks: [
               {
                 type: 'references',
+                showCount: false,
                 eyebrow: 'Base documental',
                 heading: 'Fontes que sustentam este módulo',
                 introduction: 'Reunimos aqui as normas, os materiais institucionais e o guia orientador utilizados na construção dos conteúdos deste módulo.',

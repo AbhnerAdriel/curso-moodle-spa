@@ -63,7 +63,8 @@
       mediation: `${open}<path d="M4 8h27v21H15l-8 7v-7H4Z"/><path d="M20 20h24v18h-7v6l-7-6H20v-9M10 15h15M10 21h9"/></svg>`,
       tracking: `${open}<path d="M6 40V8M6 40h36"/><path d="m11 33 8-9 7 5 12-15M33 14h5v5"/><circle cx="19" cy="24" r="2"/><circle cx="26" cy="29" r="2"/></svg>`,
       presence: `${open}<circle cx="18" cy="15" r="6"/><circle cx="34" cy="18" r="5"/><path d="M6 41v-5c0-7 5-12 12-12s12 5 12 12v5M29 27c1.5-.7 3.2-1 5-1 6 0 10 4 10 10v5H30"/></svg>`,
-      questions: `${open}<rect x="5" y="5" width="38" height="38"/><path d="M16 18c0-5.5 3.4-9 8.7-9 5 0 8.5 3.2 8.5 7.7 0 6.5-8.2 7.2-8.2 13.1"/><path d="M25 38h.01"/></svg>`
+      questions: `${open}<rect x="5" y="5" width="38" height="38"/><path d="M16 18c0-5.5 3.4-9 8.7-9 5 0 8.5 3.2 8.5 7.7 0 6.5-8.2 7.2-8.2 13.1"/><path d="M25 38h.01"/></svg>`,
+      attention: `${open}<path d="M24 5 44 41H4Z"/><path d="M24 17v12M24 35h.01"/></svg>`
     };
     return icons[name] || icons.book;
   };
@@ -250,8 +251,21 @@
     `;
   }
 
+  function renderContentImageBlock(block) {
+    const source = String(block.src || '').trim();
+    if (!source) return '';
+
+    return `
+      <figure class="lesson-content-image lesson-container" data-reveal>
+        <img src="${escapeHTML(source)}" alt="${escapeHTML(block.alt || '')}" loading="lazy" decoding="async" />
+      </figure>
+    `;
+  }
+
   function renderNarrativeBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `presentation-${moduleId}-${pageId}-${blockIndex}`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const inlineNotes = Array.isArray(block.inlineNotes) ? block.inlineNotes : [];
     return `
       <section class="lesson-narrative${block.surface === 'white' ? ' lesson-narrative--white' : ''}" aria-labelledby="${headingId}">
         <div class="lesson-container lesson-narrative__grid">
@@ -260,11 +274,51 @@
             <span class="lesson-accent-line" aria-hidden="true"></span>
           </header>
           <div class="lesson-prose" data-reveal>
-            ${block.paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            ${paragraphs.map((paragraph, index) => `<p>${escapeHTML(paragraph)}</p>${renderInlineKnowledgeNotes(inlineNotes, moduleId, pageId, blockIndex, index)}`).join('')}
           </div>
         </div>
       </section>
     `;
+  }
+
+  function renderRegulatoryNoticePanel(block, headingId, inline = false) {
+    const statements = Array.isArray(block.statements) ? block.statements : [];
+
+    return `
+        <div class="${inline ? '' : 'lesson-container '}lesson-regulatory-notice__panel"${inline ? '' : ' data-reveal'}>
+          <span class="lesson-regulatory-notice__icon" aria-hidden="true">${lessonIcon(block.icon || 'book')}</span>
+          <div class="lesson-regulatory-notice__content">
+            <h3 id="${headingId}">${escapeHTML(block.label || 'Olho na norma')}</h3>
+            <div class="lesson-regulatory-notice__statements">
+              ${statements.map((statement) => `<p>${escapeHTML(statement)}</p>`).join('')}
+            </div>
+          </div>
+        </div>`;
+  }
+
+  function renderRegulatoryNoticeBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `regulatory-notice-${moduleId}-${pageId}-${blockIndex}`;
+
+    return `
+      <section class="lesson-regulatory-notice" aria-labelledby="${headingId}">
+        ${renderRegulatoryNoticePanel(block, headingId)}
+      </section>`;
+  }
+
+  function renderAttentionNoticeBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `attention-notice-${moduleId}-${pageId}-${blockIndex}`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+
+    return `
+      <section class="lesson-attention-notice" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-attention-notice__panel" data-reveal>
+          <span class="lesson-attention-notice__icon" aria-hidden="true">${lessonIcon(block.icon || 'attention')}</span>
+          <div class="lesson-attention-notice__content">
+            <h3 id="${headingId}">${escapeHTML(block.label || 'Atenção')}</h3>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+        </div>
+      </section>`;
   }
 
   function renderAccordionGroup(block, moduleId, pageId, blockIndex) {
@@ -324,8 +378,8 @@
     const headingId = `reflection-${moduleId}-${pageId}-${blockIndex}`;
     return `
       <section class="lesson-reflection" aria-labelledby="${headingId}">
-        <header class="lesson-container lesson-reflection__heading" data-reveal>
-          <p class="lesson-reflection__count" aria-hidden="true">${padId(block.items.length)}</p>
+        <header class="lesson-container lesson-reflection__heading${block.showCount === false ? ' lesson-reflection__heading--without-count' : ''}" data-reveal>
+          ${block.showCount === false ? '' : `<p class="lesson-reflection__count" aria-hidden="true">${padId(block.items.length)}</p>`}
           <div>
             <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
             <span class="lesson-accent-line" aria-hidden="true"></span>
@@ -428,9 +482,118 @@
     `;
   }
 
+  function knowledgeNoteVariant(block) {
+    return ['ebook', 'practice', 'tutoring'].includes(block.variant) ? block.variant : 'concept';
+  }
+
+  function renderKnowledgeNotePanel(block, headingId, inline = false) {
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const variant = knowledgeNoteVariant(block);
+    const fallbackIcon = variant === 'ebook' ? 'book' : variant === 'practice' ? 'presence' : 'autonomy';
+
+    return `
+        <div class="${inline ? '' : 'lesson-container '}lesson-knowledge-note__panel"${inline ? '' : ' data-reveal'}>
+          <span class="lesson-knowledge-note__icon" aria-hidden="true">${lessonIcon(block.icon || fallbackIcon)}</span>
+          <div class="lesson-knowledge-note__content">
+            <h3 id="${headingId}">${escapeHTML(block.label || 'Nota de estudo')}</h3>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            ${block.source ? `<cite class="lesson-knowledge-note__source">${escapeHTML(block.source)}</cite>` : ''}
+          </div>
+        </div>`;
+  }
+
+  function renderKnowledgeNoteBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `knowledge-note-${moduleId}-${pageId}-${blockIndex}`;
+    const variant = knowledgeNoteVariant(block);
+
+    return `
+      <section class="lesson-knowledge-note lesson-knowledge-note--${variant}" aria-labelledby="${headingId}">
+        ${renderKnowledgeNotePanel(block, headingId)}
+      </section>`;
+  }
+
+  function renderDataFocusPanel(block, headingId, inline = false) {
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+
+    return `
+        <div class="${inline ? '' : 'lesson-container '}lesson-data-focus__panel"${inline ? '' : ' data-reveal'}>
+          <span class="lesson-data-focus__icon" aria-hidden="true">${lessonIcon(block.icon || 'tracking')}</span>
+          <div class="lesson-data-focus__content">
+            <h3 id="${headingId}">${escapeHTML(block.label || 'Dados em foco')}</h3>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            ${block.source ? `<cite class="lesson-data-focus__source">${escapeHTML(block.source)}</cite>` : ''}
+          </div>
+        </div>`;
+  }
+
+  function renderDataFocusBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `data-focus-${moduleId}-${pageId}-${blockIndex}`;
+    return `
+      <section class="lesson-data-focus" aria-labelledby="${headingId}">
+        ${renderDataFocusPanel(block, headingId)}
+      </section>`;
+  }
+
+  function renderComparisonPromptPanel(block, headingId, inline = false) {
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+
+    return `
+        <div class="${inline ? '' : 'lesson-container '}lesson-comparison-prompt__panel"${inline ? '' : ' data-reveal'}>
+          <span class="lesson-comparison-prompt__icon" aria-hidden="true">${lessonIcon(block.icon || 'flexibility')}</span>
+          <div class="lesson-comparison-prompt__content">
+            <h3 id="${headingId}">${escapeHTML(block.label || 'Compare')}</h3>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+        </div>`;
+  }
+
+  function renderInlineKnowledgeNotes(notes, moduleId, pageId, blockIndex, paragraphIndex) {
+    return notes
+      .filter((note) => Number(note.afterParagraph) === paragraphIndex)
+      .map((note, noteIndex) => {
+        const isRegulatoryNotice = note.type === 'regulatoryNotice';
+        const isComparisonPrompt = note.type === 'comparisonPrompt';
+        const isDataFocus = note.type === 'dataFocus';
+        const headingPrefix = isRegulatoryNotice
+          ? 'regulatory-notice'
+          : isComparisonPrompt
+            ? 'comparison-prompt'
+            : isDataFocus
+              ? 'data-focus'
+              : 'knowledge-note';
+        const headingId = `${headingPrefix}-${moduleId}-${pageId}-${blockIndex}-inline-${paragraphIndex}-${noteIndex}`;
+        if (isRegulatoryNotice) {
+          return `
+            <section class="lesson-regulatory-notice lesson-regulatory-notice--inline" aria-labelledby="${headingId}">
+              ${renderRegulatoryNoticePanel(note, headingId, true)}
+            </section>`;
+        }
+        if (isDataFocus) {
+          return `
+            <section class="lesson-data-focus lesson-data-focus--inline" aria-labelledby="${headingId}">
+              ${renderDataFocusPanel(note, headingId, true)}
+            </section>`;
+        }
+        if (isComparisonPrompt) {
+          return `
+            <section class="lesson-comparison-prompt lesson-comparison-prompt--inline" aria-labelledby="${headingId}">
+              ${renderComparisonPromptPanel(note, headingId, true)}
+            </section>`;
+        }
+
+        const variant = knowledgeNoteVariant(note);
+        return `
+          <section class="lesson-knowledge-note lesson-knowledge-note--${variant} lesson-knowledge-note--inline" aria-labelledby="${headingId}">
+            ${renderKnowledgeNotePanel(note, headingId, true)}
+          </section>`;
+      })
+      .join('');
+  }
+
   function renderSplitNarrativeBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `split-narrative-${moduleId}-${pageId}-${blockIndex}`;
     const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const inlineNotes = Array.isArray(block.inlineNotes) ? block.inlineNotes : [];
     return `
       <section class="lesson-split-narrative" aria-labelledby="${headingId}">
         <h3 class="sr-only" id="${headingId}">${escapeHTML(block.accessibleHeading || 'Conteúdo de aprofundamento')}</h3>
@@ -440,7 +603,7 @@
             <span class="lesson-accent-line" aria-hidden="true"></span>
           </div>
           <div class="lesson-split-narrative__prose" data-reveal>
-            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            ${paragraphs.map((paragraph, index) => `<p>${escapeHTML(paragraph)}</p>${renderInlineKnowledgeNotes(inlineNotes, moduleId, pageId, blockIndex, index)}`).join('')}
           </div>
         </div>
       </section>
@@ -575,9 +738,13 @@
   function renderRegulationContextBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `regulation-context-${moduleId}-${pageId}-${blockIndex}`;
     const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
-    return `
-      <section class="lesson-regulation-context" aria-labelledby="${headingId}">
-        <div class="lesson-container lesson-regulation-context__layout">
+    const inlineNotes = Array.isArray(block.inlineNotes) ? block.inlineNotes : [];
+    const showHeading = block.showHeading !== false;
+    const sectionLabel = escapeHTML(block.heading || 'Contexto de expansão, qualidade e regulação');
+    const sectionLabelAttribute = showHeading
+      ? `aria-labelledby="${headingId}"`
+      : `aria-label="${sectionLabel}"`;
+    const headingMarkup = showHeading ? `
           <header class="lesson-regulation-context__heading" data-reveal>
             <p class="lesson-eyebrow">Ponto de transição</p>
             <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
@@ -585,9 +752,13 @@
               <span>Expansão</span>
               <span>Qualidade</span>
             </p>
-          </header>
+          </header>` : '';
+    return `
+      <section class="lesson-regulation-context${showHeading ? '' : ' lesson-regulation-context--without-heading'}" ${sectionLabelAttribute}>
+        <div class="lesson-container lesson-regulation-context__layout">
+          ${headingMarkup}
           <div class="lesson-regulation-context__prose" data-reveal>
-            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            ${paragraphs.map((paragraph, index) => `<p>${escapeHTML(paragraph)}</p>${renderInlineKnowledgeNotes(inlineNotes, moduleId, pageId, blockIndex, index)}`).join('')}
           </div>
         </div>
       </section>
@@ -778,10 +949,29 @@
     `;
   }
 
+  function renderSummaryNotePanel(block, headingId) {
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+
+    return `
+      <div class="lesson-container lesson-summary-note__panel" data-reveal>
+        <span class="lesson-summary-note__icon" aria-hidden="true">${block.icon === 'layers' ? icon('layers') : lessonIcon(block.icon || 'book')}</span>
+        <div class="lesson-summary-note__content">
+          <h3 id="${headingId}">${escapeHTML(block.label || 'Em resumo')}</h3>
+          ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+        </div>
+      </div>`;
+  }
+
   function renderSummaryBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `summary-${moduleId}-${pageId}-${blockIndex}`;
+    const summaryNote = block.summaryNote && typeof block.summaryNote === 'object' ? block.summaryNote : null;
+    const summaryNoteId = `${headingId}-note`;
     const items = Array.isArray(block.items) ? block.items : [];
     return `
+      ${summaryNote ? `
+        <section class="lesson-summary-note" aria-labelledby="${summaryNoteId}">
+          ${renderSummaryNotePanel(summaryNote, summaryNoteId)}
+        </section>` : ''}
       <section class="lesson-summary" aria-labelledby="${headingId}">
         <div class="lesson-container lesson-summary__layout">
           <header class="lesson-summary__heading" data-reveal>
@@ -933,7 +1123,20 @@
     const headingId = `mediated-activity-${moduleId}-${pageId}-${blockIndex}`;
     const criteria = Array.isArray(block.criteria) ? block.criteria : [];
     const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const inlineNotes = Array.isArray(block.inlineNotes) ? block.inlineNotes : [];
     const examples = Array.isArray(block.examples) ? block.examples : [];
+    const conceptNote = block.conceptNote && typeof block.conceptNote === 'object' ? block.conceptNote : null;
+    const conceptNoteId = `${headingId}-concept-note`;
+    const conceptNoteMarkup = conceptNote ? `
+              <section class="lesson-knowledge-note lesson-knowledge-note--${knowledgeNoteVariant(conceptNote)} lesson-knowledge-note--inline lesson-mediated-focus__concept-note" aria-labelledby="${conceptNoteId}">
+                ${renderKnowledgeNotePanel(conceptNote, conceptNoteId, true)}
+              </section>` : '';
+    const practiceNote = block.practiceNote && typeof block.practiceNote === 'object' ? block.practiceNote : null;
+    const practiceNoteId = `${headingId}-practice-note`;
+    const practiceNoteMarkup = practiceNote ? `
+              <section class="lesson-knowledge-note lesson-knowledge-note--${knowledgeNoteVariant(practiceNote)} lesson-knowledge-note--inline lesson-mediated-focus__practice-note" aria-labelledby="${practiceNoteId}">
+                ${renderKnowledgeNotePanel(practiceNote, practiceNoteId, true)}
+              </section>` : '';
     return `
       <section class="lesson-mediated-focus" aria-labelledby="${headingId}">
         <div class="lesson-container">
@@ -960,17 +1163,21 @@
 
           <div class="lesson-mediated-focus__body">
             <div class="lesson-mediated-focus__prose" data-reveal>
-              ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+              ${conceptNoteMarkup}
+              ${paragraphs.map((paragraph, index) => `<p>${escapeHTML(paragraph)}</p>${renderInlineKnowledgeNotes(inlineNotes, moduleId, pageId, blockIndex, index)}`).join('')}
             </div>
-            <aside class="lesson-mediated-focus__practice" aria-labelledby="${headingId}-practice" data-reveal>
-              <p class="lesson-eyebrow">Na prática</p>
-              <h4 id="${headingId}-practice">${escapeHTML(block.practiceHeading)}</h4>
-              <p>${escapeHTML(block.practiceIntroduction)}</p>
-              <ul>
-                ${examples.map((example) => `<li>${escapeHTML(example)}</li>`).join('')}
-              </ul>
-              <p class="lesson-mediated-focus__conclusion">${escapeHTML(block.practiceConclusion)}</p>
-            </aside>
+            <div class="lesson-mediated-focus__support">
+              <aside class="lesson-mediated-focus__practice" aria-labelledby="${headingId}-practice" data-reveal>
+                <p class="lesson-eyebrow">Na prática</p>
+                <h4 id="${headingId}-practice">${escapeHTML(block.practiceHeading)}</h4>
+                <p>${escapeHTML(block.practiceIntroduction)}</p>
+                <ul>
+                  ${examples.map((example) => `<li>${escapeHTML(example)}</li>`).join('')}
+                </ul>
+                <p class="lesson-mediated-focus__conclusion">${escapeHTML(block.practiceConclusion)}</p>
+              </aside>
+              ${practiceNoteMarkup}
+            </div>
           </div>
         </div>
       </section>
@@ -982,8 +1189,33 @@
     const comparisonId = `${headingId}-comparison`;
     const poloId = `${headingId}-polo`;
     const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    const inlineNotes = Array.isArray(block.inlineNotes) ? block.inlineNotes : [];
     const roles = Array.isArray(block.roles) ? block.roles : [];
     const criteria = Array.isArray(block.criteria) ? block.criteria : [];
+    const conceptNote = block.conceptNote && typeof block.conceptNote === 'object' ? block.conceptNote : null;
+    const conceptNoteId = `${headingId}-concept-note`;
+    const conceptNoteMarkup = conceptNote ? `
+                <section class="lesson-knowledge-note lesson-knowledge-note--${knowledgeNoteVariant(conceptNote)} lesson-knowledge-note--inline" aria-labelledby="${conceptNoteId}">
+                  ${renderKnowledgeNotePanel(conceptNote, conceptNoteId, true)}
+                </section>` : '';
+    const regulatoryNotice = block.regulatoryNotice && typeof block.regulatoryNotice === 'object' ? block.regulatoryNotice : null;
+    const regulatoryNoticeId = `${headingId}-regulatory-notice`;
+    const regulatoryNoticeMarkup = regulatoryNotice ? `
+          <section class="lesson-regulatory-notice lesson-regulatory-notice--inline lesson-professional-roles__regulatory-note" aria-labelledby="${regulatoryNoticeId}" data-reveal>
+            ${renderRegulatoryNoticePanel(regulatoryNotice, regulatoryNoticeId, true)}
+          </section>` : '';
+    const comparisonPrompt = block.comparisonPrompt && typeof block.comparisonPrompt === 'object' ? block.comparisonPrompt : null;
+    const comparisonPromptId = `${headingId}-comparison-prompt`;
+    const comparisonPromptMarkup = comparisonPrompt ? `
+          <section class="lesson-comparison-prompt lesson-comparison-prompt--inline lesson-professional-roles__comparison-prompt" aria-labelledby="${comparisonPromptId}" data-reveal>
+            ${renderComparisonPromptPanel(comparisonPrompt, comparisonPromptId, true)}
+          </section>` : '';
+    const poloNote = block.poloNote && typeof block.poloNote === 'object' ? block.poloNote : null;
+    const poloNoteId = `${headingId}-polo-note`;
+    const poloNoteMarkup = poloNote ? `
+          <section class="lesson-knowledge-note lesson-knowledge-note--${knowledgeNoteVariant(poloNote)} lesson-knowledge-note--inline lesson-professional-roles__polo-note" aria-labelledby="${poloNoteId}" data-reveal>
+            ${renderKnowledgeNotePanel(poloNote, poloNoteId, true)}
+          </section>` : '';
     return `
       <section class="lesson-professional-roles" aria-labelledby="${headingId}">
         <div class="lesson-container">
@@ -995,13 +1227,18 @@
                 <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
               </div>
             </div>
-            <p>${escapeHTML(block.introduction)}</p>
+            <div class="lesson-professional-roles__intro">
+              ${conceptNoteMarkup}
+              <p>${escapeHTML(block.introduction)}</p>
+            </div>
           </header>
 
+          ${regulatoryNoticeMarkup}
           <div class="lesson-professional-roles__prose" data-reveal>
-            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+            ${paragraphs.map((paragraph, index) => `<p>${escapeHTML(paragraph)}</p>${renderInlineKnowledgeNotes(inlineNotes, moduleId, pageId, blockIndex, index)}`).join('')}
           </div>
 
+          ${comparisonPromptMarkup}
           <div class="lesson-professional-roles__comparison" aria-labelledby="${comparisonId}" data-reveal>
             <header class="lesson-professional-roles__comparison-heading">
               <div>
@@ -1039,6 +1276,7 @@
             </div>
             <p>${escapeHTML(block.poloText)}</p>
           </aside>
+          ${poloNoteMarkup}
         </div>
       </section>
     `;
@@ -1047,6 +1285,7 @@
   function renderReferencesBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `references-${moduleId}-${pageId}-${blockIndex}`;
     const groups = Array.isArray(block.groups) ? block.groups : [];
+    const showCount = block.showCount !== false;
     const referenceCount = groups.reduce((total, group) => total + (Array.isArray(group.items) ? group.items.length : 0), 0);
     let referenceIndex = 0;
     const groupsMarkup = groups.map((group, groupIndex) => {
@@ -1085,8 +1324,8 @@
               <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
               <span class="lesson-accent-line" aria-hidden="true"></span>
             </div>
-            <div class="lesson-references__intro">
-              <p class="lesson-references__count" aria-hidden="true">${padId(referenceCount)}</p>
+            <div class="lesson-references__intro${showCount ? '' : ' lesson-references__intro--without-count'}">
+              ${showCount ? `<p class="lesson-references__count" aria-hidden="true">${padId(referenceCount)}</p>` : ''}
               <p>${escapeHTML(block.introduction)}</p>
             </div>
           </header>
@@ -1106,12 +1345,17 @@
       }
       return media;
     }
+    if (block.type === 'contentImage') return renderContentImageBlock(block);
     if (block.type === 'narrative') return renderNarrativeBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'regulatoryNotice') return renderRegulatoryNoticeBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'attentionNotice') return renderAttentionNoticeBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'accordionGroup') return renderAccordionGroup(block, moduleId, pageId, blockIndex);
     if (block.type === 'scenario') return renderScenarioBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'stickyStack') return renderStickyStackBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'ebookReading') return renderEbookReadingBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'conceptIntro') return renderConceptIntroBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'knowledgeNote') return renderKnowledgeNoteBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'dataFocus') return renderDataFocusBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'splitNarrative') return renderSplitNarrativeBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'verticalTimeline') return renderVerticalTimelineBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'horizontalAccordion') return renderHorizontalAccordionBlock(block, moduleId, pageId, blockIndex);
@@ -1746,7 +1990,7 @@
 
     const update = () => {
       frame = null;
-      const enhanced = window.innerWidth >= 768 && !motionQuery.matches;
+      const enhanced = !motionQuery.matches;
       stacks.forEach((stack) => {
         const cards = [...stack.querySelectorAll('[data-stack-card]')];
         stack.classList.toggle('is-enhanced', enhanced);
