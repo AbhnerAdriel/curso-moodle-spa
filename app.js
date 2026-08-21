@@ -217,6 +217,7 @@
     const embedUrl = safeEmbedUrl(block.embedUrl);
     const title = escapeHTML(block.title || 'Vídeo');
     const description = escapeHTML(block.description || 'Conteúdo audiovisual');
+    const poster = String(block.poster || '').trim();
     if (embedUrl) {
       return `
         <figure class="lesson-media lesson-media--video" data-reveal>
@@ -237,7 +238,9 @@
     return `
       <figure class="lesson-media lesson-media--video" data-reveal>
         <div class="lesson-media__frame lesson-video-placeholder">
-          <img src="${escapeHTML(block.poster)}" alt="${escapeHTML(block.posterAlt)}" width="2172" height="724" />
+          ${poster
+            ? `<img src="${escapeHTML(poster)}" alt="${escapeHTML(block.posterAlt || '')}" width="2172" height="724" />`
+            : '<div class="lesson-video-placeholder__backdrop" aria-hidden="true"></div>'}
           <div class="lesson-video-placeholder__shade" aria-hidden="true"></div>
           <div class="lesson-video-placeholder__copy">
             <span class="lesson-video-placeholder__play" aria-hidden="true">${icon('play')}</span>
@@ -394,7 +397,7 @@
     return `
       <section class="lesson-objectives lesson-container" aria-labelledby="${groupId}" data-reveal>
         <header class="lesson-objectives__heading">
-          <p class="lesson-eyebrow">Para orientar seus estudos</p>
+          <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Para orientar seus estudos')}</p>
           <h3 id="${groupId}">${escapeHTML(block.label)}</h3>
         </header>
         <div class="lesson-accordion">
@@ -1027,7 +1030,9 @@
               data-multiple-choice
               data-correct-answer="${escapeHTML(block.correctAnswer)}"
               data-correct-feedback="${escapeHTML(block.correctFeedback)}"
-              data-incorrect-feedback="${escapeHTML(block.incorrectFeedback)}">
+              data-incorrect-feedback="${escapeHTML(block.incorrectFeedback)}"
+              data-correct-feedback-label="${escapeHTML(block.correctFeedbackLabel || 'Feedback:')}"
+              data-incorrect-feedback-label="${escapeHTML(block.incorrectFeedbackLabel || 'Feedback:')}">
               <fieldset>
                 <legend>
                   <span class="lesson-quick-check__legend-label">Questão</span>
@@ -1047,7 +1052,7 @@
                   <strong data-feedback-result></strong>
                   <span>Resposta correta: ${escapeHTML(block.correctAnswerLabel)}.</span>
                 </p>
-                <p><strong class="lesson-quick-check__feedback-label">Feedback:</strong> <span data-feedback-explanation></span></p>
+                <p><strong class="lesson-quick-check__feedback-label" data-feedback-label>Feedback:</strong> <span data-feedback-explanation></span></p>
               </div>
             </form>
           </article>
@@ -1171,8 +1176,9 @@
 
   function renderChapterDividerBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `chapter-divider-${moduleId}-${pageId}-${blockIndex}`;
+    const sizeClass = block.size === 'reduced' ? ' lesson-chapter-divider--reduced' : '';
     return `
-      <section class="lesson-chapter-divider" aria-labelledby="${headingId}">
+      <section class="lesson-chapter-divider${sizeClass}" aria-labelledby="${headingId}">
         <div class="lesson-container lesson-chapter-divider__layout" data-reveal>
           <p class="lesson-chapter-divider__number" aria-hidden="true">${escapeHTML(block.number || '01')}</p>
           <div>
@@ -1592,6 +1598,11 @@
     const indexedBlocks = page.blocks.map((block, index) => ({ block, index }));
     const leadBlocks = indexedBlocks.filter(({ block }) => block.slot === 'lead');
     const contentBlocks = indexedBlocks.filter(({ block }) => block.slot !== 'lead');
+    const headingSizeClass = page.headingSize === 'compact'
+      ? ' lesson-heading--compact'
+      : page.headingSize === 'reduced'
+        ? ' lesson-heading--reduced'
+        : '';
     const bannerUrl = String(module.banner || '').trim();
     const bannerPosition = String(module.bannerPosition || 'center').trim() || 'center';
     const heroStyle = bannerUrl
@@ -1640,7 +1651,7 @@
                 </div>
               ` : ''}
 
-              <header class="lesson-container lesson-heading${page.headingSize === 'compact' ? ' lesson-heading--compact' : ''}" data-reveal>
+              <header class="lesson-container lesson-heading${headingSizeClass}" data-reveal>
                 <div class="lesson-heading__index" aria-hidden="true">${escapeHTML(page.id)}</div>
                 <div class="lesson-heading__copy">
                   <p class="lesson-unit">${escapeHTML(page.unit)}</p>
@@ -2072,6 +2083,7 @@
       const feedback = form.querySelector('.lesson-quick-check__feedback');
       const result = form.querySelector('[data-feedback-result]');
       const explanation = form.querySelector('[data-feedback-explanation]');
+      const feedbackLabel = form.querySelector('[data-feedback-label]');
 
       const showFeedback = (selectedInput) => {
         const isCorrect = selectedInput.value === form.dataset.correctAnswer;
@@ -2087,6 +2099,11 @@
           explanation.textContent = isCorrect
             ? form.dataset.correctFeedback
             : form.dataset.incorrectFeedback;
+        }
+        if (feedbackLabel) {
+          feedbackLabel.textContent = isCorrect
+            ? form.dataset.correctFeedbackLabel
+            : form.dataset.incorrectFeedbackLabel;
         }
         if (feedback) feedback.hidden = false;
       };

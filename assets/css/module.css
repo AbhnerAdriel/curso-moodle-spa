@@ -621,6 +621,13 @@ html[data-view="module"] body {
 
 .lesson-video-placeholder { overflow: visible; }
 
+.lesson-video-placeholder__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 179, 211, .5);
+  background: var(--ink);
+}
+
 .lesson-video-placeholder__shade {
   position: absolute;
   inset: 0;
@@ -720,6 +727,15 @@ html[data-view="module"] body {
   line-height: 1;
   text-wrap: balance;
   text-transform: uppercase;
+}
+
+.lesson-heading.lesson-heading--reduced h2 {
+  max-width: 26ch;
+  font-size: clamp(2rem, 2.7vw, 3rem);
+}
+
+.lesson-heading.lesson-heading--reduced {
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
 }
 
 /* Narrativa */
@@ -2860,6 +2876,23 @@ html.reveal-ready .lesson-course-restrictions__grid.is-visible .lesson-course-re
   letter-spacing: -.03em;
   line-height: .95;
   text-transform: uppercase;
+}
+
+.lesson-chapter-divider.lesson-chapter-divider--reduced .lesson-chapter-divider__number {
+  font-size: clamp(5rem, 8vw, 7rem);
+}
+
+.lesson-chapter-divider.lesson-chapter-divider--reduced {
+  padding-block: clamp(2.5rem, 4vw, 4rem);
+}
+
+.lesson-chapter-divider.lesson-chapter-divider--reduced .lesson-chapter-divider__layout {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.lesson-chapter-divider.lesson-chapter-divider--reduced h3 {
+  max-width: 32ch;
+  font-size: clamp(2rem, 3vw, 3.25rem);
 }
 
 .lesson-narrative--white { background: var(--white); }

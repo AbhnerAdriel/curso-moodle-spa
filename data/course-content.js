@@ -1890,10 +1890,551 @@
       },
       {
         id: '03',
-        status: 'draft',
-        cardTitle: 'Nome do Módulo 3',
-        title: 'Módulo 03',
-        pages: []
+        status: 'published',
+        cardTitle: 'Licenciaturas e a Atuação do Tutor no Novo Marco Regulatório',
+        title: 'Licenciaturas e a Atuação do Tutor no Novo Marco Regulatório',
+        pages: [
+          {
+            id: '01',
+            label: 'Apresentação',
+            unit: 'Unidade 01',
+            title: 'O Novo Marco das Licenciaturas: a Resolução CNE/CP nº 4/2024 e os núcleos formativos',
+            blocks: [
+              { type: 'video', slot: 'lead', title: 'Vídeo de abertura do Módulo 3', description: 'Licenciaturas e a atuação do tutor no novo marco regulatório', provider: 'Eduplay' },
+              {
+                type: 'narrative',
+                heading: 'Quatro núcleos para organizar a formação docente',
+                paragraphs: [
+                  'Até 2024, a formação inicial de professores da Educação Básica era orientada por um conjunto de resoluções que, ao longo dos anos, foram sendo ajustadas e substituídas.',
+                  'Em 29 de maio de 2024, o Conselho Nacional de Educação publicou a Resolução CNE/CP nº 4/2024, instituindo novas Diretrizes Curriculares Nacionais para a formação inicial de professores e revogando as Resoluções CNE/CP nº 2/2015, nº 2/2019 e nº 1/2020.',
+                  'A principal mudança trazida por essa resolução é a reorganização da matriz curricular das licenciaturas em quatro núcleos formativos, cada um com carga horária própria e regras específicas de presencialidade. Essa reorganização afeta diretamente cursos como Pedagogia e as demais licenciaturas ofertadas pela UAB/UFPE, que precisam adequar seus Projetos Pedagógicos de Curso a essa nova estrutura.',
+                  'Dois desses núcleos, o de extensão e o de estágio, merecem atenção especial dos tutores, porque devem ser sempre presenciais, mesmo quando o curso é ofertado na modalidade a distância. Além disso, a resolução estabelece que, nos cursos EaD, uma parcela relevante do núcleo de conteúdos específicos também deve ser cumprida presencialmente.',
+                  'Nesta aula, você vai conhecer os quatro núcleos formativos previstos no art. 13 da Resolução CNE/CP nº 4/2024, a carga horária mínima total da licenciatura e a forma como esses núcleos são aplicados concretamente nas licenciaturas da UFPE, com base no Guia Orientador elaborado pela SPREAD/UAB.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Diretrizes Curriculares Nacionais das licenciaturas',
+                description: 'Se você atua com cursos de licenciatura, vale aprofundar a leitura da Resolução CNE/CP nº 4/2024. Ela permite relacionar as mudanças na EaD às Diretrizes Curriculares Nacionais para a formação inicial dos profissionais do magistério.',
+                icon: 'book',
+                links: [{ label: 'Acessar Resolução CNE/CP nº 4/2024 →', href: 'https://www.gov.br/mec/pt-br/cne/resolucoes-cp-2024' }]
+              },
+              {
+                type: 'accordionGroup',
+                label: 'Objetivos da unidade',
+                items: [
+                  {
+                    id: 'objetivo-geral-modulo-03-unidade-01',
+                    title: 'Objetivo geral',
+                    paragraphs: ['Compreender os quatro núcleos formativos instituídos pela Resolução CNE/CP nº 4/2024 para a formação inicial de professores da Educação Básica, relacionando a carga horária mínima total do curso, as regras de presencialidade de cada núcleo e sua aplicação concreta nas licenciaturas da UFPE.']
+                  },
+                  {
+                    id: 'objetivos-aprendizagem-modulo-03-unidade-01',
+                    title: 'Objetivos de aprendizagem',
+                    paragraphs: ['Ao concluir este eixo, espera-se que o participante consiga:'],
+                    list: [
+                      'reconhecer os quatro núcleos formativos previstos no art. 13 da Resolução CNE/CP nº 4/2024 e suas respectivas cargas horárias;',
+                      'identificar quais núcleos devem ser obrigatoriamente presenciais e a regra de presencialidade mínima aplicável ao Núcleo II nos cursos ofertados a distância;',
+                      'relacionar a carga horária mínima total da licenciatura, de 3.200 horas em, no mínimo, quatro anos, à organização da matriz curricular;',
+                      'descrever como a UFPE aplica o Núcleo III por meio das Atividades Curriculares de Extensão (ACEx), nas Opções A e B da Resolução nº 31/2022-UFPE/CEPE;',
+                      'descrever como a UFPE organiza o Núcleo IV, o estágio curricular supervisionado com regência, incluindo o cadastro no SIGAA e a lógica de imersão progressiva desde os semestres iniciais do curso.'
+                    ]
+                  }
+                ]
+              },
+              { type: 'knowledgeNote', variant: 'concept', label: 'A seguir', icon: 'arrow', paragraphs: ['A seguir: a situação-problema desta unidade.'] }
+            ]
+          },
+          {
+            id: '02',
+            label: 'Situação-problema',
+            unit: 'Unidade 01',
+            title: 'Que carga horária pode mesmo ser cumprida a distância?',
+            blocks: [
+              {
+                type: 'contentImage',
+                src: 'assets/imagem-pagina02mod3.webp',
+                alt: 'Ilustração de uma equipe pedagógica analisando a matriz curricular de uma licenciatura ofertada pela UAB/UFPE.',
+                captionTitle: 'Situação-problema',
+                caption: 'Ilustração de uma quipe pedagógica analisando a matriz curricular de uma licenciatura ofertada pela UAB/UFPE.'
+              },
+              {
+                type: 'scenario',
+                paragraphs: [
+                  'A coordenação de um curso de licenciatura em Pedagogia, ofertado pela UAB/UFPE na modalidade a distância, está revisando a matriz curricular para o próximo processo seletivo. A equipe pedagógica precisa reorganizar a distribuição da carga horária entre os componentes teóricos, as atividades de extensão e o estágio supervisionado.',
+                  'Durante o levantamento, a equipe percebe que parte dos documentos internos ainda faz referência à Resolução CNE/CP nº 2/2015 para justificar a carga horária de prática e de estágio. Também surgem dúvidas sobre se a extensão e o estágio podem ser ofertados de forma totalmente assíncrona, já que o curso é a distância.'
+                ]
+              },
+              {
+                type: 'roleComparison',
+                eyebrow: 'Confronte as posições',
+                heading: 'Duas interpretações em disputa',
+                introduction: 'Analise qual posicionamento considera a norma atualmente vigente e suas exigências de presencialidade.',
+                left: { title: 'Primeira posição' },
+                right: { title: 'Segunda posição' },
+                rows: [{
+                  label: 'Entendimento da equipe',
+                  left: '“A Resolução CNE/CP nº 2/2015 ainda orienta a carga horária de prática e estágio. Como o curso é EaD, acredito que podemos manter o estágio e a extensão totalmente no ambiente virtual, sem exigência presencial.”',
+                  right: '“Essa resolução foi revogada pela Resolução CNE/CP nº 4/2024. Segundo a norma atual, a extensão e o estágio compõem núcleos que devem ser sempre presenciais, mesmo em cursos ofertados a distância.”'
+                }]
+              },
+              {
+                type: 'stickyStack',
+                heading: 'Para refletir',
+                showCount: false,
+                items: [
+                  { id: 'resolucao-vigente', text: 'Qual resolução está em vigor?' },
+                  { id: 'nucleos-presenciais', text: 'Quais núcleos devem ser presenciais?' },
+                  { id: 'natureza-extensao-estagio', text: 'Por que extensão e estágio exigem presencialidade?' },
+                  { id: 'aplicacao-ufpe', text: 'Como a UFPE organiza ACEx e estágio com regência?' },
+                  { id: 'orientacao-tutor', text: 'Como o tutor pode orientar sobre a carga horária?' }
+                ]
+              }
+            ]
+          },
+          {
+            id: '03',
+            label: 'Núcleos formativos',
+            unit: 'Unidade 01',
+            title: 'Os quatro núcleos formativos e a carga horária mínima da licenciatura',
+            headingSize: 'compact',
+            blocks: [
+              { type: 'chapterDivider', number: '01', eyebrow: 'Unidade 01 · Capítulo 01', heading: 'Os quatro núcleos e a carga horária mínima da licenciatura' },
+              {
+                type: 'narrative',
+                heading: 'A formação inicial passa a ter quatro núcleos',
+                paragraphs: [
+                  'A Resolução CNE/CP nº 4/2024 revogou as Resoluções CNE/CP nº 2/2015, nº 2/2019 e nº 1/2020 e passou a organizar a formação inicial de professores da Educação Básica em quatro núcleos formativos, previstos no art. 13. Essa reorganização vale para a licenciatura, para a formação pedagógica de não licenciados e para a segunda licenciatura, cada uma com regras próprias de carga horária.',
+                  'O Núcleo I, Estudos de Formação Geral (EFG), tem 880 horas e reúne os fundamentos científicos, educacionais e pedagógicos da formação docente. O Núcleo II, Aprendizagem e Aprofundamento dos Conteúdos Específicos das Áreas de Atuação Profissional (ACCE), tem 1.600 horas. O Núcleo III, Atividades Acadêmicas de Extensão (AAE), tem 320 horas. O Núcleo IV, Estágio Curricular Supervisionado (ECS), tem 400 horas.',
+                  'Os Núcleos I e II podem ser organizados tanto na modalidade presencial quanto a distância, conforme o formato de oferta do curso. Já os Núcleos III e IV devem ser sempre presenciais, conforme os §§ 6º e 5º do art. 13, respectivamente, independentemente do formato de oferta escolhido pela instituição.',
+                  'O art. 14, § 1º, estabelece que a carga horária mínima total da licenciatura é de 3.200 horas, cumpridas em um curso com duração mínima de quatro anos — soma exata das 880 horas do Núcleo I, 1.600 horas do Núcleo II, 320 horas do Núcleo III e 400 horas do Núcleo IV.'
+                ]
+              },
+              {
+                type: 'offerFormats',
+                eyebrow: 'Infográfico comparativo',
+                heading: 'Carga horária e presencialidade por núcleo',
+                introduction: 'Núcleo, carga horária e regra de presencialidade previstos na Resolução CNE/CP nº 4/2024.',
+                items: [
+                  { id: 'nucleo-efg', title: 'I — Estudos de Formação Geral (EFG)', legalBasis: 'Núcleo I', primaryLabel: 'Carga horária', primaryValue: '880h', primaryText: '', complementLabel: 'Regra de presencialidade', complementValue: 'Pode ser', complementText: 'presencial ou a distância', note: '' },
+                  { id: 'nucleo-acce', title: 'II — Aprendizagem e Aprofundamento dos Conteúdos Específicos (ACCE)', legalBasis: 'Núcleo II', primaryLabel: 'Carga horária', primaryValue: '1.600h', primaryText: '', complementLabel: 'Regra de presencialidade', complementValue: '880h', complementText: 'Ao menos 880h presenciais em cursos EaD (§ 7º)', note: '' },
+                  { id: 'nucleo-aae', title: 'III — Atividades Acadêmicas de Extensão (AAE)', legalBasis: 'Núcleo III', primaryLabel: 'Carga horária', primaryValue: '320h', primaryText: '', complementLabel: 'Regra de presencialidade', complementValue: 'Sempre', complementText: 'presencial (§ 6º)', note: '' },
+                  { id: 'nucleo-ecs', title: 'IV — Estágio Curricular Supervisionado (ECS)', legalBasis: 'Núcleo IV', primaryLabel: 'Carga horária', primaryValue: '400h', primaryText: '', complementLabel: 'Regra de presencialidade', complementValue: 'Sempre', complementText: 'presencial (§ 5º)', note: '' }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Em um curso de licenciatura ofertado na modalidade a distância, é possível que os quatro núcleos formativos sejam cumpridos integralmente por meio de atividades assíncronas.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'Os Núcleos III (extensão) e IV (estágio) são sempre presenciais, conforme o art. 13, §§ 5º e 6º, e o Núcleo II exige ao menos 880 horas presenciais nos cursos ofertados a distância, conforme o art. 13, § 7º.'
+              },
+              {
+                type: 'ebookReading',
+                heading: 'SAIBA MAIS! · CONTEÚDO DO E-BOOK A UTILIZAR',
+                introduction: 'Volume 2, páginas 15-16 — Cap. 9: a Resolução CNE/CP nº 4/2024, os quatro núcleos formativos e a carga horária mínima total da licenciatura.',
+                volumes: [{ id: 'volume-2-nucleos', title: 'Volume 2 — Regulação da EaD no Brasil', entries: [
+                  { pages: '15-16', content: 'Cap. 9: a Resolução CNE/CP nº 4/2024, os quatro núcleos formativos e a carga horária mínima total da licenciatura.' }
+                ] }]
+              },
+              {
+                type: 'splitNarrative',
+                accessibleHeading: 'O Núcleo III na UFPE',
+                lead: 'O Núcleo III na UFPE: as Atividades Curriculares de Extensão (ACEx)',
+                paragraphs: [
+                  'O Núcleo III, Atividades Acadêmicas de Extensão, tem 320 horas e deve ser sempre presencial, conforme o art. 13, § 6º, da Resolução CNE/CP nº 4/2024, mesmo quando o curso de licenciatura é ofertado a distância. Esse núcleo aproxima a formação docente das comunidades e dos territórios em que os futuros professores vão atuar, articulando ensino, pesquisa e extensão.',
+                  'Na UFPE, o Núcleo III é operacionalizado por meio das Atividades Curriculares de Extensão, conhecidas como ACEx, regulamentadas pela Resolução nº 31/2022-UFPE/CEPE. Essa resolução prevê duas opções: a Opção A, de extensão autônoma, na qual as 320 horas são cumpridas fora dos componentes curriculares obrigatórios; e a Opção B, na qual até 50% da carga horária de extensão pode ser integrada a um componente curricular vinculado a um projeto aprovado pela Pró-Reitoria de Extensão e Cultura (Proext).',
+                  'Cada curso de licenciatura define, em seu Projeto Pedagógico de Curso, qual das duas opções vai adotar, ou como vai combiná-las. Por ser um núcleo sempre presencial, a ACEx exige atenção redobrada no acompanhamento: mesmo em um curso majoritariamente a distância, essas 320 horas não podem ser substituídas por atividades assíncronas no ambiente virtual.'
+                ]
+              },
+              {
+                type: 'splitNarrative',
+                accessibleHeading: 'O Núcleo IV e o estágio com regência',
+                lead: 'O Núcleo IV: estágio com regência',
+                paragraphs: [
+                  'O Núcleo IV, Estágio Curricular Supervisionado, tem 400 horas e deve ser sempre presencial, conforme o art. 13, § 5º, da Resolução CNE/CP nº 4/2024. Esse núcleo corresponde ao momento em que o licenciando exerce a regência, assumindo efetivamente a condução de aulas sob supervisão, aproximando-se da rotina real da docência na Educação Básica.',
+                  'Na UFPE, o estágio com regência é cadastrado no Sistema Integrado de Gestão de Atividades Acadêmicas (SIGAA), conforme orientação das Instâncias de Articulação responsáveis pelo acompanhamento dos estágios.',
+                  'Além da regra de presencialidade total do Núcleo IV, o art. 13, § 7º, estabelece que os cursos ofertados a distância devem garantir que ao menos 880 horas do Núcleo II sejam cumpridas presencialmente.',
+                  'O Guia Orientador da SPREAD/UAB destaca ainda a importância da imersão progressiva do licenciando na prática docente desde os semestres iniciais do curso, com pelo menos dois componentes dos Núcleos I e II oferecidos em períodos distintos ao longo da formação, conforme orientação do Parecer CNE/CP nº 5/2025.'
+                ]
+              },
+              { type: 'ebookReading', heading: 'SAIBA MAIS! · CONTEÚDO DO E-BOOK A UTILIZAR', introduction: 'Volume 2, páginas 16-18 — Cap. 9-10: o Núcleo III (AAE, 320h, sempre presencial) e sua aplicação na UFPE por meio das Atividades Curriculares de Extensão (ACEx).', volumes: [{ id: 'volume-2-ace', title: 'Volume 2 — Regulação da EaD no Brasil', entries: [{ pages: '16-18', content: 'Cap. 9-10: o Núcleo III (AAE, 320h, sempre presencial) e sua aplicação na UFPE por meio das Atividades Curriculares de Extensão (ACEx).' }] }] },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Em cursos de licenciatura ofertados a distância, o Núcleo II (ACCE) pode ser cumprido de forma totalmente assíncrona, sem qualquer exigência de carga horária presencial.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'Nos cursos ofertados a distância, ao menos 880 horas do Núcleo II devem ser cumpridas presencialmente, conforme o art. 13, § 7º, da Resolução CNE/CP nº 4/2024.'
+              },
+              {
+                type: 'ebookReading',
+                heading: 'SAIBA MAIS! · CONTEÚDO DO E-BOOK A UTILIZAR',
+                introduction: 'Volume 2, páginas 17-19 — Cap. 9-10: o Núcleo IV (ECS, 400h, sempre presencial), a regra de presencialidade mínima de 880h do Núcleo II nos cursos EaD e a aplicação desses núcleos na UFPE.',
+                volumes: [{ id: 'volume-2-ecs', title: 'Volume 2 — Regulação da EaD no Brasil', entries: [{ pages: '17-19', content: 'Cap. 9-10: o Núcleo IV (ECS, 400h, sempre presencial), a regra de presencialidade mínima de 880h do Núcleo II nos cursos EaD e a aplicação desses núcleos na UFPE.' }] }]
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Retomada da situação-problema',
+                heading: 'Núcleos formativos e presencialidade',
+                question: 'Sobre os núcleos formativos da Resolução CNE/CP nº 4/2024, qual afirmação está correta?',
+                options: [
+                  { id: 'a', label: 'A)', text: 'Os quatro núcleos formativos podem ser cumpridos integralmente a distância, inclusive em cursos ofertados nessa modalidade.' },
+                  { id: 'b', label: 'B)', text: 'O Núcleo III (Atividades Acadêmicas de Extensão) pode ser ofertado de forma assíncrona, desde que registrado no SIGAA.' },
+                  { id: 'c', label: 'C)', text: 'Os Núcleos III (extensão) e IV (estágio) devem ser sempre presenciais, e nos cursos ofertados a distância ao menos 880h do Núcleo II também devem ser presenciais.' },
+                  { id: 'd', label: 'D)', text: 'A carga horária mínima total da licenciatura é de 1.600h, cumprida em, no mínimo, dois anos.' }
+                ],
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                correctFeedbackLabel: 'Feedback da resposta correta:',
+                incorrectFeedbackLabel: 'Feedback das respostas incorretas:',
+                correctFeedback: 'Conforme o art. 13 da Resolução CNE/CP nº 4/2024, o Núcleo III (AAE) e o Núcleo IV (ECS) são sempre presenciais (§§ 6º e 5º), e nos cursos ofertados a distância ao menos 880h do Núcleo II devem ser presenciais (§ 7º). A carga horária mínima total da licenciatura é de 3.200h, em curso com duração mínima de 4 anos (art. 14, § 1º).',
+                incorrectFeedback: 'Os Núcleos III e IV são sempre presenciais, independentemente do formato de oferta do curso, e o Núcleo II exige carga horária presencial mínima nos cursos ofertados a distância. A carga horária mínima total da licenciatura é de 3.200h, e não de 1.600h.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Em síntese',
+                heading: 'Síntese da Unidade 01',
+                items: [
+                  'a Resolução CNE/CP nº 4/2024 revogou as Resoluções CNE/CP nº 2/2015, nº 2/2019 e nº 1/2020, estabelecendo as diretrizes atualmente vigentes para a formação inicial de professores;',
+                  'a formação docente passou a ser organizada em quatro núcleos formativos: Núcleo I (EFG, 880h), Núcleo II (ACCE, 1.600h), Núcleo III (AAE, 320h) e Núcleo IV (ECS, 400h);',
+                  'os Núcleos III e IV são sempre presenciais, independentemente do formato de oferta do curso;',
+                  'em cursos ofertados a distância, ao menos 880h do Núcleo II devem ser cumpridas presencialmente;',
+                  'a carga horária mínima total da licenciatura é de 3.200h, em curso com duração mínima de 4 anos;',
+                  'na UFPE, o Núcleo III é operacionalizado pelas Atividades Curriculares de Extensão (ACEx), nas Opções A e B da Resolução nº 31/2022-UFPE/CEPE, e o Núcleo IV corresponde ao estágio com regência, cadastrado no SIGAA.'
+                ]
+              }
+            ]
+          },
+          {
+            id: '04',
+            label: 'Adequação dos PPCs',
+            unit: 'Unidade 02',
+            title: 'A adequação dos PPCs das licenciaturas ao novo marco regulatório',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Revisar o PPC é revisar a proposta de formação',
+                paragraphs: [
+                  'A publicação do Decreto nº 12.456/2025 não altera apenas a forma de organizar aulas e atividades: ela exige que cada curso revise o documento que estrutura toda a sua proposta pedagógica, o Projeto Pedagógico de Curso (PPC). Isso é particularmente sensível para as licenciaturas, que passaram a ter vedada a oferta no formato 100% a distância.',
+                  'Diante desse cenário, a UFPE, por meio da Secretaria de Programas de Educação Aberta e Digital (SPREAD/UAB), elaborou um Guia Orientador para apoiar as coordenações de curso na adequação dos PPCs ao novo marco legal. O guia traduz a norma em um roteiro prático, organizado em passos sequenciais, que orienta desde a identificação do formato de oferta autorizado até a definição dos processos de avaliação compatíveis com a nova legislação.',
+                  'Esse processo de adequação não é tarefa exclusiva da coordenação de curso ou do corpo docente. Embora a decisão final sobre a reorganização do PPC seja institucional, o tutor acompanha de perto seus efeitos: é ele quem esclarece dúvidas dos estudantes sobre o novo formato do curso, apoia o registro de frequência nas atividades presenciais e síncronas mediadas, e ajuda a identificar necessidades de infraestrutura nos polos.',
+                  'Neste eixo, você vai conhecer as etapas de transição previstas para os cursos de licenciatura, os 11 passos do checklist de adequação dos PPCs proposto pelo Guia Orientador SPREAD/UAB-UFPE e o papel que o tutor exerce no acompanhamento desse processo de reorganização institucional.'
+                ]
+              },
+              { type: 'knowledgeNote', variant: 'tutoring', label: 'DIALOGANDO', icon: 'mediation', paragraphs: ['Depois de conhecer as principais normas, que tal olhar para elas em conjunto?', 'A leitura “O Marco Regulatório dos cursos de graduação a distância” pode ajudar a perceber como diferentes atos normativos se articulam e repercutem na organização das instituições e dos cursos. Ao ler, pense: quais mudanças apresentadas têm impacto mais direto na sua atuação?', 'Acessar o artigo — O Marco Regulatório dos cursos de graduação a distância →'] },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Normas para consulta',
+                description: 'Acesse o conjunto de documentos oficiais que organiza a nova política de EaD.',
+                icon: 'book',
+                links: [
+                  { label: 'Legislação sobre Educação a Distância — MEC', href: 'https://www.gov.br/mec/pt-br/politica-regulacao-supervisao-educacao-superior/ead/legislacao' },
+                  { label: 'Decreto nº 12.456/2025', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm' }
+                ]
+              },
+              {
+                type: 'accordionGroup',
+                label: 'Objetivos da unidade',
+                items: [
+                  { id: 'objetivo-geral-modulo-03-unidade-02', title: 'Objetivo geral', paragraphs: ['Compreender as etapas de adequação dos Projetos Pedagógicos de Curso (PPCs) das licenciaturas ao novo marco regulatório da EaD, reconhecendo o checklist orientador do processo de revisão institucional proposto pelo Guia Orientador SPREAD/UAB-UFPE e o papel do tutor nesse acompanhamento.'] },
+                  {
+                    id: 'objetivos-aprendizagem-modulo-03-unidade-02',
+                    title: 'Objetivos de aprendizagem',
+                    paragraphs: ['Ao concluir este eixo, espera-se que o participante consiga:'],
+                    list: [
+                      'reconhecer as três situações de transição institucional previstas para os cursos de licenciatura diante do novo marco regulatório da EaD;',
+                      'identificar as implicações da vedação da oferta de licenciaturas 100% EaD e a necessidade de reorganização para o formato semipresencial;',
+                      'descrever os 11 passos do checklist de adequação dos PPCs apresentado no Guia Orientador SPREAD/UAB-UFPE;',
+                      'relacionar cada passo do checklist aos elementos que compõem um PPC, como percentuais de presencialidade, matriz curricular, corpo docente e infraestrutura dos polos;',
+                      'reconhecer o papel do tutor no acompanhamento e na comunicação das mudanças institucionais decorrentes da adequação dos PPCs.'
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: '05',
+            label: 'Situação-problema',
+            unit: 'Unidade 02',
+            title: 'Um PPC que precisa ser reorganizado',
+            blocks: [
+              {
+                type: 'imagePlaceholder',
+                heading: 'Um curso em transição',
+                description: 'Imagem a inserir: equipe de coordenação, estudantes e Polo EaD diante de uma reorganização de curso de licenciatura.',
+                caption: 'Imagem de referência — substituir por imagem correspondente ao contexto desta situação-problema.'
+              },
+              {
+                type: 'scenario',
+                paragraphs: [
+                  'Uma licenciatura ofertada pela UAB/UFPE foi estruturada, há alguns anos, inteiramente no formato a distância: todas as atividades eram assíncronas ou síncronas, sem exigência de carga horária presencial. O curso sempre teve boa procura e resultados consistentes de conclusão.',
+                  'Com a publicação do novo marco regulatório, a coordenação foi informada de que esse formato não pode mais ser mantido para novas turmas. É preciso decidir como reorganizar o PPC: quais percentuais de presencialidade adotar, como ajustar a matriz curricular, o que fazer com os estudantes já matriculados e como comunicar as mudanças às equipes dos polos.'
+                ]
+              },
+              {
+                type: 'roleComparison',
+                eyebrow: 'Confronte as posições',
+                heading: 'Atualização formal ou reorganização efetiva?',
+                introduction: 'A revisão precisa responder às exigências de formato, carga horária, operação do curso e preservação dos direitos dos estudantes.',
+                left: { title: 'Primeira posição' },
+                right: { title: 'Segunda posição' },
+                rows: [{
+                  label: 'Encaminhamento proposto',
+                  left: '“O curso já está consolidado, funciona bem do jeito que está. Acho que basta atualizar a capa do PPC com a data de hoje e seguir normalmente.”',
+                  right: '“Não é só isso. A oferta 100% EaD para licenciatura foi vedada. Precisamos rever o formato inteiro do curso, seguindo o checklist do Guia Orientador, e ainda garantir que quem já está matriculado possa concluir sem prejuízo.”'
+                }]
+              },
+              {
+                type: 'stickyStack',
+                heading: 'Para refletir',
+                showCount: false,
+                items: [
+                  { id: 'fala-correta-ppc', text: 'Qual posição está correta?' },
+                  { id: 'atualizacao-ou-revisao', text: 'Por que atualizar a data do PPC não basta?' },
+                  { id: 'direito-conclusao', text: 'O que acontece com estudantes já matriculados?' },
+                  { id: 'mudancas-matriz-polos', text: 'Que mudanças a reorganização traz à matriz e aos polos?' },
+                  { id: 'papel-tutor-ppc', text: 'Por que o tutor precisa compreender esse processo?' }
+                ]
+              }
+            ]
+          },
+          {
+            id: '06',
+            label: 'Transição institucional',
+            unit: 'Unidade 02',
+            title: 'A vedação da oferta 100% EaD e as três situações de transição',
+            headingSize: 'compact',
+            blocks: [
+              { type: 'chapterDivider', number: '03', eyebrow: 'Unidade 02 · Capítulo 03', heading: 'A vedação da oferta 100% EaD e as três situações de transição' },
+              {
+                type: 'narrative',
+                heading: 'Uma vedação que exige revisão institucional',
+                paragraphs: [
+                  'Desde a publicação do Decreto nº 12.456/2025, a oferta de cursos de graduação da área de licenciatura no formato integralmente a distância está vedada. Essa vedação afeta diretamente os PPCs de cursos que, até então, estavam estruturados dessa forma, exigindo uma revisão institucional que vai muito além de uma atualização de data ou de capa.',
+                  'O Guia Orientador SPREAD/UAB-UFPE situa essa revisão em três possíveis situações institucionais. Cursos cuja oferta foi vedada entram em processo de extinção. Cursos que não foram vedados, mas ainda não atendem aos percentuais obrigatórios do formato em que estão enquadrados, têm até dois anos para ajustar o PPC e a operação do curso. Cursos que já estão adequados seguem funcionando normalmente.',
+                  'As instituições credenciadas e os cursos autorizados têm até dois anos, a partir da publicação do decreto, em 20 de maio de 2025, para se adequarem integralmente ao novo marco regulatório.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Acesse o Decreto nº 12.456/2025',
+                description: 'Quer conhecer diretamente o documento que institui as novas regras para a oferta da educação a distância? Consulte o material sobre o Decreto nº 12.456/2025 e observe como a norma redefine formatos de oferta, atividades presenciais e organização acadêmica.',
+                icon: 'book',
+                links: [{ label: 'Acessar Decreto nº 12.456/2025 →', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm' }]
+              },
+              {
+                type: 'offerFormats',
+                eyebrow: 'Mapa da transição',
+                heading: 'Três situações institucionais',
+                introduction: 'Identifique a situação do curso para orientar a revisão do PPC e da operação acadêmica.',
+                items: [
+                  { id: 'curso-vedado', title: 'Oferta vedada', legalBasis: 'Processo de extinção', primaryLabel: 'Novas matrículas', primaryValue: 'Vedadas', primaryText: 'no formato anterior.', complementLabel: 'Encaminhamento', complementValue: 'Migrar', complementText: 'para formato autorizado ou encerrar a oferta.', note: 'Estudantes já matriculados concluem no formato de ingresso.' },
+                  { id: 'curso-ajuste', title: 'Fora dos percentuais', legalBasis: 'Adequação necessária', primaryLabel: 'Prazo', primaryValue: '2 anos', primaryText: 'para ajustar PPC e operação.', complementLabel: 'Encaminhamento', complementValue: 'Revisar', complementText: 'matriz, atividades, equipe, frequência e infraestrutura.', note: 'A revisão deve ser técnica e coerente.' },
+                  { id: 'curso-adequado', title: 'Já adequado', legalBasis: 'Conformidade institucional', primaryLabel: 'Situação', primaryValue: 'Regular', primaryText: 'atende às condições exigidas.', complementLabel: 'Encaminhamento', complementValue: 'Manter', complementText: 'a oferta com acompanhamento contínuo.', note: 'O curso segue funcionando normalmente.' }
+                ]
+              },
+              { type: 'attentionNotice', label: 'ATENÇÃO', paragraphs: ['No caso da extinção, ficam proibidas novas matrículas no formato anterior; os estudantes já matriculados mantêm o direito de concluir o curso no formato em que ingressaram; e a instituição pode optar por encerrar a oferta ou por migrar o curso para o formato semipresencial, por meio de um processo simplificado de reorganização.'] },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Uma licenciatura ofertada anteriormente no formato 100% a distância pode continuar recebendo novas matrículas nesse mesmo formato.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'A oferta de licenciaturas 100% EaD foi vedada. A instituição deve reorganizar o curso, em regra para o formato semipresencial, ficando proibida a entrada de novos estudantes no formato anterior. Os estudantes já matriculados mantêm o direito de concluir o curso no formato em que ingressaram.'
+              },
+              {
+                type: 'ebookReading',
+                heading: 'SAIBA MAIS! · CONTEÚDO DO E-BOOK A UTILIZAR',
+                introduction: 'Volume 2, páginas 12-14 — formatos de oferta, percentuais e vedações que fundamentam os primeiros passos do checklist. Volume 2, páginas 18-19 — a aplicação do Guia Orientador SPREAD/UAB na revisão dos PPCs da UFPE.',
+                volumes: [{ id: 'volume-2-transicao-ppc', title: 'Volume 2 — Regulação da EaD no Brasil', entries: [
+                  { pages: '12-14', content: 'formatos de oferta, percentuais e vedações que fundamentam os primeiros passos do checklist.' },
+                  { pages: '18-19', content: 'a aplicação do Guia Orientador SPREAD/UAB na revisão dos PPCs da UFPE.' }
+                ] }]
+              }
+            ]
+          },
+          {
+            id: '07',
+            label: 'Checklist do PPC',
+            unit: 'Unidade 02',
+            title: 'O checklist de 11 passos para adequação dos PPCs',
+            headingSize: 'compact',
+            blocks: [
+              { type: 'chapterDivider', number: '04', eyebrow: 'Unidade 02 · Capítulo 04', heading: 'O checklist de 11 passos para adequação dos PPCs' },
+              {
+                type: 'narrative',
+                heading: 'Um roteiro para revisar o curso por inteiro',
+                paragraphs: [
+                  'Para orientar as coordenações de curso nesse processo, o Guia Orientador SPREAD/UAB-UFPE organiza a adequação dos PPCs em um checklist de 11 passos, funcionando como um roteiro sequencial que integra aspectos normativos, curriculares, pedagógicos e administrativos em uma única revisão coerente.',
+                  'Percorrer os 11 passos na ordem proposta ajuda a evitar revisões parciais, em que apenas a matriz curricular é alterada, mas o texto do PPC continua descrevendo uma operação que não corresponde mais à prática do curso.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Atenção',
+                heading: 'O Decreto deve ser lido com normas complementares',
+                description: 'O Decreto não deve ser analisado isoladamente. Algumas de suas determinações são detalhadas por atos normativos posteriores. Para compreender essa articulação — incluindo os procedimentos e condições que impactam a organização dos cursos —, consulte também a Portaria MEC nº 378/2025.',
+                icon: 'attention',
+                links: [{ label: 'Acessar Portaria MEC nº 378/2025 →', href: 'https://www.gov.br/mec/pt-br/centrais-de-conteudo/atos-normativos/2025' }]
+              },
+              {
+                type: 'accordionGroup',
+                eyebrow: 'Checklist de adequação',
+                label: 'Os 11 passos do Guia Orientador',
+                items: [
+                  { id: 'passo-01', title: 'identificar o formato de oferta autorizado (presencial, semipresencial ou a distância);', paragraphs: [] },
+                  { id: 'passo-02', title: 'ajustar os percentuais obrigatórios de atividades presenciais, síncronas e síncronas mediadas conforme esse formato;', paragraphs: [] },
+                  { id: 'passo-03', title: 'revisar as Diretrizes Curriculares Nacionais e o Catálogo Nacional de Cursos aplicáveis;', paragraphs: [] },
+                  { id: 'passo-04', title: 'padronizar as siglas e nomenclaturas usadas no PPC (AP, AS, ASM e ASIN);', paragraphs: [] },
+                  { id: 'passo-05', title: 'estruturar a matriz curricular detalhando a carga horária de cada tipo de atividade em cada unidade curricular;', paragraphs: [] },
+                  { id: 'passo-06', title: 'descrever como cada tipo de atividade será efetivamente conduzido.', paragraphs: [] },
+                  { id: 'passo-07', title: 'definir o controle de frequência nas atividades presenciais e síncronas mediadas;', paragraphs: [] },
+                  { id: 'passo-08', title: 'apresentar o corpo docente e a distribuição de mediadores por turma, além da infraestrutura dos polos;', paragraphs: [] },
+                  { id: 'passo-09', title: 'especificar o trabalho dos mediadores pedagógicos, respeitando o limite de 70 estudantes por mediador;', paragraphs: [] },
+                  { id: 'passo-10', title: 'detalhar a infraestrutura de cada Polo EaD envolvido, lembrando que é vedado o compartilhamento de um mesmo polo entre instituições diferentes;', paragraphs: [] },
+                  { id: 'passo-11', title: 'estabelecer processos de avaliação compatíveis com a legislação vigente.', paragraphs: [] }
+                ]
+              },
+              { type: 'attentionNotice', label: 'ATENÇÃO', paragraphs: ['O limite de até 70 estudantes por mediador nas Atividades Síncronas Mediadas (ASM) e a organização dos Polos EaD continuam sendo detalhados por normas complementares. Ao analisar esse requisito, identifique não apenas o Decreto, mas também os atos posteriores que regulamentam sua aplicação, como a Portaria nº 506, de 10 de julho de 2025.'] },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Norma complementar sobre equipes e polos',
+                description: 'Conhecer a Portaria nº 506, de 10 de julho de 2025 →',
+                icon: 'book',
+                links: [{ label: 'Conhecer a Portaria nº 506, de 10 de julho de 2025 →', href: 'https://www.gov.br/mec/pt-br/centrais-de-conteudo/comunicados/mec-publica-portaria-de-regulamentacao-do-decreto-ead' }]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Qual sigla identifica uma atividade conduzida em tempo real, com até 70 estudantes por docente ou mediador e controle de frequência obrigatório?',
+                correctAnswer: true,
+                correctAnswerLabel: 'ASM (Atividade Síncrona Mediada)',
+                explanation: 'A Atividade Síncrona Mediada (ASM) ocorre em tempo real, com grupo de até 70 estudantes por docente ou mediador pedagógico, exigindo controle de frequência. Padronizar essa e as demais siglas do PPC (AP, AS, ASIN) é o quarto passo do checklist de adequação.'
+              },
+              {
+                type: 'ebookReading',
+                heading: 'SAIBA MAIS! · CONTEÚDO DO E-BOOK A UTILIZAR',
+                introduction: 'Volume 2, páginas 18-19 — a aplicação do Guia Orientador na adequação das licenciaturas da UFPE. Volume 2, páginas 20-21 — desafios e perspectivas para a tutoria em EaD sob o novo marco regulatório.',
+                volumes: [{ id: 'volume-2-checklist', title: 'Volume 2 — Regulação da EaD no Brasil', entries: [
+                  { pages: '18-19', content: 'a aplicação do Guia Orientador na adequação das licenciaturas da UFPE.' },
+                  { pages: '20-21', content: 'desafios e perspectivas para a tutoria em EaD sob o novo marco regulatório.' }
+                ] }]
+              }
+            ]
+          },
+          {
+            id: '08',
+            label: 'Papel do tutor',
+            unit: 'Unidade 02',
+            title: 'O papel do tutor na adequação dos PPCs',
+            headingSize: 'reduced',
+            blocks: [
+              { type: 'chapterDivider', number: '05', eyebrow: 'Unidade 02 · Capítulo 05', heading: 'O papel do tutor no acompanhamento da adequação dos PPCs', size: 'reduced' },
+              {
+                type: 'narrative',
+                heading: 'Acompanhar, comunicar e apoiar',
+                paragraphs: [
+                  'A decisão sobre como reorganizar um PPC não cabe ao tutor: é uma decisão institucional, tomada pela coordenação de curso e pelo corpo docente, com base na análise técnica prevista no checklist. Ainda assim, o tutor acompanha de perto os efeitos dessa reorganização, o que exige compreender, ao menos em linhas gerais, o que está mudando e por quê.',
+                  'Um dos efeitos mais diretos é a comunicação com os estudantes. Quando um curso passa de 100% EaD para semipresencial, surgem dúvidas sobre datas de atividades presenciais, sobre o que muda para quem já está matriculado e sobre como funcionará o controle de frequência nas atividades síncronas mediadas. O tutor, por estar próximo do cotidiano dos estudantes, é frequentemente a primeira pessoa a quem essas dúvidas chegam.',
+                  'O tutor também apoia a organização no nível do polo: ajuda a identificar se a infraestrutura disponível é suficiente para as novas atividades presenciais e síncronas mediadas, contribui para o registro adequado da frequência e atua em conjunto com o mediador pedagógico, sempre respeitando a distinção entre as atribuições administrativas do tutor e as funções de mediação pedagógica.'
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Cabe ao tutor decidir, isoladamente, qual será o novo formato de oferta de um curso de licenciatura.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'Essa decisão cabe à coordenação de curso e ao corpo docente, com base na análise técnica prevista no checklist de adequação dos PPCs. O tutor contribui no acompanhamento e na comunicação das mudanças.'
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Retomada da situação-problema',
+                heading: 'Um encaminhamento adequado ao novo marco',
+                question: 'Diante da situação apresentada, em que a coordenação de um curso de licenciatura ofertado 100% EaD precisa decidir como reorganizar o PPC, qual encaminhamento está adequado à legislação vigente?',
+                options: [
+                  { id: 'a', label: 'A)', text: 'O curso pode continuar sendo ofertado 100% a distância normalmente, pois os estudantes já matriculados possuem direito adquirido a esse formato.' },
+                  { id: 'b', label: 'B)', text: 'O curso deve ser imediatamente extinto, e todos os estudantes, inclusive os já matriculados, devem ser transferidos para outro curso.' },
+                  { id: 'c', label: 'C)', text: 'O curso deve ser reorganizado para o formato semipresencial, seguindo o checklist do Guia Orientador, com percentuais mínimos de presencialidade e de atividades síncronas mediadas, assegurado aos estudantes já matriculados o direito de concluir no formato de ingresso.' },
+                  { id: 'd', label: 'D)', text: 'Basta atualizar a data e a capa do PPC, mantendo a estrutura curricular exatamente como está.' }
+                ],
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                correctFeedbackLabel: 'Feedback da resposta correta:',
+                incorrectFeedbackLabel: 'Feedback das respostas incorretas:',
+                correctFeedback: 'Como a oferta de licenciaturas 100% EaD foi vedada, o curso deve ser reorganizado, em regra, para o formato semipresencial, seguindo os passos do checklist do Guia Orientador SPREAD/UAB-UFPE. Os estudantes já matriculados mantêm o direito de concluir o curso no formato em que ingressaram.',
+                incorrectFeedback: 'A oferta 100% EaD de licenciatura não pode ser mantida para novas matrículas, mas o direito de conclusão dos estudantes já matriculados deve ser preservado.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Em síntese',
+                heading: 'Síntese da Unidade 02',
+                items: [
+                  'a oferta de licenciaturas 100% a distância foi vedada pelo novo marco regulatório da EaD;',
+                  'cursos de licenciatura podem estar em três situações institucionais: vedados (em extinção), fora dos percentuais (com prazo de até dois anos para ajuste) ou já adequados;',
+                  'na extinção, ficam proibidas novas matrículas no formato anterior, mas os estudantes já matriculados mantêm o direito de concluir no formato de ingresso;',
+                  'o Guia Orientador SPREAD/UAB-UFPE organiza a adequação dos PPCs em um checklist de 11 passos, que integra aspectos normativos, curriculares, pedagógicos e administrativos;',
+                  'o checklist vai da identificação do formato de oferta autorizado até o estabelecimento de processos de avaliação compatíveis com a legislação vigente;',
+                  'o tutor não decide a reorganização do PPC, mas acompanha seus efeitos, apoiando a comunicação com os estudantes, o controle de frequência e a organização do polo.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Guia — Novo Marco Regulatório',
+                description: 'Para reunir os principais conceitos, normas e implicações do novo marco regulatório em um único material, consulte o Guia — Novo Marco Regulatório. Você pode utilizá-lo também como material de apoio durante todo o curso.',
+                icon: 'book',
+                links: [{ label: 'Acessar o Guia — Novo Marco Regulatório →', href: 'https://www.ufpe.br/en/spread/programas/uab' }]
+              }
+            ]
+          },
+          {
+            id: '09',
+            label: 'Referências',
+            unit: 'Módulo 03',
+            title: 'Referências',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'references',
+                showCount: false,
+                eyebrow: 'Fontes utilizadas no Módulo 03',
+                heading: 'Referências e aprofundamentos',
+                introduction: 'O Módulo 3 está estruturado em 8 páginas, divididas em duas unidades: a Unidade 01 (Páginas 01 a 03) trata dos quatro núcleos formativos da Resolução CNE/CP nº 4/2024, e a Unidade 02 (Páginas 04 a 08) trata da adequação dos PPCs das licenciaturas ao novo marco regulatório da EaD. Cada página é independente e pode ser acessada diretamente pelo menu do curso no AVA.',
+                groups: [
+                  {
+                    id: 'legislacao-modulo-03',
+                    label: 'Legislação',
+                    items: [
+                      { type: 'Decreto', text: 'BRASIL. Decreto nº 12.456, de 19 de maio de 2025. Dispõe sobre a oferta de educação a distância por instituições de educação superior em cursos de graduação.', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm', linkLabel: 'Acesso oficial' },
+                      { type: 'Resolução', text: 'BRASIL. Conselho Nacional de Educação. Conselho Pleno. Resolução CNE/CP nº 4, de 29 de maio de 2024. Dispõe sobre as Diretrizes Curriculares Nacionais para a Formação Inicial de Professores da Educação Básica.', href: 'https://www.gov.br/mec/pt-br/cne/resolucoes-cp-2024', linkLabel: 'Acesso oficial' },
+                      { type: 'Portaria', text: 'BRASIL. Ministério da Educação. Portaria MEC nº 378, de 19 de maio de 2025.', href: 'https://www.gov.br/mec/pt-br/centrais-de-conteudo/atos-normativos/2025', linkLabel: 'Acesso oficial' },
+                      { type: 'Portaria', text: 'BRASIL. Ministério da Educação. Portaria MEC nº 506, de 10 de julho de 2025.', href: 'https://www.gov.br/mec/pt-br/centrais-de-conteudo/comunicados/mec-publica-portaria-de-regulamentacao-do-decreto-ead', linkLabel: 'Acesso oficial' },
+                      { type: 'Resolução institucional', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Conselho de Ensino, Pesquisa e Extensão. Resolução nº 31/2022-CEPE. Dispõe sobre as Atividades Curriculares de Extensão (ACEx) nos cursos de graduação da UFPE.', href: 'https://www.ufpe.br/en/proext/normas', linkLabel: 'Acesso oficial' }
+                    ]
+                  },
+                  {
+                    id: 'documentos-institucionais-modulo-03',
+                    label: 'Documentos institucionais UFPE/SPREAD',
+                    items: [
+                      { type: 'Guia orientador', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Guia Orientador para Adequação dos Cursos de Licenciatura ao Novo Marco Legal da Educação a Distância. Produção: Dayse Patrícia Pereira Barbosa. Recife: UFPE/SPREAD/UAB, 2025.' },
+                      { type: 'Guia orientador', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Guia orientador para adequação dos cursos de licenciatura ao novo marco legal da EaD. Recife: EAD UFPE/SPREAD, 2025.' },
+                      { type: 'Volume 2', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Regulação da Educação a Distância no Brasil: trajetória normativa, qualidade e o novo marco regulatório. Volume 2. Recife: UFPE/SPREAD, 2026.' }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         id: '04',
