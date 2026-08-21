@@ -254,11 +254,79 @@
   function renderContentImageBlock(block) {
     const source = String(block.src || '').trim();
     if (!source) return '';
+    const caption = String(block.caption || '').trim();
+    const captionTitle = String(block.captionTitle || 'Imagem de apoio').trim();
 
     return `
-      <figure class="lesson-content-image lesson-container" data-reveal>
+      <figure class="lesson-content-image lesson-container${caption ? ' lesson-content-image--with-caption' : ''}" data-reveal>
         <img src="${escapeHTML(source)}" alt="${escapeHTML(block.alt || '')}" loading="lazy" decoding="async" />
+        ${caption ? `<figcaption><span>${escapeHTML(captionTitle)}</span>${escapeHTML(caption)}</figcaption>` : ''}
       </figure>
+    `;
+  }
+
+  function safeExternalUrl(value) {
+    if (!value) return '';
+    try {
+      const parsed = new URL(value, window.location.href);
+      return parsed.protocol === 'https:' ? parsed.href : '';
+    } catch {
+      return '';
+    }
+  }
+
+  function renderImagePlaceholderBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `image-placeholder-${moduleId}-${pageId}-${blockIndex}`;
+    return `
+      <section class="lesson-image-placeholder" aria-labelledby="${headingId}">
+        <figure class="lesson-container lesson-image-placeholder__figure" data-reveal>
+          <div class="lesson-image-placeholder__surface">
+            <span class="lesson-image-placeholder__index" aria-hidden="true">IMG</span>
+            <span class="lesson-image-placeholder__icon" aria-hidden="true">${lessonIcon('book')}</span>
+            <div>
+              <p class="lesson-eyebrow">Imagem a inserir</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading || 'Imagem de apoio')}</h3>
+              <p>${escapeHTML(block.description || 'Este espaço corresponde a uma imagem presente no material-fonte.')}</p>
+            </div>
+          </div>
+          <figcaption>${escapeHTML(block.caption || 'Legenda da imagem a inserir.')}</figcaption>
+        </figure>
+      </section>
+    `;
+  }
+
+  function renderResourceLinksBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `resource-links-${moduleId}-${pageId}-${blockIndex}`;
+    const links = Array.isArray(block.links) ? block.links : [];
+    const validLinks = links
+      .map((link) => ({ ...link, href: safeExternalUrl(link.href) }))
+      .filter((link) => link.href);
+    if (!validLinks.length) return '';
+
+    return `
+      <aside class="lesson-resource-links" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-resource-links__layout" data-reveal>
+          <div class="lesson-resource-links__heading">
+            <span class="lesson-resource-links__icon" aria-hidden="true">${lessonIcon(block.icon || 'book')}</span>
+            <div>
+              <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Saiba mais')}</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading || 'Documentos para consulta')}</h3>
+              ${block.description ? `<p>${escapeHTML(block.description)}</p>` : ''}
+            </div>
+          </div>
+          <ul class="lesson-resource-links__list">
+            ${validLinks.map((link, index) => `
+              <li>
+                <span aria-hidden="true">${padId(index + 1)}</span>
+                <a href="${escapeHTML(link.href)}" target="_blank" rel="noopener noreferrer">
+                  <span>${escapeHTML(link.label)}</span>
+                  ${icon('arrowUpRight')}
+                </a>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      </aside>
     `;
   }
 
@@ -898,6 +966,45 @@
     `;
   }
 
+  function renderRoleComparisonBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `role-comparison-${moduleId}-${pageId}-${blockIndex}`;
+    const left = block.left && typeof block.left === 'object' ? block.left : {};
+    const right = block.right && typeof block.right === 'object' ? block.right : {};
+    const rows = Array.isArray(block.rows) ? block.rows : [];
+
+    return `
+      <section class="lesson-role-matrix" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          <header class="lesson-role-matrix__heading" data-reveal>
+            <div>
+              <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Compare')}</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading)}</h3>
+            </div>
+            <p>${escapeHTML(block.introduction || '')}</p>
+          </header>
+          <div class="lesson-role-matrix__table" role="table" aria-label="${escapeHTML(block.heading)}" data-reveal>
+            <div class="lesson-role-matrix__row lesson-role-matrix__row--header" role="row">
+              <span role="columnheader">Critério</span>
+              <strong role="columnheader">${escapeHTML(left.title || 'Mediador pedagógico')}</strong>
+              <strong role="columnheader">${escapeHTML(right.title || 'Tutor')}</strong>
+            </div>
+            ${rows.map((row, index) => `
+              <div class="lesson-role-matrix__row" role="row">
+                <h4 role="rowheader"><span aria-hidden="true">${padId(index + 1)}</span>${escapeHTML(row.label)}</h4>
+                <div role="cell" data-role="${escapeHTML(left.title || 'Mediador pedagógico')}">
+                  <p>${escapeHTML(row.left)}</p>
+                </div>
+                <div role="cell" data-role="${escapeHTML(right.title || 'Tutor')}">
+                  <p>${escapeHTML(row.right)}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   function renderMultipleChoiceBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `multiple-choice-${moduleId}-${pageId}-${blockIndex}`;
     const feedbackId = `${headingId}-feedback`;
@@ -1000,13 +1107,12 @@
     const detailsId = `${headingId}-details`;
     const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
     const accessibleDetails = Array.isArray(block.accessibleDetails) ? block.accessibleDetails : [];
-    return `
-      <section class="lesson-case-study" aria-labelledby="${headingId}">
-        <div class="lesson-container">
+    const image = String(block.image || '').trim();
+    const mediaMarkup = image ? `
           <figure class="lesson-case-study__figure" data-reveal aria-describedby="${captionId} ${detailsId}">
             <div class="lesson-case-study__media">
               <img
-                src="${escapeHTML(block.image)}"
+                src="${escapeHTML(image)}"
                 alt="${escapeHTML(block.imageAlt)}"
                 width="${escapeHTML(block.imageWidth)}"
                 height="${escapeHTML(block.imageHeight)}"
@@ -1017,7 +1123,11 @@
             <div class="sr-only" id="${detailsId}">
               <ul>${accessibleDetails.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</ul>
             </div>
-          </figure>
+          </figure>` : '';
+    return `
+      <section class="lesson-case-study" aria-labelledby="${headingId}">
+        <div class="lesson-container">
+          ${mediaMarkup}
 
           <div class="lesson-case-study__layout">
             <header class="lesson-case-study__heading" data-reveal>
@@ -1300,12 +1410,14 @@
           <ol class="lesson-reference-group__list">
             ${items.map((item) => {
               referenceIndex += 1;
+              const href = safeExternalUrl(item.href);
               return `
                 <li>
                   <span class="lesson-reference-group__index" aria-hidden="true">${padId(referenceIndex)}</span>
                   <div>
                     <p class="lesson-reference-group__type">${escapeHTML(item.type)}</p>
                     <p class="lesson-reference-group__citation">${escapeHTML(item.text)}</p>
+                    ${href ? `<a class="lesson-reference-group__link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.linkLabel || 'Acessar documento')} ${icon('arrowUpRight')}</a>` : ''}
                   </div>
                 </li>
               `;
@@ -1346,6 +1458,8 @@
       return media;
     }
     if (block.type === 'contentImage') return renderContentImageBlock(block);
+    if (block.type === 'imagePlaceholder') return renderImagePlaceholderBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'resourceLinks') return renderResourceLinksBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'narrative') return renderNarrativeBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'regulatoryNotice') return renderRegulatoryNoticeBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'attentionNotice') return renderAttentionNoticeBlock(block, moduleId, pageId, blockIndex);
@@ -1364,6 +1478,7 @@
     if (block.type === 'regulationComparison') return renderRegulationComparisonBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'offerFormats') return renderOfferFormatsBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'courseRestrictions') return renderCourseRestrictionsBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'roleComparison') return renderRoleComparisonBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'multipleChoice') return renderMultipleChoiceBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'summary') return renderSummaryBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'caseStudy') return renderCaseStudyBlock(block, moduleId, pageId, blockIndex);
@@ -1477,11 +1592,16 @@
     const indexedBlocks = page.blocks.map((block, index) => ({ block, index }));
     const leadBlocks = indexedBlocks.filter(({ block }) => block.slot === 'lead');
     const contentBlocks = indexedBlocks.filter(({ block }) => block.slot !== 'lead');
+    const bannerUrl = String(module.banner || '').trim();
+    const bannerPosition = String(module.bannerPosition || 'center').trim() || 'center';
+    const heroStyle = bannerUrl
+      ? ` style="background-image: url('${escapeHTML(bannerUrl)}'); background-position: ${escapeHTML(bannerPosition)}; background-repeat: no-repeat; background-size: cover;"`
+      : '';
     return `
       <div class="module-view${readModuleSidebarPreference() ? ' is-sidebar-collapsed' : ''}" data-module-view>
         ${renderModuleSidebar(module, currentIndex)}
         <div class="module-content">
-          <header class="module-hero" data-module-hero data-banner="${escapeHTML(module.banner || '')}" data-banner-position="${escapeHTML(module.bannerPosition || 'center')}">
+          <header class="module-hero" data-module-hero data-banner="${escapeHTML(bannerUrl)}" data-banner-position="${escapeHTML(bannerPosition)}"${heroStyle}>
             <div class="module-hero__content" data-reveal>
               <p class="module-hero__eyebrow">Módulo ${escapeHTML(module.id)}</p>
               <h1>${escapeHTML(module.title)}</h1>

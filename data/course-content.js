@@ -1058,9 +1058,7 @@
                 title: 'Vídeo de abertura do Módulo 2',
                 description: 'Regulação da EaD e o Novo Marco Regulatório',
                 provider: 'Eduplay',
-                embedUrl: '',
-                poster: 'assets/mulher-negra-olhando-para-com.webp',
-                posterAlt: 'Participante acompanhando uma formação on-line em um notebook'
+                embedUrl: 'https://eduplay.rnp.br/app/video/embed/465299'
               },
               {
                 type: 'narrative',
@@ -1070,6 +1068,41 @@
                   'O art. 4º do Decreto nº 12.456/2025 estabelece que os cursos de graduação podem ser ofertados em três formatos: presencial, semipresencial e a distância. Cada formato corresponde a uma combinação específica de atividades presenciais, síncronas, síncronas mediadas e assíncronas, com percentuais mínimos de presencialidade definidos nos arts. 10, 11 e 12.',
                   'A legislação também reconhece que nem toda área do conhecimento comporta os três formatos da mesma maneira. Cursos como Direito, Medicina, Enfermagem, Odontologia e Psicologia têm exigência de oferta exclusivamente presencial (art. 8º), e é vedada a oferta a distância para a área de saúde em geral, para as licenciaturas e para diversas outras áreas (art. 9º). Essas escolhas normativas se apoiam na especificidade formativa de cada profissão, que demanda prática, supervisão e presença física em graus distintos.',
                   'Por fim, o eixo aborda a infraestrutura mínima exigida na sede da instituição e no Polo EaD (arts. 27 e 29), condição necessária para que as atividades presenciais e as avaliações previstas em cada formato de oferta possam efetivamente ocorrer.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'Art. 4º do Decreto nº 12.456/2025: cursos de graduação podem ser ofertados em três formatos — presencial, semipresencial e a distância —, com percentuais mínimos de presencialidade definidos nos arts. 10, 11 e 12.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'Art. 8º: Direito, Medicina, Enfermagem, Odontologia e Psicologia têm oferta exclusivamente presencial. Art. 9º: é vedada a oferta a distância para a área de saúde em geral, para as licenciaturas e para diversas outras áreas.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'practice',
+                label: 'Na prática',
+                icon: 'presence',
+                paragraphs: [
+                  'A presencialidade exigida em cada formato só se sustenta se a sede da instituição e o Polo EaD tiverem a infraestrutura mínima prevista nos arts. 27 e 29 do Decreto.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Documentos para consulta',
+                description: 'Acesse as normas e o FAQ citados nesta apresentação.',
+                links: [
+                  { label: 'Decreto nº 12.456/2025', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm' },
+                  { label: 'Formatos de oferta — FAQ MEC', href: 'https://www.gov.br/mec/pt-br/acesso-a-informacao/perguntas-frequentes/educacao-a-distancia/quais-os-formatos-de-oferta' },
+                  { label: 'Portaria MEC nº 378/2025', href: 'https://www.in.gov.br/web/dou/-/portaria-mec-n-378-de-19-de-maio-de-2025-630395302' },
+                  { label: 'Portaria MEC nº 506/2025', href: 'https://www.in.gov.br/en/web/dou/-/portaria-mec-n-506-de-10-de-julho-de-2025-641610361' }
                 ]
               },
               {
@@ -1098,6 +1131,13 @@
                     ]
                   }
                 ]
+              },
+              {
+                type: 'contentImage',
+                src: 'assets/infografico-pagina01mod02.webp',
+                alt: 'Infográfico de apoio da Unidade 01 do Módulo 02.',
+                captionTitle: 'Infográfico de apoio',
+                caption: 'Organização da oferta, garantia de qualidade e diferentes contextos de aprendizagem na Educação a Distância.'
               }
             ]
           },
@@ -1110,11 +1150,7 @@
               {
                 type: 'caseStudy',
                 heading: 'Qual é o formato certo para este curso?',
-                image: 'assets/imagem-pagina02-mod02.webp',
-                imageWidth: 1448,
-                imageHeight: 1086,
-                imageAlt: 'Equipe reunida para discutir os formatos presencial, semipresencial e a distância de um curso de graduação.',
-                caption: 'A revisão do Projeto Pedagógico de Curso exige conciliar formato de oferta, presencialidade e infraestrutura.',
+                image: '',
                 paragraphs: [
                   'A coordenação de curso da UAB/UFPE está revisando o Projeto Pedagógico de Curso (PPC) de uma licenciatura ofertada no formato semipresencial. Durante o levantamento de melhorias, a equipe recebe a sugestão de ampliar a carga horária de atividades a distância, como forma de reduzir os custos de deslocamento dos estudantes até o polo.',
                   'Na mesma reunião, surgem dúvidas sobre até que ponto a carga horária presencial pode ser reduzida, se o curso poderia migrar para o formato integralmente a distância e quais estruturas o Polo EaD precisa oferecer para sustentar as atividades presenciais já previstas na matriz curricular.',
@@ -1122,9 +1158,21 @@
                 ]
               },
               {
+                type: 'attentionNotice',
+                label: 'Atenção',
+                paragraphs: [
+                  '“É só uma questão de organização interna do PPC” é um equívoco: as licenciaturas estão entre os cursos vedados à oferta a distância pelo Decreto nº 12.456/2025 — não é possível migrar livremente para esse formato.'
+                ]
+              },
+              {
                 type: 'stickyStack',
                 heading: 'Para refletir',
+                showCount: false,
                 items: [
+                  {
+                    id: 'fala-correta',
+                    text: 'Qual das duas falas está correta?'
+                  },
                   {
                     id: 'formatos-oferta',
                     text: 'Quais são os três formatos de oferta previstos no Decreto nº 12.456/2025?'
@@ -1153,23 +1201,6 @@
             headingSize: 'compact',
             blocks: [
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar:',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa.',
-                volumes: [
-                  {
-                    id: 'volume-2',
-                    title: 'Volume 2',
-                    entries: [
-                      {
-                        pages: '12',
-                        content: 'O novo marco regulatório do Decreto nº 12.456/2025: formatos de oferta dos cursos de graduação e percentuais mínimos de presencialidade.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'narrative',
                 heading: 'Oferta não é apenas rótulo',
                 paragraphs: [
@@ -1180,12 +1211,26 @@
                 ]
               },
               {
-                type: 'video',
-                layout: 'section',
-                title: 'Os três formatos de oferta e seus percentuais de presencialidade',
-                description: 'Aprofundamento em vídeo',
-                provider: 'Eduplay',
-                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464649'
+                type: 'knowledgeNote',
+                label: 'Conceito-chave',
+                icon: 'book',
+                paragraphs: [
+                  'Os três formatos de oferta (art. 4º) não são apenas etiquetas administrativas: cada um define uma combinação específica de atividades presenciais, síncronas, síncronas mediadas e assíncronas.'
+                ]
+              },
+              {
+                type: 'dataFocus',
+                label: 'Dados em foco',
+                paragraphs: [
+                  'Presencial (art. 10): mínimo 70% presencial. Semipresencial (art. 11): mínimo 30% presencial + 20% presencial/síncrono mediado. A distância (art. 12): mínimo 10% presencial + 10% presencial/síncrono mediado.'
+                ]
+              },
+              {
+                type: 'comparisonPrompt',
+                label: 'Compare',
+                paragraphs: [
+                  'O infográfico a seguir compara os três formatos de oferta quanto ao percentual mínimo presencial e ao percentual complementar exigido.'
+                ]
               },
               {
                 type: 'offerFormats',
@@ -1249,42 +1294,22 @@
             headingSize: 'compact',
             blocks: [
               {
-                type: 'ebookReading',
-                heading: 'Conteúdo do e-book a utilizar:',
-                introduction: 'Consulte os trechos indicados dos e-books para aprofundar os conteúdos abordados nesta etapa.',
-                volumes: [
-                  {
-                    id: 'volume-2',
-                    title: 'Volume 2',
-                    entries: [
-                      {
-                        pages: '13',
-                        content: 'Vedações à oferta a distância por área do conhecimento e cursos de oferta exclusivamente presencial (arts. 8º e 9º).'
-                      }
-                    ]
-                  },
-                  {
-                    id: 'guia-orientador-spread-uab-ufpe',
-                    title: 'Guia Orientador SPREAD/UAB-UFPE',
-                    entries: [
-                      {
-                        pages: '—',
-                        content: 'Lista de áreas com restrições específicas de presencialidade.'
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
                 type: 'narrative',
                 heading: 'Nem todo curso pode escolher qualquer formato',
                 paragraphs: [
                   'Nem todos os cursos podem ser ofertados livremente nos três formatos. O Decreto nº 12.456/2025 estabelece vedações específicas por área do conhecimento, reconhecendo que a natureza formativa de certas profissões exige presença física, prática supervisionada e acompanhamento direto em graus distintos.',
                   'O art. 8º determina que os cursos de Direito, Medicina, Enfermagem, Odontologia e Psicologia sejam ofertados exclusivamente no formato presencial, vedada a oferta desses cursos nos formatos semipresencial ou a distância.',
-                  'O Guia Orientador detalha que Medicina deve ser ofertada com 100% de atividades presenciais, enquanto Direito, Enfermagem, Odontologia e Psicologia devem observar o percentual mínimo de 70% presencial.',
+                  'A Portaria MEC nº 378/2025 detalha essa regra: Medicina deve ser ofertada integralmente por meio de atividades presenciais, enquanto Direito, Enfermagem, Odontologia e Psicologia devem observar o mínimo de 70% da carga horária em atividades presenciais.',
                   'O art. 9º veda a oferta de curso de graduação a distância para a área de saúde em geral, exceto os cursos já tratados no art. 8º; as licenciaturas; e outros cursos que venham a ser definidos em ato do Ministro da Educação.',
-                  'O Guia Orientador detalha essa vedação listando as áreas em que a oferta a distância é totalmente vedada: Ciências Naturais, Matemática, Estatística, Saúde, Engenharia, Produção, Construção, Agricultura, Silvicultura, Pesca e Veterinária, além das licenciaturas.',
+                  'A Portaria MEC nº 378/2025 detalha as áreas alcançadas pela vedação ao formato a distância: Educação; Ciências Naturais, Matemática e Estatística; Saúde e Bem-Estar; Engenharia, Produção e Construção; e Agricultura, Silvicultura, Pesca e Veterinária, além das regras específicas para Direito, Enfermagem, Medicina, Odontologia e Psicologia.',
                   'Desde maio de 2025 fica vedada a oferta de licenciaturas 100% a distância: não são permitidas novas matrículas nesse formato, os estudantes já matriculados mantêm o direito de concluir o curso no formato de ingresso, e as instituições devem reorganizar esses cursos para o formato semipresencial, observando o mínimo de 30% de presencialidade.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'Art. 9º: vedada a oferta a distância para a área de saúde em geral (exceto os cursos do art. 8º), para as licenciaturas e para outros cursos definidos em ato do Ministro da Educação.'
                 ]
               },
               {
@@ -1311,11 +1336,12 @@
                     id: 'oferta-a-distancia-vedada',
                     law: 'Art. 9º',
                     title: 'Oferta a distância vedada',
-                    description: 'Áreas e cursos que não podem ser organizados como graduação a distância.',
+                    description: 'Áreas e cursos que não podem ser organizados como graduação a distância, conforme o art. 9º e o detalhamento da Portaria MEC nº 378/2025.',
                     items: [
                       'Área de saúde em geral, exceto os cursos já tratados no art. 8º.',
-                      'Licenciaturas.',
+                      'Educação, incluindo as licenciaturas.',
                       'Ciências Naturais, Matemática e Estatística.',
+                      'Saúde e Bem-Estar.',
                       'Engenharia, Produção e Construção.',
                       'Agricultura, Silvicultura, Pesca e Veterinária.',
                       'Outros cursos definidos em ato do Ministro da Educação.'
@@ -1334,12 +1360,21 @@
                 }
               },
               {
-                type: 'video',
-                layout: 'section',
-                title: 'Vedações por área do conhecimento',
-                description: 'Aprofundamento em vídeo',
-                provider: 'Eduplay',
-                embedUrl: 'https://eduplay.rnp.br/app/video/embed/464648'
+                type: 'attentionNotice',
+                label: 'Atenção',
+                paragraphs: [
+                  'Desde maio de 2025 é vedada a oferta de licenciaturas 100% a distância: não há novas matrículas nesse formato, quem já estava matriculado mantém o direito de concluir no formato de ingresso, e as instituições devem reorganizar esses cursos para o formato semipresencial, com mínimo de 30% de presencialidade.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Regras de oferta e transição',
+                links: [
+                  { label: 'Portaria MEC nº 378/2025', href: 'https://www.in.gov.br/web/dou/-/portaria-mec-n-378-de-19-de-maio-de-2025-630395302' },
+                  { label: 'Regras de transição — Portaria MEC nº 381/2025', href: 'https://mecnormas.mec.gov.br/pesquisa/detalhar/4599' },
+                  { label: 'FAQ MEC — aplicação gradual das mudanças', href: 'https://www.gov.br/mec/pt-br/acesso-a-informacao/perguntas-frequentes/educacao-a-distancia/as-mudancas-se-aplicam-imediatamente' }
+                ]
               },
               {
                 type: 'trueFalse',
@@ -1348,6 +1383,506 @@
                 correctAnswer: false,
                 correctAnswerLabel: 'Falso',
                 explanation: 'O art. 8º do Decreto nº 12.456/2025 determina que o curso de Enfermagem seja ofertado exclusivamente no formato presencial, com o percentual mínimo de 70% de atividades presenciais.'
+              }
+            ]
+          },
+          {
+            id: '05',
+            label: 'Infraestrutura',
+            unit: 'Unidade 01',
+            title: 'Capítulo 3 - Infraestrutura da sede e do Polo EaD',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'A estrutura torna a presencialidade possível',
+                paragraphs: [
+                  'A presencialidade exigida nos formatos apresentados nas unidades anteriores só se concretiza se a sede da instituição e o Polo EaD tiverem infraestrutura adequada para receber estudantes, professores, mediadores pedagógicos e tutores.',
+                  'O art. 27 estabelece que a sede da instituição deve dispor de recepção; secretaria acadêmica; salas de professores e coordenadores; espaço para a Comissão Própria de Avaliação (CPA); laboratórios; salas ou ambientes de estudo; e conectividade adequada.',
+                  'O art. 29 estabelece que o Polo EaD deve dispor de recepção; sala de coordenação; salas ou ambientes de estudo; laboratórios, quando aplicável; e conectividade. O Polo funciona também como ponto de conexão entre a instituição e os campos de prática e estágio dos estudantes, e como espaço de interação com a comunidade para atividades de extensão.',
+                  'O § 5º do art. 29 veda expressamente o compartilhamento de um mesmo Polo EaD entre instituições de educação superior diferentes.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'Art. 27: a sede da instituição deve dispor de recepção, secretaria acadêmica, salas de professores e coordenadores, espaço para a CPA, laboratórios, salas de estudo e conectividade adequada.',
+                  'Art. 29: o Polo EaD deve dispor de recepção, sala de coordenação, salas de estudo, laboratórios (quando aplicável) e conectividade.'
+                ]
+              },
+              {
+                type: 'courseRestrictions',
+                eyebrow: 'Mapa de infraestrutura',
+                heading: 'Sede e Polo EaD: estrutura mínima',
+                introduction: 'Os ambientes têm funções complementares para viabilizar as atividades presenciais, as avaliações e a interação com a comunidade.',
+                icon: 'spatial',
+                groups: [
+                  {
+                    id: 'estrutura-sede',
+                    law: 'Art. 27',
+                    title: 'Sede da instituição',
+                    description: 'Estrutura acadêmica e administrativa necessária à oferta do curso.',
+                    items: [
+                      'Recepção e secretaria acadêmica.',
+                      'Salas de professores e coordenadores.',
+                      'Espaço para a Comissão Própria de Avaliação (CPA).',
+                      'Laboratórios e salas ou ambientes de estudo.',
+                      'Conectividade adequada.'
+                    ],
+                    emphasis: true
+                  },
+                  {
+                    id: 'estrutura-polo',
+                    law: 'Art. 29',
+                    title: 'Polo EaD',
+                    description: 'Ponto de apoio acadêmico, de prática, estágio, extensão e interação com a comunidade.',
+                    items: [
+                      'Recepção e sala de coordenação.',
+                      'Salas ou ambientes de estudo.',
+                      'Laboratórios, quando aplicável.',
+                      'Conectividade.',
+                      'Articulação com campos de prática e estágio.'
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'attentionNotice',
+                label: 'Atenção',
+                paragraphs: [
+                  'O § 5º do art. 29 veda expressamente o compartilhamento de um mesmo Polo EaD entre instituições de educação superior diferentes — uma prática que poderia parecer uma forma válida de reduzir custos, mas não é permitida.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Normas sobre infraestrutura',
+                links: [
+                  { label: 'Decreto nº 12.456/2025 — arts. 27 a 29', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm' },
+                  { label: 'Portaria MEC nº 506/2025', href: 'https://www.in.gov.br/en/web/dou/-/portaria-mec-n-506-de-10-de-julho-de-2025-641610361' }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'É permitido que duas instituições de educação superior compartilhem o mesmo Polo EaD para reduzir custos operacionais.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O § 5º do art. 29 do Decreto nº 12.456/2025 veda expressamente o compartilhamento de Polo EaD entre instituições de educação superior diferentes.'
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Retomada da situação-problema',
+                heading: 'Qual afirmação está de acordo com o Decreto?',
+                question: 'Na reunião de planejamento do PPC descrita na situação-problema, qual afirmação está de acordo com o Decreto nº 12.456/2025?',
+                options: [
+                  { id: 'a', label: 'A)', text: 'O curso pode ser ofertado 100% a distância, pois isso reduz os custos de deslocamento dos estudantes até o polo.' },
+                  { id: 'b', label: 'B)', text: 'O curso pode ampliar livremente a carga horária a distância, desde que mantenha ao menos 10% de atividades presenciais.' },
+                  { id: 'c', label: 'C)', text: 'Por se tratar de licenciatura, a oferta a distância é vedada; o curso deve observar os percentuais mínimos do formato semipresencial ou migrar para o formato presencial.' },
+                  { id: 'd', label: 'D)', text: 'A decisão sobre o formato de oferta cabe exclusivamente à equipe do polo, sem relação com a legislação vigente.' }
+                ],
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                correctFeedback: 'Correto. O art. 9º do Decreto nº 12.456/2025 veda a oferta a distância para as licenciaturas. Como o curso já é ofertado no formato semipresencial, a equipe deve observar os percentuais mínimos exigidos pelo art. 11.',
+                incorrectFeedback: 'Revise as Unidades 1 e 2 deste eixo. As licenciaturas estão entre os cursos vedados à oferta a distância, e os percentuais mínimos de presencialidade de cada formato são definidos pelos arts. 10, 11 e 12.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Em resumo',
+                heading: 'Síntese da Unidade 01',
+                summaryNote: {
+                  label: 'Em resumo',
+                  icon: 'layers',
+                  paragraphs: [
+                    'A Unidade 1 apresentou os três formatos de oferta do art. 4º e seus percentuais mínimos de presencialidade (arts. 10 a 12), as vedações por área do conhecimento (arts. 8º e 9º) e os requisitos mínimos de infraestrutura da sede e do Polo EaD (arts. 27 e 29).'
+                  ]
+                },
+                items: [
+                  'O Decreto nº 12.456/2025 estabelece três formatos de oferta: presencial, semipresencial e a distância (art. 4º).',
+                  'Cada formato exige percentuais mínimos distintos de atividades presenciais: 70% no presencial; 30% + 20% presencial ou síncrona mediada no semipresencial; e 10% + 10% presencial ou síncrona mediada no formato a distância.',
+                  'Direito, Medicina, Enfermagem, Odontologia e Psicologia devem ser ofertados exclusivamente no formato presencial (art. 8º).',
+                  'É vedada a oferta a distância para a área de saúde em geral, para as licenciaturas e para diversas outras áreas (art. 9º).',
+                  'A sede deve dispor de recepção, secretaria acadêmica, salas de professores e coordenadores, espaço para a CPA, laboratórios, salas de estudo e conectividade (art. 27).',
+                  'O Polo EaD deve oferecer recepção, sala de coordenação, salas de estudo, laboratórios quando aplicável e conectividade; é vedado o compartilhamento entre instituições diferentes (art. 29).'
+                ]
+              }
+            ]
+          },
+          {
+            id: '06',
+            label: 'Apresentação',
+            unit: 'Unidade 02',
+            title: 'Docência, Mediação Pedagógica, Tutoria e Avaliação da Aprendizagem',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Funções distintas, responsabilidades complementares',
+                paragraphs: [
+                  'Todo curso ofertado pela Universidade Aberta do Brasil conta com uma equipe de profissionais que exercem funções distintas, mas complementares. Coordenador de curso, professor regente, professor conteudista, mediador pedagógico e tutor não são termos intercambiáveis: cada um corresponde a uma atribuição específica, prevista no Decreto nº 12.456/2025, que organiza o corpo docente e a mediação pedagógica no Capítulo III da norma.',
+                  'Essa organização não é apenas formal. Ela define quem responde pelo planejamento e pela regência de cada unidade curricular, quem elabora os materiais didáticos, quem realiza a mediação pedagógica do conteúdo junto aos estudantes e quem presta apoio administrativo ao longo do curso.',
+                  'O Decreto também estabelece regras específicas para a avaliação da aprendizagem: exige a presencialidade das avaliações em todas as unidades curriculares ofertadas parcial ou integralmente a distância, determina peso majoritário das avaliações presenciais na nota final, exige que elementos voltados ao desenvolvimento de habilidades discursivas de análise e síntese componham, no mínimo, um terço do peso da avaliação e reforça a obrigatoriedade do controle de frequência.',
+                  'Neste eixo, você vai conhecer os integrantes do corpo docente previstos na legislação, entender a função da mediação pedagógica, diferenciar com precisão as atribuições do tutor das atribuições do mediador e compreender as exigências normativas para a avaliação da aprendizagem e para o controle de frequência.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                label: 'Conceito-chave',
+                icon: 'book',
+                paragraphs: [
+                  'Coordenador de curso, professor regente, professor conteudista, mediador pedagógico e tutor não são termos intercambiáveis: cada um corresponde a uma atribuição específica prevista no Decreto nº 12.456/2025.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'O Decreto exige presencialidade das avaliações em unidades curriculares ofertadas parcial ou integralmente a distância, peso majoritário das avaliações presenciais na nota final, mínimo de um terço do peso da avaliação destinado a elementos discursivos de análise e síntese e controle de frequência obrigatório.'
+                ]
+              },
+              {
+                type: 'accordionGroup',
+                label: 'Objetivos da unidade',
+                items: [
+                  {
+                    id: 'objetivo-geral-modulo-02-unidade-02',
+                    title: 'Objetivo geral',
+                    paragraphs: [
+                      'Compreender a organização do corpo docente e da mediação pedagógica prevista no Decreto nº 12.456/2025, bem como as regras de avaliação da aprendizagem e de controle de frequência, distinguindo com precisão as atribuições do tutor das atribuições do mediador pedagógico.'
+                    ]
+                  },
+                  {
+                    id: 'objetivos-aprendizagem-modulo-02-unidade-02',
+                    title: 'Objetivos de aprendizagem',
+                    paragraphs: [
+                      'Ao concluir este eixo, espera-se que o participante consiga:'
+                    ],
+                    list: [
+                      'identificar os integrantes do corpo docente: coordenador de curso, professor regente e professor conteudista;',
+                      'caracterizar a função do mediador pedagógico, sua formação acadêmica compatível e o limite de 70 estudantes por mediador nas atividades síncronas mediadas;',
+                      'diferenciar as atribuições administrativas do tutor das atribuições de mediação pedagógica exercidas pelo mediador e pelo corpo docente;',
+                      'reconhecer as regras de avaliação da aprendizagem: presencialidade, peso majoritário na nota final e mínimo de um terço do peso da avaliação destinado a elementos discursivos de análise e síntese;',
+                      'reconhecer a obrigatoriedade do controle de frequência nas atividades presenciais e síncronas mediadas.'
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'contentImage',
+                src: 'assets/infografico-pagina06mod02.webp',
+                alt: 'Infográfico sobre as funções da equipe de docência e mediação na Educação a Distância: coordenador de curso, professor regente, professor conteudista, mediador pedagógico e tutor.',
+                captionTitle: 'Funções distintas, responsabilidades complementares',
+                caption: 'Equipe de docência e mediação na EaD: coordenador de curso, professor regente, professor conteudista, mediador pedagógico e tutor.'
+              }
+            ]
+          },
+          {
+            id: '07',
+            label: 'Situação-problema',
+            unit: 'Unidade 02',
+            title: 'Situação-problema',
+            blocks: [
+              {
+                type: 'caseStudy',
+                heading: 'Quem responde pelo quê na equipe do curso?',
+                image: '',
+                paragraphs: [
+                  'Em uma turma de licenciatura ofertada pela UAB/UFPE, uma estudante envia uma mensagem à tutora do curso pedindo que ela corrija novamente uma questão discursiva da avaliação presencial, alegando que a nota não refletiu o conteúdo estudado nas videoaulas.',
+                  'No mesmo período, a coordenação do curso percebe que há divergências na equipe sobre quem deve conduzir as atividades síncronas mediadas, quem pode formular e corrigir questões discursivas e se a avaliação de uma unidade curricular ofertada a distância pode ser composta somente por questões objetivas.',
+                  'Durante uma reunião de equipe, um integrante afirma: “Como tutor, posso conduzir a mediação pedagógica do conteúdo e corrigir as provas discursivas, já que atuo lado a lado com o professor e conheço bem a turma.” Outro integrante responde: “Não é bem assim. As atribuições do tutor são administrativas, distintas das funções de mediação pedagógica, que cabem ao mediador pedagógico e ao corpo docente. E, quanto à avaliação, a legislação exige presencialidade, peso majoritário na nota final e no mínimo um terço do peso da avaliação destinado a elementos discursivos de análise e síntese: não é possível avaliar uma unidade curricular a distância somente com questões objetivas.”'
+                ]
+              },
+              {
+                type: 'attentionNotice',
+                label: 'Atenção',
+                paragraphs: [
+                  '“Como tutor, posso conduzir a mediação pedagógica e corrigir provas discursivas” é um equívoco comum: as atribuições do tutor são administrativas, distintas das funções de mediação pedagógica, que cabem ao mediador pedagógico e ao corpo docente.'
+                ]
+              },
+              {
+                type: 'stickyStack',
+                heading: 'Para refletir',
+                showCount: false,
+                items: [
+                  { id: 'afirmacao-alinhada', text: 'Qual das duas afirmações está mais alinhada ao Decreto nº 12.456/2025?' },
+                  { id: 'corpo-docente', text: 'Quais são as diferenças entre as atribuições do professor regente, do professor conteudista e do coordenador de curso?' },
+                  { id: 'mediacao-e-tutoria', text: 'Em que a mediação pedagógica se diferencia da tutoria administrativa?' },
+                  { id: 'limite-mediador', text: 'Por que o mediador pedagógico atende, no máximo, 70 estudantes nas atividades síncronas mediadas?' },
+                  { id: 'avaliacao-frequencia', text: 'Que exigências a legislação estabelece para a avaliação da aprendizagem e para o controle de frequência?' }
+                ]
+              }
+            ]
+          },
+          {
+            id: '08',
+            label: 'Corpo docente',
+            unit: 'Unidade 02',
+            title: 'Capítulo 1 - O corpo docente no novo marco regulatório',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Composição e responsabilidades do corpo docente',
+                paragraphs: [
+                  'O Decreto nº 12.456/2025 organiza, no Capítulo III, a composição do corpo docente dos cursos ofertados nos formatos presencial, semipresencial e a distância. O art. 18 estabelece que o corpo docente é formado pelo coordenador de curso, pelo professor regente e pelo professor conteudista.',
+                  'O coordenador de curso responde pela organização pedagógica e administrativa do curso como um todo, articulando as ações do corpo docente, da mediação pedagógica e da tutoria, de acordo com o Projeto Pedagógico de Curso.',
+                  'O professor regente é responsável pela condução da unidade curricular. As atividades síncronas mediadas — realizadas em tempo real com grupos de até 70 estudantes e controle de frequência obrigatório — podem ser conduzidas pelo professor regente ou pelo mediador pedagógico.',
+                  'Já o professor conteudista integra o corpo docente como responsável pela dimensão de produção do curso, relacionada à elaboração dos materiais didáticos que sustentam as unidades curriculares. O art. 22 do Decreto determina que todos os integrantes do corpo docente devem constar no Censo da Educação Superior.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'Art. 18: o corpo docente é formado pelo coordenador de curso, pelo professor regente e pelo professor conteudista.'
+                ]
+              },
+              {
+                type: 'dataFocus',
+                label: 'Dados em foco',
+                paragraphs: [
+                  'As atividades síncronas mediadas são realizadas em tempo real, com grupos de até 70 estudantes e controle de frequência obrigatório, podendo ser conduzidas pelo professor regente ou pelo mediador pedagógico.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Composição do corpo docente',
+                links: [
+                  { label: 'Decreto nº 12.456/2025 — arts. 17 a 22', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm' },
+                  { label: 'Portaria MEC nº 506/2025', href: 'https://www.in.gov.br/en/web/dou/-/portaria-mec-n-506-de-10-de-julho-de-2025-641610361' }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'O professor conteudista integra o corpo docente previsto no Decreto nº 12.456/2025, ao lado do coordenador de curso e do professor regente.',
+                correctAnswer: true,
+                correctAnswerLabel: 'Verdadeiro',
+                explanation: 'O art. 18 do Decreto nº 12.456/2025 define o corpo docente como o conjunto formado por coordenador de curso, professor regente e professor conteudista, todos com atribuições próprias no curso.'
+              }
+            ]
+          },
+          {
+            id: '09',
+            label: 'Mediação e tutoria',
+            unit: 'Unidade 02',
+            title: 'Capítulo 2 - Mediação pedagógica e tutoria: funções distintas',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Apoiar não é substituir a mediação pedagógica',
+                paragraphs: [
+                  'O art. 19 do Decreto nº 12.456/2025 prevê que mediadores pedagógicos auxiliam o corpo docente e devem possuir formação acadêmica compatível com a área do curso. Nas atividades síncronas mediadas, cada mediador pedagógico atende, no máximo, 70 estudantes, sempre com controle de frequência.',
+                  'O mediador pedagógico atua na mediação do conteúdo: participa de discussões críticas, seminários colaborativos, resolução de problemas em grupo, mentorias em tempo real e debates sobre práticas, sempre em articulação com o corpo docente.',
+                  'Já o art. 21 do Decreto estabelece que os tutores podem auxiliar a equipe do curso com atribuições administrativas, distintas das funções de mediação pedagógica. Cabe ao tutor organizar prazos, orientar sobre o funcionamento do curso, dar suporte administrativo, acompanhar a participação dos estudantes e encaminhar demandas à equipe responsável. A mediação pedagógica do conteúdo, quando não realizada pelo próprio professor regente, é atribuição do mediador pedagógico.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'Arts. 3º, IV, e 19: os mediadores pedagógicos auxiliam o corpo docente e devem possuir formação acadêmica compatível; nas atividades síncronas mediadas, o grupo é de, no máximo, 70 estudantes por docente ou mediador pedagógico, com controle de frequência.',
+                  'Art. 21: os tutores podem auxiliar a equipe do curso com atribuições administrativas, distintas das funções de mediação pedagógica.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'tutoring',
+                label: 'Conexão com a tutoria',
+                icon: 'tracking',
+                paragraphs: [
+                  'Cabe ao tutor organizar prazos, orientar sobre o funcionamento do curso, dar suporte administrativo, acompanhar a participação dos estudantes e encaminhar demandas à equipe responsável sem assumir a mediação pedagógica do conteúdo.'
+                ]
+              },
+              {
+                type: 'roleComparison',
+                eyebrow: 'Compare',
+                heading: 'Mediador pedagógico e tutor',
+                introduction: 'O quadro organiza as atribuições descritas no material-fonte para evidenciar a diferença entre mediação pedagógica e apoio administrativo.',
+                left: { title: 'Mediador pedagógico' },
+                right: { title: 'Tutor' },
+                rows: [
+                  { label: 'Atuação central', left: 'Atua diretamente no processo de aprendizagem, sob supervisão do professor regente.', right: 'Atua no apoio administrativo ao corpo docente e à organização do curso.' },
+                  { label: 'Dúvidas e conteúdo', left: 'Esclarece dúvidas acadêmicas sobre PPC, ementa, metodologias e conteúdos das unidades curriculares.', right: 'Apoia rotinas e procedimentos administrativos, conforme a organização definida pela instituição.' },
+                  { label: 'Interação com estudantes', left: 'Interage pedagogicamente com os estudantes nas atividades síncronas e síncronas mediadas.', right: 'Apoia a comunicação e a organização das atividades, sem assumir a condução pedagógica.' },
+                  { label: 'Planejamento e avaliação', left: 'Contribui com o planejamento e a avaliação da aprendizagem das unidades curriculares.', right: 'Auxilia registros, organização e acompanhamento administrativo relacionados à oferta do curso.' },
+                  { label: 'Acompanhamento', left: 'Acompanha atividades presenciais e a distância, inclusive práticas profissionais, pesquisa e extensão, quando aplicável.', right: 'Presta suporte operacional aos estudantes e à equipe, dentro das atribuições estabelecidas pela IES.' },
+                  { label: 'Formação e limite', left: 'Deve possuir graduação em área correlata à sua atuação, sendo preferencial a formação em pós-graduação.', right: 'A Portaria caracteriza sua atuação pela natureza administrativa, distinguindo-a das atribuições pedagógicas do mediador.' }
+                ]
+              },
+              {
+                type: 'attentionNotice',
+                label: 'Atenção',
+                paragraphs: [
+                  'Apoiar o estudante não significa exercer mediação pedagógica. O mediador pedagógico atua no processo de ensino e aprendizagem, sob supervisão do professor regente. O tutor exerce atribuições administrativas e não deve substituir professor ou mediador na condução pedagógica.'
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'O tutor pode substituir o mediador pedagógico na mediação do conteúdo, desde que a turma tenha menos de 70 estudantes.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O limite de 70 estudantes se refere à atuação do mediador pedagógico nas atividades síncronas mediadas e não autoriza o tutor a assumir a mediação pedagógica. Segundo o art. 21 do Decreto nº 12.456/2025, as atribuições do tutor são administrativas e distintas das funções de mediação pedagógica.'
+              }
+            ]
+          },
+          {
+            id: '10',
+            label: 'Avaliação e frequência',
+            unit: 'Unidade 02',
+            title: 'Capítulo 3 - Avaliação da aprendizagem e controle de frequência',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Avaliar exige presença, evidência e acompanhamento',
+                paragraphs: [
+                  'O art. 23 do Decreto nº 12.456/2025 exige que as avaliações sejam presenciais em todas as unidades curriculares ofertadas parcial ou integralmente a distância, sejam elas realizadas na sede da instituição, em campi fora de sede ou nos Polos EaD.',
+                  'Além da presencialidade, a legislação determina que essas avaliações tenham peso majoritário na composição da nota final do estudante, e que elementos que incentivem habilidades discursivas de análise e síntese componham, no mínimo, um terço do peso da avaliação, exceto nas avaliações de atividades práticas. Cabe à instituição garantir a identificação do estudante no momento da avaliação, conforme o art. 24.',
+                  'O Guia Orientador SPREAD/UAB-UFPE sintetiza essas exigências em cinco pontos: a avaliação deve ser presencial em todas as unidades curriculares; deve ocorrer regularmente; deve ter peso majoritário presencial na nota final; deve reservar, no mínimo, um terço do peso da avaliação a elementos discursivos de análise e síntese, exceto nas avaliações de atividades práticas; e deve haver registro obrigatório das atividades presenciais e síncronas.',
+                  'O controle de frequência é obrigatório tanto nas avaliações presenciais quanto nas atividades síncronas mediadas, e pode ser realizado por meio de tecnologias digitais de rastreabilidade, identificação do estudante, plataformas de ambiente virtual de aprendizagem integradas e interação síncrona monitorada.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                statements: [
+                  'Art. 23: as avaliações devem ser presenciais em todas as unidades curriculares ofertadas parcial ou integralmente a distância, realizadas na sede, em campi fora de sede ou nos Polos EaD.',
+                  'O controle de frequência é obrigatório tanto nas avaliações presenciais quanto nas atividades síncronas mediadas, podendo ser realizado por tecnologias digitais de rastreabilidade, identificação do estudante ou interação síncrona monitorada.'
+                ]
+              },
+              {
+                type: 'dataFocus',
+                label: 'Dados em foco',
+                paragraphs: [
+                  'As avaliações presenciais devem ter peso majoritário na nota final, e elementos discursivos de análise e síntese devem compor, no mínimo, um terço do peso da avaliação — exceto nas avaliações de atividades práticas.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'practice',
+                label: 'Na prática',
+                icon: 'presence',
+                paragraphs: [
+                  'O Guia Orientador SPREAD/UAB-UFPE sintetiza a regra em cinco pontos: avaliação presencial em todas as unidades curriculares; ocorrência regular; peso majoritário presencial na nota final; mínimo de um terço do peso da avaliação destinado a elementos discursivos de análise e síntese, exceto em disciplinas práticas; e registro obrigatório das atividades presenciais e síncronas.'
+                ]
+              },
+              {
+                type: 'resourceLinks',
+                eyebrow: 'Saiba mais',
+                heading: 'Avaliação e frequência',
+                links: [
+                  { label: 'Decreto nº 12.456/2025 — arts. 6º, 23 e 24', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm' },
+                  { label: 'Referenciais de Qualidade para cursos com oferta a distância', href: 'https://www.gov.br/mec/pt-br/politica-regulacao-supervisao-educacao-superior/ead/documentos/referenciais_qualidade.pdf' }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Uma unidade curricular ofertada a distância pode ter sua avaliação composta inteiramente por questões objetivas.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O Decreto nº 12.456/2025 exige que elementos voltados ao desenvolvimento de habilidades discursivas de análise e síntese correspondam a, no mínimo, um terço do peso da avaliação, exceto nas avaliações de atividades práticas, além de exigir presencialidade e peso majoritário da avaliação presencial na nota final.'
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Retomada da situação-problema',
+                heading: 'Atribuições e avaliação',
+                question: 'Na situação apresentada, qual alternativa está de acordo com o Decreto nº 12.456/2025 e com o Guia Orientador SPREAD/UAB-UFPE?',
+                options: [
+                  { id: 'a', label: 'A)', text: 'O tutor pode conduzir a mediação pedagógica do conteúdo e corrigir provas discursivas, desde que a turma tenha menos de 70 estudantes.' },
+                  { id: 'b', label: 'B)', text: 'A avaliação da aprendizagem em unidades curriculares ofertadas a distância pode ser inteiramente objetiva, dispensando questões discursivas.' },
+                  { id: 'c', label: 'C)', text: 'As atribuições do tutor são de natureza administrativa, distintas das funções de mediação pedagógica exercidas pelo mediador e pelo corpo docente; a avaliação deve ser presencial, com peso majoritário na nota final e no mínimo um terço do peso da avaliação destinado a elementos discursivos de análise e síntese.' },
+                  { id: 'd', label: 'D)', text: 'O professor conteudista é responsável por todas as avaliações presenciais dos estudantes, independentemente da organização definida no Projeto Pedagógico de Curso.' }
+                ],
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                correctFeedback: 'Correto. O art. 21 do Decreto nº 12.456/2025 estabelece que as atribuições do tutor são administrativas, distintas das funções de mediação pedagógica. Os arts. 23 e 24 exigem que a avaliação seja presencial, tenha peso majoritário na nota final e reserve, no mínimo, um terço do peso da avaliação a elementos discursivos de análise e síntese, exceto em atividades práticas.',
+                incorrectFeedback: 'Revise as Unidades 2 e 3 deste eixo. A mediação pedagógica do conteúdo é atribuição do mediador pedagógico e do corpo docente, não do tutor, e a legislação não admite avaliações compostas somente por questões objetivas nas unidades curriculares ofertadas a distância.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Em resumo',
+                heading: 'Síntese da Unidade 02',
+                summaryNote: {
+                  label: 'Em resumo',
+                  icon: 'layers',
+                  paragraphs: [
+                    'A Unidade 2 apresentou o corpo docente previsto no Decreto (coordenador, professor regente e professor conteudista — art. 18), a mediação pedagógica (art. 19) e a tutoria (art. 21), além das regras de avaliação da aprendizagem e de controle de frequência (arts. 23 e 24).'
+                  ]
+                },
+                items: [
+                  'O corpo docente previsto no Decreto nº 12.456/2025 é formado pelo coordenador de curso, pelo professor regente e pelo professor conteudista (art. 18).',
+                  'O professor regente pode conduzir atividades síncronas mediadas, assim como o mediador pedagógico.',
+                  'Os mediadores pedagógicos auxiliam o corpo docente e devem ter formação acadêmica compatível com a área do curso (art. 19).',
+                  'Cada mediador pedagógico atende, no máximo, 70 estudantes nas atividades síncronas mediadas.',
+                  'Os tutores podem auxiliar a equipe com atribuições administrativas, distintas das funções de mediação pedagógica (art. 21).',
+                  'Todos os integrantes do corpo docente e da mediação pedagógica devem constar no Censo da Educação Superior (art. 22).',
+                  'A avaliação da aprendizagem deve ser presencial, com peso majoritário na nota final e no mínimo um terço do peso da avaliação destinado a elementos discursivos de análise e síntese (arts. 23 e 24).',
+                  'O controle de frequência é obrigatório nas atividades presenciais e síncronas mediadas.'
+                ]
+              }
+            ]
+          },
+          {
+            id: '11',
+            label: 'Referências',
+            unit: 'Módulo 02',
+            title: 'Referências',
+            blocks: [
+              {
+                type: 'references',
+                showCount: false,
+                eyebrow: 'Fontes utilizadas no Módulo 02',
+                heading: 'Referências e aprofundamentos',
+                introduction: 'Normas, materiais de apoio e vídeos indicados no conteúdo do módulo.',
+                groups: [
+                  {
+                    id: 'fontes-principais',
+                    label: 'Fontes principais',
+                    items: [
+                      { type: 'Decreto', text: 'BRASIL. Decreto nº 12.456, de 19 de maio de 2025. Dispõe sobre a oferta de educação a distância por instituições de educação superior em cursos de graduação.', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm', linkLabel: 'Acesso oficial' },
+                      { type: 'Volume 2', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Regulação da Educação a Distância no Brasil: trajetória normativa, qualidade e o novo marco regulatório. Volume 2. Recife: UFPE/SPREAD, 2026.' },
+                      { type: 'Guia orientador', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Guia Orientador para Adequação dos Cursos de Licenciatura ao Novo Marco Legal da Educação a Distância. Produção de Dayse Patrícia Pereira Barbosa. Recife: UFPE/SPREAD/UAB, 2025.' },
+                      { type: 'Guia orientador', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Guia Orientador para Adequação dos Cursos de Licenciatura ao Novo Marco Legal da Educação a Distância. Recife: UFPE/SPREAD, 2025.' }
+                    ]
+                  },
+                  {
+                    id: 'normas-complementares',
+                    label: 'Normas complementares e documentos oficiais',
+                    items: [
+                      { type: 'Portaria', text: 'BRASIL. Ministério da Educação. Portaria MEC nº 378, de 19 de maio de 2025. Dispõe sobre os formatos de oferta dos cursos superiores de graduação.', href: 'https://www.in.gov.br/web/dou/-/portaria-mec-n-378-de-19-de-maio-de-2025-630395302', linkLabel: 'Acesso oficial' },
+                      { type: 'Portaria', text: 'BRASIL. Ministério da Educação. Portaria MEC nº 381, de 20 de maio de 2025. Dispõe sobre as regras de transição para aplicação do Decreto nº 12.456/2025. Texto vigente com alterações posteriores, inclusive da Portaria MEC nº 795/2025.', href: 'https://mecnormas.mec.gov.br/pesquisa/detalhar/4599', linkLabel: 'Acesso oficial' },
+                      { type: 'Portaria', text: 'BRASIL. Ministério da Educação. Portaria MEC nº 506, de 10 de julho de 2025. Regulamenta formação e atribuições do corpo docente, mediadores, tutores e responsáveis pelos Polos EaD, além de atividades presenciais, avaliações, materiais, plataformas e polos.', href: 'https://www.in.gov.br/en/web/dou/-/portaria-mec-n-506-de-10-de-julho-de-2025-641610361', linkLabel: 'Acesso oficial' },
+                      { type: 'Portaria', text: 'BRASIL. Ministério da Educação. Portaria MEC nº 794, de 25 de novembro de 2025. Altera a Portaria MEC nº 506/2025.', href: 'https://mecnormas.mec.gov.br/pesquisa/detalhar/7460', linkLabel: 'Acesso oficial' },
+                      { type: 'Documento orientador', text: 'BRASIL. Ministério da Educação. Referenciais de Qualidade para Oferta de Cursos de Graduação a Distância. Documento orientador da nova política de EaD.', href: 'https://www.gov.br/mec/pt-br/politica-regulacao-supervisao-educacao-superior/ead/documentos/referenciais_qualidade.pdf', linkLabel: 'Acesso oficial' },
+                      { type: 'Resolução', text: 'BRASIL. Conselho Nacional de Educação. Resolução CNE/CP nº 4, de 29 de maio de 2024. Diretrizes Curriculares Nacionais para a formação inicial de profissionais do magistério da Educação Básica.', href: 'https://mecnormas.mec.gov.br/pesquisa/detalhar/5042', linkLabel: 'Acesso oficial' }
+                    ]
+                  },
+                  {
+                    id: 'aprofundamentos',
+                    label: 'Links e materiais para aprofundamento',
+                    items: [
+                      { type: 'FAQ MEC', text: 'MEC — Quais os formatos de oferta dos cursos de graduação? FAQ oficial com os percentuais mínimos de atividades presenciais e síncronas mediadas nos formatos presencial, semipresencial e a distância.', href: 'https://www.gov.br/mec/pt-br/acesso-a-informacao/perguntas-frequentes/educacao-a-distancia/quais-os-formatos-de-oferta' },
+                      { type: 'Material visual', text: 'MEC — Material visual da Nova Política de EaD. Síntese visual sobre formatos de oferta, atividades síncronas mediadas, mediação pedagógica, tutoria, avaliações e polos.', href: 'https://www.gov.br/mec/pt-br/politica-regulacao-supervisao-educacao-superior/ead/documentos/flyer.pdf' },
+                      { type: 'Referenciais', text: 'MEC — Referenciais de Qualidade para cursos de graduação com oferta a distância. Documento de apoio para planejamento pedagógico, avaliação, interação, materiais, plataformas, corpo docente e infraestrutura.', href: 'https://www.gov.br/mec/pt-br/politica-regulacao-supervisao-educacao-superior/ead/documentos/referenciais_qualidade.pdf' },
+                      { type: 'CAPES', text: 'CAPES — Normativos do Sistema Universidade Aberta do Brasil. Página que reúne atos normativos relacionados à UAB e permite acompanhar atualizações que afetam a oferta pública de EaD.', href: 'https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/articulacao-e-inovacao-em-educacao-aberta/sistema-universidade-aberta-do-brasil/normativos-uab' },
+                      { type: 'Consulta normativa', text: 'MEC Normas — Sistema de consulta à legislação educacional. Base oficial do MEC para consultar versões vigentes, alterações e relações entre atos normativos.', href: 'https://mecnormas.mec.gov.br/' }
+                    ]
+                  },
+                  {
+                    id: 'videos',
+                    label: 'Vídeos recomendados',
+                    items: [
+                      { type: 'Vídeo institucional', text: 'MEC — Nova Política de Educação a Distância (EaD). Vídeo institucional publicado em 19 de maio de 2025, útil para introduzir as mudanças do novo marco regulatório.', href: 'https://www.youtube.com/watch?v=5C6vchlQXiA', linkLabel: 'Assistir' },
+                      { type: 'Reportagem', text: 'TV Senado — Educação a distância: o que muda com o marco regulatório. Reportagem explicativa de 2025 sobre formatos de oferta, presencialidade e impactos do Decreto nº 12.456/2025.', href: 'https://www.youtube.com/watch?v=4LtbAsI5Jrw', linkLabel: 'Assistir' }
+                    ]
+                  }
+                ]
               }
             ]
           }
