@@ -298,6 +298,29 @@
     `;
   }
 
+  function renderAssessmentPlaceholderBlock(block, moduleId, pageId, blockIndex) {
+    const headingId = `assessment-placeholder-${moduleId}-${pageId}-${blockIndex}`;
+    const paragraphs = Array.isArray(block.paragraphs) ? block.paragraphs : [];
+    return `
+      <section class="lesson-assessment-placeholder" aria-labelledby="${headingId}">
+        <div class="lesson-container lesson-assessment-placeholder__layout" data-reveal>
+          <div class="lesson-assessment-placeholder__marker" aria-hidden="true">40H</div>
+          <div class="lesson-assessment-placeholder__identity">
+            <span class="lesson-assessment-placeholder__icon" aria-hidden="true">${lessonIcon('activity')}</span>
+            <div>
+              <p class="lesson-eyebrow">Avaliação final</p>
+              <h3 id="${headingId}">${escapeHTML(block.heading || 'Avaliação final somativa')}</h3>
+            </div>
+          </div>
+          <div class="lesson-assessment-placeholder__copy">
+            <p class="lesson-assessment-placeholder__status">Banco de questões a integrar</p>
+            ${paragraphs.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
   function renderResourceLinksBlock(block, moduleId, pageId, blockIndex) {
     const headingId = `resource-links-${moduleId}-${pageId}-${blockIndex}`;
     const links = Array.isArray(block.links) ? block.links : [];
@@ -1465,6 +1488,7 @@
     }
     if (block.type === 'contentImage') return renderContentImageBlock(block);
     if (block.type === 'imagePlaceholder') return renderImagePlaceholderBlock(block, moduleId, pageId, blockIndex);
+    if (block.type === 'assessmentPlaceholder') return renderAssessmentPlaceholderBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'resourceLinks') return renderResourceLinksBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'narrative') return renderNarrativeBlock(block, moduleId, pageId, blockIndex);
     if (block.type === 'regulatoryNotice') return renderRegulatoryNoticeBlock(block, moduleId, pageId, blockIndex);

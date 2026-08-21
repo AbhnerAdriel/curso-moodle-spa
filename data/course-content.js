@@ -2438,10 +2438,614 @@
       },
       {
         id: '04',
-        status: 'draft',
-        cardTitle: 'Nome do Módulo 4',
-        title: 'Módulo 04',
-        pages: []
+        status: 'published',
+        cardTitle: 'O Tutor da UAB diante do Novo Cenário',
+        title: 'O Tutor da UAB diante do Novo Cenário: comunicação, acompanhamento e boas práticas',
+        pages: [
+          {
+            id: '01',
+            label: 'Abertura',
+            unit: 'Abertura do módulo',
+            title: 'O Tutor da UAB diante do Novo Cenário',
+            navTitle: 'Vídeo de abertura',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'video',
+                slot: 'lead',
+                title: 'Vídeo de abertura do Módulo 4',
+                description: 'O Tutor da UAB diante do Novo Cenário: comunicação, acompanhamento e boas práticas',
+                provider: 'Eduplay'
+              }
+            ]
+          },
+          {
+            id: '02',
+            label: 'Apresentação',
+            unit: 'Unidade 01',
+            title: 'O Tutor da UAB diante do Novo Cenário: comunicação, acompanhamento e boas práticas',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Apresentação',
+                paragraphs: [
+                  'Depois de estudar o novo marco regulatório da Educação a Distância, os conceitos fundamentais da legislação, os formatos de oferta e a presencialidade, as atribuições da docência, da mediação pedagógica e da tutoria, o novo marco das licenciaturas e o processo de adequação dos Projetos Pedagógicos de Curso, este eixo trata de algo mais próximo do dia a dia do tutor: a atuação cotidiana do tutor da UAB/UFPE. Comunicar-se com clareza, acompanhar a participação dos estudantes, adotar boas práticas nos ambientes virtuais de aprendizagem e garantir atenção à acessibilidade fazem parte da rotina de quem exerce a tutoria. Essas ações se apoiam nas atribuições definidas pelo Decreto nº 12.456/2025, especialmente na distinção entre as funções do tutor e do mediador pedagógico (art. 21), e nas exigências de infraestrutura e acessibilidade da Sede e do Polo EaD (arts. 27 e 29).',
+                  'O Guia Orientador elaborado pela Secretaria de Programas de Educação Aberta e Digital (SPREAD/UAB) da UFPE traduz essas exigências para a realidade institucional das licenciaturas, mantidas nos formatos presencial e semipresencial, com atividades presenciais nos polos, atividades síncronas mediadas e atividades assíncronas no ambiente virtual de aprendizagem.',
+                  'Nesta aula, você vai relacionar comunicação, acompanhamento, boas práticas e acessibilidade a partir de uma situação concreta de tutoria, reconhecendo, na prática cotidiana, os limites e as possibilidades da sua própria atuação.'
+                ]
+              },
+              {
+                type: 'accordionGroup',
+                label: 'Objetivos da unidade',
+                items: [
+                  {
+                    id: 'objetivo-geral-modulo-04-unidade-01',
+                    title: 'Objetivo geral',
+                    paragraphs: [
+                      'Compreender a atuação cotidiana do tutor da UAB/UFPE no acompanhamento pedagógico e administrativo dos estudantes, à luz das atribuições estabelecidas pelo Decreto nº 12.456/2025, adotando boas práticas de comunicação, acompanhamento e acessibilidade nos ambientes presenciais e virtuais de aprendizagem.'
+                    ]
+                  },
+                  {
+                    id: 'objetivos-aprendizagem-modulo-04-unidade-01',
+                    title: 'Objetivos de aprendizagem',
+                    paragraphs: [
+                      'Ao concluir este eixo, espera-se que o participante consiga:'
+                    ],
+                    list: [
+                      'caracterizar a comunicação e o acompanhamento pedagógico e administrativo como eixos centrais do trabalho cotidiano do tutor;',
+                      'diferenciar as atribuições do tutor das atribuições do mediador pedagógico e do professor regente ou conteudista, conforme os arts. 17 a 21 do Decreto nº 12.456/2025;',
+                      'identificar boas práticas de tutoria em ambientes virtuais de aprendizagem, evitando a sobreposição de papéis;',
+                      'reconhecer as exigências de acessibilidade da Sede e do Polo EaD estabelecidas pelo Decreto nº 12.456/2025;',
+                      'aplicar os conhecimentos estudados ao acompanhamento de situações reais de estudantes com baixa participação, dificuldade de acesso ou necessidade específica de acessibilidade.'
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: '03',
+            label: 'Situação-problema',
+            unit: 'Unidade 01',
+            title: 'Um estudante que quase “desapareceu” das atividades',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'imagePlaceholder',
+                heading: 'Um estudante com dificuldades de acesso e baixa visão',
+                description: 'Imagem a inserir: fotografia correspondente ao contexto da situação-problema, com referência de estilo e enquadramento do material-fonte.',
+                caption: 'Imagem de referência — substituir por imagem correspondente ao contexto desta situação-problema.'
+              },
+              {
+                type: 'scenario',
+                paragraphs: [
+                  'Ricardo é estudante de uma licenciatura ofertada pela UAB/UFPE no Polo de Garanhuns. Nos primeiros meses do curso, participava regularmente das atividades síncronas mediadas e mantinha boa frequência no ambiente virtual de aprendizagem. Nas últimas semanas, porém, a tutora do curso percebeu, pelos registros de frequência do AVA, que Ricardo deixou de participar de várias sessões síncronas mediadas e reduziu significativamente o acesso aos materiais.',
+                  'Ao entrar em contato, a tutora recebe uma mensagem de Ricardo relatando duas dificuldades: a conexão de internet em sua casa, na zona rural do município, é instável durante boa parte do dia; e ele tem baixa visão, condição que, até então, não havia sido formalmente comunicada ao curso, e que dificulta a leitura de parte dos materiais disponibilizados no ambiente virtual.'
+                ]
+              },
+              {
+                type: 'roleComparison',
+                eyebrow: 'Confronte as posições',
+                heading: 'Duas interpretações sobre a atuação da tutora',
+                introduction: 'Analise os limites entre o acompanhamento da tutoria, a mediação pedagógica e as responsabilidades institucionais de acessibilidade.',
+                left: { title: 'Primeira posição' },
+                right: { title: 'Segunda posição' },
+                rows: [
+                  {
+                    label: 'Posicionamento',
+                    left: '“A tutora deveria assumir a mediação pedagógica desse estudante, já que ele está com dificuldade de acompanhar o conteúdo.”',
+                    right: '“Não é bem assim. As atribuições da tutora são administrativas, distintas das funções de mediação pedagógica, conforme o art. 21 do Decreto nº 12.456/2025. Precisamos acionar o mediador pedagógico e o professor regente, intensificar a comunicação com o Ricardo, e verificar se a Sede e o Polo estão garantindo a acessibilidade exigida pela legislação.”'
+                  }
+                ]
+              },
+              {
+                type: 'stickyStack',
+                heading: 'Para refletir',
+                showCount: false,
+                items: [
+                  { id: 'participacao-sincrona', text: 'Qual é o papel do tutor diante de um estudante com baixa participação nas atividades síncronas mediadas?' },
+                  { id: 'limites-atuacao', text: 'Até onde vai a atuação do tutor e a partir de que ponto a situação deve ser encaminhada ao mediador pedagógico ou ao professor regente?' },
+                  { id: 'estrategias-comunicacao', text: 'Que estratégias de comunicação o tutor pode adotar para reaproximar o estudante das atividades?' },
+                  { id: 'acessibilidade-sede-polo', text: 'Quais responsabilidades a Sede e o Polo EaD têm em relação à acessibilidade do estudante?' },
+                  { id: 'registro-comunicacao', text: 'Como registrar e comunicar essa situação sem extrapolar as atribuições administrativas do tutor?' }
+                ]
+              }
+            ]
+          },
+          {
+            id: '04',
+            label: 'Comunicação e acompanhamento',
+            unit: 'Unidade 01 · Capítulo 01',
+            title: 'Comunicação e acompanhamento no cotidiano da tutoria',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Comunicar para acompanhar',
+                paragraphs: [
+                  'No cotidiano da tutoria na UAB/UFPE, comunicação e acompanhamento caminham juntos. As licenciaturas ofertadas pela UAB/UFPE continuam organizadas nos formatos presencial ou semipresencial, combinando atividades presenciais nos polos de apoio, atividades síncronas mediadas — limitadas a até setenta estudantes por docente ou mediador pedagógico, conforme o art. 3º, IV, do Decreto nº 12.456/2025 — e atividades assíncronas mediadas pelo ambiente virtual de aprendizagem. A comunicação do tutor com o estudante ocorre por diferentes canais: mensagens no AVA, fóruns, avisos, e-mails e, quando necessário, contato por telefone ou mensagens instantâneas. O acompanhamento envolve observar a frequência de participação nas atividades síncronas mediadas, identificar sinais de afastamento e mobilizar estratégias de reaproximação, sempre dentro das atribuições administrativas que cabem ao tutor.',
+                  'O acompanhamento cotidiano do tutor contribui, ainda, para a imersão progressiva prevista nos Núcleos I e II da Resolução CNE/CP nº 4/2024, e para o desenvolvimento das habilidades discursivas exigidas em pelo menos um terço dos elementos avaliativos presenciais, conforme o art. 23 do Decreto nº 12.456/2025.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'concept',
+                label: 'Conceito-chave',
+                icon: 'tracking',
+                paragraphs: [
+                  'O controle de frequência nas atividades síncronas mediadas é obrigatório e exige o uso de ambientes virtuais de aprendizagem capazes de registrar entrada, permanência e saída do estudante em cada sessão, garantindo a rastreabilidade exigida pela nova regulação. Esse registro permite ao tutor identificar precocemente estudantes com baixa participação e comunicar essa situação à equipe pedagógica do curso.'
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'O controle de frequência nas atividades síncronas mediadas serve apenas para fins de registro administrativo, sem relação com o acompanhamento pedagógico do estudante.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O controle de frequência também é um instrumento de acompanhamento: permite ao tutor identificar precocemente sinais de afastamento e comunicar a situação à equipe pedagógica do curso.'
+              }
+            ]
+          },
+          {
+            id: '05',
+            label: 'Docência, mediação e tutoria',
+            unit: 'Unidade 01 · Capítulo 02',
+            title: 'Quem faz o quê: docência, mediação pedagógica e tutoria',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Funções distintas, responsabilidades complementares',
+                paragraphs: [
+                  'O novo marco regulatório reposiciona, com maior precisão do que os instrumentos normativos anteriores, o papel de cada sujeito envolvido na oferta de Educação a Distância. O professor regente e o professor conteudista respondem pelo planejamento, pela efetivação, pelo acompanhamento e pela avaliação dos processos de ensino e aprendizagem (arts. 17 e 18); o mediador pedagógico exerce atividade educacional de mediação pedagógica, com formação acadêmica compatível (art. 19); e o tutor exerce atribuições administrativas, distintas das funções de mediação pedagógica (art. 21).',
+                  'Uma boa prática de tutoria começa por reconhecer os limites da própria atuação: cabe ao tutor apoiar, orientar, comunicar, registrar e encaminhar; não cabe ao tutor substituir o mediador pedagógico na condução do conteúdo, nem assumir sozinho decisões pedagógicas que sejam atribuição do professor regente ou do professor conteudista.',
+                  'Entre as boas práticas de tutoria em ambientes virtuais de aprendizagem estão a resposta ágil e cordial às dúvidas administrativas dos estudantes, o encaminhamento correto de dúvidas de conteúdo ao mediador pedagógico ou ao professor responsável, o uso de linguagem clara e acessível, a organização de avisos e prazos, e o registro sistemático de frequência e de situações de afastamento. Entre as práticas que devem ser evitadas estão a informalidade excessiva, o silêncio prolongado diante de mensagens dos estudantes e a tentativa de resolver isoladamente questões que extrapolam as atribuições administrativas do tutor.'
+                ],
+                inlineNotes: [
+                  {
+                    afterParagraph: 0,
+                    type: 'regulatoryNotice',
+                    label: 'Olho na norma',
+                    icon: 'book',
+                    statements: [
+                      'Arts. 17 e 18 do Decreto nº 12.456/2025: corpo docente (professor regente e professor conteudista). Art. 19: mediador pedagógico, com formação compatível. Art. 21: tutor, atribuições administrativas, distintas da mediação pedagógica.'
+                    ]
+                  },
+                  {
+                    afterParagraph: 2,
+                    type: 'regulatoryNotice',
+                    label: 'Olho na norma',
+                    icon: 'book',
+                    statements: [
+                      'Todos os integrantes da equipe — coordenador de curso, professores, mediadores pedagógicos e tutores — devem constar no Censo da Educação Superior, conforme o art. 22 do Decreto nº 12.456/2025.'
+                    ]
+                  }
+                ]
+              },
+              {
+                type: 'roleComparison',
+                eyebrow: 'Infográfico comparativo · Fazer e evitar',
+                heading: 'Boas práticas de tutoria no ambiente virtual',
+                introduction: 'Use o quadro para reconhecer condutas que fortalecem a comunicação e o acompanhamento administrativo dos estudantes.',
+                left: { title: 'Fazer' },
+                right: { title: 'Evitar' },
+                rows: [
+                  { label: 'Comunicação', left: 'Resposta ágil e cordial às dúvidas administrativas; linguagem clara e acessível.', right: 'Informalidade excessiva; silêncio prolongado diante de mensagens.' },
+                  { label: 'Conteúdo', left: 'Encaminhar dúvidas de conteúdo ao mediador pedagógico ou ao professor.', right: 'Tentar resolver sozinho questões que extrapolam a atribuição administrativa.' },
+                  { label: 'Registro', left: 'Organizar avisos, prazos e registrar frequência e afastamentos.', right: 'Deixar de comunicar situações de afastamento à equipe.' }
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Cabe ao tutor assumir a mediação pedagógica de um estudante sempre que ele apresentar dificuldades relacionadas ao conteúdo da disciplina.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'As atribuições do tutor são administrativas, distintas das funções de mediação pedagógica, conforme o art. 21 do Decreto nº 12.456/2025. Dúvidas de conteúdo devem ser encaminhadas ao mediador pedagógico ou ao professor responsável.'
+              }
+            ]
+          },
+          {
+            id: '06',
+            label: 'Infraestrutura e acessibilidade',
+            unit: 'Unidade 01 · Capítulo 03',
+            title: 'Infraestrutura, acessibilidade e o papel do tutor',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Acessibilidade como condição da oferta',
+                paragraphs: [
+                  'O Decreto nº 12.456/2025 estabelece as condições mínimas de infraestrutura que a Sede e o Polo EaD devem oferecer. A Sede deve dispor de recepção, secretaria acadêmica, salas de professores e coordenadores, espaço para a Comissão Própria de Avaliação, laboratórios, salas ou ambientes de estudo e conectividade (art. 27). O Polo EaD deve contar com recepção, sala de coordenação, salas ou ambientes de estudo, laboratórios quando aplicável e conectividade (art. 29).'
+                ]
+              },
+              {
+                type: 'attentionNotice',
+                label: 'Atenção',
+                icon: 'attention',
+                paragraphs: [
+                  'O Decreto determina expressamente que tanto a Sede quanto o Polo EaD devem garantir acessibilidade nos termos da legislação, conforme o art. 27, § 2º, e o art. 29, § 7º. A acessibilidade não é um item opcional: é uma exigência normativa que integra a própria definição de infraestrutura adequada para a oferta de cursos de graduação.'
+                ]
+              },
+              {
+                type: 'narrative',
+                heading: 'Acompanhar e encaminhar necessidades específicas',
+                paragraphs: [
+                  'Para o tutor, essa exigência se traduz em atenção cotidiana a pelo menos duas dimensões: a acessibilidade física dos espaços do polo (circulação, mobiliário, sinalização) e a acessibilidade dos ambientes virtuais de aprendizagem (materiais em formatos compatíveis com leitores de tela, legendas em vídeos, contraste adequado, linguagem clara). Quando um estudante sinaliza uma necessidade específica, cabe ao tutor registrar essa informação, comunicá-la à coordenação do curso e ao polo, e acompanhar se as providências necessárias foram adotadas, sempre dentro de suas atribuições administrativas.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'practice',
+                label: 'Conexão com a tutoria',
+                icon: 'tracking',
+                paragraphs: [
+                  'Um estudante que enfrenta dificuldades de acesso, seja por questões de conectividade, seja por necessidades específicas de acessibilidade, corre maior risco de afastamento das atividades. O acompanhamento atento do tutor, articulado com a Sede e com o Polo EaD, é parte das boas práticas que sustentam a permanência e a aprendizagem desses estudantes.'
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'A exigência de acessibilidade prevista no Decreto nº 12.456/2025 aplica-se apenas ao Polo EaD, não à Sede da instituição.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'O Decreto nº 12.456/2025 exige acessibilidade tanto na Sede (art. 27, § 2º) quanto no Polo EaD (art. 29, § 7º).'
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Retomada da situação-problema',
+                heading: 'Um encaminhamento alinhado às atribuições do tutor',
+                question: 'Diante do caso de Ricardo, qual conduta está de acordo com as atribuições do tutor e com as exigências do Decreto nº 12.456/2025?',
+                options: [
+                  { id: 'a', label: 'A)', text: 'A tutora deve assumir pessoalmente a mediação pedagógica do conteúdo em que Ricardo apresenta dificuldade, já que o problema é urgente.' },
+                  { id: 'b', label: 'B)', text: 'A tutora deve apenas registrar a baixa frequência de Ricardo, sem comunicar a situação a nenhum outro integrante da equipe.' },
+                  { id: 'c', label: 'C)', text: 'A tutora deve intensificar a comunicação com Ricardo, registrar e comunicar a situação ao mediador pedagógico e à coordenação, e verificar se as condições de acessibilidade do polo e do ambiente virtual estão sendo atendidas.' },
+                  { id: 'd', label: 'D)', text: 'A tutora deve orientar Ricardo a resolver sozinho as dificuldades de conteúdo e de acesso, já que essas questões não fazem parte do trabalho da tutoria.' }
+                ],
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                correctFeedbackLabel: 'Feedback da resposta correta:',
+                incorrectFeedbackLabel: 'Feedback das respostas incorretas:',
+                correctFeedback: 'Cabe à tutora intensificar a comunicação, registrar e encaminhar a situação à equipe pedagógica competente, e acompanhar as condições de acessibilidade da Sede e do Polo EaD, sempre dentro de suas atribuições administrativas, conforme os arts. 21, 27, § 2º, e 29, § 7º, do Decreto nº 12.456/2025.',
+                incorrectFeedback: 'Revise a distinção entre as atribuições do tutor e do mediador pedagógico estudada na Unidade 1 e as exigências de acessibilidade estudadas neste capítulo. O tutor não deve assumir a mediação pedagógica do conteúdo, tampouco deixar de comunicar e acompanhar a situação do estudante.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Em síntese',
+                heading: 'Síntese da Unidade 01',
+                summaryNote: {
+                  label: 'Em resumo',
+                  icon: 'layers',
+                  paragraphs: [
+                    'A Unidade 1 mostrou que comunicação e acompanhamento são atribuições centrais do tutor, que essas atribuições são administrativas e distintas da mediação pedagógica (art. 21), e que a Sede e o Polo EaD devem garantir acessibilidade nos termos da legislação.'
+                  ]
+                },
+                items: [
+                  'comunicação e acompanhamento são atribuições centrais e cotidianas do trabalho do tutor;',
+                  'o controle de frequência nas atividades síncronas mediadas também cumpre função de acompanhamento pedagógico;',
+                  'as atribuições do tutor são administrativas e distintas das funções de mediação pedagógica, conforme o art. 21 do Decreto nº 12.456/2025;',
+                  'boas práticas de tutoria envolvem reconhecer os limites da própria atuação e encaminhar corretamente as dúvidas de conteúdo;',
+                  'a Sede e o Polo EaD devem garantir acessibilidade nos termos da legislação, conforme o art. 27, § 2º, e o art. 29, § 7º, do Decreto nº 12.456/2025;',
+                  'o acompanhamento atento do tutor, articulado com a equipe do curso e com o polo, contribui para a permanência e a aprendizagem dos estudantes.'
+                ]
+              }
+            ]
+          },
+          {
+            id: '07',
+            label: 'Apresentação',
+            unit: 'Unidade 02',
+            title: 'Estudos de Caso: Aplicando os Conhecimentos do Curso de Formação de Tutores',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'narrative',
+                heading: 'Apresentação',
+                paragraphs: [
+                  'Este eixo encerra o Curso de Formação de Tutores UAB/UFPE. Nos eixos e módulos anteriores, foram percorridos a trajetória histórica da Educação a Distância no Brasil, os conceitos fundamentais do Decreto nº 12.456/2025, os formatos de oferta e seus percentuais de presencialidade, as funções de docência, mediação pedagógica, tutoria e avaliação, os núcleos formativos da Resolução CNE/CP nº 4/2024, o processo de adequação dos PPCs e o papel prático do tutor no novo cenário regulatório.',
+                  'Este eixo não apresenta conteúdo normativo novo. Sua finalidade é diferente: integrar tudo o que foi estudado por meio de estudos de caso complexos, que aproximam a teoria da prática cotidiana da tutoria na UAB/UFPE, e encerrar o curso com uma avaliação final somativa.',
+                  'Você vai analisar três estudos de caso que combinam, de forma progressiva, os temas trabalhados ao longo do curso: primeiro, a trajetória histórica, os conceitos fundamentais e os formatos de oferta; em seguida, a docência, a mediação pedagógica, a tutoria, a avaliação e os núcleos formativos das licenciaturas; por fim, a adequação de PPCs e a atuação prática do tutor. Cada caso pede que você tome uma decisão fundamentada nas normas estudadas ao longo do curso.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'practice',
+                label: 'Conexão com a tutoria',
+                icon: 'activity',
+                paragraphs: [
+                  'Ao final, uma avaliação final somativa, com questões sorteadas de um banco de questões, verificará sua compreensão de todo o percurso formativo. A aprovação, conforme o aproveitamento mínimo definido pela SPREAD, dá direito à certificação como tutor da UAB/UFPE.'
+                ]
+              },
+              {
+                type: 'accordionGroup',
+                label: 'Objetivos da unidade',
+                items: [
+                  {
+                    id: 'objetivo-geral-modulo-04-unidade-02',
+                    title: 'Objetivo geral',
+                    paragraphs: [
+                      'Integrar os conhecimentos construídos ao longo do curso sobre a trajetória histórica e regulatória da Educação a Distância, os conceitos do Decreto nº 12.456/2025, os formatos de oferta, a docência, a mediação pedagógica, a tutoria, a avaliação, os núcleos formativos da Resolução CNE/CP nº 4/2024 e a adequação de PPCs, aplicando-os à análise de situações concretas e à tomada de decisão fundamentada.'
+                    ]
+                  },
+                  {
+                    id: 'objetivos-aprendizagem-modulo-04-unidade-02',
+                    title: 'Objetivos de aprendizagem',
+                    paragraphs: [
+                      'Ao concluir este eixo, espera-se que o participante consiga:'
+                    ],
+                    list: [
+                      'mobilizar de forma integrada os conceitos e normas estudados ao longo do curso para analisar situações concretas de gestão acadêmica em cursos EaD e semipresenciais;',
+                      'tomar decisões fundamentadas diante de cenários que envolvem formatos de oferta, percentuais de presencialidade, funções docentes e de tutoria, e adequação de PPCs;',
+                      'reconhecer, em situações práticas, os limites de atuação do tutor em relação à mediação pedagógica e à docência;',
+                      'avaliar criticamente propostas de adequação institucional à luz do Decreto nº 12.456/2025 e da Resolução CNE/CP nº 4/2024;',
+                      'demonstrar, na avaliação final, o domínio consolidado dos conteúdos trabalhados ao longo das 40 horas do curso.'
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: '08',
+            label: 'Situação-problema',
+            unit: 'Unidade 02',
+            title: 'Três decisões para um tutor experiente',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'imagePlaceholder',
+                heading: 'Decisões em um processo de transição',
+                description: 'Imagem a inserir: fotografia correspondente ao contexto da situação-problema, com referência de estilo e enquadramento do material-fonte.',
+                caption: 'Imagem de referência — substituir por imagem correspondente ao contexto desta situação-problema.'
+              },
+              {
+                type: 'scenario',
+                paragraphs: [
+                  'Você atua como tutor há algum tempo na UAB/UFPE e acompanhou, ao longo deste curso, as mudanças trazidas pelo Decreto nº 12.456/2025 e pela Resolução CNE/CP nº 4/2024. Agora, três situações vão testar sua capacidade de aplicar esse conhecimento.',
+                  'No primeiro estudo de caso, uma licenciatura oferecida integralmente a distância precisa decidir seu futuro diante da vedação legal a esse formato. No segundo, uma turma em processo de adequação levanta dúvidas sobre quem pode conduzir atividades síncronas mediadas e como avaliar os estudantes. No terceiro, uma coordenação revisa o PPC de um curso e conta com o apoio do tutor para acompanhar os estudantes durante a transição.',
+                  'Em cada caso, você vai analisar a situação, comparar interpretações apresentadas por integrantes fictícios da equipe e escolher a decisão mais adequada à legislação vigente.'
+                ]
+              },
+              {
+                type: 'stickyStack',
+                heading: 'Para refletir',
+                showCount: false,
+                items: [
+                  { id: 'formatos-licenciatura', text: 'Quais formatos de oferta estão disponíveis para uma licenciatura, segundo o Decreto nº 12.456/2025?' },
+                  { id: 'conducao-asm', text: 'Quem pode conduzir uma atividade síncrona mediada: o professor regente, o mediador pedagógico ou o tutor?' },
+                  { id: 'percentual-semipresencial', text: 'Que percentual mínimo de presencialidade deve ter um curso semipresencial?' },
+                  { id: 'checklist-ppc', text: 'Quais são os passos do checklist de adequação de um PPC ao novo marco regulatório?' },
+                  { id: 'contribuicao-tutor', text: 'Como o tutor pode contribuir, dentro de suas atribuições, para o sucesso da transição normativa nos cursos da UAB?' }
+                ]
+              }
+            ]
+          },
+          {
+            id: '09',
+            label: 'Estudo de caso 1',
+            unit: 'Unidade 02 · Capítulo 01',
+            title: 'Uma licenciatura 100% EaD diante da vedação legal',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'caseStudy',
+                heading: 'Uma decisão sobre o futuro do curso',
+                paragraphs: [
+                  'A Licenciatura em Pedagogia de uma IES parceira da UAB é ofertada, desde sua criação, no formato 100% a distância. Diante do Decreto nº 12.456/2025, a coordenação precisa decidir os próximos passos, já que o art. 9º veda a oferta de licenciaturas a distância.'
+                ]
+              },
+              {
+                type: 'roleComparison',
+                eyebrow: 'Confronte as posições',
+                heading: 'Duas decisões possíveis',
+                introduction: 'A decisão precisa considerar a vedação legal, o direito dos estudantes já matriculados e as alternativas institucionais para a oferta.',
+                left: { title: 'Primeira posição' },
+                right: { title: 'Segunda posição' },
+                rows: [
+                  {
+                    label: 'Posicionamento',
+                    left: '“Podemos simplesmente parar de matricular novos estudantes e deixar os já matriculados concluírem no formato atual.”',
+                    right: '“Também precisamos decidir se o curso será extinto ou reorganizado para o formato semipresencial.”'
+                  }
+                ]
+              },
+              {
+                type: 'narrative',
+                heading: 'Transição institucional',
+                paragraphs: [
+                  'Segundo o que foi estudado sobre os formatos de oferta (Decreto nº 12.456/2025, arts. 4º e 9º a 12) e sobre as etapas de transição indicadas no Guia Orientador SPREAD/UAB: cursos vedados entram em processo de extinção, com proibição de novas matrículas, direito de conclusão dos estudantes já matriculados, e possibilidade de a IES encerrar o curso ou migrar para o formato semipresencial, respeitando o mínimo de presencialidade previsto no art. 11.'
+                ]
+              },
+              {
+                type: 'regulatoryNotice',
+                label: 'Olho na norma',
+                icon: 'book',
+                statements: [
+                  'A decisão institucional adequada combina: suspensão de novas matrículas, conclusão garantida aos estudantes já matriculados no formato de ingresso, e decisão institucional entre extinguir o curso ou reorganizá-lo como semipresencial.'
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Diante da vedação legal à oferta de licenciaturas a distância, uma IES pode continuar matriculando novos estudantes em uma licenciatura 100% EaD, desde que garanta qualidade acadêmica.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'A vedação prevista no art. 9º do Decreto nº 12.456/2025 é uma vedação legal, não uma questão de qualidade. Novas matrículas em licenciaturas 100% a distância estão proibidas, independentemente da qualidade do curso; a IES deve reorganizar a oferta para o formato semipresencial ou extinguir o curso, preservando o direito de conclusão dos estudantes já matriculados.'
+              }
+            ]
+          },
+          {
+            id: '10',
+            label: 'Estudo de caso 2',
+            unit: 'Unidade 02 · Capítulo 02',
+            title: 'Quem conduz a atividade síncrona mediada?',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'caseStudy',
+                heading: 'Uma dúvida sobre condução e avaliação',
+                paragraphs: [
+                  'Uma licenciatura em Química, agora semipresencial, organiza uma unidade curricular com atividades síncronas mediadas, atendendo turmas de até 70 estudantes por mediador. Durante o planejamento, surge uma dúvida sobre quem pode conduzir essas atividades e quem responde pela avaliação.',
+                  'Um tutor recém-contratado se oferece para conduzir sozinho um seminário síncrono mediado, já que “sempre acompanhou bem os estudantes”. A coordenação pondera: será que essa é uma atribuição do tutor?'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'practice',
+                label: 'Compare',
+                icon: 'mediation',
+                paragraphs: [
+                  'Retomando o que foi estudado sobre o corpo docente (coordenador de curso, professor regente e professor conteudista), sobre os mediadores pedagógicos, cuja formação acadêmica deve ser compatível com a área e que podem conduzir atividades síncronas mediadas, e sobre os tutores, cujas atribuições são administrativas e distintas da mediação pedagógica: a proposta do tutor não está correta.'
+                ]
+              },
+              {
+                type: 'narrative',
+                heading: 'Quem responde pela mediação e pela avaliação',
+                paragraphs: [
+                  'Considerando essas normas e o Núcleo II da Resolução CNE/CP nº 4/2024, que exige presencialidade mínima quando o curso é ofertado a distância, a atividade síncrona mediada e a avaliação devem ser conduzidas pelo professor regente ou pelo mediador pedagógico, com avaliação presencial, peso majoritário na nota final e ao menos um terço de questões discursivas.'
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Um tutor pode conduzir, sozinho e sob sua própria responsabilidade, uma atividade síncrona mediada com controle de frequência.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'As atividades síncronas mediadas devem ser conduzidas por professor regente ou mediador pedagógico, com formação acadêmica compatível. As atribuições do tutor são de natureza administrativa e pedagógica de apoio, distintas das funções de mediação pedagógica previstas no art. 19 do Decreto nº 12.456/2025.'
+              }
+            ]
+          },
+          {
+            id: '11',
+            label: 'Estudo de caso 3',
+            unit: 'Unidade 02 · Capítulo 03',
+            title: 'A adequação do PPC e o apoio do tutor durante a transição',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'caseStudy',
+                heading: 'Comunicar a transição sem assumir decisões institucionais',
+                paragraphs: [
+                  'A coordenação de uma licenciatura semipresencial está revisando o PPC do curso com apoio do Guia Orientador SPREAD/UAB. O checklist de 11 passos foi parcialmente aplicado: os percentuais de presencialidade e a matriz curricular já foram ajustados, mas ainda faltam a descrição da infraestrutura dos polos e a definição dos processos de avaliação.',
+                  'Durante a transição, os estudantes relatam dúvidas sobre novas siglas na matriz curricular (AP, AS, ASM, ASIN), sobre onde ocorrerão as avaliações presenciais e sobre o funcionamento dos polos. A coordenação pede apoio aos tutores para esclarecer essas dúvidas junto aos estudantes.'
+                ]
+              },
+              {
+                type: 'knowledgeNote',
+                variant: 'practice',
+                label: 'Conexão com a tutoria',
+                icon: 'tracking',
+                paragraphs: [
+                  'Retomando o checklist de adequação de PPCs e as orientações sobre a atuação prática do tutor — comunicação clara, acompanhamento sistemático, boas práticas de mediação de dúvidas e atenção à acessibilidade — o tutor não decide sobre a estrutura do PPC, mas exerce papel central na comunicação com os estudantes durante a transição.'
+                ]
+              },
+              {
+                type: 'narrative',
+                heading: 'Esclarecer e encaminhar',
+                paragraphs: [
+                  'Cabe ao tutor avaliar quais dúvidas dos estudantes podem ser esclarecidas diretamente, dentro de suas atribuições, e quais devem ser encaminhadas à coordenação do curso, por envolverem decisões pedagógicas ou institucionais que extrapolam a atuação do tutor.'
+                ]
+              },
+              {
+                type: 'trueFalse',
+                heading: 'Atividade rápida',
+                question: 'Cabe ao tutor decidir, por conta própria, como a infraestrutura de um polo EaD deve ser organizada para atender aos requisitos do Decreto nº 12.456/2025.',
+                correctAnswer: false,
+                correctAnswerLabel: 'Falso',
+                explanation: 'A definição da infraestrutura dos polos é uma decisão institucional, que envolve a coordenação do curso e a IES, conforme o art. 29 do Decreto nº 12.456/2025 e o checklist de adequação de PPCs. O tutor pode relatar dificuldades observadas na prática e orientar os estudantes, mas não decide sobre a estrutura institucional.'
+              },
+              {
+                type: 'multipleChoice',
+                eyebrow: 'Retomada da situação-problema',
+                heading: 'Uma licenciatura em processo de adequação',
+                question: 'Uma licenciatura semipresencial da UAB/UFPE está concluindo a adequação do PPC. O curso oferece atividades síncronas mediadas conduzidas por mediadores pedagógicos, mantém presencialidade mínima do Núcleo II quando há oferta a distância, garante 100% de presencialidade nas Atividades Curriculares de Extensão e no Estágio Curricular Supervisionado, e organiza avaliações presenciais com ao menos um terço de questões discursivas. Os tutores atuam apoiando a comunicação e o acompanhamento dos estudantes, sem assumir funções de mediação pedagógica. Diante desse cenário, qual alternativa descreve corretamente a situação do curso?',
+                options: [
+                  { id: 'a', label: 'A)', text: 'O curso está em desacordo com a legislação, pois licenciaturas não podem ofertar nenhuma atividade a distância.' },
+                  { id: 'b', label: 'B)', text: 'O curso está inadequado, pois os tutores deveriam conduzir as atividades síncronas mediadas para reduzir custos com mediadores pedagógicos.' },
+                  { id: 'c', label: 'C)', text: 'O curso está adequado ao novo marco regulatório, pois observa os percentuais de presencialidade do formato semipresencial, a presencialidade integral da extensão e do estágio, a condução da mediação pedagógica por profissional habilitado e os critérios de avaliação previstos no Decreto nº 12.456/2025.' },
+                  { id: 'd', label: 'D)', text: 'O curso está inadequado, pois toda a carga horária do Núcleo II deveria ser presencial, sem exceção.' }
+                ],
+                correctAnswer: 'c',
+                correctAnswerLabel: 'C',
+                correctFeedbackLabel: 'Feedback da resposta correta:',
+                incorrectFeedbackLabel: 'Feedback das respostas incorretas:',
+                correctFeedback: 'O cenário reúne, de forma coerente, os principais pontos estudados ao longo do curso: o formato semipresencial exige percentuais mínimos de presencialidade (art. 11 do Decreto nº 12.456/2025); a mediação pedagógica deve ser conduzida por mediador com formação compatível, e não pelo tutor; os Núcleos III (extensão) e IV (estágio) da Resolução CNE/CP nº 4/2024 são sempre presenciais; o Núcleo II exige presencialidade mínima quando há oferta a distância; e a avaliação deve ser presencial, com peso majoritário e ao menos um terço de questões discursivas.',
+                incorrectFeedback: 'Revise os três estudos de caso deste eixo e os módulos anteriores do curso. Licenciaturas podem ser ofertadas no formato semipresencial, desde que respeitados os percentuais mínimos de presencialidade; a mediação pedagógica é atribuição de profissional habilitado, distinta da tutoria; os Núcleos III e IV são sempre presenciais; e o Núcleo II admite presencialidade mínima, e não integral, quando há oferta a distância.'
+              },
+              {
+                type: 'summary',
+                eyebrow: 'Em síntese',
+                heading: 'Síntese do curso',
+                items: [
+                  'a Educação a Distância no Brasil tem uma trajetória anterior à internet, marcada pela correspondência, pelo rádio, pela televisão educativa e pela consolidação jurídica trazida pela LDB e pelo Sistema UAB;',
+                  'a regulação da EaD foi se transformando ao longo do tempo, dos decretos revogados (nº 2.494/1998, nº 5.622/2005 e nº 9.057/2017) até o marco vigente, o Decreto nº 12.456/2025;',
+                  'o Decreto nº 12.456/2025 define conceitos como atividade presencial, síncrona, síncrona mediada e assíncrona, além dos formatos de oferta presencial, semipresencial e a distância, cada um com percentuais mínimos de presencialidade;',
+                  'licenciaturas e a maior parte dos cursos da área de saúde não podem mais ser ofertados integralmente a distância, o que exige a reorganização dos cursos vedados;',
+                  'o corpo docente, os mediadores pedagógicos e os tutores exercem funções distintas: docência e mediação pedagógica têm natureza pedagógica plena, enquanto a tutoria tem caráter predominantemente administrativo e de apoio;',
+                  'a Resolução CNE/CP nº 4/2024 organiza a formação de professores em quatro núcleos formativos, com a extensão e o estágio sempre presenciais e presencialidade mínima no núcleo de aprofundamento quando o curso é ofertado a distância;',
+                  'a adequação dos PPCs ao novo marco regulatório segue um checklist estruturado, que abrange percentuais, matriz curricular, corpo docente, infraestrutura dos polos e critérios de avaliação;',
+                  'o tutor da UAB exerce papel central na comunicação, no acompanhamento e na acessibilidade dos estudantes, sempre dentro dos limites de suas atribuições, contribuindo para que a transição normativa ocorra sem prejuízo à aprendizagem.'
+                ]
+              }
+            ]
+          },
+          {
+            id: '12',
+            label: 'Avaliação final',
+            unit: 'Avaliação',
+            title: 'Avaliação final somativa do curso',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'assessmentPlaceholder',
+                heading: 'Avaliação final somativa do curso',
+                paragraphs: [
+                  'Esta página reúne a avaliação final somativa do Curso de Formação de Tutores UAB/UFPE, com questões sorteadas de um banco de questões, cobrindo os conteúdos trabalhados ao longo das 40 horas do curso: a trajetória histórica e regulatória da EaD, os conceitos do Decreto nº 12.456/2025, os formatos de oferta, a docência, a mediação pedagógica, a tutoria, a avaliação, os núcleos formativos da Resolução CNE/CP nº 4/2024 e a adequação de PPCs.',
+                  'A aprovação, conforme o aproveitamento mínimo definido pela SPREAD, dá direito à certificação como tutor da UAB/UFPE.'
+                ]
+              }
+            ]
+          },
+          {
+            id: '13',
+            label: 'Referências',
+            unit: 'Módulo 04',
+            title: 'Referências',
+            headingSize: 'compact',
+            blocks: [
+              {
+                type: 'references',
+                showCount: false,
+                eyebrow: 'Fontes utilizadas no Módulo 04',
+                heading: 'Referências e aprofundamentos',
+                introduction: 'O Módulo 4 encerra o Curso de Formação de Tutores UAB/UFPE. Está estruturado em 13 páginas, divididas em duas unidades: a Unidade 01 (Páginas 01 a 05) trata da atuação cotidiana do tutor — comunicação, acompanhamento, boas práticas e acessibilidade —, e a Unidade 02 (Páginas 06 a 10) reúne três estudos de caso que integram os conteúdos de todo o curso. As páginas de abertura, avaliação e referências completam o módulo. Cada página é independente e pode ser acessada diretamente pelo menu do curso no AVA.',
+                groups: [
+                  {
+                    id: 'legislacao-modulo-04',
+                    label: 'Legislação',
+                    items: [
+                      { type: 'Decreto', text: 'BRASIL. Decreto nº 12.456, de 19 de maio de 2025. Dispõe sobre a oferta de educação a distância por instituições de educação superior em cursos de graduação.', href: 'https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/decreto/d12456.htm', linkLabel: 'Acesso oficial' },
+                      { type: 'Resolução', text: 'BRASIL. Conselho Nacional de Educação. Conselho Pleno. Resolução CNE/CP nº 4, de 29 de maio de 2024. Dispõe sobre as Diretrizes Curriculares Nacionais para a Formação Inicial de Professores da Educação Básica.', href: 'https://www.gov.br/mec/pt-br/cne/resolucoes-cp-2024', linkLabel: 'Acesso oficial' },
+                      { type: 'Lei', text: 'BRASIL. Lei nº 9.394, de 20 de dezembro de 1996. Estabelece as diretrizes e bases da educação nacional.', href: 'https://www.planalto.gov.br/ccivil_03/leis/l9394.htm', linkLabel: 'Acesso oficial' },
+                      { type: 'Decreto', text: 'BRASIL. Decreto nº 5.800, de 8 de junho de 2006. Dispõe sobre o Sistema Universidade Aberta do Brasil — UAB.', href: 'https://www.planalto.gov.br/ccivil_03/_ato2004-2006/2006/decreto/d5800.htm', linkLabel: 'Acesso oficial' },
+                      { type: 'Decreto', text: 'BRASIL. Decreto nº 9.057, de 25 de maio de 2017. Regulamentou o art. 80 da Lei nº 9.394/1996. Norma revogada pelo Decreto nº 12.456/2025.', href: 'https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/decreto/d9057.htm', linkLabel: 'Acesso oficial' }
+                    ]
+                  },
+                  {
+                    id: 'documentos-institucionais-modulo-04',
+                    label: 'Documentos institucionais (UFPE/SPREAD)',
+                    items: [
+                      { type: 'Guia orientador', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Guia Orientador para Adequação dos Cursos de Licenciatura ao Novo Marco Legal da EaD. Produção: Dayse Patrícia Pereira Barbosa. Recife: UFPE/SPREAD/UAB, 2025.' },
+                      { type: 'Volume 1', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Educação a Distância no Brasil: conceituação, trajetória histórica e consolidação da modalidade. Volume 1. Recife: UFPE/SPREAD, 2026.' },
+                      { type: 'Volume 2', text: 'UNIVERSIDADE FEDERAL DE PERNAMBUCO. Secretaria de Programas de Educação Aberta e Digital. Regulação da Educação a Distância no Brasil: trajetória normativa, qualidade e o novo marco regulatório. Volume 2. Recife: UFPE/SPREAD, 2026.' }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   });

@@ -5210,6 +5210,67 @@ html.reveal-ready .lesson-course-restrictions__grid.is-visible .lesson-course-re
   text-align: left;
 }
 
+/* Avaliação final a ser conectada ao banco de questões da SPREAD. */
+.lesson-assessment-placeholder {
+  padding: clamp(3.5rem, 7vw, 7rem) 0;
+  color: var(--white);
+  background: var(--neutral-950);
+}
+
+.lesson-assessment-placeholder__layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: end;
+  padding-block: clamp(2rem, 4vw, 3.5rem);
+  border-top: 4px solid var(--pink);
+  border-bottom: 1px solid rgba(255, 255, 255, .28);
+  overflow: hidden;
+}
+
+.lesson-assessment-placeholder__marker {
+  position: absolute;
+  right: clamp(1rem, 4vw, 4rem);
+  top: clamp(1rem, 3vw, 2rem);
+  color: rgba(255, 255, 255, .08);
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -.07em;
+  line-height: .78;
+}
+
+.lesson-assessment-placeholder__identity,
+.lesson-assessment-placeholder__copy {
+  position: relative;
+  z-index: 1;
+}
+
+.lesson-assessment-placeholder__identity {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.lesson-assessment-placeholder__icon {
+  width: clamp(3.25rem, 5vw, 4.5rem);
+  height: clamp(3.25rem, 5vw, 4.5rem);
+  display: grid;
+  place-items: center;
+  color: var(--cyan);
+  border-left: 4px solid var(--pink);
+}
+
+.lesson-assessment-placeholder__icon svg { width: 72%; height: 72%; }
+.lesson-assessment-placeholder__identity .lesson-eyebrow { margin: .35rem 0 .7rem; color: var(--cyan-300); }
+.lesson-assessment-placeholder__identity h3 { max-width: 13ch; margin: 0; font-family: var(--font-display); font-size: clamp(2.4rem, 4.8vw, 4.6rem); font-weight: 900; line-height: .9; text-transform: uppercase; }
+.lesson-assessment-placeholder__copy { max-width: 62ch; }
+.lesson-assessment-placeholder__status { margin: 0 0 1rem; color: var(--pink-200); font-size: .76rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.lesson-assessment-placeholder__copy p:not(.lesson-assessment-placeholder__status) { margin: 0 0 1rem; color: rgba(255, 255, 255, .84); }
+.lesson-assessment-placeholder__copy p:last-child { margin-bottom: 0; }
+
 /* Callouts pedagogicos: mesma coluna de leitura e respiro proprio. */
 .lesson-regulatory-notice:not(.lesson-regulatory-notice--inline),
 .lesson-comparison-prompt:not(.lesson-comparison-prompt--inline),
@@ -5282,6 +5343,7 @@ html.reveal-ready .lesson-course-restrictions__grid.is-visible .lesson-course-re
   .lesson-image-placeholder__surface { min-height: 330px; grid-template-columns: 1fr; align-content: end; }
   .lesson-image-placeholder__icon { display: none; }
   .lesson-image-placeholder__surface::before { right: 12%; width: 50vw; }
+  .lesson-assessment-placeholder__layout { grid-template-columns: 1fr; gap: 2rem; }
   .lesson-resource-links__layout,
   .lesson-role-matrix__heading { grid-template-columns: 1fr; gap: 1.75rem; }
   .lesson-role-matrix__row { grid-template-columns: 1fr; }
