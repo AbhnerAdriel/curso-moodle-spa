@@ -41,6 +41,7 @@
       calendar: `<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="31" rx="1"/><path d="M14 5v10M34 5v10M7 19h34M13 25h5m5 0h5m5 0h3M13 31h5m5 0h5m5 0h3M13 37h5m5 0h5"/></svg>`,
       notices: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M13 45h38l-4.5-6.5V27a14.5 14.5 0 0 0-29 0v11.5L13 45Z"/><path d="M29 12v-1a3 3 0 0 1 6 0v1M26 51a6.5 6.5 0 0 0 12 0"/></svg>`,
       library: `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M11 15h10v38H11zM24 9h10v44H24zM38 13l10-3 9 40-10 3z"/><path d="M14 22h4M27 17h4M42 21l7-2"/></svg>`,
+      ebook: `<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="13" y="5" width="38" height="54" rx="1"/><path d="M20 18c5-1.3 9.4.1 12 3.2v21c-3.6-3-8-4.1-12-3.2ZM44 18c-5-1.3-9.4.1-12 3.2v21c3.6-3 8-4.1 12-3.2Z"/><path d="M24 27h5M35 27h5M24 33h5M35 33h5M29 51h6"/></svg>`,
       arrowUpRight: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke-width="1.8"/></svg>`,
       arrowLeft: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7M8 12h11"/></svg>`,
       arrowRight: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7M5 12h11"/></svg>`,
@@ -127,6 +128,10 @@
               <span class="shortcut-icon">${icon('library')}</span>
               <span class="shortcut-label">Biblioteca</span>
             </a>
+            <a class="shortcut" href="#/ebooks">
+              <span class="shortcut-icon">${icon('ebook')}</span>
+              <span class="shortcut-label">Ebooks</span>
+            </a>
           </div>
         </section>
 
@@ -190,7 +195,8 @@
     const labels = {
       guia: ['Guia do Curso', 'Espaço reservado para o guia do curso.'],
       avisos: ['Avisos', 'Espaço reservado para avisos e comunicados do curso.'],
-      biblioteca: ['Biblioteca', 'Espaço reservado para materiais, ebooks e referências.']
+      biblioteca: ['Biblioteca', 'Espaço reservado para materiais, ebooks e referências.'],
+      ebooks: ['Ebooks', 'Espaço reservado para os ebooks do curso.']
     };
     const [title, description] = labels[routeName] || ['Conteúdo não encontrado', 'A rota informada não existe neste curso.'];
     return `
@@ -1726,7 +1732,7 @@
   function parseRoute(hash) {
     const normalized = (hash || '#/').replace(/^#\/?/, '').replace(/\/+$/, '');
     if (!normalized || normalized === 'home') return { name: 'home' };
-    if (['guia', 'avisos', 'biblioteca'].includes(normalized)) return { name: 'auxiliary', routeName: normalized };
+    if (['guia', 'avisos', 'biblioteca', 'ebooks'].includes(normalized)) return { name: 'auxiliary', routeName: normalized };
 
     const moduleMatch = normalized.match(/^modulo\/(\d{1,3})(?:\/pagina\/(\d{1,3}))?$/);
     if (moduleMatch) {
@@ -2408,7 +2414,7 @@
       }
     } else if (route.name === 'auxiliary') {
       template = auxiliaryTemplate(route.routeName);
-      const routeTitles = { guia: 'Guia do Curso', avisos: 'Avisos', biblioteca: 'Biblioteca' };
+      const routeTitles = { guia: 'Guia do Curso', avisos: 'Avisos', biblioteca: 'Biblioteca', ebooks: 'Ebooks' };
       pageTitle = `${routeTitles[route.routeName]} | ${courseTitle}`;
       announcement = `${routeTitles[route.routeName]} carregado.`;
     } else {
