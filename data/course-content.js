@@ -1942,8 +1942,7 @@
                     ]
                   }
                 ]
-              },
-              { type: 'knowledgeNote', variant: 'concept', label: 'A seguir', icon: 'arrow', paragraphs: ['A seguir: a situação-problema desta unidade.'] }
+              }
             ]
           },
           {
@@ -2000,7 +1999,6 @@
             title: 'Os quatro núcleos formativos e a carga horária mínima da licenciatura',
             headingSize: 'compact',
             blocks: [
-              { type: 'chapterDivider', number: '01', eyebrow: 'Unidade 01 · Capítulo 01', heading: 'Os quatro núcleos e a carga horária mínima da licenciatura' },
               {
                 type: 'narrative',
                 heading: 'A formação inicial passa a ter quatro núcleos',
@@ -2165,10 +2163,11 @@
             title: 'Um PPC que precisa ser reorganizado',
             blocks: [
               {
-                type: 'imagePlaceholder',
-                heading: 'Um curso em transição',
-                description: 'Imagem a inserir: equipe de coordenação, estudantes e Polo EaD diante de uma reorganização de curso de licenciatura.',
-                caption: 'Imagem de referência — substituir por imagem correspondente ao contexto desta situação-problema.'
+                type: 'contentImage',
+                src: 'assets/imagem-pagina05mod03.webp',
+                alt: 'Equipe pedagógica reunida em torno de uma mesa, analisando documentos para reorganizar o projeto pedagógico de uma licenciatura.',
+                captionTitle: 'Situação-problema',
+                caption: 'Equipe pedagógica analisa a reorganização do PPC de uma licenciatura diante das exigências do novo marco regulatório.'
               },
               {
                 type: 'scenario',
@@ -2267,7 +2266,6 @@
             title: 'O checklist de 11 passos para adequação dos PPCs',
             headingSize: 'compact',
             blocks: [
-              { type: 'chapterDivider', number: '04', eyebrow: 'Unidade 02 · Capítulo 04', heading: 'O checklist de 11 passos para adequação dos PPCs' },
               {
                 type: 'narrative',
                 heading: 'Um roteiro para revisar o curso por inteiro',
@@ -2286,6 +2284,7 @@
               },
               {
                 type: 'accordionGroup',
+                display: 'list',
                 eyebrow: 'Checklist de adequação',
                 label: 'Os 11 passos do Guia Orientador',
                 items: [

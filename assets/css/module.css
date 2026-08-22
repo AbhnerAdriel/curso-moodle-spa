@@ -1249,6 +1249,46 @@ html[data-view="module"] body {
 
 .lesson-accordion__content p { margin: 0 0 1rem; }
 
+.lesson-objectives__static-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--neutral-300);
+}
+
+.lesson-objectives__static-list > li {
+  min-height: 92px;
+  padding: 1.25rem 0;
+  display: grid;
+  grid-template-columns: clamp(40px, 6vw, 76px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--neutral-300);
+}
+
+.lesson-objectives__static-index {
+  color: var(--neutral-300);
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.2vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.lesson-objectives__static-content { color: var(--neutral-700); }
+
+.lesson-objectives__static-title {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.18rem, 2.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.lesson-objectives__static-content > p:not(.lesson-objectives__static-title) { margin: 1rem 0 0; }
+
 @keyframes lesson-accordion-in {
   from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }

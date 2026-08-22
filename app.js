@@ -423,14 +423,34 @@
 
   function renderAccordionGroup(block, moduleId, pageId, blockIndex) {
     const groupId = `objetivos-${moduleId}-${pageId}-${blockIndex}`;
+    const items = Array.isArray(block.items) ? block.items : [];
+    const isStaticList = block.display === 'list';
     return `
-      <section class="lesson-objectives lesson-container" aria-labelledby="${groupId}" data-reveal>
+      <section class="lesson-objectives lesson-container${isStaticList ? ' lesson-objectives--static-list' : ''}" aria-labelledby="${groupId}" data-reveal>
         <header class="lesson-objectives__heading">
           <p class="lesson-eyebrow">${escapeHTML(block.eyebrow || 'Para orientar seus estudos')}</p>
           <h3 id="${groupId}">${escapeHTML(block.label)}</h3>
         </header>
-        <div class="lesson-accordion">
-          ${block.items.map((item, index) => {
+        ${isStaticList ? `
+          <ol class="lesson-objectives__static-list">
+            ${items.map((item, index) => `
+              <li>
+                <span class="lesson-objectives__static-index" aria-hidden="true">${padId(index + 1)}</span>
+                <div class="lesson-objectives__static-content">
+                  <p class="lesson-objectives__static-title">${escapeHTML(item.title)}</p>
+                  ${item.paragraphs?.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('') || ''}
+                  ${item.list?.length ? `
+                    <ul class="lesson-list">
+                      ${item.list.map((listItem) => `<li>${escapeHTML(listItem)}</li>`).join('')}
+                    </ul>
+                  ` : ''}
+                </div>
+              </li>
+            `).join('')}
+          </ol>
+        ` : `
+          <div class="lesson-accordion">
+            ${items.map((item, index) => {
             const contentId = `${item.id}-${moduleId}-${pageId}-${blockIndex}-content`;
             return `
               <details class="lesson-accordion__item">
@@ -450,7 +470,8 @@
               </details>
             `;
           }).join('')}
-        </div>
+          </div>
+        `}
       </section>
     `;
   }
